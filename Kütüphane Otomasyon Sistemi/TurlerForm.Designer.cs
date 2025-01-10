@@ -34,12 +34,12 @@
             this.txt_Aciklama = new System.Windows.Forms.TextBox();
             this.btn_Ekle = new System.Windows.Forms.Button();
             this.btn_Guncelle = new System.Windows.Forms.Button();
-            this.TürListesi = new System.Windows.Forms.DataGridView();
+            this.TurListesi = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ekranlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.raporkarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.TürListesi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TurListesi)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,6 +84,7 @@
             this.btn_Ekle.TabIndex = 36;
             this.btn_Ekle.Text = "EKLE";
             this.btn_Ekle.UseVisualStyleBackColor = true;
+            this.btn_Ekle.Click += new System.EventHandler(this.btn_Ekle_Click);
             // 
             // btn_Guncelle
             // 
@@ -94,15 +95,16 @@
             this.btn_Guncelle.TabIndex = 38;
             this.btn_Guncelle.Text = "GÜNCELLE";
             this.btn_Guncelle.UseVisualStyleBackColor = true;
+            this.btn_Guncelle.Click += new System.EventHandler(this.btn_Guncelle_Click);
             // 
-            // TürListesi
+            // TurListesi
             // 
-            this.TürListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TürListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.TürListesi.Location = new System.Drawing.Point(0, 343);
-            this.TürListesi.Name = "TürListesi";
-            this.TürListesi.Size = new System.Drawing.Size(1074, 348);
-            this.TürListesi.TabIndex = 39;
+            this.TurListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TurListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.TurListesi.Location = new System.Drawing.Point(0, 343);
+            this.TurListesi.Name = "TurListesi";
+            this.TurListesi.Size = new System.Drawing.Size(1074, 348);
+            this.TurListesi.TabIndex = 39;
             // 
             // menuStrip1
             // 
@@ -140,7 +142,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1074, 691);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.TürListesi);
+            this.Controls.Add(this.TurListesi);
             this.Controls.Add(this.btn_Guncelle);
             this.Controls.Add(this.btn_Ekle);
             this.Controls.Add(this.txt_Aciklama);
@@ -149,7 +151,8 @@
             this.Controls.Add(this.label1);
             this.Name = "TurlerForm";
             this.Text = "Türler";
-            ((System.ComponentModel.ISupportInitialize)(this.TürListesi)).EndInit();
+            this.Load += new System.EventHandler(this.TurlerForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.TurListesi)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -165,7 +168,7 @@
         private System.Windows.Forms.TextBox txt_Aciklama;
         private System.Windows.Forms.Button btn_Ekle;
         private System.Windows.Forms.Button btn_Guncelle;
-        private System.Windows.Forms.DataGridView TürListesi;
+        private System.Windows.Forms.DataGridView TurListesi;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ekranlarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayarlarToolStripMenuItem;

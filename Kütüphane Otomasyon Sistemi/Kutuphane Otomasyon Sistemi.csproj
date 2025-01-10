@@ -236,21 +236,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KitapBusinessLayer1\KitapBusinessLayer1.csproj">
-      <Project>{2fed7f80-0ea6-4da4-a846-7d059c9a2c28}</Project>
-      <Name>KitapBusinessLayer1</Name>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{6e278751-a522-4aee-8d88-4ab65bb777d8}</Project>
+      <Name>BusinessLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KitapDataAccessLayer\KitapDataAccessLayer.csproj">
-      <Project>{df1a0c7f-7fe1-433d-b49e-f2c3cd3f82b9}</Project>
-      <Name>KitapDataAccessLayer</Name>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{be4fdbbe-893d-43d7-acae-6a90b8300c5e}</Project>
+      <Name>DataAccessLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KitapEntityLayer\KitapEntityLayer.csproj">
-      <Project>{fed9f175-590a-46bb-ad5c-0d960be66084}</Project>
-      <Name>KitapEntityLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UyeEntityLayer\UyeEntityLayer.csproj">
-      <Project>{98748e25-e2db-4d98-8166-b308605055c5}</Project>
-      <Name>UyeEntityLayer</Name>
+    <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">
+      <Project>{db8a9d1b-4cc3-4361-83d4-2e14064b15bf}</Project>
+      <Name>EntityLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -74,8 +74,8 @@ namespace Kütüphane_Otomasyon_Sistemi
 
         private void btn_KategoriRaflar_Click(object sender, EventArgs e)
         {
-            Kategori_Raflar_Form kategori_Raflar_Form = new Kategori_Raflar_Form();
-            kategori_Raflar_Form.Show();
+            KategoriRaflarForm kategoriRaflarForm = new KategoriRaflarForm();
+            kategoriRaflarForm.Show();
         }
 
         private void btn_Raporlar_Click(object sender, EventArgs e)
