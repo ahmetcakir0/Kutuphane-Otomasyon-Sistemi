@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace EntityLayer
 {
-    public class KategoriRaflar
+    public class KategoriRaf
     {
         public int ID { get; set; }
         public string KategoriAdi { get; set; }
         public int KategoriRafKodu { get; set; }
 
-        public KategoriRaflar(int id, string kategoriAdi, int kategoriRafKodu)
+        public KategoriRaf(int id, string kategoriAdi, int kategoriRafKodu)
         {
             ID = id;
             KategoriAdi = kategoriAdi;
             KategoriRafKodu = kategoriRafKodu;
         }
-        public KategoriRaflar() { }
+        public KategoriRaf() { }
     }
 }

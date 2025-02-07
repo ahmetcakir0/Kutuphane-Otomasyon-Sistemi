@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer
 {
-    public class Uyeler
+    public class Uye
     {
         public int ID { get; set; }
         public string Ad { get; set; }
@@ -17,7 +17,7 @@ namespace EntityLayer
         public DateTime DogumTarihi { get; set; }
         public string Adres { get; set; }
 
-        public Uyeler(int id, string ad, string soyad, string tCKimlik, string telNo, string eposta, DateTime dogumTarihi, string adres)
+        public Uye(int id, string ad, string soyad, string tCKimlik, string telNo, string eposta, DateTime dogumTarihi, string adres)
         {
             ID = id;
             Ad = ad;
@@ -28,7 +28,7 @@ namespace EntityLayer
             DogumTarihi = dogumTarihi;
             Adres = adres;
         }
-        public Uyeler()
+        public Uye()
         {
 
         }

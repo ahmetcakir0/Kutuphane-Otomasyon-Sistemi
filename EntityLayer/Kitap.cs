@@ -7,19 +7,20 @@ using System.Threading.Tasks;
 
 namespace EntityLayer
 {
-    public class Kitaplar
+    public class Kitap
     {
         public int ID { get; set; }
         public string KitapAdi { get; set; }
         public string YazarAdi { get; set; }
-        public string YayinEvi { get; set; }
+        public int YayinEvi { get; set; }
         public string ISBN { get; set; }
-        public string RafNumarasi { get; set; }
-        public string KitapTuru { get; set; }
-        public string Kategori { get; set; }
+        public int RafNumarasi { get; set; }
+        public int KitapTuru { get; set; }
+        public int Kategori { get; set; }
         public int SayfaSayisi { get; set; }
 
-        public Kitaplar(int id, string kitapAdi, string yazarAdi, string yayinEvi, string isbn, string rafNumarasi, string kitapTuru, string kategori, int sayfaSayisi)
+        public Kitap(int id, string kitapAdi, string yazarAdi, int yayinEvi, string isbn, int
+            rafNumarasi, int kitapTuru, int kategori, int sayfaSayisi)
         {
             ID = id;
             KitapAdi = kitapAdi;
@@ -31,7 +32,7 @@ namespace EntityLayer
             Kategori = kategori;
             SayfaSayisi = sayfaSayisi;
         }
-        public Kitaplar()
+        public Kitap()
         {
 
         }

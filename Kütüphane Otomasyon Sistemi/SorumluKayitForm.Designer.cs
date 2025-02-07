@@ -197,7 +197,7 @@
             this.btn_Guncelle.Name = "btn_Guncelle";
             this.btn_Guncelle.Size = new System.Drawing.Size(118, 39);
             this.btn_Guncelle.TabIndex = 17;
-            this.btn_Guncelle.Text = "Güncelle";
+            this.btn_Guncelle.Text = "GÜNCELLE";
             this.btn_Guncelle.UseVisualStyleBackColor = true;
             // 
             // dgv_SorumluListesi

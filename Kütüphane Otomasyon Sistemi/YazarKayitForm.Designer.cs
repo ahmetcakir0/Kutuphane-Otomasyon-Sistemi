@@ -41,6 +41,8 @@
             this.ekranlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.raporkarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dtp_DogumTarihi = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_YazarListesi)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -111,6 +113,7 @@
             this.btn_Guncelle.TabIndex = 41;
             this.btn_Guncelle.Text = "GÜNCELLE";
             this.btn_Guncelle.UseVisualStyleBackColor = true;
+            this.btn_Guncelle.Click += new System.EventHandler(this.btn_Guncelle_Click);
             // 
             // btn_Kaydet
             // 
@@ -121,6 +124,7 @@
             this.btn_Kaydet.TabIndex = 40;
             this.btn_Kaydet.Text = "KAYDET";
             this.btn_Kaydet.UseVisualStyleBackColor = true;
+            this.btn_Kaydet.Click += new System.EventHandler(this.btn_Kaydet_Click);
             // 
             // menuStrip1
             // 
@@ -152,11 +156,29 @@
             this.raporkarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.raporkarToolStripMenuItem.Text = "Raporlar";
             // 
+            // dtp_DogumTarihi
+            // 
+            this.dtp_DogumTarihi.Location = new System.Drawing.Point(482, 136);
+            this.dtp_DogumTarihi.Name = "dtp_DogumTarihi";
+            this.dtp_DogumTarihi.Size = new System.Drawing.Size(200, 20);
+            this.dtp_DogumTarihi.TabIndex = 44;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(397, 136);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 13);
+            this.label4.TabIndex = 45;
+            this.label4.Text = "Doğum Tarihi :";
+            // 
             // YazarKayitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1069, 651);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.dtp_DogumTarihi);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dgv_YazarListesi);
             this.Controls.Add(this.btn_Guncelle);
@@ -169,6 +191,7 @@
             this.Controls.Add(this.txt_YazarAdSoyad);
             this.Name = "YazarKayitForm";
             this.Text = "Yazar Kayıt";
+            this.Load += new System.EventHandler(this.YazarKayitForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_YazarListesi)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -192,5 +215,7 @@
         private System.Windows.Forms.ToolStripMenuItem ekranlarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayarlarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem raporkarToolStripMenuItem;
+        private System.Windows.Forms.DateTimePicker dtp_DogumTarihi;
+        private System.Windows.Forms.Label label4;
     }
 }

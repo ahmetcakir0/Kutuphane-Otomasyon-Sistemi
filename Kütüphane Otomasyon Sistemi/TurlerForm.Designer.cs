@@ -34,12 +34,13 @@
             this.txt_Aciklama = new System.Windows.Forms.TextBox();
             this.btn_Ekle = new System.Windows.Forms.Button();
             this.btn_Guncelle = new System.Windows.Forms.Button();
-            this.TurListesi = new System.Windows.Forms.DataGridView();
+            this.dgv_TurListesi = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ekranlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.raporkarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.TurListesi)).BeginInit();
+            this.btn_GeriDon = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_TurListesi)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +79,7 @@
             // btn_Ekle
             // 
             this.btn_Ekle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Ekle.Location = new System.Drawing.Point(399, 229);
+            this.btn_Ekle.Location = new System.Drawing.Point(270, 259);
             this.btn_Ekle.Name = "btn_Ekle";
             this.btn_Ekle.Size = new System.Drawing.Size(118, 39);
             this.btn_Ekle.TabIndex = 36;
@@ -89,7 +90,7 @@
             // btn_Guncelle
             // 
             this.btn_Guncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Guncelle.Location = new System.Drawing.Point(597, 229);
+            this.btn_Guncelle.Location = new System.Drawing.Point(479, 259);
             this.btn_Guncelle.Name = "btn_Guncelle";
             this.btn_Guncelle.Size = new System.Drawing.Size(118, 39);
             this.btn_Guncelle.TabIndex = 38;
@@ -97,14 +98,14 @@
             this.btn_Guncelle.UseVisualStyleBackColor = true;
             this.btn_Guncelle.Click += new System.EventHandler(this.btn_Guncelle_Click);
             // 
-            // TurListesi
+            // dgv_TurListesi
             // 
-            this.TurListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TurListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.TurListesi.Location = new System.Drawing.Point(0, 343);
-            this.TurListesi.Name = "TurListesi";
-            this.TurListesi.Size = new System.Drawing.Size(1074, 348);
-            this.TurListesi.TabIndex = 39;
+            this.dgv_TurListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_TurListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgv_TurListesi.Location = new System.Drawing.Point(0, 343);
+            this.dgv_TurListesi.Name = "dgv_TurListesi";
+            this.dgv_TurListesi.Size = new System.Drawing.Size(1074, 348);
+            this.dgv_TurListesi.TabIndex = 39;
             // 
             // menuStrip1
             // 
@@ -136,13 +137,24 @@
             this.raporkarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.raporkarToolStripMenuItem.Text = "Raporlar";
             // 
+            // btn_GeriDon
+            // 
+            this.btn_GeriDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_GeriDon.Location = new System.Drawing.Point(684, 259);
+            this.btn_GeriDon.Name = "btn_GeriDon";
+            this.btn_GeriDon.Size = new System.Drawing.Size(118, 39);
+            this.btn_GeriDon.TabIndex = 41;
+            this.btn_GeriDon.Text = "GERİ DÖN";
+            this.btn_GeriDon.UseVisualStyleBackColor = true;
+            // 
             // TurlerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1074, 691);
+            this.Controls.Add(this.btn_GeriDon);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.TurListesi);
+            this.Controls.Add(this.dgv_TurListesi);
             this.Controls.Add(this.btn_Guncelle);
             this.Controls.Add(this.btn_Ekle);
             this.Controls.Add(this.txt_Aciklama);
@@ -152,7 +164,7 @@
             this.Name = "TurlerForm";
             this.Text = "Türler";
             this.Load += new System.EventHandler(this.TurlerForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.TurListesi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_TurListesi)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -168,10 +180,11 @@
         private System.Windows.Forms.TextBox txt_Aciklama;
         private System.Windows.Forms.Button btn_Ekle;
         private System.Windows.Forms.Button btn_Guncelle;
-        private System.Windows.Forms.DataGridView TurListesi;
+        private System.Windows.Forms.DataGridView dgv_TurListesi;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ekranlarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayarlarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem raporkarToolStripMenuItem;
+        private System.Windows.Forms.Button btn_GeriDon;
     }
 }

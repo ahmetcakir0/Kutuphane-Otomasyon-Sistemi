@@ -16,33 +16,33 @@ namespace BusinessLayer
         {
             kategoriDal = new KatRafDAL();
         }
-        public string KategoriEkle(int id, string kategoriAdi, int kategoriRafKodu)
-        {
-            if (id <= 0)
-            {
-                return "ID değeri sıfır veya negatif olamaz.";
-            }
+        //public string K(int id, string kategoriAdi, int kategoriRafKodu)
+        //{
+        //    if (id <= 0)
+        //    {
+        //        return "ID değeri sıfır veya negatif olamaz.";
+        //    }
 
-            if (string.IsNullOrWhiteSpace(kategoriAdi))
-            {
-                return "Kategori adı boş olamaz.";
-            }
+        //    if (string.IsNullOrWhiteSpace(kategoriAdi))
+        //    {
+        //        return "Kategori adı boş olamaz.";
+        //    }
 
-            if (kategoriRafKodu <= 0)
-            {
-                return "Kategori Raf Kodu sıfır veya negatif olamaz.";
-            }
+        //    if (kategoriRafKodu <= 0)
+        //    {
+        //        return "Kategori Raf Kodu sıfır veya negatif olamaz.";
+        //    }
 
-            try
-            {
-                bool sonuc = kategoriDal.KategoriEkle(id, kategoriAdi, kategoriRafKodu);
-                return sonuc ? "Kategori başarıyla eklendi." : "Kategori eklenirken bir hata oluştu.";
-            }
-            catch (Exception ex)
-            {
-                return $"Bir hata oluştu: {ex.Message}";
-            }
-        }
+        //    try
+        //    {
+        //        //bool sonuc = kategoriDal(id, kategoriAdi, kategoriRafKodu);
+        //        //return sonuc ? "Kategori başarıyla eklendi." : "Kategori eklenirken bir hata oluştu.";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return $"Bir hata oluştu: {ex.Message}";
+        //    }
+        //}
         public string KategoriSil(int id)
         {
             if (id <= 0)

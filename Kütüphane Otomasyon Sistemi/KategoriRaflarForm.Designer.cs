@@ -36,6 +36,7 @@
             this.btn_Guncelle = new System.Windows.Forms.Button();
             this.btn_Sil = new System.Windows.Forms.Button();
             this.dgv_KategoriRaflar = new System.Windows.Forms.DataGridView();
+            this.btn_GeriDon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_KategoriRaflar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +76,7 @@
             // 
             // btn_Kaydet
             // 
-            this.btn_Kaydet.Location = new System.Drawing.Point(152, 172);
+            this.btn_Kaydet.Location = new System.Drawing.Point(49, 174);
             this.btn_Kaydet.Name = "btn_Kaydet";
             this.btn_Kaydet.Size = new System.Drawing.Size(112, 45);
             this.btn_Kaydet.TabIndex = 4;
@@ -84,7 +85,7 @@
             // 
             // btn_Guncelle
             // 
-            this.btn_Guncelle.Location = new System.Drawing.Point(499, 172);
+            this.btn_Guncelle.Location = new System.Drawing.Point(396, 174);
             this.btn_Guncelle.Name = "btn_Guncelle";
             this.btn_Guncelle.Size = new System.Drawing.Size(112, 45);
             this.btn_Guncelle.TabIndex = 5;
@@ -93,7 +94,7 @@
             // 
             // btn_Sil
             // 
-            this.btn_Sil.Location = new System.Drawing.Point(326, 172);
+            this.btn_Sil.Location = new System.Drawing.Point(223, 174);
             this.btn_Sil.Name = "btn_Sil";
             this.btn_Sil.Size = new System.Drawing.Size(112, 45);
             this.btn_Sil.TabIndex = 6;
@@ -109,11 +110,21 @@
             this.dgv_KategoriRaflar.Size = new System.Drawing.Size(800, 211);
             this.dgv_KategoriRaflar.TabIndex = 55;
             // 
+            // btn_GeriDon
+            // 
+            this.btn_GeriDon.Location = new System.Drawing.Point(567, 174);
+            this.btn_GeriDon.Name = "btn_GeriDon";
+            this.btn_GeriDon.Size = new System.Drawing.Size(112, 45);
+            this.btn_GeriDon.TabIndex = 56;
+            this.btn_GeriDon.Text = "GERİ DÖN";
+            this.btn_GeriDon.UseVisualStyleBackColor = true;
+            // 
             // KategoriRaflarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_GeriDon);
             this.Controls.Add(this.dgv_KategoriRaflar);
             this.Controls.Add(this.btn_Sil);
             this.Controls.Add(this.btn_Guncelle);
@@ -140,5 +151,6 @@
         private System.Windows.Forms.Button btn_Guncelle;
         private System.Windows.Forms.Button btn_Sil;
         private System.Windows.Forms.DataGridView dgv_KategoriRaflar;
+        private System.Windows.Forms.Button btn_GeriDon;
     }
 }

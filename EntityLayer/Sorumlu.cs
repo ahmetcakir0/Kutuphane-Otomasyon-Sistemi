@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer
 {
-    public class Sorumlular
+    public class Sorumlu
     {
         public int ID { get; set; }
         public string SorumluAdi { get; set; }
@@ -19,7 +19,7 @@ namespace EntityLayer
         public string Adres { get; set; }
         public string KullaniciAdi { get; set; }
         public string Sifre { get; set; }
-        public Sorumlular(int id, string sorumluAdi, string sorumluSoyadi, string tCKimlik, string rol, string telNo, string eposta, DateTime dogumTarihi, string adres, string kullaniciAdi, string sifre)
+        public Sorumlu(int id, string sorumluAdi, string sorumluSoyadi, string tCKimlik, string rol, string telNo, string eposta, DateTime dogumTarihi, string adres, string kullaniciAdi, string sifre)
         {
             ID = id;
             SorumluAdi = sorumluAdi;

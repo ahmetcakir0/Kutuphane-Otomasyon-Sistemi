@@ -13,9 +13,9 @@ namespace BusinessLayer
     {
         private readonly TurDAL turDal;
 
-        public TurBL(string connectionString)
+        public TurBL()
         {
-            turDal = new TurDAL();
+            turDal = new TurDAL(); // TurDAL sınıfı burada veri erişim işlemlerini yapacak
         }
 
         public string TurEkle(string turAdi, string aciklama)
@@ -23,8 +23,8 @@ namespace BusinessLayer
             if (string.IsNullOrWhiteSpace(turAdi))
                 return "Tür adı boş olamaz.";
 
-            if (turAdi.Length > 1000)
-                return "Tür adı 1000 karakterden uzun olamaz.";
+            if (turAdi.Length > 100)
+                return "Tür adı 100 karakterden uzun olamaz.";
 
             try
             {
@@ -45,8 +45,8 @@ namespace BusinessLayer
             if (string.IsNullOrWhiteSpace(turAdi))
                 return "Tür adı boş olamaz.";
 
-            if (turAdi.Length > 1000)
-                return "Tür adı 1000 karakterden uzun olamaz.";
+            if (turAdi.Length > 100)
+                return "Tür adı 100 karakterden uzun olamaz.";
 
             try
             {
@@ -102,4 +102,3 @@ namespace BusinessLayer
         }
     }
 }
-

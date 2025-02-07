@@ -41,13 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KategoriRaflar.cs" />
-    <Compile Include="Kitaplar.cs" />
-    <Compile Include="Sorumlular.cs" />
-    <Compile Include="Turler.cs" />
-    <Compile Include="Uyeler.cs" />
+    <Compile Include="KategoriRaf.cs" />
+    <Compile Include="Kitap.cs" />
+    <Compile Include="Sorumlu.cs" />
+    <Compile Include="Tur.cs" />
+    <Compile Include="Uye.cs" />
     <Compile Include="Yayinevi.cs" />
-    <Compile Include="Yazarlar.cs" />
+    <Compile Include="Yazar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

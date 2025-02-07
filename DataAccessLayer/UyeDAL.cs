@@ -17,7 +17,7 @@ namespace DataAccessLayer
             this.connectionString = connectionString;
         }
 
-        public void Ekle(Uyeler uye)
+        public void Ekle(Uye uye)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -35,7 +35,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void Guncelle(Uyeler uye)
+        public void Guncelle(Uye uye)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -67,9 +67,9 @@ namespace DataAccessLayer
             }
         }
 
-        public List<Uyeler> TumUyeleriGetir()
+        public List<Uye> TumUyeleriGetir()
         {
-            List<Uyeler> uyeListesi = new List<Uyeler>();
+            List<Uye> uyeListesi = new List<Uye>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -80,7 +80,7 @@ namespace DataAccessLayer
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    Uyeler uye = new Uyeler
+                    Uye uye = new Uye
                     {
                         ID = Convert.ToInt32(reader["Id"]),
                         Ad = reader["UyeAdi"].ToString(),
@@ -98,7 +98,7 @@ namespace DataAccessLayer
             return uyeListesi;
         }
 
-        public Uyeler IdIleGetir(int id)
+        public Uye IdIleGetir(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -110,7 +110,7 @@ namespace DataAccessLayer
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    return new Uyeler
+                    return new Uye
                     {
                         ID = Convert.ToInt32(reader["Id"]),
                         Ad = reader["UyeAdi"].ToString(),

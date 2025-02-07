@@ -6,40 +6,39 @@ using System.Text;
 using System.Threading.Tasks;
 using EntityLayer;
 using DataAccessLayer;
+using System.Data;
 
 namespace BusinessLayer
 {
     public class YayineviBL
     {
-        private readonly YayineviDAL yayineviDal;
+        private readonly YayineviDAL yayineviDAL;
 
-        public YayineviBL(string connectionString)
+        public YayineviBL()
         {
-            yayineviDal = new YayineviDAL(connectionString);
+            yayineviDAL = new YayineviDAL();
         }
 
-        public string YayineviEkle(string yayineviAdi, string eposta, string telNo, string adres)
+        public string YayineviEkle(string yayineviAdi, string telNo, string ePosta, string adres)
         {
             if (string.IsNullOrWhiteSpace(yayineviAdi))
-                return "Yayınevi adı boş olamaz.";
-            if (string.IsNullOrWhiteSpace(eposta))
-                return "E-posta adresi boş olamaz.";
-            if (string.IsNullOrWhiteSpace(telNo))
-                return "Telefon numarası boş olamaz.";
-            if (string.IsNullOrWhiteSpace(adres))
-                return "Adres bilgisi boş olamaz.";
+                return "Yayınevi adı soyadı boş olamaz.";
 
+            if (yayineviAdi.Length > 100)
+                return "Yayınevi adı 100 karakterden uzun olamaz.";
+
+            if (string.IsNullOrWhiteSpace(telNo))
+                return "Telefon numarası boş bırakılamaz.";
+
+            if (string.IsNullOrWhiteSpace(ePosta))
+                return "Eposta boş bırakılamaz.";
+
+            if (string.IsNullOrWhiteSpace(adres))
+                return "Adres boş bırakılamaz.";
             try
             {
-                Yayinevi yeniYayinevi = new Yayinevi
-                {
-                    YayineviAdi = yayineviAdi,
-                    Eposta = eposta,
-                    TelNo = telNo,
-                    Adres = adres
-                };
-                yayineviDal.Ekle(yeniYayinevi);
-                return "Yayınevi başarıyla eklendi.";
+                bool sonuc = yayineviDAL.YayineviEkle(yayineviAdi, telNo, ePosta, adres);
+                return sonuc ? "Yayınevi başarıyla eklendi." : "Yayınevi eklenemedi.";
             }
             catch (Exception ex)
             {
@@ -47,31 +46,31 @@ namespace BusinessLayer
             }
         }
 
-        public string YayineviGuncelle(int id, string yayineviAdi, string eposta, string telNo, string adres)
+        public string YayineviGuncelle(int id, string yayineviAdi, string telNo, string ePosta, string adres)
         {
             if (id <= 0)
                 return "Geçersiz yayınevi ID.";
+
+
             if (string.IsNullOrWhiteSpace(yayineviAdi))
-                return "Yayınevi adı boş olamaz.";
-            if (string.IsNullOrWhiteSpace(eposta))
-                return "E-posta adresi boş olamaz.";
+                return "Yayınevi adı soyadı boş olamaz.";
+
+            if (yayineviAdi.Length > 100)
+                return "Yayınevi adı 100 karakterden uzun olamaz.";
+
             if (string.IsNullOrWhiteSpace(telNo))
-                return "Telefon numarası boş olamaz.";
+                return "Telefon numarası boş bırakılamaz.";
+
+            if (string.IsNullOrWhiteSpace(ePosta))
+                return "Eposta boş bırakılamaz.";
+
             if (string.IsNullOrWhiteSpace(adres))
-                return "Adres bilgisi boş olamaz.";
+                return "Adres boş bırakılamaz.";
 
             try
             {
-                Yayinevi guncellenecekYayinevi = new Yayinevi
-                {
-                    id = id,
-                    YayineviAdi = yayineviAdi,
-                    Eposta = eposta,
-                    TelNo = telNo,
-                    Adres = adres
-                };
-                yayineviDal.Guncelle(guncellenecekYayinevi);
-                return "Yayınevi başarıyla güncellendi.";
+                bool sonuc = yayineviDAL.YayineviGuncelle(id, yayineviAdi, telNo, ePosta, adres);
+                return sonuc ? "Yayınevi başarıyla güncellendi." : "Yayınevi güncellenemedi.";
             }
             catch (Exception ex)
             {
@@ -86,7 +85,7 @@ namespace BusinessLayer
 
             try
             {
-                yayineviDal.Sil(id);
+                yayineviDAL.YayineviSil(id);
                 return "Yayınevi başarıyla silindi.";
             }
             catch (Exception ex)
@@ -95,11 +94,11 @@ namespace BusinessLayer
             }
         }
 
-        public List<Yayinevi> YayineviListele()
+        public DataTable TumYayinevleriniGetir()
         {
             try
             {
-                return yayineviDal.TumYayinevleriniGetir();
+                return yayineviDAL.TumYayinevleriniGetiir();
             }
             catch (Exception ex)
             {
@@ -107,14 +106,28 @@ namespace BusinessLayer
             }
         }
 
-        public Yayinevi YayineviIdIleGetir(int id)
+        public DataRow YayineviGetirById(int id)
         {
             if (id <= 0)
-                throw new Exception("Geçersiz yayınevi ID.");
+                throw new ArgumentException("Geçersiz yayınevi ID.");
 
             try
             {
-                return yayineviDal.IdIleGetir(id);
+                return yayineviDAL.YayinevleriniGetirById(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Hata: {ex.Message}");
+            }
+        }
+        public DataTable YayineviAra(string aramaMetni)
+        {
+            if (string.IsNullOrWhiteSpace(aramaMetni))
+                return yayineviDAL.TumYayinevleriniGetiir();
+
+            try
+            {
+                return yayineviDAL.YayineviAra(aramaMetni);
             }
             catch (Exception ex)
             {

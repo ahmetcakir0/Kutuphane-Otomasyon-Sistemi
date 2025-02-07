@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace EntityLayer
 {
-    public class Turler
+    public class Tur
     {
         public int ID { get; set; }
         public string TurAdi { get; set; }
         public string Aciklama { get; set; }
 
-        public Turler(int id, string turAdi, string aciklama)
+        public Tur(int id, string turAdi, string aciklama)
         {
             ID = id;
             TurAdi = turAdi;
             Aciklama = aciklama;
         }
 
-        public Turler()
+        public Tur()
         {
 
         }

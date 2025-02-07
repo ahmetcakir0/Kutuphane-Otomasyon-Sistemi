@@ -94,7 +94,7 @@
             // Guncelle_Button
             // 
             this.Guncelle_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Guncelle_Button.Location = new System.Drawing.Point(700, 270);
+            this.Guncelle_Button.Location = new System.Drawing.Point(355, 322);
             this.Guncelle_Button.Name = "Guncelle_Button";
             this.Guncelle_Button.Size = new System.Drawing.Size(118, 39);
             this.Guncelle_Button.TabIndex = 34;
@@ -104,7 +104,7 @@
             // Sil_Button
             // 
             this.Sil_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Sil_Button.Location = new System.Drawing.Point(528, 270);
+            this.Sil_Button.Location = new System.Drawing.Point(544, 322);
             this.Sil_Button.Name = "Sil_Button";
             this.Sil_Button.Size = new System.Drawing.Size(118, 39);
             this.Sil_Button.TabIndex = 33;
@@ -114,7 +114,7 @@
             // btn_Kaydet
             // 
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(351, 270);
+            this.btn_Kaydet.Location = new System.Drawing.Point(737, 322);
             this.btn_Kaydet.Name = "btn_Kaydet";
             this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_Kaydet.TabIndex = 32;
@@ -316,6 +316,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "YeniKitapKayitForm";
             this.Text = "Yeni Kitap Kayıt";
+            this.Load += new System.EventHandler(this.YeniKitapKayitForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_KitapListesi)).EndInit();

@@ -17,7 +17,7 @@ namespace BusinessLayer
             uyeDAL = new UyeDAL(connectionString);
         }
 
-        public bool UyeEkle(Uyeler uye)
+        public bool UyeEkle(Uye uye)
         {
             if (string.IsNullOrWhiteSpace(uye.Ad) || string.IsNullOrWhiteSpace(uye.Soyad))
             {
@@ -28,7 +28,7 @@ namespace BusinessLayer
             return true;
         }
 
-        public bool UyeGuncelle(Uyeler uye)
+        public bool UyeGuncelle(Uye uye)
         {
             if (uye.ID <= 0)
             {
@@ -50,12 +50,12 @@ namespace BusinessLayer
             return true;
         }
 
-        public List<Uyeler> TumUyeleriGetir()
+        public List<Uye> TumUyeleriGetir()
         {
             return uyeDAL.TumUyeleriGetir();
         }
 
-        public Uyeler UyeGetirById(int id)
+        public Uye UyeGetirById(int id)
         {
             if (id <= 0)
             {

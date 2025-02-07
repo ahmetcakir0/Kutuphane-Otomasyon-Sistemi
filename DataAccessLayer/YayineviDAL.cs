@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,113 +11,98 @@ namespace DataAccessLayer
 {
     public class YayineviDAL
     {
-        private string connectionString;
+        private readonly string connectionString = "server=MBB-01-BIL065-N\\SQLEXPRESS; Initial Catalog=KutuphaneDB; Integrated Security=SSPI";
 
-        public YayineviDAL(string connectionString)
+        public YayineviDAL()
         {
-            this.connectionString = connectionString;
         }
 
-        public void Ekle(Yayinevi yayinevi)
+        public bool YayineviEkle(string yayineviAdi, string telNo, string ePosta, string adres)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO Yayinevleri (YayineviAdi, Eposta, Telefon, Adres) " +
-                               "VALUES (@YayineviAdi, @Eposta, @Telefon, @Adres)";
+                string query = "INSERT INTO Yayinevi (YayineviAdi, TelNo, Eposta, Adres) VALUES (@YayineviAdi, @TelNo, @Eposta, @Adres)";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@YayineviAdi", yayinevi.YayineviAdi);
-                command.Parameters.AddWithValue("@Eposta", yayinevi.Eposta);
-                command.Parameters.AddWithValue("@Telefon", yayinevi.TelNo);
-                command.Parameters.AddWithValue("@Adres", yayinevi.Adres);
+                command.Parameters.AddWithValue("@YayineviAdi", yayineviAdi);
+                command.Parameters.AddWithValue("@TelNo", telNo);
+                command.Parameters.AddWithValue("@Eposta", ePosta);
+                command.Parameters.AddWithValue("@Adres", adres);
 
                 connection.Open();
-                command.ExecuteNonQuery();
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected > 0;
             }
         }
 
-        public void Guncelle(Yayinevi yayinevi)
+        public bool YayineviGuncelle(int id, string yayineviAdi, string telNo, string ePosta, string adres)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "UPDATE Yayinevleri SET YayineviAdi = @YayineviAdi, Eposta = @Eposta, Telefon = @Telefon, Adres = @Adres " +
-                               "WHERE Id = @Id";
+                string query = "UPDATE Yayinevi SET YayineviAdi = @YayineviAdi, TelNo = @TelNo, Adres = @Adres WHERE Id = @Id";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Id", yayinevi.id);
-                command.Parameters.AddWithValue("@YayineviAdi", yayinevi.YayineviAdi);
-                command.Parameters.AddWithValue("@Eposta", yayinevi.Eposta);
-                command.Parameters.AddWithValue("@Telefon", yayinevi.TelNo);
-                command.Parameters.AddWithValue("@Adres", yayinevi.Adres);
+                command.Parameters.AddWithValue("@Id", id);
+                command.Parameters.AddWithValue("@AdiSoyadi", yayineviAdi);
+                command.Parameters.AddWithValue("@Iletisim", telNo);
+                command.Parameters.AddWithValue("@DogumTarihi", ePosta);
+                command.Parameters.AddWithValue("@Biyografi", adres);
 
                 connection.Open();
-                command.ExecuteNonQuery();
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected > 0;
             }
         }
 
-        public void Sil(int id)
+        public bool YayineviSil(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "DELETE FROM Yayinevleri WHERE Id = @Id";
+                string query = "DELETE FROM Yayinevi WHERE Id = @Id";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Id", id);
 
                 connection.Open();
-                command.ExecuteNonQuery();
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected > 0;
             }
         }
 
-        public List<Yayinevi> TumYayinevleriniGetir()
+        public DataTable TumYayinevleriniGetiir()
         {
-            List<Yayinevi> yayinevleri = new List<Yayinevi>();
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM Yayinevleri";
-                SqlCommand command = new SqlCommand(query, connection);
-
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    Yayinevi yayinevi = new Yayinevi
-                    {
-                        id = Convert.ToInt32(reader["Id"]),
-                        YayineviAdi = reader["YayineviAdi"].ToString(),
-                        Eposta = reader["Eposta"].ToString(),
-                        TelNo = reader["Telefon"].ToString(),
-                        Adres = reader["Adres"].ToString()
-                    };
-                    yayinevleri.Add(yayinevi);
-                }
+                string query = "SELECT * FROM Yayinevi";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return dataTable;
             }
-
-            return yayinevleri;
         }
-
-        public Yayinevi IdIleGetir(int id)
+        public DataRow YayinevleriniGetirById(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM Yayinevleri WHERE Id = @Id";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Id", id);
+                string query = "SELECT * FROM Yayinevi WHERE ID = @ID";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@ID", id);
 
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
-                {
-                    return new Yayinevi
-                    {
-                        id = Convert.ToInt32(reader["Id"]),
-                        YayineviAdi = reader["YayineviAdi"].ToString(),
-                        Eposta = reader["Eposta"].ToString(),
-                        TelNo = reader["Telefon"].ToString(),
-                        Adres = reader["Adres"].ToString()
-                    };
-                }
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable.Rows.Count > 0 ? dataTable.Rows[0] : null;
             }
+        }
+        public DataTable YayineviAra(string aramaMetni)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM Yayinevi WHERE YayineviAdi LIKE @AramaMetni OR YayineviAdi LIKE @AramaMetni";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@AramaMetni", "%" + aramaMetni + "%");
 
-            return null;
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return dataTable;
+            }
         }
     }
 }
