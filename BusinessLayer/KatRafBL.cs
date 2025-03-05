@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EntityLayer;
 using DataAccessLayer;
+using System.Data;
 
 namespace BusinessLayer
 {
@@ -12,90 +13,102 @@ namespace BusinessLayer
     {
         private readonly  KatRafDAL kategoriDal;
 
-        public KatRafBL(string connectionString)
+        public KatRafBL()
         {
             kategoriDal = new KatRafDAL();
         }
-        //public string K(int id, string kategoriAdi, int kategoriRafKodu)
-        //{
-        //    if (id <= 0)
-        //    {
-        //        return "ID değeri sıfır veya negatif olamaz.";
-        //    }
 
-        //    if (string.IsNullOrWhiteSpace(kategoriAdi))
-        //    {
-        //        return "Kategori adı boş olamaz.";
-        //    }
-
-        //    if (kategoriRafKodu <= 0)
-        //    {
-        //        return "Kategori Raf Kodu sıfır veya negatif olamaz.";
-        //    }
-
-        //    try
-        //    {
-        //        //bool sonuc = kategoriDal(id, kategoriAdi, kategoriRafKodu);
-        //        //return sonuc ? "Kategori başarıyla eklendi." : "Kategori eklenirken bir hata oluştu.";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return $"Bir hata oluştu: {ex.Message}";
-        //    }
-        //}
-        public string KategoriSil(int id)
+        public string KategoriEkle(string kategoriAdi, int kategoriRafKodu)
         {
-            if (id <= 0)
-            {
-                return "ID değeri sıfır veya negatif olamaz.";
-            }
+            if (string.IsNullOrWhiteSpace(kategoriAdi))
+                return "Kategori adı boş olamaz.";
+
+            if (kategoriAdi.Length > 100)
+                return "Kategori adı 100 karakterden uzun olamaz.";
 
             try
             {
-                bool sonuc = kategoriDal.KategoriSil(id);
-                return sonuc ? "Kategori başarıyla silindi." : "Kategori silinirken bir hata oluştu.";
+                bool sonuc = kategoriDal.KategoriEkle(kategoriAdi, kategoriRafKodu);
+                return sonuc ? "Kategori başarıyla eklendi." : "Kategorş eklenemedi.";
             }
             catch (Exception ex)
             {
-                return $"Bir hata oluştu: {ex.Message}";
+                return $"Hata: {ex.Message}";
             }
         }
-        public string KategoriGuncelle(int id, string kategoriAdi, int kategoriRafKodu)
+
+        public bool KategoriSil(int id)
         {
             if (id <= 0)
             {
-                return "ID değeri sıfır veya negatif olamaz.";
+                throw new ArgumentException("Geçersiz üye ID'si.");
             }
+
+            kategoriDal.KategoriSil(id);
+            return true;
+        }
+
+
+        public string KategoriGuncelle(int id, string kategoriAdi, string kategoriRafKodu)
+        {
+            if (id <= 0)
+                return "Geçersiz tür ID.";
 
             if (string.IsNullOrWhiteSpace(kategoriAdi))
-            {
                 return "Kategori adı boş olamaz.";
-            }
 
-            if (kategoriRafKodu <= 0)
-            {
-                return "Kategori Raf Kodu sıfır veya negatif olamaz.";
-            }
+            if (kategoriAdi.Length > 100)
+                return "Kategori adı 100 karakterden uzun olamaz.";
 
             try
             {
-                bool sonuc = kategoriDal.KategoriGuncelle(id, kategoriAdi, kategoriRafKodu);
-                return sonuc ? "Kategori başarıyla güncellendi." : "Kategori güncellenirken bir hata oluştu.";
+                bool sonuc = kategoriDal.KategoriGuncelle(id, kategoriAdi,kategoriRafKodu);
+                return sonuc ? "Kategori başarıyla güncellendi." : "Kategori güncellenemedi.";
             }
             catch (Exception ex)
             {
-                return $"Bir hata oluştu: {ex.Message}";
+                return $"Hata: {ex.Message}";
             }
         }
-        public List<(int ID, string KategoriAdi, int KategoriRafKodu)> KategorileriGetir()
+
+        public DataTable TumKategoriRaflariGetir()
         {
             try
             {
-                return kategoriDal.KategorileriGetir();
+                return kategoriDal.TumKategoriRaflariGetir();
             }
             catch (Exception ex)
             {
-                throw new Exception($"Kategoriler getirilirken bir hata oluştu: {ex.Message}");
+                throw new Exception($"Hata: {ex.Message}");
+            }
+        }
+
+        public DataRow KategoriGetirById(int id)
+        {
+            if (id <= 0)
+                throw new ArgumentException("Geçersiz tür ID.");
+
+            try
+            {
+                return kategoriDal.KategoriRaflarGetirById(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Hata: {ex.Message}");
+            }
+        }
+        public DataTable KategoriAra(string aramaMetni)
+        {
+            if (string.IsNullOrWhiteSpace(aramaMetni))
+                return kategoriDal.TumKategoriRaflariGetir();
+
+            try
+            {
+                return kategoriDal.KategoriRaflarAra(aramaMetni);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Hata: {ex.Message}");
             }
         }
     }

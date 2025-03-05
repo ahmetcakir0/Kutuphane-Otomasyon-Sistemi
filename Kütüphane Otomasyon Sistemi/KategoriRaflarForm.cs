@@ -10,16 +10,153 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EntityLayer;
 using BusinessLayer;
+using System.Security.Policy;
 
 namespace Kütüphane_Otomasyon_Sistemi
 {
     public partial class KategoriRaflarForm : Form
     {
-        KatRafDAL katRafDAL = new KatRafDAL();
+        private readonly KatRafBL katRafBL;
+
         public KategoriRaflarForm()
         {
             InitializeComponent();
+            katRafBL = new KatRafBL();
+        }
+
+        private void KategoriRaflarForm_Load(object sender, EventArgs e)
+        {
+            ListeyiYenile();
+        }
+
+        private void FormTemizle()
+        {
+            // Formdaki inputları temizleyelim
+            txt_KategoriAdi.Clear();
+            txt_RafKodu.Clear();
+        }
+
+        private void btn_Kaydet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string kategoriAdi = txt_KategoriAdi.Text.Trim();
+                int kategoriRafKodu = Convert.ToInt32(txt_RafKodu.Text.Trim());
+
+
+                string sonuc = katRafBL.KategoriEkle(kategoriAdi, kategoriRafKodu);
+
+                if (sonuc == "Kategori başarıyla eklendi.")
+                {
+                    MessageBox.Show(sonuc, "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ListeyiYenile();
+                    FormTemizle();
+                }
+                else
+                {
+                    MessageBox.Show(sonuc, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Beklenmeyen bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_Guncelle_Click(object sender, EventArgs e)
+        {
+            if (dgv_KategoriRaflar.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Lütfen güncellenecek kategori seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Seçilen satırdaki ID'yi alalım
+                int id = Convert.ToInt32(dgv_KategoriRaflar.SelectedRows[0].Cells["ID"].Value);
+                string kategoriAdi = txt_KategoriAdi.Text.Trim();
+                string kategoriRafKodu = txt_RafKodu.Text.Trim();
+
+                // Tür güncelleme işlemi
+                string sonuc = katRafBL.KategoriGuncelle(id, kategoriAdi, kategoriRafKodu);
+
+                if (sonuc == "Kategoriyi başarıyla güncellendi.")
+                {
+                    MessageBox.Show(sonuc, "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ListeyiYenile();
+                    FormTemizle();
+                }
+                else
+                {
+                    MessageBox.Show(sonuc, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Beklenmeyen bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ListeyiYenile()
+        {
+            try
+            {
+                var turlerTablosu = katRafBL.TumKategoriRaflariGetir();
+
+                // Veriyi DataGridView'e atıyoruz
+                dgv_KategoriRaflar.DataSource = turlerTablosu;
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Liste yenileme hatası: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_Sil_Click(object sender, EventArgs e)
+        {
+            if (dgv_KategoriRaflar.SelectedRows.Count == 0)
+            {
+                // Eğer hiç satır seçilmediyse, kullanıcıya uyarı mesajı göster
+                MessageBox.Show("Lütfen bir kayıt seçin", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Seçilen kaydı silmek istediğinize emin misiniz?",
+                                                      "Silme Onayı",
+                                                      MessageBoxButtons.YesNo,
+                                                      MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    // Silme işlemini gerçekleştir
+                    foreach (DataGridViewRow row in dgv_KategoriRaflar.SelectedRows)
+                    {
+                        // Burada, seçilen satırı veri kaynağınızdan silme işlemi yapılmalı
+                        dgv_KategoriRaflar.Rows.RemoveAt(row.Index);
+                    }
+                }
+            }
+        }
+
+        private void btn_Temizleme_Click(object sender, EventArgs e)
+        {
+            txt_KategoriAdi.Clear();
+            txt_RafKodu.Clear();
+        }
+
+        private void dgv_KategoriRaflar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Başlık satırına tıklanmadığından emin ol
+            {
+                DataGridViewRow row = dgv_KategoriRaflar.Rows[e.RowIndex];
+
+                // Seçili satırdaki verileri TextBox'lara aktar
+                txt_KategoriAdi.Text = row.Cells["KategoriAdi"].Value.ToString();
+                txt_RafKodu.Text = row.Cells["KategoriRafKodu"].Value.ToString();
+            }
         }
     }
-    
 }

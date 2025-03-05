@@ -13,20 +13,23 @@ namespace Kütüphane_Otomasyon_Sistemi
 {
     public partial class AnaMenuForm : Form
     {
-        public AnaMenuForm()
+        private string kullaniciAdi;
+        public AnaMenuForm(string ad, string soyad)
         {
             InitializeComponent();
+            kullaniciAdi = $"{ad} {soyad}   ";
         }
+
 
         private void btn_KitapKayit_Click(object sender, EventArgs e)
         {
-            YeniKitapKayitForm kitapKayitForm = new YeniKitapKayitForm();
-            kitapKayitForm.Show();
+           // YeniKitapKayitForm yeniKitapKayitForm = new YeniKitapKayitForm();
+          //  yeniKitapKayitForm.Show();
         }
 
         private void btn_KisiKayit_Click(object sender, EventArgs e)
         {
-            YeniUyeKayitForm uyeKayitForm = new YeniUyeKayitForm();
+            UyeKayitForm uyeKayitForm = new UyeKayitForm();
             uyeKayitForm.Show();
         }
 
@@ -85,6 +88,17 @@ namespace Kütüphane_Otomasyon_Sistemi
         }
 
         private void btn_Cikis_Click(object sender, EventArgs e)
+        {
+            Ayarlar ayalar = new Ayarlar();
+            ayalar.Show();
+        }
+
+        private void AnaMenuForm_Load(object sender, EventArgs e)
+        {
+            lbl_Hosgeldiniz.Text = $"Hoşgeldiniz {kullaniciAdi}";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }

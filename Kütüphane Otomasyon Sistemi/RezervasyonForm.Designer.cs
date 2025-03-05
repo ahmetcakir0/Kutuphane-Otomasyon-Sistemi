@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RezervasyonForm));
             this.txt_RezervasyonUye = new System.Windows.Forms.TextBox();
-            this.btn_KisiAra = new System.Windows.Forms.Button();
+            this.btn_UyeAra = new System.Windows.Forms.Button();
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.txt_RezervasyonKitap = new System.Windows.Forms.TextBox();
@@ -41,12 +41,7 @@
             this.btn_Sil = new System.Windows.Forms.Button();
             this.btn = new System.Windows.Forms.Button();
             this.dgv_Rezervasyon = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ekranlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.raporkarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Rezervasyon)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txt_RezervasyonUye
@@ -56,15 +51,16 @@
             this.txt_RezervasyonUye.Size = new System.Drawing.Size(159, 20);
             this.txt_RezervasyonUye.TabIndex = 52;
             // 
-            // btn_KisiAra
+            // btn_UyeAra
             // 
-            this.btn_KisiAra.ImageKey = "mercek.png";
-            this.btn_KisiAra.ImageList = this.ımageList1;
-            this.btn_KisiAra.Location = new System.Drawing.Point(267, 53);
-            this.btn_KisiAra.Name = "btn_KisiAra";
-            this.btn_KisiAra.Size = new System.Drawing.Size(61, 23);
-            this.btn_KisiAra.TabIndex = 51;
-            this.btn_KisiAra.UseVisualStyleBackColor = true;
+            this.btn_UyeAra.ImageKey = "mercek.png";
+            this.btn_UyeAra.ImageList = this.ımageList1;
+            this.btn_UyeAra.Location = new System.Drawing.Point(267, 53);
+            this.btn_UyeAra.Name = "btn_UyeAra";
+            this.btn_UyeAra.Size = new System.Drawing.Size(61, 23);
+            this.btn_UyeAra.TabIndex = 51;
+            this.btn_UyeAra.UseVisualStyleBackColor = true;
+            this.btn_UyeAra.Click += new System.EventHandler(this.btn_UyeAra_Click);
             // 
             // ımageList1
             // 
@@ -97,6 +93,7 @@
             this.btn_KitapAra.Size = new System.Drawing.Size(61, 23);
             this.btn_KitapAra.TabIndex = 54;
             this.btn_KitapAra.UseVisualStyleBackColor = true;
+            this.btn_KitapAra.Click += new System.EventHandler(this.btn_KitapAra_Click);
             // 
             // label1
             // 
@@ -143,45 +140,16 @@
             this.dgv_Rezervasyon.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_Rezervasyon.Location = new System.Drawing.Point(0, 204);
             this.dgv_Rezervasyon.Name = "dgv_Rezervasyon";
+            this.dgv_Rezervasyon.ReadOnly = true;
+            this.dgv_Rezervasyon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgv_Rezervasyon.Size = new System.Drawing.Size(800, 246);
             this.dgv_Rezervasyon.TabIndex = 59;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ekranlarToolStripMenuItem,
-            this.ayarlarToolStripMenuItem,
-            this.raporkarToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 60;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // ekranlarToolStripMenuItem
-            // 
-            this.ekranlarToolStripMenuItem.Name = "ekranlarToolStripMenuItem";
-            this.ekranlarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.ekranlarToolStripMenuItem.Text = "Ekranlar";
-            // 
-            // ayarlarToolStripMenuItem
-            // 
-            this.ayarlarToolStripMenuItem.Name = "ayarlarToolStripMenuItem";
-            this.ayarlarToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.ayarlarToolStripMenuItem.Text = "Ayarlar";
-            // 
-            // raporkarToolStripMenuItem
-            // 
-            this.raporkarToolStripMenuItem.Name = "raporkarToolStripMenuItem";
-            this.raporkarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.raporkarToolStripMenuItem.Text = "Raporlar";
             // 
             // RezervasyonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dgv_Rezervasyon);
             this.Controls.Add(this.btn_Guncelle);
             this.Controls.Add(this.btn_Sil);
@@ -190,13 +158,11 @@
             this.Controls.Add(this.btn_KitapAra);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_RezervasyonUye);
-            this.Controls.Add(this.btn_KisiAra);
+            this.Controls.Add(this.btn_UyeAra);
             this.Controls.Add(this.label2);
             this.Name = "RezervasyonForm";
             this.Text = "Rezervasyon";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Rezervasyon)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,7 +171,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox txt_RezervasyonUye;
-        private System.Windows.Forms.Button btn_KisiAra;
+        private System.Windows.Forms.Button btn_UyeAra;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_RezervasyonKitap;
         private System.Windows.Forms.Button btn_KitapAra;
@@ -214,10 +180,6 @@
         private System.Windows.Forms.Button btn_Sil;
         private System.Windows.Forms.Button btn;
         private System.Windows.Forms.DataGridView dgv_Rezervasyon;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem ekranlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ayarlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem raporkarToolStripMenuItem;
         private System.Windows.Forms.ImageList ımageList1;
     }
 }

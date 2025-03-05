@@ -1,106 +1,105 @@
-﻿using System;
-using System.Collections.Generic;
-using EntityLayer;
-using DataAccessLayer;
+﻿//using DataAccessLayer;
+//using EntityLayer;
+//using System;
+//using System.Collections.Generic;
 
-namespace BusinessLayer
-{
-    public class KitapBL
-    {
-        private readonly KitapDAL kitapDal;
-        private string connectionString;
+//namespace BusinessLayer
+//{
+//    public class KitapBL
+//    {
+//        private KitapDAL kitapDAL;
 
-        public KitapBL(string connectionString)
-        {
-            this.connectionString = connectionString;
-            this.kitapDal = new KitapDAL();
-        }
+//        public KitapBL()
+//        {
+//            kitapDAL = new KitapDAL();
+//        }
 
-        public string KitapEkle(Kitap kitap)
-        {
-            if (string.IsNullOrWhiteSpace(kitap.KitapAdi))
-                return "Kitap adı boş olamaz.";
+//        // Kitap ekleme işlemi
+//        public string KitapEkle(Kitap yeniKitap)
+//        {
+//            try
+//            {
+//                // Doğrulama kontrolleri burada yapılabilir
+//                if (string.IsNullOrEmpty(yeniKitap.KitapAdi))
+//                {
+//                    throw new Exception("Kitap adı boş olamaz.");
+//                }
 
-            if (string.IsNullOrWhiteSpace(kitap.YazarAdi))
-                return "Yazar adı boş olamaz.";
+//                return "Kitap başarıyla eklendi";
+//            }
+//            catch (Exception ex)
+//            {
+//                throw new Exception("Kitap ekleme işlemi sırasında bir hata oluştu: " + ex.Message);
+//            }
+//        }
 
-            if (kitap.SayfaSayisi <= 0)
-                return "Sayfa sayısı pozitif bir değer olmalıdır.";
+//        // Kitap güncelleme işlemi
+//        public bool KitapGuncelle(Kitap kitap)
+//        {
+//            try
+//            {
+//                // Doğrulama kontrolleri burada yapılabilir
+//                if (string.IsNullOrEmpty(kitap.KitapAdi))
+//                {
+//                    throw new Exception("Kitap adı boş olamaz.");
+//                }
 
-            try
-            {
-                kitapDal.Ekle(kitap);
-                return "Kitap başarıyla eklendi.";
-            }
-            catch (Exception ex)
-            {
-                return $"Bir hata oluştu: {ex.Message}";
-            }
-        }
+//                // Burada kitapAdi parametresi eklendi (Error CS7036 düzeltmesi)
+//                return kitapDAL.KitapGuncelle(
+//                    kitap.ID,
+//                    kitap.KitapAdi,  // Bu parametre eksikti
+//                    kitap.YazarID,
+//                    kitap.YayineviID,
+//                    kitap.KitapTuruID,
+//                    kitap.KategoriID,
+//                    kitap.SayfaSayisi,
+//                    kitap.ISBN,
+//                    kitap.KitapRaf
+//                );
+//            }
+//            catch (Exception ex)
+//            {
+//                throw new Exception("Kitap güncelleme işlemi sırasında bir hata oluştu: " + ex.Message);
+//            }
+//        }
 
-        public string KitapGuncelle(Kitap kitap)
-        {
-            if (kitap.ID <= 0)
-                return "Geçersiz kitap ID.";
+//        // Kitap silme işlemi
+//        public bool KitapSil(int kitapID)
+//        {
+//            try
+//            {
+//                return kitapDAL.KitapSil(kitapID);
+//            }
+//            catch (Exception ex)
+//            {
+//                throw new Exception("Kitap silme işlemi sırasında bir hata oluştu: " + ex.Message);
+//            }
+//        }
 
-            if (string.IsNullOrWhiteSpace(kitap.KitapAdi))
-                return "Kitap adı boş olamaz.";
+//        // Tüm kitapları getirme işlemi
+//        public List<Kitap> TumKitaplariGetir()
+//        {
+//            try
+//            {
+//                return kitapDAL.TumKitaplariGetir();
+//            }
+//            catch (Exception ex)
+//            {
+//                throw new Exception("Kitaplar listelenirken bir hata oluştu: " + ex.Message);
+//            }
+//        }
 
-            if (kitap.SayfaSayisi <= 0)
-                return "Sayfa sayısı pozitif bir değer olmalıdır.";
-
-            try
-            {
-                kitapDal.Guncelle(kitap);
-                return "Kitap başarıyla güncellendi.";
-            }
-            catch (Exception ex)
-            {
-                return $"Bir hata oluştu: {ex.Message}";
-            }
-        }
-
-        public string KitapSil(int id)
-        {
-            if (id <= 0)
-                return "Geçersiz kitap ID.";
-
-            try
-            {
-                kitapDal.Sil(id);
-                return "Kitap başarıyla silindi.";
-            }
-            catch (Exception ex)
-            {
-                return $"Bir hata oluştu: {ex.Message}";
-            }
-        }
-
-        public List<Kitap> TumKitaplariGetir()
-        {
-            try
-            {
-                return kitapDal.TumKitaplariGetir();
-            }
-            catch (Exception ex)
-            {
-                return new List<Kitap> { new Kitap { KitapAdi = $"Hata: {ex.Message}" } };
-            }
-        }
-
-        public Kitap IdIleKitapGetir(int id)
-        {
-            if (id <= 0)
-                return null;
-
-            try
-            {
-                return kitapDal.IdIleGetir(id);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-    }
-}
+//        // ID ile kitap getirme işlemi
+//        public Kitap KitapGetirById(int kitapID)
+//        {
+//            try
+//            {
+//                return kitapDAL.IdIleGetir(kitapID);
+//            }
+//            catch (Exception ex)
+//            {
+//                throw new Exception("Kitap getirilirken bir hata oluştu: " + ex.Message);
+//            }
+//        }
+//    }
+//}

@@ -1,6 +1,6 @@
 ﻿namespace Kutuphane_Otomasyon_Sistemi
 {
-    partial class YeniUyeKayitForm
+    partial class UyeKayitForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ekranlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.raporlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txt_TCKimlik = new System.Windows.Forms.TextBox();
             this.txt_Ad = new System.Windows.Forms.TextBox();
             this.txt_Soyad = new System.Windows.Forms.TextBox();
             this.txt_TelNo = new System.Windows.Forms.TextBox();
             this.txt_Eposta = new System.Windows.Forms.TextBox();
-            this.dt_DogumTarihi = new System.Windows.Forms.DateTimePicker();
+            this.dtp_DogumTarihi = new System.Windows.Forms.DateTimePicker();
             this.txt_Adres = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,43 +42,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.Guncelle_Button = new System.Windows.Forms.Button();
-            this.Sil_Button = new System.Windows.Forms.Button();
-            this.Kaydet_Button = new System.Windows.Forms.Button();
-            this.dgv_KisiListesi = new System.Windows.Forms.DataGridView();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_KisiListesi)).BeginInit();
+            this.btn_Sil = new System.Windows.Forms.Button();
+            this.btn_Kaydet = new System.Windows.Forms.Button();
+            this.dgv_UyeListesi = new System.Windows.Forms.DataGridView();
+            this.btn_Temizle = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_UyeListesi)).BeginInit();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ekranlarToolStripMenuItem,
-            this.ayarlarToolStripMenuItem,
-            this.raporlarToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1123, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // ekranlarToolStripMenuItem
-            // 
-            this.ekranlarToolStripMenuItem.Name = "ekranlarToolStripMenuItem";
-            this.ekranlarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.ekranlarToolStripMenuItem.Text = "Ekranlar";
-            // 
-            // ayarlarToolStripMenuItem
-            // 
-            this.ayarlarToolStripMenuItem.Name = "ayarlarToolStripMenuItem";
-            this.ayarlarToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.ayarlarToolStripMenuItem.Text = "Ayarlar";
-            // 
-            // raporlarToolStripMenuItem
-            // 
-            this.raporlarToolStripMenuItem.Name = "raporlarToolStripMenuItem";
-            this.raporlarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.raporlarToolStripMenuItem.Text = "Raporlar";
             // 
             // txt_TCKimlik
             // 
@@ -119,12 +84,12 @@
             this.txt_Eposta.Size = new System.Drawing.Size(159, 20);
             this.txt_Eposta.TabIndex = 23;
             // 
-            // dt_DogumTarihi
+            // dtp_DogumTarihi
             // 
-            this.dt_DogumTarihi.Location = new System.Drawing.Point(505, 214);
-            this.dt_DogumTarihi.Name = "dt_DogumTarihi";
-            this.dt_DogumTarihi.Size = new System.Drawing.Size(159, 20);
-            this.dt_DogumTarihi.TabIndex = 24;
+            this.dtp_DogumTarihi.Location = new System.Drawing.Point(505, 214);
+            this.dtp_DogumTarihi.Name = "dtp_DogumTarihi";
+            this.dtp_DogumTarihi.Size = new System.Drawing.Size(159, 20);
+            this.dtp_DogumTarihi.TabIndex = 24;
             // 
             // txt_Adres
             // 
@@ -197,54 +162,63 @@
             this.label7.TabIndex = 32;
             this.label7.Text = "Adres :";
             // 
-            // Guncelle_Button
+            // btn_Sil
             // 
-            this.Guncelle_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Guncelle_Button.Location = new System.Drawing.Point(677, 293);
-            this.Guncelle_Button.Name = "Guncelle_Button";
-            this.Guncelle_Button.Size = new System.Drawing.Size(118, 39);
-            this.Guncelle_Button.TabIndex = 37;
-            this.Guncelle_Button.Text = "GÜNCELLE";
-            this.Guncelle_Button.UseVisualStyleBackColor = true;
+            this.btn_Sil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Sil.Location = new System.Drawing.Point(505, 293);
+            this.btn_Sil.Name = "btn_Sil";
+            this.btn_Sil.Size = new System.Drawing.Size(118, 39);
+            this.btn_Sil.TabIndex = 36;
+            this.btn_Sil.Text = "SİL";
+            this.btn_Sil.UseVisualStyleBackColor = true;
+            this.btn_Sil.Click += new System.EventHandler(this.btn_Sil_Click);
             // 
-            // Sil_Button
+            // btn_Kaydet
             // 
-            this.Sil_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Sil_Button.Location = new System.Drawing.Point(504, 293);
-            this.Sil_Button.Name = "Sil_Button";
-            this.Sil_Button.Size = new System.Drawing.Size(118, 39);
-            this.Sil_Button.TabIndex = 36;
-            this.Sil_Button.Text = "SİL";
-            this.Sil_Button.UseVisualStyleBackColor = true;
+            this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Kaydet.Location = new System.Drawing.Point(186, 293);
+            this.btn_Kaydet.Name = "btn_Kaydet";
+            this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
+            this.btn_Kaydet.TabIndex = 35;
+            this.btn_Kaydet.Text = "KAYDET";
+            this.btn_Kaydet.UseVisualStyleBackColor = true;
+            this.btn_Kaydet.Click += new System.EventHandler(this.Kaydet_Button_Click);
             // 
-            // Kaydet_Button
+            // dgv_UyeListesi
             // 
-            this.Kaydet_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Kaydet_Button.Location = new System.Drawing.Point(327, 293);
-            this.Kaydet_Button.Name = "Kaydet_Button";
-            this.Kaydet_Button.Size = new System.Drawing.Size(118, 39);
-            this.Kaydet_Button.TabIndex = 35;
-            this.Kaydet_Button.Text = "KAYDET";
-            this.Kaydet_Button.UseVisualStyleBackColor = true;
+            this.dgv_UyeListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_UyeListesi.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dgv_UyeListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_UyeListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgv_UyeListesi.Location = new System.Drawing.Point(0, 417);
+            this.dgv_UyeListesi.Name = "dgv_UyeListesi";
+            this.dgv_UyeListesi.ReadOnly = true;
+            this.dgv_UyeListesi.RowHeadersVisible = false;
+            this.dgv_UyeListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_UyeListesi.Size = new System.Drawing.Size(1123, 208);
+            this.dgv_UyeListesi.TabIndex = 38;
+            this.dgv_UyeListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_UyeListesi_CellContentClick);
             // 
-            // dgv_KisiListesi
+            // btn_Temizle
             // 
-            this.dgv_KisiListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_KisiListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgv_KisiListesi.Location = new System.Drawing.Point(0, 417);
-            this.dgv_KisiListesi.Name = "dgv_KisiListesi";
-            this.dgv_KisiListesi.Size = new System.Drawing.Size(1123, 208);
-            this.dgv_KisiListesi.TabIndex = 38;
+            this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Temizle.Location = new System.Drawing.Point(890, 293);
+            this.btn_Temizle.Name = "btn_Temizle";
+            this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
+            this.btn_Temizle.TabIndex = 39;
+            this.btn_Temizle.Text = "TEMİZLE";
+            this.btn_Temizle.UseVisualStyleBackColor = true;
+            this.btn_Temizle.Click += new System.EventHandler(this.btn_Temizle_Click);
             // 
-            // YeniUyeKayitForm
+            // UyeKayitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1123, 625);
-            this.Controls.Add(this.dgv_KisiListesi);
-            this.Controls.Add(this.Guncelle_Button);
-            this.Controls.Add(this.Sil_Button);
-            this.Controls.Add(this.Kaydet_Button);
+            this.Controls.Add(this.btn_Temizle);
+            this.Controls.Add(this.dgv_UyeListesi);
+            this.Controls.Add(this.btn_Sil);
+            this.Controls.Add(this.btn_Kaydet);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -253,36 +227,28 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_Adres);
-            this.Controls.Add(this.dt_DogumTarihi);
+            this.Controls.Add(this.dtp_DogumTarihi);
             this.Controls.Add(this.txt_Eposta);
             this.Controls.Add(this.txt_TelNo);
             this.Controls.Add(this.txt_Soyad);
             this.Controls.Add(this.txt_Ad);
             this.Controls.Add(this.txt_TCKimlik);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "YeniUyeKayitForm";
-            this.Text = "Yeni Üye Kayıt";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_KisiListesi)).EndInit();
+            this.Name = "UyeKayitForm";
+            this.Text = "Üyeler";
+            this.Load += new System.EventHandler(this.YeniUyeKayitForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_UyeListesi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem ekranlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ayarlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem raporlarToolStripMenuItem;
         private System.Windows.Forms.TextBox txt_TCKimlik;
         private System.Windows.Forms.TextBox txt_Ad;
         private System.Windows.Forms.TextBox txt_Soyad;
         private System.Windows.Forms.TextBox txt_TelNo;
         private System.Windows.Forms.TextBox txt_Eposta;
-        private System.Windows.Forms.DateTimePicker dt_DogumTarihi;
+        private System.Windows.Forms.DateTimePicker dtp_DogumTarihi;
         private System.Windows.Forms.TextBox txt_Adres;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -291,9 +257,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button Guncelle_Button;
-        private System.Windows.Forms.Button Sil_Button;
-        private System.Windows.Forms.Button Kaydet_Button;
-        private System.Windows.Forms.DataGridView dgv_KisiListesi;
+        private System.Windows.Forms.Button btn_Sil;
+        private System.Windows.Forms.Button btn_Kaydet;
+        private System.Windows.Forms.DataGridView dgv_UyeListesi;
+        private System.Windows.Forms.Button btn_Temizle;
     }
 }

@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EntityLayer;
 
 namespace DataAccessLayer
@@ -13,20 +10,19 @@ namespace DataAccessLayer
     {
         private readonly string connectionString = "server=MBB-01-BIL065-N\\SQLEXPRESS; Initial Catalog=KutuphaneDB; Integrated Security=SSPI";
 
-        public YayineviDAL()
-        {
-        }
+        public YayineviDAL() { }
 
-        public bool YayineviEkle(string yayineviAdi, string telNo, string ePosta, string adres)
+        // Yayinevi Ekleme
+        public bool YayineviEkle(Yayinevi yayinevi)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "INSERT INTO Yayinevi (YayineviAdi, TelNo, Eposta, Adres) VALUES (@YayineviAdi, @TelNo, @Eposta, @Adres)";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@YayineviAdi", yayineviAdi);
-                command.Parameters.AddWithValue("@TelNo", telNo);
-                command.Parameters.AddWithValue("@Eposta", ePosta);
-                command.Parameters.AddWithValue("@Adres", adres);
+                command.Parameters.AddWithValue("@YayineviAdi", yayinevi.YayineviAdi);
+                command.Parameters.AddWithValue("@TelNo", yayinevi.TelNo);
+                command.Parameters.AddWithValue("@Eposta", yayinevi.Eposta);
+                command.Parameters.AddWithValue("@Adres", yayinevi.Adres);
 
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
@@ -34,17 +30,18 @@ namespace DataAccessLayer
             }
         }
 
-        public bool YayineviGuncelle(int id, string yayineviAdi, string telNo, string ePosta, string adres)
+        // Yayinevi Güncelleme
+        public bool YayineviGuncelle(Yayinevi yayinevi)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "UPDATE Yayinevi SET YayineviAdi = @YayineviAdi, TelNo = @TelNo, Adres = @Adres WHERE Id = @Id";
+                string query = "UPDATE Yayinevi SET YayineviAdi = @YayineviAdi, TelNo = @TelNo, Eposta = @Eposta, Adres = @Adres WHERE Id = @Id";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Id", id);
-                command.Parameters.AddWithValue("@AdiSoyadi", yayineviAdi);
-                command.Parameters.AddWithValue("@Iletisim", telNo);
-                command.Parameters.AddWithValue("@DogumTarihi", ePosta);
-                command.Parameters.AddWithValue("@Biyografi", adres);
+                command.Parameters.AddWithValue("@Id", yayinevi.id);
+                command.Parameters.AddWithValue("@YayineviAdi", yayinevi.YayineviAdi);
+                command.Parameters.AddWithValue("@TelNo", yayinevi.TelNo);
+                command.Parameters.AddWithValue("@Eposta", yayinevi.Eposta);
+                command.Parameters.AddWithValue("@Adres", yayinevi.Adres);
 
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
@@ -52,6 +49,7 @@ namespace DataAccessLayer
             }
         }
 
+        // Yayinevi Silme
         public bool YayineviSil(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -66,43 +64,93 @@ namespace DataAccessLayer
             }
         }
 
-        public DataTable TumYayinevleriniGetiir()
+        // Tüm Yayinevlerini Getir
+        public List<Yayinevi> TumYayinevleriniGetir()
         {
+            List<Yayinevi> yayinevleri = new List<Yayinevi>();
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "SELECT * FROM Yayinevi";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                return dataTable;
+
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    Yayinevi yayinevi = new Yayinevi
+                    {
+                        id = Convert.ToInt32(row["Id"]),
+                        YayineviAdi = row["YayineviAdi"].ToString(),
+                        TelNo = row["TelNo"].ToString(),
+                        Eposta = row["Eposta"].ToString(),
+                        Adres = row["Adres"].ToString()
+                    };
+                    yayinevleri.Add(yayinevi);
+                }
             }
+
+            return yayinevleri;
         }
-        public DataRow YayinevleriniGetirById(int id)
+
+        // Yayinevi ID ile Getir
+        public Yayinevi YayineviGetirById(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM Yayinevi WHERE ID = @ID";
+                string query = "SELECT * FROM Yayinevi WHERE Id = @Id";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                adapter.SelectCommand.Parameters.AddWithValue("@ID", id);
+                adapter.SelectCommand.Parameters.AddWithValue("@Id", id);
 
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
 
-                return dataTable.Rows.Count > 0 ? dataTable.Rows[0] : null;
+                if (dataTable.Rows.Count > 0)
+                {
+                    DataRow row = dataTable.Rows[0];
+                    return new Yayinevi
+                    {
+                        id = Convert.ToInt32(row["Id"]),
+                        YayineviAdi = row["YayineviAdi"].ToString(),
+                        TelNo = row["TelNo"].ToString(),
+                        Eposta = row["Eposta"].ToString(),
+                        Adres = row["Adres"].ToString()
+                    };
+                }
+
+                return null;
             }
         }
-        public DataTable YayineviAra(string aramaMetni)
+
+        // Yayinevi Ara
+        public List<Yayinevi> YayineviAra(string aramaMetni)
         {
+            List<Yayinevi> yayinevleri = new List<Yayinevi>();
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM Yayinevi WHERE YayineviAdi LIKE @AramaMetni OR YayineviAdi LIKE @AramaMetni";
+                string query = "SELECT * FROM Yayinevi WHERE YayineviAdi LIKE @AramaMetni";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.SelectCommand.Parameters.AddWithValue("@AramaMetni", "%" + aramaMetni + "%");
 
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                return dataTable;
+
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    Yayinevi yayinevi = new Yayinevi
+                    {
+                        id = Convert.ToInt32(row["Id"]),
+                        YayineviAdi = row["YayineviAdi"].ToString(),
+                        TelNo = row["TelNo"].ToString(),
+                        Eposta = row["Eposta"].ToString(),
+                        Adres = row["Adres"].ToString()
+                    };
+                    yayinevleri.Add(yayinevi);
+                }
             }
+
+            return yayinevleri;
         }
     }
 }

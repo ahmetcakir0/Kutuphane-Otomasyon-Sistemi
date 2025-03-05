@@ -41,12 +41,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dt_GeriVerilen = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ekranlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.raporkarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_IadeListesi)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -76,12 +71,12 @@
             // 
             // btn_Guncelle
             // 
-            this.btn_Guncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Guncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_Guncelle.Location = new System.Drawing.Point(639, 243);
             this.btn_Guncelle.Name = "btn_Guncelle";
             this.btn_Guncelle.Size = new System.Drawing.Size(118, 39);
             this.btn_Guncelle.TabIndex = 67;
-            this.btn_Guncelle.Text = "Güncelle";
+            this.btn_Guncelle.Text = "GÜNCELLE";
             this.btn_Guncelle.UseVisualStyleBackColor = true;
             // 
             // btn_Kaydet
@@ -91,7 +86,7 @@
             this.btn_Kaydet.Name = "btn_Kaydet";
             this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_Kaydet.TabIndex = 66;
-            this.btn_Kaydet.Text = "Kaydet";
+            this.btn_Kaydet.Text = "KAYDET";
             this.btn_Kaydet.UseVisualStyleBackColor = true;
             // 
             // txt_IadeEdilecekOdunc
@@ -142,36 +137,6 @@
             this.label1.TabIndex = 61;
             this.label1.Text = "İade :";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ekranlarToolStripMenuItem,
-            this.ayarlarToolStripMenuItem,
-            this.raporkarToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1198, 24);
-            this.menuStrip1.TabIndex = 60;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // ekranlarToolStripMenuItem
-            // 
-            this.ekranlarToolStripMenuItem.Name = "ekranlarToolStripMenuItem";
-            this.ekranlarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.ekranlarToolStripMenuItem.Text = "Ekranlar";
-            // 
-            // ayarlarToolStripMenuItem
-            // 
-            this.ayarlarToolStripMenuItem.Name = "ayarlarToolStripMenuItem";
-            this.ayarlarToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.ayarlarToolStripMenuItem.Text = "Ayarlar";
-            // 
-            // raporkarToolStripMenuItem
-            // 
-            this.raporkarToolStripMenuItem.Name = "raporkarToolStripMenuItem";
-            this.raporkarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.raporkarToolStripMenuItem.Text = "Raporlar";
-            // 
             // OduncIadeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,12 +152,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dt_GeriVerilen);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.menuStrip1);
             this.Name = "OduncIadeForm";
             this.Text = "Ödünç İade";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_IadeListesi)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,10 +172,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dt_GeriVerilen;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem ekranlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ayarlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem raporkarToolStripMenuItem;
         private System.Windows.Forms.ImageList ımageList1;
     }
 }

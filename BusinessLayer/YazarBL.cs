@@ -21,22 +21,24 @@ namespace BusinessLayer
             yazarDal = new YazarDAL();
         }
 
-        public string YazarEkle(string yazarAdiSoyadi, string iletisim, DateTime dogumtarihi, string biyografi)
+        public string YazarEkle(Yazar yazar)
         {
-            if (string.IsNullOrWhiteSpace(yazarAdiSoyadi))
+            // Geçersiz girişleri kontrol et
+            if (string.IsNullOrWhiteSpace(yazar.AdiSoyadi))
                 return "Yazar adı soyadı boş olamaz.";
 
-            if (yazarAdiSoyadi.Length > 100)
-                return "Tür adı 100 karakterden uzun olamaz.";
+            if (yazar.AdiSoyadi.Length > 100)
+                return "Yazar adı soyadı 100 karakterden uzun olamaz.";
 
-            if (string.IsNullOrWhiteSpace(iletisim))
-                return "İletisim boş bırakılamaz.";
+            if (string.IsNullOrWhiteSpace(yazar.Iletisim))
+                return "İletişim boş bırakılamaz.";
 
-            if (string.IsNullOrWhiteSpace(biyografi))
+            if (string.IsNullOrWhiteSpace(yazar.Biyografi))
                 return "Biyografi boş bırakılamaz.";
+
             try
             {
-                bool sonuc = yazarDal.YazarEkle(yazarAdiSoyadi, iletisim,  dogumtarihi, biyografi);
+                bool sonuc = yazarDal.YazarEkle(yazar); // Yazar nesnesi doğrudan ekleniyor
                 return sonuc ? "Yazar başarıyla eklendi." : "Yazar eklenemedi.";
             }
             catch (Exception ex)
@@ -44,27 +46,28 @@ namespace BusinessLayer
                 return $"Hata: {ex.Message}";
             }
         }
-        public string YazarGuncelle(int id, string yazarAdiSoyadi, string iletisim, DateTime dogumtarihi, string biyografi)
+
+        public string YazarGuncelle(int id, Yazar yazar)
         {
+            // Geçersiz girişleri kontrol et
             if (id <= 0)
                 return "Geçersiz yazar ID.";
 
-
-            if (string.IsNullOrWhiteSpace(yazarAdiSoyadi))
+            if (string.IsNullOrWhiteSpace(yazar.AdiSoyadi))
                 return "Yazar adı soyadı boş olamaz.";
 
-            if (yazarAdiSoyadi.Length > 100)
-                return "Tür adı 1000 karakterden uzun olamaz.";
+            if (yazar.AdiSoyadi.Length > 100)
+                return "Yazar adı soyadı 100 karakterden uzun olamaz.";
 
-            if (string.IsNullOrWhiteSpace(iletisim))
-                return "İletisim boş bırakılamaz.";
+            if (string.IsNullOrWhiteSpace(yazar.Iletisim))
+                return "İletişim boş bırakılamaz.";
 
-            if (string.IsNullOrWhiteSpace(biyografi))
+            if (string.IsNullOrWhiteSpace(yazar.Biyografi))
                 return "Biyografi boş bırakılamaz.";
 
             try
             {
-                bool sonuc = yazarDal.YazarGuncelle (id, yazarAdiSoyadi, iletisim, dogumtarihi, biyografi);
+                bool sonuc = yazarDal.YazarGuncelle(id, yazar); // Yazar nesnesi ile güncelleniyor
                 return sonuc ? "Yazar başarıyla güncellendi." : "Yazar güncellenemedi.";
             }
             catch (Exception ex)
@@ -72,6 +75,7 @@ namespace BusinessLayer
                 return $"Hata: {ex.Message}";
             }
         }
+
         public DataTable TumYazarlariGetir()
         {
             try

@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using EntityLayer;
 using DataAccessLayer;
 
@@ -12,155 +7,140 @@ namespace BusinessLayer
 {
     public class SorumluBL
     {
-        private readonly SorumluDAL sorumluDal;
+        private readonly SorumluDAL sorumluDAL;
 
-        public SorumluBL(string connectionString)
+        public SorumluBL()
         {
-            sorumluDal = new SorumluDAL();
+            sorumluDAL = new SorumluDAL();
         }
-        public string SorumluEkle(string sorumluAdi, string sorumluSoyadi, string tcKimlik, string rol,
-            string telNo, string eposta, DateTime dogumTarihi, string adres, string kullaniciAdi, string sifre)
+
+        public string SorumluEkle(Sorumlu sorumlu)
         {
+            if (sorumlu == null)
+                return "Sorumlu bilgileri eksik.";
 
-            if (string.IsNullOrWhiteSpace(sorumluAdi))
+            if (string.IsNullOrWhiteSpace(sorumlu.SorumluAdi))
                 return "Sorumlu adı boş olamaz.";
-            if (string.IsNullOrWhiteSpace(sorumluSoyadi))
+
+            if (sorumlu.SorumluAdi.Length > 100)
+                return "Sorumlu adı 100 karakterden uzun olamaz.";
+
+            if (string.IsNullOrWhiteSpace(sorumlu.SorumluSoyadi))
                 return "Sorumlu soyadı boş olamaz.";
-            if (string.IsNullOrWhiteSpace(tcKimlik))
-                return "TC Kimlik numarası boş olamaz.";
-            if (string.IsNullOrWhiteSpace(rol))
-                return "Rol boş olamaz.";
-            if (string.IsNullOrWhiteSpace(telNo))
+
+            if (sorumlu.SorumluSoyadi.Length > 100)
+                return "Sorumlu soyadı 100 karakterden uzun olamaz.";
+
+            if (string.IsNullOrWhiteSpace(sorumlu.TCKimlik))
+                return "TC Kimlik numarası boş bırakılamaz.";
+
+            if (string.IsNullOrWhiteSpace(sorumlu.TelNo))
                 return "Telefon numarası boş olamaz.";
-            if (string.IsNullOrWhiteSpace(eposta))
-                return "E-posta adresi boş olamaz.";
-            if (string.IsNullOrWhiteSpace(adres))
-                return "Adres boş olamaz.";
-            if (string.IsNullOrWhiteSpace(kullaniciAdi))
-                return "Kullanıcı adı boş olamaz.";
-            if (string.IsNullOrWhiteSpace(sifre))
-                return "Şifre boş olamaz.";
 
-            if (!Regex.IsMatch(telNo, @"^\d{11}$"))
-                return "Telefon numarası 11 haneli olmalıdır.";
+            if (string.IsNullOrWhiteSpace(sorumlu.Eposta))
+                return "E-posta boş bırakılamaz.";
 
-            if (!Regex.IsMatch(tcKimlik, @"^\d{11}$"))
-                return "TC Kimlik numarası 11 haneli olmalıdır.";
+            if (string.IsNullOrWhiteSpace(sorumlu.Adres))
+                return "Adres boş bırakılamaz.";
 
-            if (!Regex.IsMatch(eposta, @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"))
-                return "Geçerli bir e-posta adresi giriniz.";
+            if (string.IsNullOrWhiteSpace(sorumlu.KullaniciAdi))
+                return "Kullanıcı adı boş bırakılamaz.";
 
-            if (sifre.Length < 6)
-                return "Şifre en az 6 karakter olmalıdır.";
+            if (string.IsNullOrWhiteSpace(sorumlu.Sifre))
+                return "Şifre boş bırakılamaz.";
 
-            if (dogumTarihi > DateTime.Now)
-                return "Doğum tarihi bugünden büyük olamaz.";
+            if (sorumlu.Sifre.Length < 6)
+                return "Şifre en az 6 karakter uzunluğunda olmalıdır.";
 
             try
             {
-                bool sonuc = sorumluDal.SorumluEkle(sorumluAdi, sorumluSoyadi, long.Parse(tcKimlik), rol,
-                    telNo, eposta, dogumTarihi, adres, kullaniciAdi, sifre);
-                return sonuc ? "Sorumlu başarıyla eklendi." : "Sorumlu eklenemedi.";
+                // SorumluDAL.SorumluEkle metodu string döndürdüğü için sonucu string olarak alıyoruz.
+                string sonuc = sorumluDAL.SorumluEkle(sorumlu);
+                return sonuc;
             }
             catch (Exception ex)
             {
                 return $"Hata: {ex.Message}";
             }
         }
-        public string SorumluGuncelle(int id, string sorumluAdi, string sorumluSoyadi, string tcKimlik,
-            string rol, string telNo, string eposta, DateTime dogumTarihi, string adres, string kullaniciAdi, string sifre)
+
+        public string SorumluGuncelle(Sorumlu sorumlu)
         {
-            if (id <= 0)
+            if (sorumlu.ID <= 0)
                 return "Geçersiz sorumlu ID.";
 
-            if (string.IsNullOrWhiteSpace(sorumluAdi))
+            if (string.IsNullOrWhiteSpace(sorumlu.SorumluAdi))
                 return "Sorumlu adı boş olamaz.";
-            if (string.IsNullOrWhiteSpace(sorumluSoyadi))
+
+            if (sorumlu.SorumluAdi.Length > 100)
+                return "Sorumlu adı 100 karakterden uzun olamaz.";
+
+            if (string.IsNullOrWhiteSpace(sorumlu.SorumluSoyadi))
                 return "Sorumlu soyadı boş olamaz.";
-            if (string.IsNullOrWhiteSpace(tcKimlik))
-                return "TC Kimlik numarası boş olamaz.";
-            if (string.IsNullOrWhiteSpace(rol))
-                return "Rol boş olamaz.";
-            if (string.IsNullOrWhiteSpace(telNo))
+
+            if (sorumlu.SorumluSoyadi.Length > 100)
+                return "Sorumlu soyadı 100 karakterden uzun olamaz.";
+
+            if (string.IsNullOrWhiteSpace(sorumlu.TCKimlik))
+                return "TC Kimlik numarası boş bırakılamaz.";
+
+            if (string.IsNullOrWhiteSpace(sorumlu.TelNo))
                 return "Telefon numarası boş olamaz.";
-            if (string.IsNullOrWhiteSpace(eposta))
-                return "E-posta adresi boş olamaz.";
-            if (string.IsNullOrWhiteSpace(adres))
-                return "Adres boş olamaz.";
-            if (string.IsNullOrWhiteSpace(kullaniciAdi))
-                return "Kullanıcı adı boş olamaz.";
-            if (string.IsNullOrWhiteSpace(sifre))
-                return "Şifre boş olamaz.";
 
-            if (!Regex.IsMatch(telNo, @"^\d{11}$"))
-                return "Telefon numarası 11 haneli olmalıdır.";
+            if (string.IsNullOrWhiteSpace(sorumlu.Eposta))
+                return "E-posta boş bırakılamaz.";
 
-            if (!Regex.IsMatch(tcKimlik, @"^\d{11}$"))
-                return "TC Kimlik numarası 11 haneli olmalıdır.";
+            if (string.IsNullOrWhiteSpace(sorumlu.Adres))
+                return "Adres boş bırakılamaz.";
 
-            if (!Regex.IsMatch(eposta, @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"))
-                return "Geçerli bir e-posta adresi giriniz.";
+            if (string.IsNullOrWhiteSpace(sorumlu.KullaniciAdi))
+                return "Kullanıcı adı boş bırakılamaz.";
 
-            if (sifre.Length < 6)
-                return "Şifre en az 6 karakter olmalıdır.";
+            if (string.IsNullOrWhiteSpace(sorumlu.Sifre))
+                return "Şifre boş bırakılamaz.";
 
-            if (dogumTarihi > DateTime.Now)
-                return "Doğum tarihi bugünden büyük olamaz.";
+            if (sorumlu.Sifre.Length < 6)
+                return "Şifre en az 6 karakter uzunluğunda olmalıdır.";
 
             try
             {
-                bool sonuc = sorumluDal.SorumluGuncelle(id, sorumluAdi, sorumluSoyadi, long.Parse(tcKimlik),
-                    rol, telNo, eposta, dogumTarihi, adres, kullaniciAdi, sifre);
-                return sonuc ? "Sorumlu başarıyla güncellendi." : "Sorumlu güncellenemedi.";
+                // SorumluDAL.SorumluGuncelle metodu da string döndürdüğü için sonucu string olarak alıyoruz.
+                string sonuc = sorumluDAL.SorumluGuncelle(sorumlu);
+                return sonuc;
             }
             catch (Exception ex)
             {
                 return $"Hata: {ex.Message}";
             }
         }
-        public string SorumluSil(int id)
+
+        public bool SorumluSil(int id)
         {
             if (id <= 0)
-                return "Geçersiz sorumlu ID.";
+                throw new ArgumentException("Geçersiz sorumlu ID'si.");
 
             try
             {
-                bool sonuc = sorumluDal.SorumluSil(id);
-                return sonuc ? "Sorumlu başarıyla silindi." : "Sorumlu silinemedi.";
-            }
-            catch (Exception ex)
-            {
-                return $"Hata: {ex.Message}";
-            }
-        }
-        public DataTable TumSorumlulariGetir()
-        {
-            try
-            {
-                return sorumluDal.TumSorumlulariGetir();
+                return sorumluDAL.SorumluSil(id);
             }
             catch (Exception ex)
             {
                 throw new Exception($"Hata: {ex.Message}");
             }
         }
-        public string GirisYap(string kullaniciAdi, string sifre)
-        {
-            if (string.IsNullOrWhiteSpace(kullaniciAdi))
-                return "Kullanıcı adı boş olamaz.";
-            if (string.IsNullOrWhiteSpace(sifre))
-                return "Şifre boş olamaz.";
 
+        public DataTable TumSorumlulariGetir()
+        {
             try
             {
-                bool sonuc = sorumluDal.GirisYap(kullaniciAdi, sifre);
-                return sonuc ? "Giriş başarılı." : "Kullanıcı adı veya şifre hatalı.";
+                return sorumluDAL.TumSorumlulariGetir();
             }
             catch (Exception ex)
             {
-                return $"Hata: {ex.Message}";
+                throw new Exception($"Hata: {ex.Message}");
             }
         }
+
         public DataRow SorumluGetirById(int id)
         {
             if (id <= 0)
@@ -168,21 +148,22 @@ namespace BusinessLayer
 
             try
             {
-                return sorumluDal.SorumluGetirById(id);
+                return sorumluDAL.SorumluGetirByİd(id);
             }
             catch (Exception ex)
             {
                 throw new Exception($"Hata: {ex.Message}");
             }
         }
+
         public DataTable SorumluAra(string aramaMetni)
         {
             if (string.IsNullOrWhiteSpace(aramaMetni))
-                return sorumluDal.TumSorumlulariGetir();
+                return sorumluDAL.TumSorumlulariGetir();
 
             try
             {
-                return sorumluDal.SorumluAra(aramaMetni);
+                return sorumluDAL.SorumluAra(aramaMetni);
             }
             catch (Exception ex)
             {
@@ -191,4 +172,3 @@ namespace BusinessLayer
         }
     }
 }
-

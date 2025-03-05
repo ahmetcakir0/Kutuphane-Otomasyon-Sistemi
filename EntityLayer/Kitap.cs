@@ -11,30 +11,35 @@ namespace EntityLayer
     {
         public int ID { get; set; }
         public string KitapAdi { get; set; }
+        public int YazarID { get; set; }
+        public int YayineviID { get; set; }
+        public int KitapTuruID { get; set; }
+        public int KategoriID { get; set; }
         public string YazarAdi { get; set; }
-        public int YayinEvi { get; set; }
-        public string ISBN { get; set; }
-        public int RafNumarasi { get; set; }
-        public int KitapTuru { get; set; }
-        public int Kategori { get; set; }
+        public string YazarSoyadi { get; set; }
+        public string YayineviAdi { get; set; }
+        public string KitapTuruAdi { get; set; }
+        public string KategoriAdi { get; set; }
         public int SayfaSayisi { get; set; }
+        public string ISBN { get; set; }
+        public string KitapRaf { get; set; }
 
-        public Kitap(int id, string kitapAdi, string yazarAdi, int yayinEvi, string isbn, int
-            rafNumarasi, int kitapTuru, int kategori, int sayfaSayisi)
+        public Kitap(int id, string kitapAdi, int yazarID, int yayineviID, int kitapTuruID, int kategoriID, string yazarAdi, string yazarSoyadi, string yayineviAdi, string kitapTuruAdi, string kategoriAdi, int sayfaSayisi, string ıSBN, string kitapRaf)
         {
             ID = id;
             KitapAdi = kitapAdi;
+            YazarID = yazarID;
+            YayineviID = yayineviID;
+            KitapTuruID = kitapTuruID;
+            KategoriID = kategoriID;
             YazarAdi = yazarAdi;
-            YayinEvi = yayinEvi;
-            ISBN = isbn;
-            RafNumarasi = rafNumarasi;
-            KitapTuru = kitapTuru;
-            Kategori = kategori;
+            YazarSoyadi = yazarSoyadi;
+            YayineviAdi = yayineviAdi;
+            KitapTuruAdi = kitapTuruAdi;
+            KategoriAdi = kategoriAdi;
             SayfaSayisi = sayfaSayisi;
-        }
-        public Kitap()
-        {
-
+            ISBN = ıSBN;
+            KitapRaf = kitapRaf;
         }
     }
 }

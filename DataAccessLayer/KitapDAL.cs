@@ -7,83 +7,92 @@ namespace DataAccessLayer
 {
     public class KitapDAL
     {
-        private string connectionString = "server=MBB-01-BIL065-N\\SQLEXPRESS; Initial Catalog=KutuphaneDB; Integrated Security=SSPI";
+        private readonly string connectionString = "server=MBB-01-BIL065-N\\SQLEXPRESS; Initial Catalog=KutuphaneDB; Integrated Security=SSPI";
 
-
-        public void Ekle(Kitap kitap)
+        public bool KitapEkle(Kitap yeniKitap)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                try
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "INSERT INTO Kitaplar (KitapAdi, YazarAdi, Yayinevi, ISBN, KitapTuru, RafNumarasi, SayfaSayisi, Kategori) " +
-                                   "VALUES (@KitapAdi, @YazarAdi, @Yayinevi, @ISBN, @KitapTuru, @RafNumarasi, @SayfaSayisi, @Kategori)";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@KitapAdi", kitap.KitapAdi);
-                    command.Parameters.AddWithValue("@YazarAdi", kitap.YazarAdi);
-                    command.Parameters.AddWithValue("@Yayinevi", kitap.YayinEvi);
-                    command.Parameters.AddWithValue("@ISBN", kitap.ISBN);
-                    command.Parameters.AddWithValue("@KitapTuru", kitap.KitapTuru);
-                    command.Parameters.AddWithValue("@RafNumarasi", kitap.RafNumarasi);
-                    command.Parameters.AddWithValue("@SayfaSayisi", kitap.SayfaSayisi);
-                    command.Parameters.AddWithValue("@Kategori", kitap.Kategori);
+                    string query = @"INSERT INTO Kitaplar (KitapAdi, YazarID, YayineviID, KitapTuruID, KategoriID, SayfaSayisi, ISBN, KitapRaf) 
+                                     VALUES (@KitapAdi, @YazarID, @YayineviID, @KitapTuruID, @KategoriID, @SayfaSayisi, @ISBN, @KitapRaf)";
 
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@KitapAdi", yeniKitap.KitapAdi);
+                        command.Parameters.AddWithValue("@YazarID", yeniKitap.YazarID);
+                        command.Parameters.AddWithValue("@YayineviID", yeniKitap.YayineviID);
+                        command.Parameters.AddWithValue("@KitapTuruID", yeniKitap.KitapTuruID);
+                        command.Parameters.AddWithValue("@KategoriID", yeniKitap.KategoriID);
+                        command.Parameters.AddWithValue("@SayfaSayisi", yeniKitap.SayfaSayisi);
+                        command.Parameters.AddWithValue("@ISBN", yeniKitap.ISBN);
+                        command.Parameters.AddWithValue("@KitapRaf", yeniKitap.KitapRaf);
+
+                        connection.Open();
+                        return command.ExecuteNonQuery() > 0;
+                    }
                 }
-                catch (Exception ex)
-                {
-                    throw new Exception("Kitap eklenirken bir hata oluştu: " + ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Kitap eklenirken hata oluştu: " + ex.Message);
             }
         }
 
-        public void Guncelle(Kitap kitap)
+        public bool KitapGuncelle(Kitap kitap)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                try
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "UPDATE Kitaplar SET KitapAdi = @KitapAdi, YazarAdi = @YazarAdi, Yayinevi = @Yayinevi, ISBN = @ISBN, " +
-                                   "KitapTuru = @KitapTuru, RafNumarasi = @RafNumarasi, SayfaSayisi = @SayfaSayisi, Kategori = @Kategori WHERE Id = @Id";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Id", kitap.ID);
-                    command.Parameters.AddWithValue("@KitapAdi", kitap.KitapAdi);
-                    command.Parameters.AddWithValue("@YazarAdi", kitap.YazarAdi);
-                    command.Parameters.AddWithValue("@Yayinevi", kitap.YayinEvi);
-                    command.Parameters.AddWithValue("@ISBN", kitap.ISBN);
-                    command.Parameters.AddWithValue("@KitapTuru", kitap.KitapTuru);
-                    command.Parameters.AddWithValue("@RafNumarasi", kitap.RafNumarasi);
-                    command.Parameters.AddWithValue("@SayfaSayisi", kitap.SayfaSayisi);
-                    command.Parameters.AddWithValue("@Kategori", kitap.Kategori);
+                    string query = @"UPDATE Kitaplar 
+                                     SET KitapAdi = @KitapAdi, YazarID = @YazarID, YayineviID = @YayineviID, 
+                                         KitapTuruID = @KitapTuruID, KategoriID = @KategoriID, SayfaSayisi = @SayfaSayisi, 
+                                         ISBN = @ISBN, KitapRaf = @KitapRaf 
+                                     WHERE ID = @KitapID";
 
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@KitapAdi", kitap.KitapAdi);
+                        command.Parameters.AddWithValue("@YazarID", kitap.YazarID);
+                        command.Parameters.AddWithValue("@YayineviID", kitap.YayineviID);
+                        command.Parameters.AddWithValue("@KitapTuruID", kitap.KitapTuruID);
+                        command.Parameters.AddWithValue("@KategoriID", kitap.KategoriID);
+                        command.Parameters.AddWithValue("@SayfaSayisi", kitap.SayfaSayisi);
+                        command.Parameters.AddWithValue("@ISBN", kitap.ISBN);
+                        command.Parameters.AddWithValue("@KitapRaf", kitap.KitapRaf);
+                        command.Parameters.AddWithValue("@KitapID", kitap.ID);
+
+                        connection.Open();
+                        return command.ExecuteNonQuery() > 0;
+                    }
                 }
-                catch (Exception ex)
-                {
-                    throw new Exception("Kitap güncellenirken bir hata oluştu: " + ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Kitap güncellenirken hata oluştu: " + ex.Message);
             }
         }
 
-        public void Sil(int id)
+        public bool KitapSil(int kitapID)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                try
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "DELETE FROM Kitaplar WHERE ID = @Id";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Id", id);
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    string query = "DELETE FROM Kitaplar WHERE ID = @KitapID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@KitapID", kitapID);
+                        connection.Open();
+                        return command.ExecuteNonQuery() > 0;
+                    }
                 }
-                catch (Exception ex)
-                {
-                    throw new Exception("Kitap silinirken bir hata oluştu: " + ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Kitap silinirken hata oluştu: " + ex.Message);
             }
         }
 
@@ -91,75 +100,52 @@ namespace DataAccessLayer
         {
             List<Kitap> kitapListesi = new List<Kitap>();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                try
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT \r\n    k.ID,\r\n    k.KitapAdi,\r\n    y.YazarAdi, \r\n    yv.YayineviAdi, \r\n    t.TurAdi, \r\n    kr.KategoriAdi,\r\n    k.SayfaSayisi,\r\n    k.ISBN,\r\n    k.KitapRafNumarasi\r\nFROM Kitaplar k\r\nLEFT JOIN Yazarlar y ON k.YazarID = y.ID\r\nLEFT JOIN Yayinevi yv ON k.YayineviID = yv.ID\r\nLEFT JOIN Turler t ON k.KitapTuruID = t.ID\r\nLEFT JOIN KategoriRaflar kr ON k.KategoriID = kr.ID;\r\n";
-                    SqlCommand command = new SqlCommand(query, connection);
+                    string query = @"SELECT k.ID, k.KitapAdi, k.YazarID, k.YayineviID, k.KitapTuruID, k.KategoriID, y.YazarAdi, y.YazarSoyadi, yv.YayineviAdi, 
+                                            t.KitapTuruAdi, kr.KategoriAdi, k.SayfaSayisi, k.ISBN, k.KitapRaf
+                                     FROM Kitaplar k
+                                     LEFT JOIN Yazarlar y ON k.YazarID = y.ID
+                                     LEFT JOIN Yayinevi yv ON k.YayineviID = yv.ID
+                                     LEFT JOIN Turler t ON k.KitapTuruID = t.ID
+                                     LEFT JOIN KategoriRaflar kr ON k.KategoriID = kr.ID";
 
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        kitapListesi.Add(new Kitap
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            ID = Convert.ToInt32(reader["ID"]),
-                            KitapAdi = reader["KitapAdi"].ToString(),
-                            YazarAdi = reader["YazarID"].ToString(),
-                            YayinEvi = Convert.ToInt32(reader["YayineviID"]),
-                            ISBN = reader["ISBN"].ToString(),
-                            KitapTuru = Convert.ToInt32(reader["KitapTuruID"]),
-                            RafNumarasi = Convert.ToInt32(reader["KitapRafKodu"]),
-                            //SayfaSayisi = Convert.ToInt32(reader["SayfaSayisi"]),
-                            //Kategori = Convert.ToInt32(reader["KategoriID"])
-                        });
+                            while (reader.Read())
+                            {
+                                kitapListesi.Add(new Kitap(
+                                    Convert.ToInt32(reader["ID"]),
+                                    reader["KitapAdi"].ToString(),
+                                    Convert.ToInt32(reader["YazarID"]),
+                                    Convert.ToInt32(reader["YayineviID"]),
+                                    Convert.ToInt32(reader["KitapTuruID"]),
+                                    Convert.ToInt32(reader["KategoriID"]),
+                                    reader["YazarAdi"].ToString(),
+                                    reader["YazarSoyadi"].ToString(),
+                                    reader["YayineviAdi"].ToString(),
+                                    reader["KitapTuruAdi"].ToString(),
+                                    reader["KategoriAdi"].ToString(),
+                                    Convert.ToInt32(reader["SayfaSayisi"]),
+                                    reader["ISBN"].ToString(),
+                                    reader["KitapRaf"].ToString()
+                                ));
+                            }
+                        }
                     }
                 }
-                catch (Exception ex)
-                {
-                    throw new Exception("Kitaplar getirilirken bir hata oluştu: " + ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Kitaplar getirilirken hata oluştu: " + ex.Message);
             }
 
             return kitapListesi;
-        }
-
-        public Kitap IdIleGetir(int id)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    string query = "SELECT * FROM Kitaplar WHERE Id = @Id";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Id", id);
-
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        return new Kitap
-                        {
-                            ID = Convert.ToInt32(reader["Id"]),
-                            KitapAdi = reader["KitapAdi"].ToString(),
-                            YazarAdi = reader["YazarAdi"].ToString(),
-                            YayinEvi = Convert.ToInt32(reader["Yayinevi"]),
-                            ISBN = reader["ISBN"].ToString(),
-                            KitapTuru = Convert.ToInt32(reader["KitapTuru"]),
-                            RafNumarasi = Convert.ToInt32(reader["RafNumarasi"]),
-                            SayfaSayisi = Convert.ToInt32(reader["SayfaSayisi"]),
-                            Kategori = Convert.ToInt32(reader["Kategori"])
-                        };
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Kitap getirilirken bir hata oluştu: " + ex.Message);
-                }
-            }
-
-            return null;
         }
     }
 }

@@ -44,58 +44,55 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btn_Kaydet = new System.Windows.Forms.Button();
             this.btn_Sil = new System.Windows.Forms.Button();
-            this.btn_Guncelle = new System.Windows.Forms.Button();
             this.dgv_SorumluListesi = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ekranlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.raporlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_SorumluKullaniciAdi = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txt_SorumluSifre = new System.Windows.Forms.TextBox();
+            this.txt_Rol = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btn_Temizle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_SorumluListesi)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txt_TCKimlik
             // 
-            this.txt_TCKimlik.Location = new System.Drawing.Point(184, 90);
+            this.txt_TCKimlik.Location = new System.Drawing.Point(159, 61);
             this.txt_TCKimlik.Name = "txt_TCKimlik";
             this.txt_TCKimlik.Size = new System.Drawing.Size(159, 20);
             this.txt_TCKimlik.TabIndex = 0;
             // 
             // txt_SorumluAd
             // 
-            this.txt_SorumluAd.Location = new System.Drawing.Point(184, 157);
+            this.txt_SorumluAd.Location = new System.Drawing.Point(159, 128);
             this.txt_SorumluAd.Name = "txt_SorumluAd";
             this.txt_SorumluAd.Size = new System.Drawing.Size(159, 20);
             this.txt_SorumluAd.TabIndex = 2;
             // 
             // txt_SorumluSoyad
             // 
-            this.txt_SorumluSoyad.Location = new System.Drawing.Point(184, 224);
+            this.txt_SorumluSoyad.Location = new System.Drawing.Point(159, 195);
             this.txt_SorumluSoyad.Name = "txt_SorumluSoyad";
             this.txt_SorumluSoyad.Size = new System.Drawing.Size(159, 20);
             this.txt_SorumluSoyad.TabIndex = 3;
             // 
             // txt_TelNo
             // 
-            this.txt_TelNo.Location = new System.Drawing.Point(547, 90);
+            this.txt_TelNo.Location = new System.Drawing.Point(522, 125);
             this.txt_TelNo.Name = "txt_TelNo";
             this.txt_TelNo.Size = new System.Drawing.Size(159, 20);
             this.txt_TelNo.TabIndex = 4;
             // 
             // txt_Eposta
             // 
-            this.txt_Eposta.Location = new System.Drawing.Point(547, 157);
+            this.txt_Eposta.Location = new System.Drawing.Point(522, 192);
             this.txt_Eposta.Name = "txt_Eposta";
             this.txt_Eposta.Size = new System.Drawing.Size(159, 20);
             this.txt_Eposta.TabIndex = 5;
             // 
             // txt_Adres
             // 
-            this.txt_Adres.Location = new System.Drawing.Point(872, 157);
+            this.txt_Adres.Location = new System.Drawing.Point(847, 128);
             this.txt_Adres.Name = "txt_Adres";
             this.txt_Adres.Size = new System.Drawing.Size(159, 20);
             this.txt_Adres.TabIndex = 6;
@@ -103,7 +100,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(59, 90);
+            this.label1.Location = new System.Drawing.Point(34, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 7;
@@ -112,7 +109,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(59, 164);
+            this.label2.Location = new System.Drawing.Point(34, 135);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 8;
@@ -121,7 +118,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(59, 231);
+            this.label3.Location = new System.Drawing.Point(34, 202);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 9;
@@ -130,7 +127,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(435, 96);
+            this.label4.Location = new System.Drawing.Point(410, 131);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 10;
@@ -139,7 +136,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(438, 163);
+            this.label5.Location = new System.Drawing.Point(413, 198);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 11;
@@ -147,7 +144,7 @@
             // 
             // dt_DogumTarihi
             // 
-            this.dt_DogumTarihi.Location = new System.Drawing.Point(872, 90);
+            this.dt_DogumTarihi.Location = new System.Drawing.Point(847, 61);
             this.dt_DogumTarihi.Name = "dt_DogumTarihi";
             this.dt_DogumTarihi.Size = new System.Drawing.Size(159, 20);
             this.dt_DogumTarihi.TabIndex = 12;
@@ -155,7 +152,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(757, 96);
+            this.label6.Location = new System.Drawing.Point(732, 67);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 13);
             this.label6.TabIndex = 13;
@@ -164,7 +161,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(760, 163);
+            this.label7.Location = new System.Drawing.Point(735, 134);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 13);
             this.label7.TabIndex = 14;
@@ -173,76 +170,43 @@
             // btn_Kaydet
             // 
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(345, 300);
+            this.btn_Kaydet.Location = new System.Drawing.Point(350, 305);
             this.btn_Kaydet.Name = "btn_Kaydet";
             this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_Kaydet.TabIndex = 15;
             this.btn_Kaydet.Text = "KAYDET";
             this.btn_Kaydet.UseVisualStyleBackColor = true;
+            this.btn_Kaydet.Click += new System.EventHandler(this.btn_Kaydet_Click);
             // 
             // btn_Sil
             // 
             this.btn_Sil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Sil.Location = new System.Drawing.Point(522, 300);
+            this.btn_Sil.Location = new System.Drawing.Point(539, 305);
             this.btn_Sil.Name = "btn_Sil";
             this.btn_Sil.Size = new System.Drawing.Size(118, 39);
             this.btn_Sil.TabIndex = 16;
             this.btn_Sil.Text = "SİL";
             this.btn_Sil.UseVisualStyleBackColor = true;
-            // 
-            // btn_Guncelle
-            // 
-            this.btn_Guncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Guncelle.Location = new System.Drawing.Point(695, 300);
-            this.btn_Guncelle.Name = "btn_Guncelle";
-            this.btn_Guncelle.Size = new System.Drawing.Size(118, 39);
-            this.btn_Guncelle.TabIndex = 17;
-            this.btn_Guncelle.Text = "GÜNCELLE";
-            this.btn_Guncelle.UseVisualStyleBackColor = true;
+            this.btn_Sil.Click += new System.EventHandler(this.btn_Sil_Click);
             // 
             // dgv_SorumluListesi
             // 
+            this.dgv_SorumluListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_SorumluListesi.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dgv_SorumluListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_SorumluListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_SorumluListesi.Location = new System.Drawing.Point(0, 379);
             this.dgv_SorumluListesi.Name = "dgv_SorumluListesi";
+            this.dgv_SorumluListesi.ReadOnly = true;
+            this.dgv_SorumluListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgv_SorumluListesi.Size = new System.Drawing.Size(1161, 207);
             this.dgv_SorumluListesi.TabIndex = 18;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ekranlarToolStripMenuItem,
-            this.ayarlarToolStripMenuItem,
-            this.raporlarToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1161, 24);
-            this.menuStrip1.TabIndex = 19;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // ekranlarToolStripMenuItem
-            // 
-            this.ekranlarToolStripMenuItem.Name = "ekranlarToolStripMenuItem";
-            this.ekranlarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.ekranlarToolStripMenuItem.Text = "Ekranlar";
-            // 
-            // ayarlarToolStripMenuItem
-            // 
-            this.ayarlarToolStripMenuItem.Name = "ayarlarToolStripMenuItem";
-            this.ayarlarToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.ayarlarToolStripMenuItem.Text = "Ayarlar";
-            // 
-            // raporlarToolStripMenuItem
-            // 
-            this.raporlarToolStripMenuItem.Name = "raporlarToolStripMenuItem";
-            this.raporlarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.raporlarToolStripMenuItem.Text = "Raporlar";
+            this.dgv_SorumluListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_SorumluListesi_CellContentClick);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(435, 231);
+            this.label8.Location = new System.Drawing.Point(732, 202);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(70, 13);
             this.label8.TabIndex = 21;
@@ -250,7 +214,7 @@
             // 
             // txt_SorumluKullaniciAdi
             // 
-            this.txt_SorumluKullaniciAdi.Location = new System.Drawing.Point(547, 224);
+            this.txt_SorumluKullaniciAdi.Location = new System.Drawing.Point(847, 198);
             this.txt_SorumluKullaniciAdi.Name = "txt_SorumluKullaniciAdi";
             this.txt_SorumluKullaniciAdi.Size = new System.Drawing.Size(159, 20);
             this.txt_SorumluKullaniciAdi.TabIndex = 20;
@@ -258,7 +222,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(757, 231);
+            this.label9.Location = new System.Drawing.Point(732, 258);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(34, 13);
             this.label9.TabIndex = 23;
@@ -266,22 +230,51 @@
             // 
             // txt_SorumluSifre
             // 
-            this.txt_SorumluSifre.Location = new System.Drawing.Point(872, 224);
+            this.txt_SorumluSifre.Location = new System.Drawing.Point(847, 251);
             this.txt_SorumluSifre.Name = "txt_SorumluSifre";
             this.txt_SorumluSifre.Size = new System.Drawing.Size(159, 20);
             this.txt_SorumluSifre.TabIndex = 22;
+            // 
+            // txt_Rol
+            // 
+            this.txt_Rol.Location = new System.Drawing.Point(519, 65);
+            this.txt_Rol.Name = "txt_Rol";
+            this.txt_Rol.Size = new System.Drawing.Size(159, 20);
+            this.txt_Rol.TabIndex = 24;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(410, 68);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Rolü :";
+            // 
+            // btn_Temizle
+            // 
+            this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Temizle.Location = new System.Drawing.Point(735, 305);
+            this.btn_Temizle.Name = "btn_Temizle";
+            this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
+            this.btn_Temizle.TabIndex = 26;
+            this.btn_Temizle.Text = "TEMİZLE";
+            this.btn_Temizle.UseVisualStyleBackColor = true;
+            this.btn_Temizle.Click += new System.EventHandler(this.btn_Temizle_Click);
             // 
             // SorumluKayitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1161, 586);
+            this.Controls.Add(this.btn_Temizle);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txt_Rol);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txt_SorumluSifre);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txt_SorumluKullaniciAdi);
             this.Controls.Add(this.dgv_SorumluListesi);
-            this.Controls.Add(this.btn_Guncelle);
             this.Controls.Add(this.btn_Sil);
             this.Controls.Add(this.btn_Kaydet);
             this.Controls.Add(this.label7);
@@ -298,12 +291,10 @@
             this.Controls.Add(this.txt_SorumluSoyad);
             this.Controls.Add(this.txt_SorumluAd);
             this.Controls.Add(this.txt_TCKimlik);
-            this.Controls.Add(this.menuStrip1);
             this.Name = "SorumluKayitForm";
-            this.Text = "Sorumlu Kayıt";
+            this.Text = "Sorumlular";
+            this.Load += new System.EventHandler(this.SorumluKayitForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_SorumluListesi)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,15 +318,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btn_Kaydet;
         private System.Windows.Forms.Button btn_Sil;
-        private System.Windows.Forms.Button btn_Guncelle;
         private System.Windows.Forms.DataGridView dgv_SorumluListesi;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem ekranlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ayarlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem raporlarToolStripMenuItem;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_SorumluKullaniciAdi;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txt_SorumluSifre;
+        private System.Windows.Forms.TextBox txt_Rol;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btn_Temizle;
     }
 }

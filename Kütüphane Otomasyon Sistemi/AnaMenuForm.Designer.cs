@@ -30,36 +30,38 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaMenuForm));
-            this.btn_KitapKayit = new System.Windows.Forms.Button();
+            this.btn_Kitaplar = new System.Windows.Forms.Button();
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.btn_KisiKayit = new System.Windows.Forms.Button();
-            this.btn_SorumluKayit = new System.Windows.Forms.Button();
-            this.btn_YazarKayit = new System.Windows.Forms.Button();
-            this.btn_YayineviKayit = new System.Windows.Forms.Button();
-            this.btn_TurlerKayit = new System.Windows.Forms.Button();
+            this.btn_Uyeler = new System.Windows.Forms.Button();
+            this.btn_Sorumlular = new System.Windows.Forms.Button();
+            this.btn_Yazarlar = new System.Windows.Forms.Button();
+            this.btn_Yayinevi = new System.Windows.Forms.Button();
+            this.btn_Turler = new System.Windows.Forms.Button();
             this.btn_OduncVerme = new System.Windows.Forms.Button();
             this.btn_OduncIade = new System.Windows.Forms.Button();
             this.btn_Rezervasyon = new System.Windows.Forms.Button();
             this.btn_KategoriRaflar = new System.Windows.Forms.Button();
             this.btn_Raporlar = new System.Windows.Forms.Button();
-            this.btn_Cikis = new System.Windows.Forms.Button();
+            this.btn_Ayarlar = new System.Windows.Forms.Button();
+            this.lbl_Hosgeldiniz = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btn_KitapKayit
+            // btn_Kitaplar
             // 
-            this.btn_KitapKayit.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_KitapKayit.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btn_KitapKayit.ImageKey = "depositphotos_270747206-stock-illustration-stack-books-cartoon-illustration-stack" +
+            this.btn_Kitaplar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_Kitaplar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Kitaplar.ImageKey = "depositphotos_270747206-stock-illustration-stack-books-cartoon-illustration-stack" +
     ".jpg";
-            this.btn_KitapKayit.ImageList = this.ımageList1;
-            this.btn_KitapKayit.Location = new System.Drawing.Point(65, 56);
-            this.btn_KitapKayit.Name = "btn_KitapKayit";
-            this.btn_KitapKayit.Size = new System.Drawing.Size(214, 141);
-            this.btn_KitapKayit.TabIndex = 0;
-            this.btn_KitapKayit.Text = "KİTAP KAYIT";
-            this.btn_KitapKayit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_KitapKayit.UseVisualStyleBackColor = false;
-            this.btn_KitapKayit.Click += new System.EventHandler(this.btn_KitapKayit_Click);
+            this.btn_Kitaplar.ImageList = this.ımageList1;
+            this.btn_Kitaplar.Location = new System.Drawing.Point(215, 118);
+            this.btn_Kitaplar.Name = "btn_Kitaplar";
+            this.btn_Kitaplar.Size = new System.Drawing.Size(214, 141);
+            this.btn_Kitaplar.TabIndex = 0;
+            this.btn_Kitaplar.Text = "KİTAPLAR";
+            this.btn_Kitaplar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_Kitaplar.UseVisualStyleBackColor = false;
+            this.btn_Kitaplar.Click += new System.EventHandler(this.btn_KitapKayit_Click);
             // 
             // ımageList1
             // 
@@ -80,89 +82,90 @@
             this.ımageList1.Images.SetKeyName(11, "Çıkış.png");
             this.ımageList1.Images.SetKeyName(12, "pngtree-checklist-comic-icon-for-reports-and-business-check-evaluation-analysis-v" +
         "ector-png-image_12861732.png");
+            this.ımageList1.Images.SetKeyName(13, "settings-icon_2691259.jpg");
             // 
-            // btn_KisiKayit
+            // btn_Uyeler
             // 
-            this.btn_KisiKayit.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_KisiKayit.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btn_KisiKayit.ImageKey = "uye.png";
-            this.btn_KisiKayit.ImageList = this.ımageList1;
-            this.btn_KisiKayit.Location = new System.Drawing.Point(334, 56);
-            this.btn_KisiKayit.Name = "btn_KisiKayit";
-            this.btn_KisiKayit.Size = new System.Drawing.Size(214, 141);
-            this.btn_KisiKayit.TabIndex = 1;
-            this.btn_KisiKayit.Text = "KİŞİ KAYIT";
-            this.btn_KisiKayit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_KisiKayit.UseVisualStyleBackColor = false;
-            this.btn_KisiKayit.Click += new System.EventHandler(this.btn_KisiKayit_Click);
+            this.btn_Uyeler.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_Uyeler.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Uyeler.ImageKey = "uye.png";
+            this.btn_Uyeler.ImageList = this.ımageList1;
+            this.btn_Uyeler.Location = new System.Drawing.Point(484, 118);
+            this.btn_Uyeler.Name = "btn_Uyeler";
+            this.btn_Uyeler.Size = new System.Drawing.Size(214, 141);
+            this.btn_Uyeler.TabIndex = 1;
+            this.btn_Uyeler.Text = "ÜYELER";
+            this.btn_Uyeler.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_Uyeler.UseVisualStyleBackColor = false;
+            this.btn_Uyeler.Click += new System.EventHandler(this.btn_KisiKayit_Click);
             // 
-            // btn_SorumluKayit
+            // btn_Sorumlular
             // 
-            this.btn_SorumluKayit.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_SorumluKayit.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btn_SorumluKayit.ImageKey = "images.png";
-            this.btn_SorumluKayit.ImageList = this.ımageList1;
-            this.btn_SorumluKayit.Location = new System.Drawing.Point(606, 56);
-            this.btn_SorumluKayit.Name = "btn_SorumluKayit";
-            this.btn_SorumluKayit.Size = new System.Drawing.Size(214, 141);
-            this.btn_SorumluKayit.TabIndex = 2;
-            this.btn_SorumluKayit.Text = "SORUMLU KAYIT";
-            this.btn_SorumluKayit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_SorumluKayit.UseVisualStyleBackColor = false;
-            this.btn_SorumluKayit.Click += new System.EventHandler(this.btn_SorumluKayit_Click);
+            this.btn_Sorumlular.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_Sorumlular.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Sorumlular.ImageKey = "images.png";
+            this.btn_Sorumlular.ImageList = this.ımageList1;
+            this.btn_Sorumlular.Location = new System.Drawing.Point(756, 118);
+            this.btn_Sorumlular.Name = "btn_Sorumlular";
+            this.btn_Sorumlular.Size = new System.Drawing.Size(214, 141);
+            this.btn_Sorumlular.TabIndex = 2;
+            this.btn_Sorumlular.Text = "SORUMLULAR";
+            this.btn_Sorumlular.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_Sorumlular.UseVisualStyleBackColor = false;
+            this.btn_Sorumlular.Click += new System.EventHandler(this.btn_SorumluKayit_Click);
             // 
-            // btn_YazarKayit
+            // btn_Yazarlar
             // 
-            this.btn_YazarKayit.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_YazarKayit.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btn_YazarKayit.ImageKey = "download.png";
-            this.btn_YazarKayit.ImageList = this.ımageList1;
-            this.btn_YazarKayit.Location = new System.Drawing.Point(875, 56);
-            this.btn_YazarKayit.Name = "btn_YazarKayit";
-            this.btn_YazarKayit.Size = new System.Drawing.Size(214, 141);
-            this.btn_YazarKayit.TabIndex = 3;
-            this.btn_YazarKayit.Text = "YAZAR KAYIT";
-            this.btn_YazarKayit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_YazarKayit.UseVisualStyleBackColor = false;
-            this.btn_YazarKayit.Click += new System.EventHandler(this.btn_YazarKayit_Click);
+            this.btn_Yazarlar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_Yazarlar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Yazarlar.ImageKey = "download.png";
+            this.btn_Yazarlar.ImageList = this.ımageList1;
+            this.btn_Yazarlar.Location = new System.Drawing.Point(1025, 118);
+            this.btn_Yazarlar.Name = "btn_Yazarlar";
+            this.btn_Yazarlar.Size = new System.Drawing.Size(214, 141);
+            this.btn_Yazarlar.TabIndex = 3;
+            this.btn_Yazarlar.Text = "YAZARLAR";
+            this.btn_Yazarlar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_Yazarlar.UseVisualStyleBackColor = false;
+            this.btn_Yazarlar.Click += new System.EventHandler(this.btn_YazarKayit_Click);
             // 
-            // btn_YayineviKayit
+            // btn_Yayinevi
             // 
-            this.btn_YayineviKayit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_YayineviKayit.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btn_YayineviKayit.ImageKey = "ulusal-ve-uluslarası-yayınevi-nedir.jpg";
-            this.btn_YayineviKayit.ImageList = this.ımageList1;
-            this.btn_YayineviKayit.Location = new System.Drawing.Point(65, 235);
-            this.btn_YayineviKayit.Name = "btn_YayineviKayit";
-            this.btn_YayineviKayit.Size = new System.Drawing.Size(214, 141);
-            this.btn_YayineviKayit.TabIndex = 4;
-            this.btn_YayineviKayit.Text = "YAYINEVİ KAYIT";
-            this.btn_YayineviKayit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_YayineviKayit.UseVisualStyleBackColor = false;
-            this.btn_YayineviKayit.Click += new System.EventHandler(this.btn_YayineviKayit_Click);
+            this.btn_Yayinevi.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_Yayinevi.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Yayinevi.ImageKey = "ulusal-ve-uluslarası-yayınevi-nedir.jpg";
+            this.btn_Yayinevi.ImageList = this.ımageList1;
+            this.btn_Yayinevi.Location = new System.Drawing.Point(215, 355);
+            this.btn_Yayinevi.Name = "btn_Yayinevi";
+            this.btn_Yayinevi.Size = new System.Drawing.Size(214, 141);
+            this.btn_Yayinevi.TabIndex = 4;
+            this.btn_Yayinevi.Text = "YAYINEVİ";
+            this.btn_Yayinevi.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_Yayinevi.UseVisualStyleBackColor = false;
+            this.btn_Yayinevi.Click += new System.EventHandler(this.btn_YayineviKayit_Click);
             // 
-            // btn_TurlerKayit
+            // btn_Turler
             // 
-            this.btn_TurlerKayit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_TurlerKayit.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btn_TurlerKayit.ImageKey = "yayinevi.png";
-            this.btn_TurlerKayit.ImageList = this.ımageList1;
-            this.btn_TurlerKayit.Location = new System.Drawing.Point(334, 235);
-            this.btn_TurlerKayit.Name = "btn_TurlerKayit";
-            this.btn_TurlerKayit.Size = new System.Drawing.Size(214, 141);
-            this.btn_TurlerKayit.TabIndex = 5;
-            this.btn_TurlerKayit.Text = "TÜRLER KAYIT";
-            this.btn_TurlerKayit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_TurlerKayit.UseVisualStyleBackColor = false;
-            this.btn_TurlerKayit.Click += new System.EventHandler(this.btn_TurlerKayit_Click);
+            this.btn_Turler.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_Turler.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Turler.ImageKey = "yayinevi.png";
+            this.btn_Turler.ImageList = this.ımageList1;
+            this.btn_Turler.Location = new System.Drawing.Point(484, 355);
+            this.btn_Turler.Name = "btn_Turler";
+            this.btn_Turler.Size = new System.Drawing.Size(214, 141);
+            this.btn_Turler.TabIndex = 5;
+            this.btn_Turler.Text = "TÜRLER";
+            this.btn_Turler.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_Turler.UseVisualStyleBackColor = false;
+            this.btn_Turler.Click += new System.EventHandler(this.btn_TurlerKayit_Click);
             // 
             // btn_OduncVerme
             // 
             this.btn_OduncVerme.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_OduncVerme.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_OduncVerme.BackColor = System.Drawing.Color.Transparent;
             this.btn_OduncVerme.ImageKey = "boy-with-glasses-lends-a-book-to-his-friend-vector.jpg";
             this.btn_OduncVerme.ImageList = this.ımageList1;
-            this.btn_OduncVerme.Location = new System.Drawing.Point(606, 235);
+            this.btn_OduncVerme.Location = new System.Drawing.Point(756, 355);
             this.btn_OduncVerme.Name = "btn_OduncVerme";
             this.btn_OduncVerme.Size = new System.Drawing.Size(214, 141);
             this.btn_OduncVerme.TabIndex = 6;
@@ -173,11 +176,11 @@
             // 
             // btn_OduncIade
             // 
-            this.btn_OduncIade.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_OduncIade.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_OduncIade.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_OduncIade.BackColor = System.Drawing.Color.Transparent;
             this.btn_OduncIade.ImageKey = "istockphoto-454054639-612x612.jpg";
             this.btn_OduncIade.ImageList = this.ımageList1;
-            this.btn_OduncIade.Location = new System.Drawing.Point(65, 412);
+            this.btn_OduncIade.Location = new System.Drawing.Point(1025, 355);
             this.btn_OduncIade.Name = "btn_OduncIade";
             this.btn_OduncIade.Size = new System.Drawing.Size(214, 141);
             this.btn_OduncIade.TabIndex = 7;
@@ -188,11 +191,11 @@
             // 
             // btn_Rezervasyon
             // 
-            this.btn_Rezervasyon.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_Rezervasyon.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_Rezervasyon.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_Rezervasyon.BackColor = System.Drawing.Color.Transparent;
             this.btn_Rezervasyon.ImageKey = "istockphoto-1296390218-612x612.jpg";
             this.btn_Rezervasyon.ImageList = this.ımageList1;
-            this.btn_Rezervasyon.Location = new System.Drawing.Point(875, 235);
+            this.btn_Rezervasyon.Location = new System.Drawing.Point(215, 582);
             this.btn_Rezervasyon.Name = "btn_Rezervasyon";
             this.btn_Rezervasyon.Size = new System.Drawing.Size(214, 141);
             this.btn_Rezervasyon.TabIndex = 8;
@@ -204,10 +207,10 @@
             // btn_KategoriRaflar
             // 
             this.btn_KategoriRaflar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_KategoriRaflar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_KategoriRaflar.BackColor = System.Drawing.Color.Transparent;
             this.btn_KategoriRaflar.ImageKey = "duvar-resimleri-kutuphane-kitap-raf-arka-plan-vektor.jpg.jpg";
             this.btn_KategoriRaflar.ImageList = this.ımageList1;
-            this.btn_KategoriRaflar.Location = new System.Drawing.Point(334, 412);
+            this.btn_KategoriRaflar.Location = new System.Drawing.Point(484, 582);
             this.btn_KategoriRaflar.Name = "btn_KategoriRaflar";
             this.btn_KategoriRaflar.Size = new System.Drawing.Size(214, 141);
             this.btn_KategoriRaflar.TabIndex = 9;
@@ -219,11 +222,11 @@
             // btn_Raporlar
             // 
             this.btn_Raporlar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_Raporlar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_Raporlar.BackColor = System.Drawing.Color.Transparent;
             this.btn_Raporlar.ImageKey = "pngtree-checklist-comic-icon-for-reports-and-business-check-evaluation-analysis-v" +
     "ector-png-image_12861732.png";
             this.btn_Raporlar.ImageList = this.ımageList1;
-            this.btn_Raporlar.Location = new System.Drawing.Point(606, 412);
+            this.btn_Raporlar.Location = new System.Drawing.Point(756, 582);
             this.btn_Raporlar.Name = "btn_Raporlar";
             this.btn_Raporlar.Size = new System.Drawing.Size(214, 141);
             this.btn_Raporlar.TabIndex = 10;
@@ -232,59 +235,89 @@
             this.btn_Raporlar.UseVisualStyleBackColor = false;
             this.btn_Raporlar.Click += new System.EventHandler(this.btn_Raporlar_Click);
             // 
-            // btn_Cikis
+            // btn_Ayarlar
             // 
-            this.btn_Cikis.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_Cikis.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btn_Cikis.ImageKey = "Çıkış.png";
-            this.btn_Cikis.ImageList = this.ımageList1;
-            this.btn_Cikis.Location = new System.Drawing.Point(875, 412);
-            this.btn_Cikis.Name = "btn_Cikis";
-            this.btn_Cikis.Size = new System.Drawing.Size(214, 141);
-            this.btn_Cikis.TabIndex = 11;
-            this.btn_Cikis.Text = "ÇIKIŞ";
-            this.btn_Cikis.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_Cikis.UseVisualStyleBackColor = false;
-            this.btn_Cikis.Click += new System.EventHandler(this.btn_Cikis_Click);
+            this.btn_Ayarlar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_Ayarlar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Ayarlar.ImageKey = "settings-icon_2691259.jpg";
+            this.btn_Ayarlar.ImageList = this.ımageList1;
+            this.btn_Ayarlar.Location = new System.Drawing.Point(1025, 582);
+            this.btn_Ayarlar.Name = "btn_Ayarlar";
+            this.btn_Ayarlar.Size = new System.Drawing.Size(214, 141);
+            this.btn_Ayarlar.TabIndex = 11;
+            this.btn_Ayarlar.Text = "AYARLAR";
+            this.btn_Ayarlar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_Ayarlar.UseVisualStyleBackColor = false;
+            this.btn_Ayarlar.Click += new System.EventHandler(this.btn_Cikis_Click);
+            // 
+            // lbl_Hosgeldiniz
+            // 
+            this.lbl_Hosgeldiniz.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_Hosgeldiniz.Location = new System.Drawing.Point(484, 41);
+            this.lbl_Hosgeldiniz.Name = "lbl_Hosgeldiniz";
+            this.lbl_Hosgeldiniz.Size = new System.Drawing.Size(486, 30);
+            this.lbl_Hosgeldiniz.TabIndex = 12;
+            this.lbl_Hosgeldiniz.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.ImageKey = "Çıkış.png";
+            this.button1.ImageList = this.ımageList1;
+            this.button1.Location = new System.Drawing.Point(634, 753);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(186, 80);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "ÇIKIŞ";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // AnaMenuForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1196, 640);
-            this.Controls.Add(this.btn_Cikis);
+            this.ClientSize = new System.Drawing.Size(1497, 881);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lbl_Hosgeldiniz);
+            this.Controls.Add(this.btn_Ayarlar);
             this.Controls.Add(this.btn_Raporlar);
             this.Controls.Add(this.btn_KategoriRaflar);
             this.Controls.Add(this.btn_Rezervasyon);
             this.Controls.Add(this.btn_OduncIade);
             this.Controls.Add(this.btn_OduncVerme);
-            this.Controls.Add(this.btn_TurlerKayit);
-            this.Controls.Add(this.btn_YayineviKayit);
-            this.Controls.Add(this.btn_YazarKayit);
-            this.Controls.Add(this.btn_SorumluKayit);
-            this.Controls.Add(this.btn_KisiKayit);
-            this.Controls.Add(this.btn_KitapKayit);
+            this.Controls.Add(this.btn_Turler);
+            this.Controls.Add(this.btn_Yayinevi);
+            this.Controls.Add(this.btn_Yazarlar);
+            this.Controls.Add(this.btn_Sorumlular);
+            this.Controls.Add(this.btn_Uyeler);
+            this.Controls.Add(this.btn_Kitaplar);
             this.Name = "AnaMenuForm";
             this.Text = "Ana Menü";
+            this.Load += new System.EventHandler(this.AnaMenuForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btn_KitapKayit;
-        private System.Windows.Forms.Button btn_KisiKayit;
-        private System.Windows.Forms.Button btn_SorumluKayit;
-        private System.Windows.Forms.Button btn_YazarKayit;
-        private System.Windows.Forms.Button btn_YayineviKayit;
-        private System.Windows.Forms.Button btn_TurlerKayit;
+        private System.Windows.Forms.Button btn_Kitaplar;
+        private System.Windows.Forms.Button btn_Uyeler;
+        private System.Windows.Forms.Button btn_Sorumlular;
+        private System.Windows.Forms.Button btn_Yazarlar;
+        private System.Windows.Forms.Button btn_Yayinevi;
+        private System.Windows.Forms.Button btn_Turler;
         private System.Windows.Forms.Button btn_OduncVerme;
         private System.Windows.Forms.Button btn_OduncIade;
         private System.Windows.Forms.Button btn_Rezervasyon;
         private System.Windows.Forms.Button btn_KategoriRaflar;
         private System.Windows.Forms.Button btn_Raporlar;
-        private System.Windows.Forms.Button btn_Cikis;
+        private System.Windows.Forms.Button btn_Ayarlar;
         private System.Windows.Forms.ImageList ımageList1;
+        private System.Windows.Forms.Label lbl_Hosgeldiniz;
+        private System.Windows.Forms.Button button1;
     }
 }

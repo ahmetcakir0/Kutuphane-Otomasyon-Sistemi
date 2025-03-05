@@ -80,7 +80,7 @@
             this.Controls.Add(this.btn_YazarAra);
             this.Controls.Add(this.txt_YazarAra);
             this.Name = "YazarAraPopupForm";
-            this.Text = "YazarAraPopupForm";
+            this.Text = "Yazar Ara";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_YazarListesi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

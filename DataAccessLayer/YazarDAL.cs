@@ -16,56 +16,88 @@ namespace DataAccessLayer
         }
 
         // Yazar ekleme işlemi
-        public bool YazarEkle(string adiSoyadi, string iletisim, DateTime dogumTarihi, string biyografi)
+        public bool YazarEkle(Yazar yazar)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "INSERT INTO Yazarlar (AdiSoyadi, Iletisim, DogumTarihi, Biyografi) VALUES (@AdiSoyadi, @Iletisim, @DogumTarihi, @Biyografi)";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@AdiSoyadi", adiSoyadi);
-                command.Parameters.AddWithValue("@Iletisim", iletisim);
-                command.Parameters.AddWithValue("@DogumTarihi", dogumTarihi);
-                command.Parameters.AddWithValue("@Biyografi", biyografi);
+            // Geçersiz girişleri kontrol et
+            if (string.IsNullOrWhiteSpace(yazar.AdiSoyadi) || yazar.AdiSoyadi.Length > 150)
+                throw new ArgumentException("Yazar adı boş olamaz ve 150 karakterden uzun olamaz.");
 
-                connection.Open();
-                int rowsAffected = command.ExecuteNonQuery();
-                return rowsAffected > 0;
+            if (string.IsNullOrWhiteSpace(yazar.Iletisim) || yazar.Iletisim.Length > 100)
+                throw new ArgumentException("İletişim bilgisi boş olamaz ve 100 karakterden uzun olamaz.");
+
+            if (string.IsNullOrWhiteSpace(yazar.Biyografi) || yazar.Biyografi.Length > 1000)
+                throw new ArgumentException("Biyografi boş olamaz ve 1000 karakterden uzun olamaz.");
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand("INSERT INTO Yazarlar (AdiSoyadi, Iletisim, DogumTarihi, Biyografi) VALUES (@AdiSoyadi, @Iletisim, @DogumTarihi, @Biyografi)", connection))
+                {
+                    command.Parameters.Add("@AdiSoyadi", SqlDbType.NVarChar, 150).Value = yazar.AdiSoyadi;
+                    command.Parameters.Add("@Iletisim", SqlDbType.NVarChar, 100).Value = yazar.Iletisim;
+                    command.Parameters.Add("@DogumTarihi", SqlDbType.Date).Value = yazar.DogumTarihi;
+                    command.Parameters.Add("@Biyografi", SqlDbType.NVarChar, 1000).Value = yazar.Biyografi;
+
+                    connection.Open();
+                    return command.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (SqlException ex)
+            {
+                // Hata loglaması yapılabilir
+                Console.WriteLine($"SQL Hatası: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Beklenmeyen Hata: {ex.Message}");
+                return false;
             }
         }
+
 
         // Yazar güncelleme işlemi
-        public bool YazarGuncelle(int id, string adiSoyadi, string iletisim, DateTime dogumTarihi, string biyografi)
+        public bool YazarGuncelle(int id, Yazar yazar)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "UPDATE Yazarlar SET AdiSoyadi = @AdiSoyadi, Iletisim = @Iletisim, Biyografi = @Biyografi WHERE Id = @Id";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Id", id);
-                command.Parameters.AddWithValue("@AdiSoyadi", adiSoyadi);
-                command.Parameters.AddWithValue("@Iletisim", iletisim);
-                command.Parameters.AddWithValue("@DogumTarihi", dogumTarihi);
-                command.Parameters.AddWithValue("@Biyografi", biyografi);
+            // Geçersiz girişleri kontrol et
+            if (string.IsNullOrWhiteSpace(yazar.AdiSoyadi) || yazar.AdiSoyadi.Length > 150)
+                throw new ArgumentException("Yazar adı boş olamaz ve 150 karakterden uzun olamaz.");
 
-                connection.Open();
-                int rowsAffected = command.ExecuteNonQuery();
-                return rowsAffected > 0;
+            if (string.IsNullOrWhiteSpace(yazar.Iletisim) || yazar.Iletisim.Length > 100)
+                throw new ArgumentException("İletişim bilgisi boş olamaz ve 100 karakterden uzun olamaz.");
+
+            if (string.IsNullOrWhiteSpace(yazar.Biyografi) || yazar.Biyografi.Length > 1000)
+                throw new ArgumentException("Biyografi boş olamaz ve 1000 karakterden uzun olamaz.");
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlCommand command = new SqlCommand("UPDATE Yazarlar SET AdiSoyadi = @AdiSoyadi, Iletisim = @Iletisim, DogumTarihi = @DogumTarihi, Biyografi = @Biyografi WHERE Id = @Id", connection))
+                {
+                    command.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                    command.Parameters.Add("@AdiSoyadi", SqlDbType.NVarChar, 150).Value = yazar.AdiSoyadi;
+                    command.Parameters.Add("@Iletisim", SqlDbType.NVarChar, 100).Value = yazar.Iletisim;
+                    command.Parameters.Add("@DogumTarihi", SqlDbType.Date).Value = yazar.DogumTarihi;
+                    command.Parameters.Add("@Biyografi", SqlDbType.NVarChar, 1000).Value = yazar.Biyografi;
+
+                    connection.Open();
+                    return command.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (SqlException ex)
+            {
+                // Hata loglaması yapılabilir
+                Console.WriteLine($"SQL Hatası: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Beklenmeyen Hata: {ex.Message}");
+                return false;
             }
         }
 
-        // Yazar silme işlemi
-        public bool YazarSil(int id)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "DELETE FROM Yazarlar WHERE Id = @Id";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Id", id);
 
-                connection.Open();
-                int rowsAffected = command.ExecuteNonQuery();
-                return rowsAffected > 0;
-            }
-        }
         public DataTable TumYazarlariGetir()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

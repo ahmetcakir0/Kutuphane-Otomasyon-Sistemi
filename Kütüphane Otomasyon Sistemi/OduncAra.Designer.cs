@@ -72,7 +72,7 @@
             this.txt_OduncAra.Size = new System.Drawing.Size(187, 20);
             this.txt_OduncAra.TabIndex = 6;
             // 
-            // OduncAraForm
+            // OduncAra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -81,8 +81,8 @@
             this.Controls.Add(this.btn_OduncAra);
             this.Controls.Add(this.txt_OduncAra);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "OduncAraForm";
-            this.Text = "ÖdünçAra";
+            this.Name = "OduncAra";
+            this.Text = "Ödünç Ara";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OduncListesi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

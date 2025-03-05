@@ -8,104 +8,96 @@ namespace Kutuphane_Otomasyon_Sistemi
     public partial class TurlerForm : Form
     {
         private readonly TurBL turBL;
+        private int seciliTurId = 0; // Seçili türün ID'sini tutan değişken
 
         public TurlerForm()
         {
             InitializeComponent();
-            turBL = new TurBL();  // Connection string'ini burada kullanmıyoruz, TurBL sınıfı kendi bağlantısını yönetiyor.
+            turBL = new TurBL();
         }
 
         private void TurlerForm_Load(object sender, EventArgs e)
         {
-            // Form yüklendiğinde türler listesini yenileyelim
             ListeyiYenile();
         }
 
         private void FormTemizle()
         {
-            // Formdaki inputları temizleyelim
             txt_TurEkle.Clear();
             txt_Aciklama.Clear();
+            seciliTurId = 0; // Seçili ID sıfırlanıyor
+            dgv_TurListesi.ClearSelection();
             txt_TurEkle.Focus();
         }
-
-        private void btn_Ekle_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string turAdi = txt_TurEkle.Text.Trim();
-                string aciklama = txt_Aciklama.Text.Trim();
-
-                // Tür ekleme işlemi
-                string sonuc = turBL.TurEkle(turAdi, aciklama);
-
-                if (sonuc == "Tür başarıyla eklendi.")
-                {
-                    MessageBox.Show(sonuc, "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ListeyiYenile();
-                    FormTemizle();
-                }
-                else
-                {
-                    MessageBox.Show(sonuc, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Beklenmeyen bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btn_Guncelle_Click(object sender, EventArgs e)
-        {
-            if (dgv_TurListesi.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Lütfen güncellenecek türü seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                // Seçilen satırdaki ID'yi alalım
-                int id = Convert.ToInt32(dgv_TurListesi.SelectedRows[0].Cells["ID"].Value);
-                string turAdi = txt_TurEkle.Text.Trim();
-                string aciklama = txt_Aciklama.Text.Trim();
-
-                // Tür güncelleme işlemi
-                string sonuc = turBL.TurGuncelle(id, turAdi, aciklama);
-
-                if (sonuc == "Tür başarıyla güncellendi.")
-                {
-                    MessageBox.Show(sonuc, "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ListeyiYenile();
-                    FormTemizle();
-                }
-                else
-                {
-                    MessageBox.Show(sonuc, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Beklenmeyen bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void ListeyiYenile()
         {
             try
             {
-                // `TurBL` sınıfındaki `TumTurleriGetir` metodunu çağırarak veriyi alıyoruz.
                 var turlerTablosu = turBL.TumTurleriGetir();
-
-                // Veriyi DataGridView'e atıyoruz
                 dgv_TurListesi.DataSource = turlerTablosu;
-
+                dgv_TurListesi.ClearSelection(); // Listeyi yenileyince seçimi kaldır
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show($"Liste yenileme hatası: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_Kaydet_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                string turAdi = txt_TurEkle.Text.Trim();
+                string aciklama = txt_Aciklama.Text.Trim();
+
+                // Eğer form tamamen boşsa işlem yapma
+                if (string.IsNullOrWhiteSpace(turAdi) && string.IsNullOrWhiteSpace(aciklama))
+                {
+                    MessageBox.Show("Lütfen geçerli bir tür bilgisi girin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string sonuc;
+
+                if (seciliTurId > 0) // **Eğer ID varsa güncelleme işlemi**
+                {
+                    sonuc = turBL.TurGuncelle(seciliTurId, turAdi, aciklama);
+                }
+                else // **Yeni ekleme işlemi**
+                {
+                    sonuc = turBL.TurEkle(turAdi, aciklama);
+                }
+
+                if (sonuc.Contains("başarıyla")) // Başarılı işlem
+                {
+                    MessageBox.Show(sonuc, "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ListeyiYenile();
+                    FormTemizle();
+                }
+                else // Uyarı mesajı
+                {
+                    MessageBox.Show(sonuc, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Beklenmeyen bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_Temizle_Click(object sender, EventArgs e)
+        {
+            FormTemizle();
+        }
+
+        private void dgv_TurListesi_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgv_TurListesi.Rows[e.RowIndex];
+
+                txt_TurEkle.Text = row.Cells["TurAdi"].Value.ToString();
+                txt_Aciklama.Text = row.Cells["Aciklama"].Value.ToString();
             }
         }
     }

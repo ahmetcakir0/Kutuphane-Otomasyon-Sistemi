@@ -18,7 +18,7 @@ namespace Kutuphane_Otomasyon_Sistemi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AnaMenuForm());
+            Application.Run(new Giris());
         }
     }
 }

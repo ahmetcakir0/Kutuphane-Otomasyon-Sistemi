@@ -35,43 +35,39 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgv_YazarListesi = new System.Windows.Forms.DataGridView();
-            this.btn_Guncelle = new System.Windows.Forms.Button();
             this.btn_Kaydet = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ekranlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.raporkarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dtp_DogumTarihi = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_YazarListesi)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txt_YazarAdSoyad
             // 
-            this.txt_YazarAdSoyad.Location = new System.Drawing.Point(189, 78);
+            this.txt_YazarAdSoyad.Location = new System.Drawing.Point(377, 52);
             this.txt_YazarAdSoyad.Name = "txt_YazarAdSoyad";
             this.txt_YazarAdSoyad.Size = new System.Drawing.Size(159, 20);
             this.txt_YazarAdSoyad.TabIndex = 21;
             // 
             // txt_Iletisim
             // 
-            this.txt_Iletisim.Location = new System.Drawing.Point(482, 78);
+            this.txt_Iletisim.Location = new System.Drawing.Point(377, 111);
             this.txt_Iletisim.Name = "txt_Iletisim";
             this.txt_Iletisim.Size = new System.Drawing.Size(159, 20);
             this.txt_Iletisim.TabIndex = 22;
             // 
             // txt_Biyografi
             // 
-            this.txt_Biyografi.Location = new System.Drawing.Point(824, 78);
+            this.txt_Biyografi.Location = new System.Drawing.Point(647, 45);
+            this.txt_Biyografi.Multiline = true;
             this.txt_Biyografi.Name = "txt_Biyografi";
-            this.txt_Biyografi.Size = new System.Drawing.Size(159, 20);
+            this.txt_Biyografi.Size = new System.Drawing.Size(317, 145);
             this.txt_Biyografi.TabIndex = 23;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(67, 85);
+            this.label1.Location = new System.Drawing.Point(255, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 24;
@@ -80,7 +76,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(397, 84);
+            this.label2.Location = new System.Drawing.Point(292, 110);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 25;
@@ -89,7 +85,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(710, 81);
+            this.label3.Location = new System.Drawing.Point(588, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 26;
@@ -97,28 +93,19 @@
             // 
             // dgv_YazarListesi
             // 
+            this.dgv_YazarListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgv_YazarListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_YazarListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_YazarListesi.Location = new System.Drawing.Point(0, 303);
             this.dgv_YazarListesi.Name = "dgv_YazarListesi";
+            this.dgv_YazarListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_YazarListesi.Size = new System.Drawing.Size(1069, 348);
             this.dgv_YazarListesi.TabIndex = 42;
-            // 
-            // btn_Guncelle
-            // 
-            this.btn_Guncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Guncelle.Location = new System.Drawing.Point(598, 189);
-            this.btn_Guncelle.Name = "btn_Guncelle";
-            this.btn_Guncelle.Size = new System.Drawing.Size(118, 39);
-            this.btn_Guncelle.TabIndex = 41;
-            this.btn_Guncelle.Text = "GÜNCELLE";
-            this.btn_Guncelle.UseVisualStyleBackColor = true;
-            this.btn_Guncelle.Click += new System.EventHandler(this.btn_Guncelle_Click);
+            this.dgv_YazarListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_YazarListesi_CellContentClick);
             // 
             // btn_Kaydet
             // 
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(400, 189);
+            this.btn_Kaydet.Location = new System.Drawing.Point(345, 230);
             this.btn_Kaydet.Name = "btn_Kaydet";
             this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_Kaydet.TabIndex = 40;
@@ -126,39 +113,9 @@
             this.btn_Kaydet.UseVisualStyleBackColor = true;
             this.btn_Kaydet.Click += new System.EventHandler(this.btn_Kaydet_Click);
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ekranlarToolStripMenuItem,
-            this.ayarlarToolStripMenuItem,
-            this.raporkarToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1069, 24);
-            this.menuStrip1.TabIndex = 43;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // ekranlarToolStripMenuItem
-            // 
-            this.ekranlarToolStripMenuItem.Name = "ekranlarToolStripMenuItem";
-            this.ekranlarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.ekranlarToolStripMenuItem.Text = "Ekranlar";
-            // 
-            // ayarlarToolStripMenuItem
-            // 
-            this.ayarlarToolStripMenuItem.Name = "ayarlarToolStripMenuItem";
-            this.ayarlarToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.ayarlarToolStripMenuItem.Text = "Ayarlar";
-            // 
-            // raporkarToolStripMenuItem
-            // 
-            this.raporkarToolStripMenuItem.Name = "raporkarToolStripMenuItem";
-            this.raporkarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.raporkarToolStripMenuItem.Text = "Raporlar";
-            // 
             // dtp_DogumTarihi
             // 
-            this.dtp_DogumTarihi.Location = new System.Drawing.Point(482, 136);
+            this.dtp_DogumTarihi.Location = new System.Drawing.Point(357, 159);
             this.dtp_DogumTarihi.Name = "dtp_DogumTarihi";
             this.dtp_DogumTarihi.Size = new System.Drawing.Size(200, 20);
             this.dtp_DogumTarihi.TabIndex = 44;
@@ -166,22 +123,32 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(397, 136);
+            this.label4.Location = new System.Drawing.Point(272, 159);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 45;
             this.label4.Text = "Doğum Tarihi :";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.Location = new System.Drawing.Point(710, 230);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 39);
+            this.button1.TabIndex = 46;
+            this.button1.Text = "TEMİZLE";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // YazarKayitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1069, 651);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dtp_DogumTarihi);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dgv_YazarListesi);
-            this.Controls.Add(this.btn_Guncelle);
             this.Controls.Add(this.btn_Kaydet);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -190,11 +157,9 @@
             this.Controls.Add(this.txt_Iletisim);
             this.Controls.Add(this.txt_YazarAdSoyad);
             this.Name = "YazarKayitForm";
-            this.Text = "Yazar Kayıt";
+            this.Text = "Yazarlar";
             this.Load += new System.EventHandler(this.YazarKayitForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_YazarListesi)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,13 +174,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgv_YazarListesi;
-        private System.Windows.Forms.Button btn_Guncelle;
         private System.Windows.Forms.Button btn_Kaydet;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem ekranlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ayarlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem raporkarToolStripMenuItem;
         private System.Windows.Forms.DateTimePicker dtp_DogumTarihi;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
     }
 }

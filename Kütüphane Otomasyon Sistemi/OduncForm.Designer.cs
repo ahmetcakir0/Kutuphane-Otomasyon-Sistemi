@@ -30,59 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OduncForm));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ekranlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.raporkarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.dt_VerilmesiGerekenTarih = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_AlacakKisi = new System.Windows.Forms.TextBox();
-            this.btn_OduncAra = new System.Windows.Forms.Button();
+            this.btn_UyeAra = new System.Windows.Forms.Button();
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.dgv_OduncListesi = new System.Windows.Forms.DataGridView();
             this.txt_AlınacakKitap = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_KitapAra = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dt_VerilenTarih = new System.Windows.Forms.DateTimePicker();
             this.btn_Guncelle = new System.Windows.Forms.Button();
             this.btn_Sil = new System.Windows.Forms.Button();
             this.btn_Kaydet = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OduncListesi)).BeginInit();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ekranlarToolStripMenuItem,
-            this.ayarlarToolStripMenuItem,
-            this.raporkarToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1096, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // ekranlarToolStripMenuItem
-            // 
-            this.ekranlarToolStripMenuItem.Name = "ekranlarToolStripMenuItem";
-            this.ekranlarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.ekranlarToolStripMenuItem.Text = "Ekranlar";
-            // 
-            // ayarlarToolStripMenuItem
-            // 
-            this.ayarlarToolStripMenuItem.Name = "ayarlarToolStripMenuItem";
-            this.ayarlarToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.ayarlarToolStripMenuItem.Text = "Ayarlar";
-            // 
-            // raporkarToolStripMenuItem
-            // 
-            this.raporkarToolStripMenuItem.Name = "raporkarToolStripMenuItem";
-            this.raporkarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.raporkarToolStripMenuItem.Text = "Raporlar";
             // 
             // label1
             // 
@@ -116,15 +80,16 @@
             this.txt_AlacakKisi.Size = new System.Drawing.Size(159, 20);
             this.txt_AlacakKisi.TabIndex = 51;
             // 
-            // btn_OduncAra
+            // btn_UyeAra
             // 
-            this.btn_OduncAra.ImageKey = "mercek.png";
-            this.btn_OduncAra.ImageList = this.ımageList1;
-            this.btn_OduncAra.Location = new System.Drawing.Point(662, 37);
-            this.btn_OduncAra.Name = "btn_OduncAra";
-            this.btn_OduncAra.Size = new System.Drawing.Size(43, 25);
-            this.btn_OduncAra.TabIndex = 50;
-            this.btn_OduncAra.UseVisualStyleBackColor = true;
+            this.btn_UyeAra.ImageKey = "mercek.png";
+            this.btn_UyeAra.ImageList = this.ımageList1;
+            this.btn_UyeAra.Location = new System.Drawing.Point(662, 37);
+            this.btn_UyeAra.Name = "btn_UyeAra";
+            this.btn_UyeAra.Size = new System.Drawing.Size(43, 25);
+            this.btn_UyeAra.TabIndex = 50;
+            this.btn_UyeAra.UseVisualStyleBackColor = true;
+            this.btn_UyeAra.Click += new System.EventHandler(this.btn_UyeAra_Click);
             // 
             // ımageList1
             // 
@@ -148,15 +113,16 @@
             this.txt_AlınacakKitap.Size = new System.Drawing.Size(159, 20);
             this.txt_AlınacakKitap.TabIndex = 57;
             // 
-            // button1
+            // btn_KitapAra
             // 
-            this.button1.ImageKey = "mercek.png";
-            this.button1.ImageList = this.ımageList1;
-            this.button1.Location = new System.Drawing.Point(662, 88);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(43, 25);
-            this.button1.TabIndex = 56;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_KitapAra.ImageKey = "mercek.png";
+            this.btn_KitapAra.ImageList = this.ımageList1;
+            this.btn_KitapAra.Location = new System.Drawing.Point(662, 88);
+            this.btn_KitapAra.Name = "btn_KitapAra";
+            this.btn_KitapAra.Size = new System.Drawing.Size(43, 25);
+            this.btn_KitapAra.TabIndex = 56;
+            this.btn_KitapAra.UseVisualStyleBackColor = true;
+            this.btn_KitapAra.Click += new System.EventHandler(this.btn_KitapAra_Click);
             // 
             // label3
             // 
@@ -186,7 +152,7 @@
             // btn_Guncelle
             // 
             this.btn_Guncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Guncelle.Location = new System.Drawing.Point(604, 268);
+            this.btn_Guncelle.Location = new System.Drawing.Point(660, 265);
             this.btn_Guncelle.Name = "btn_Guncelle";
             this.btn_Guncelle.Size = new System.Drawing.Size(118, 39);
             this.btn_Guncelle.TabIndex = 62;
@@ -196,7 +162,7 @@
             // btn_Sil
             // 
             this.btn_Sil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Sil.Location = new System.Drawing.Point(431, 268);
+            this.btn_Sil.Location = new System.Drawing.Point(487, 265);
             this.btn_Sil.Name = "btn_Sil";
             this.btn_Sil.Size = new System.Drawing.Size(118, 39);
             this.btn_Sil.TabIndex = 61;
@@ -206,48 +172,34 @@
             // btn_Kaydet
             // 
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(254, 268);
+            this.btn_Kaydet.Location = new System.Drawing.Point(310, 265);
             this.btn_Kaydet.Name = "btn_Kaydet";
             this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_Kaydet.TabIndex = 60;
             this.btn_Kaydet.Text = "KAYDET";
             this.btn_Kaydet.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.Location = new System.Drawing.Point(769, 268);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(118, 39);
-            this.button2.TabIndex = 63;
-            this.button2.Text = "GERİ DÖN";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // OduncForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1096, 681);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_Guncelle);
             this.Controls.Add(this.btn_Sil);
             this.Controls.Add(this.btn_Kaydet);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dt_VerilenTarih);
             this.Controls.Add(this.txt_AlınacakKitap);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_KitapAra);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dgv_OduncListesi);
             this.Controls.Add(this.txt_AlacakKisi);
-            this.Controls.Add(this.btn_OduncAra);
+            this.Controls.Add(this.btn_UyeAra);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dt_VerilmesiGerekenTarih);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.menuStrip1);
             this.Name = "OduncForm";
             this.Text = "Ödünç Verme";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OduncListesi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -255,26 +207,20 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem ekranlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ayarlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem raporkarToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dt_VerilmesiGerekenTarih;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_AlacakKisi;
-        private System.Windows.Forms.Button btn_OduncAra;
+        private System.Windows.Forms.Button btn_UyeAra;
         private System.Windows.Forms.DataGridView dgv_OduncListesi;
         private System.Windows.Forms.ImageList ımageList1;
         private System.Windows.Forms.TextBox txt_AlınacakKitap;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_KitapAra;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dt_VerilenTarih;
         private System.Windows.Forms.Button btn_Guncelle;
         private System.Windows.Forms.Button btn_Sil;
         private System.Windows.Forms.Button btn_Kaydet;
-        private System.Windows.Forms.Button button2;
     }
 }

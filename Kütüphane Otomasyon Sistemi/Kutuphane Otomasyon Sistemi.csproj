@@ -96,17 +96,11 @@
     <Compile Include="YazarAraPopupForm.Designer.cs">
       <DependentUpon>YazarAraPopupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="YeniKitapKayitForm.cs">
+    <Compile Include="UyeKayitForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="YeniKitapKayitForm.Designer.cs">
-      <DependentUpon>YeniKitapKayitForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="YeniUyeKayitForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="YeniUyeKayitForm.Designer.cs">
-      <DependentUpon>YeniUyeKayitForm.cs</DependentUpon>
+    <Compile Include="UyeKayitForm.Designer.cs">
+      <DependentUpon>UyeKayitForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TurlerForm.cs">
       <SubType>Form</SubType>
@@ -158,6 +152,15 @@
     <Compile Include="RezervasyonForm.Designer.cs">
       <DependentUpon>RezervasyonForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="YeniKitapKayitForm.cs" />
+    <Compile Include="YeniKitapKayitForm.Designer.cs">
+      <DependentUpon>YeniKitapKayitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YeniKitapKayitForm1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YeniKitapKayitForm.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AnaMenuForm.resx">
       <DependentUpon>AnaMenuForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -182,11 +185,8 @@
     <EmbeddedResource Include="YazarAraPopupForm.resx">
       <DependentUpon>YazarAraPopupForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="YeniKitapKayitForm.resx">
-      <DependentUpon>YeniKitapKayitForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="YeniUyeKayitForm.resx">
-      <DependentUpon>YeniUyeKayitForm.cs</DependentUpon>
+    <EmbeddedResource Include="UyeKayitForm.resx">
+      <DependentUpon>UyeKayitForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TurlerForm.resx">
       <DependentUpon>TurlerForm.cs</DependentUpon>
@@ -221,6 +221,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RezervasyonForm.resx">
       <DependentUpon>RezervasyonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YeniKitapKayitForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>YeniKitapKayitForm1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

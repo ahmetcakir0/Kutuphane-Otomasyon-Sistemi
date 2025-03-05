@@ -32,16 +32,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_TurEkle = new System.Windows.Forms.TextBox();
             this.txt_Aciklama = new System.Windows.Forms.TextBox();
-            this.btn_Ekle = new System.Windows.Forms.Button();
-            this.btn_Guncelle = new System.Windows.Forms.Button();
+            this.btn_Kaydet = new System.Windows.Forms.Button();
+            this.btn_Temizle = new System.Windows.Forms.Button();
             this.dgv_TurListesi = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ekranlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.raporkarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_GeriDon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TurListesi)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -56,7 +50,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(389, 170);
+            this.label2.Location = new System.Drawing.Point(389, 145);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 13);
             this.label2.TabIndex = 1;
@@ -71,32 +65,33 @@
             // 
             // txt_Aciklama
             // 
-            this.txt_Aciklama.Location = new System.Drawing.Point(565, 167);
+            this.txt_Aciklama.Location = new System.Drawing.Point(565, 142);
+            this.txt_Aciklama.Multiline = true;
             this.txt_Aciklama.Name = "txt_Aciklama";
-            this.txt_Aciklama.Size = new System.Drawing.Size(159, 20);
+            this.txt_Aciklama.Size = new System.Drawing.Size(159, 80);
             this.txt_Aciklama.TabIndex = 21;
             // 
-            // btn_Ekle
+            // btn_Kaydet
             // 
-            this.btn_Ekle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Ekle.Location = new System.Drawing.Point(270, 259);
-            this.btn_Ekle.Name = "btn_Ekle";
-            this.btn_Ekle.Size = new System.Drawing.Size(118, 39);
-            this.btn_Ekle.TabIndex = 36;
-            this.btn_Ekle.Text = "EKLE";
-            this.btn_Ekle.UseVisualStyleBackColor = true;
-            this.btn_Ekle.Click += new System.EventHandler(this.btn_Ekle_Click);
+            this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Kaydet.Location = new System.Drawing.Point(392, 253);
+            this.btn_Kaydet.Name = "btn_Kaydet";
+            this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
+            this.btn_Kaydet.TabIndex = 36;
+            this.btn_Kaydet.Text = "KAYDET";
+            this.btn_Kaydet.UseVisualStyleBackColor = true;
+            this.btn_Kaydet.Click += new System.EventHandler(this.btn_Kaydet_Click_1);
             // 
-            // btn_Guncelle
+            // btn_Temizle
             // 
-            this.btn_Guncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Guncelle.Location = new System.Drawing.Point(479, 259);
-            this.btn_Guncelle.Name = "btn_Guncelle";
-            this.btn_Guncelle.Size = new System.Drawing.Size(118, 39);
-            this.btn_Guncelle.TabIndex = 38;
-            this.btn_Guncelle.Text = "GÜNCELLE";
-            this.btn_Guncelle.UseVisualStyleBackColor = true;
-            this.btn_Guncelle.Click += new System.EventHandler(this.btn_Guncelle_Click);
+            this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Temizle.Location = new System.Drawing.Point(601, 253);
+            this.btn_Temizle.Name = "btn_Temizle";
+            this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
+            this.btn_Temizle.TabIndex = 38;
+            this.btn_Temizle.Text = "TEMİZLE";
+            this.btn_Temizle.UseVisualStyleBackColor = true;
+            this.btn_Temizle.Click += new System.EventHandler(this.btn_Temizle_Click);
             // 
             // dgv_TurListesi
             // 
@@ -104,59 +99,19 @@
             this.dgv_TurListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_TurListesi.Location = new System.Drawing.Point(0, 343);
             this.dgv_TurListesi.Name = "dgv_TurListesi";
+            this.dgv_TurListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgv_TurListesi.Size = new System.Drawing.Size(1074, 348);
             this.dgv_TurListesi.TabIndex = 39;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ekranlarToolStripMenuItem,
-            this.ayarlarToolStripMenuItem,
-            this.raporkarToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1074, 24);
-            this.menuStrip1.TabIndex = 40;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // ekranlarToolStripMenuItem
-            // 
-            this.ekranlarToolStripMenuItem.Name = "ekranlarToolStripMenuItem";
-            this.ekranlarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.ekranlarToolStripMenuItem.Text = "Ekranlar";
-            // 
-            // ayarlarToolStripMenuItem
-            // 
-            this.ayarlarToolStripMenuItem.Name = "ayarlarToolStripMenuItem";
-            this.ayarlarToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.ayarlarToolStripMenuItem.Text = "Ayarlar";
-            // 
-            // raporkarToolStripMenuItem
-            // 
-            this.raporkarToolStripMenuItem.Name = "raporkarToolStripMenuItem";
-            this.raporkarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.raporkarToolStripMenuItem.Text = "Raporlar";
-            // 
-            // btn_GeriDon
-            // 
-            this.btn_GeriDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_GeriDon.Location = new System.Drawing.Point(684, 259);
-            this.btn_GeriDon.Name = "btn_GeriDon";
-            this.btn_GeriDon.Size = new System.Drawing.Size(118, 39);
-            this.btn_GeriDon.TabIndex = 41;
-            this.btn_GeriDon.Text = "GERİ DÖN";
-            this.btn_GeriDon.UseVisualStyleBackColor = true;
+            this.dgv_TurListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_TurListesi_CellContentClick_1);
             // 
             // TurlerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1074, 691);
-            this.Controls.Add(this.btn_GeriDon);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dgv_TurListesi);
-            this.Controls.Add(this.btn_Guncelle);
-            this.Controls.Add(this.btn_Ekle);
+            this.Controls.Add(this.btn_Temizle);
+            this.Controls.Add(this.btn_Kaydet);
             this.Controls.Add(this.txt_Aciklama);
             this.Controls.Add(this.txt_TurEkle);
             this.Controls.Add(this.label2);
@@ -165,8 +120,6 @@
             this.Text = "Türler";
             this.Load += new System.EventHandler(this.TurlerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TurListesi)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,13 +131,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_TurEkle;
         private System.Windows.Forms.TextBox txt_Aciklama;
-        private System.Windows.Forms.Button btn_Ekle;
-        private System.Windows.Forms.Button btn_Guncelle;
+        private System.Windows.Forms.Button btn_Kaydet;
+        private System.Windows.Forms.Button btn_Temizle;
         private System.Windows.Forms.DataGridView dgv_TurListesi;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem ekranlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ayarlarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem raporkarToolStripMenuItem;
-        private System.Windows.Forms.Button btn_GeriDon;
     }
 }

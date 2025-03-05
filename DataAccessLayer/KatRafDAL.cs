@@ -8,7 +8,7 @@ namespace DataAccessLayer
 {
     public class KatRafDAL
     {
-        private readonly string connectionString = "server=MBB-01-BIL065-N\\SQLEXPRESS; Initial Catalog=KategoriRaflar; Integrated Security=SSPI";
+        private readonly string connectionString = "server=MBB-01-BIL065-N\\SQLEXPRESS; Initial Catalog=KutuphaneDB; Integrated Security=SSPI";
 
         public bool KategoriEkle(string kategoriAdi, int kategoriRafKodu)
         {
@@ -27,6 +27,23 @@ namespace DataAccessLayer
             }
         }
 
+        public bool KategoriGuncelle(int id, string kategoriAdi, string kategoriRafKodu)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE KategoriRaflar SET KategoriAdi = @KategoriAdi, KategoriRafKodu = @KategoriRafKodu WHERE ID = @ID";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ID", id);
+                command.Parameters.AddWithValue("@KategoriAdi", kategoriAdi);
+                command.Parameters.AddWithValue("@KategoriRafKodu", kategoriRafKodu);
+
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected > 0;
+            }
+        }
+
+
         public bool KategoriSil(int id)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -43,67 +60,46 @@ namespace DataAccessLayer
             }
         }
 
-        public bool KategoriGuncelle(int id, string kategoriAdi, int kategoriRafKodu)
+        public DataTable TumKategoriRaflariGetir()
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "UPDATE KategoriRaflar SET KategoriAdi = @KategoriAdi, KategoriRafKodu = @KategoriRafKodu WHERE ID = @ID";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    cmd.Parameters.AddWithValue("@KategoriAdi", kategoriAdi);
-                    cmd.Parameters.AddWithValue("@KategoriRafKodu", kategoriRafKodu);
-
-                    conn.Open();
-                    int result = cmd.ExecuteNonQuery();
-                    return result > 0;
-                }
+                string query = "SELECT * FROM KategoriRaflar";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return dataTable;
             }
         }
 
-        public List<(int ID, string KategoriAdi, int KategoriRafKodu)> KategorileriGetir()
+
+        public DataRow KategoriRaflarGetirById(int id)
         {
-            List<(int, string, int)> kategoriler = new List<(int, string, int)>();
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT ID, KategoriAdi, KategoriRafKodu FROM KategoriRaflar";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    conn.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            int id = reader.GetInt32(0);
-                            string kategoriAdi = reader.GetString(1);
-                            int kategoriRafKodu = reader.GetInt32(2);
+                string query = "SELECT * FROM KategoriRaflar WHERE ID = @ID";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@ID", id);
 
-                            kategoriler.Add((id, kategoriAdi, kategoriRafKodu));
-                        }
-                    }
-                }
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable.Rows.Count > 0 ? dataTable.Rows[0] : null;
             }
-            return kategoriler;
         }
 
-        public DataTable KategorileriGetirDataTable()
+        public DataTable KategoriRaflarAra(string aramaMetni)
         {
-            DataTable dt = new DataTable();
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT ID, KategoriAdi, KategoriRafKodu FROM KategoriRaflar";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    conn.Open();
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
-                        da.Fill(dt);
-                    }
-                }
+                string query = "SELECT * FROM KategoriRaflar WHERE KategoriRafAdi LIKE @AramaMetni OR KategoriRafKodu LIKE @AramaMetni";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@AramaMetni", "%" + aramaMetni + "%");
+
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                return dataTable;
             }
-            return dt;
         }
     }
 }
