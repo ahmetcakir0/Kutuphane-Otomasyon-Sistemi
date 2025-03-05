@@ -1,142 +1,92 @@
-﻿//using BusinessLayer;
-//using EntityLayer;
-//using Kütüphane_Otomasyon_Sistemi;
-//using System;
-//using System.Data;
-//using System.Data.SqlClient;
-//using System.Windows.Forms;
+﻿using BusinessLayer;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using EntityLayer;
+using DataAccessLayer;
 
-//namespace Kutuphane_Otomasyon_Sistemi
-//{
-//    public partial class YeniKitapKayitForm : Form
-//    {
-//        private readonly KitapBL kitapBL;
-//        private readonly string connectionString;
+namespace Kütüphane_Otomasyon_Sistemi
+{
+    public partial class YeniKitapKayitForm : Form
+    {
+        private KitapBL kitapBL;
+        public YeniKitapKayitForm()
+        {
+            InitializeComponent();
+            kitapBL = new KitapBL();
 
-//        public YeniKitapKayitForm()
-//        {
-//            InitializeComponent();
-//            kitapBL = new KitapBL();
-//        }
+        }
+        private void KitaplariYukle()
+        {
+            dgv_KitapListesi.DataSource = kitapBL.TumKitaplariGetir();
+        }
+        private void btn_KitapAra_Click(object sender, EventArgs e)
+        {
+            YazarAraPopupForm yazarAraPopupForm = new YazarAraPopupForm();
+            yazarAraPopupForm.Show();
+        }
 
-//        private void YeniKitapKayitForm_Load(object sender, EventArgs e)
-//        {
-//            try
-//            {
-    
-//                DoldurComboBox("SELECT ID, YayineviAdi FROM Yayinevleri", cb_Yayinevi, "YayineviAdi", "ID");
-//                DoldurComboBox("SELECT ID, TurAdi FROM Turler", cb_KitapTuru, "TurAdi", "ID");
-//                DoldurComboBox("SELECT ID, KategoriAdi FROM Kategoriler", cb_Kategori, "KategoriAdi", "ID");
-//                KitaplariDataGridViewGoster();
-//            }
-//            catch (Exception ex)
-//            {
-//                MessageBox.Show($"Veriler yüklenirken hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-//            }
-//        }
+        private void btn_Kaydet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Kitap yeniKitap = new Kitap
+                {
+                    KitapAdi = txt_KitapAdi.Text,
+                    YazarID = Convert.ToInt32(txt_Yazar.Text),
+                    YayineviID = Convert.ToInt32(cb_Yayinevi.SelectedValue),
+                    KitapTuruID = Convert.ToInt32(cb_Tur.SelectedValue),
+                    KategoriID = Convert.ToInt32(cb_Kategori.SelectedValue),
+                    SayfaSayisi = Convert.ToInt32(txt_SayfaSayisi.Text),
+                };
 
-//        private void DoldurComboBox(string query, ComboBox comboBox, string displayMember, string valueMember)
-//        {
-//            try
-//            {
-//                using (SqlConnection connection = new SqlConnection(connectionString))
-//                {
-//                    connection.Open();
-//                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-//                    DataTable table = new DataTable();
-//                    adapter.Fill(table);
+                if (kitapBL.KitapEkle(yeniKitap))
+                {
+                    MessageBox.Show("Kitap başarıyla eklendi.");
+                    KitaplariYukle();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message);
+            }
+        }
 
-//                    comboBox.DataSource = table;
-//                    comboBox.DisplayMember = displayMember;
-//                    comboBox.ValueMember = valueMember;
-//                    comboBox.SelectedIndex = -1;
-//                }
-//            }
-//            catch (Exception ex)
-//            {
-//                MessageBox.Show($"Veriler yüklenirken hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-//            }
-//        }
+        private void YeniKitapKayitForm_Load(object sender, EventArgs e)
+        {
+            ListeyiYenile();
+            ComboBoxlarıDoldur();
+        }
 
-//        private void KitaplariDataGridViewGoster()
-//        {
-//            try
-//            {
-//                var kitaplar = kitapBL.TumKitaplariGetir();
+        private void ComboBoxlarıDoldur()
+        {
+            try
+            {
+                // Assuming you have methods to get these lists from the database or predefined lists
+                var yayinEvleri = kitapBL.yay(); // Retrieve list from your business layer
+                var kategoriler = kitapBL.GetKategoriListesi(); // Retrieve list from your business layer
+                var kitapTurleri = kitapBL.GetKitapTuruListesi(); // Retrieve list from your business layer
 
-//                if (kitaplar == null || kitaplar.Count == 0)
-//                {
-//                    MessageBox.Show("Hiç kitap bulunamadı.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-//                    return;
-//                }
+                // Populate ComboBox with these values
+                cmb_Yayinevi.DataSource = yayinEvleri;
+                cmb_Yayinevi.DisplayMember = "YayineviAdi";  // Assuming the entity has this property
 
-//                dgv_KitapListesi.DataSource = kitaplar;
+                cmb_Kategori.DataSource = kategoriler;
+                cmb_Kategori.DisplayMember = "KategoriAdi";  // Assuming the entity has this property
 
-//                dgv_KitapListesi.Columns["ID"].HeaderText = "Kitap ID";
-//                dgv_KitapListesi.Columns["KitapAdi"].HeaderText = "Kitap Adı";
-//                dgv_KitapListesi.Columns["YazarID"].HeaderText = "Yazar Adı";
-//                // dgv_KitapListesi.Columns["YayineviID"].HeaderText = "Yayınevi";
-//                dgv_KitapListesi.Columns["KitapTuruID"].HeaderText = "ISBN";
-//                dgv_KitapListesi.Columns["TurAdi"].HeaderText = "Kitap Türü";
-//                dgv_KitapListesi.Columns["KitapRafNumarasi"].HeaderText = "Raf Kodu";
-//                dgv_KitapListesi.Columns["SayfaSayisi"].HeaderText = "Sayfa Sayısı";
-//                dgv_KitapListesi.Columns["KategoriID "].HeaderText = "Kategori";
-//            }
-//            catch (Exception ex)
-//            {
-//                MessageBox.Show($"Kitaplar yüklenirken hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-//            }
-//        }
-
-//        private void FormTemizle()
-//        {
-//            txt_KitapAdi.Clear();
-//            txt_SayfaSayisi.Clear();
-//            txt_ISBN.Clear();
-//            txt_RafNumarasi.Clear();
-//            cb_Yayinevi.SelectedIndex = -1;
-//            cb_KitapTuru.SelectedIndex = -1;
-//            cb_Kategori.SelectedIndex = -1;
-//            txt_KitapAdi.Focus();
-//        }
-
-//        private void btn_Kaydet_Click(object sender, EventArgs e)
-//        {
-//            try
-//            {
-//                Kitap yeniKitap = new Kitap
-//                {
-//                    KitapAdi = txt_KitapAdi.Text.Trim(),
-//                    SayfaSayisi = int.TryParse(txt_SayfaSayisi.Text.Trim(), out int sayfaSayisi) ? sayfaSayisi : 0,
-//                    ISBN = txt_ISBN.Text.Trim(),
-//                    YayineviAdi = Convert.ToString(cb_Yayinevi.SelectedValue),
-//                    KitapTuruAdi = Convert.ToString(cb_KitapTuru.SelectedValue),
-//                    KitapRaf = Convert.ToString(cb_Kategori.SelectedValue)
-//                };
-
-//                string sonuc = kitapBL.KitapEkle(yeniKitap);
-
-//                if (sonuc == "Kitap başarıyla eklendi.")
-//                {
-//                    MessageBox.Show(sonuc, "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-//                    FormTemizle();
-//                    KitaplariDataGridViewGoster();
-//                }
-//                else
-//                {
-//                    MessageBox.Show(sonuc, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-//                }
-//            }
-//            catch (Exception ex)
-//            {
-//                MessageBox.Show($"Beklenmeyen bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-//            }
-//        }
-
-//        private void btn_OduncAra_Click(object sender, EventArgs e)
-//        {
-//            YazarAraPopupForm yazarAraPopupForm = new YazarAraPopupForm();
-//            yazarAraPopupForm.Show();
-//        }
-//    }
-//}
+                cmb_KitapTuru.DataSource = kitapTurleri;
+                cmb_KitapTuru.DisplayMember = "KitapTuruAdi";  // Assuming the entity has this property
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Veri yükleme hatası: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }
+}

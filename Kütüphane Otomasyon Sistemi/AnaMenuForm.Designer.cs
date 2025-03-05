@@ -187,7 +187,6 @@
             this.btn_OduncIade.Text = "ÖDÜNÇ İADE";
             this.btn_OduncIade.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_OduncIade.UseVisualStyleBackColor = false;
-            this.btn_OduncIade.Click += new System.EventHandler(this.btn_OduncIade_Click);
             // 
             // btn_Rezervasyon
             // 

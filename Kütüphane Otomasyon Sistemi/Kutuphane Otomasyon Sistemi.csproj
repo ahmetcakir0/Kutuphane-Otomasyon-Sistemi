@@ -78,12 +78,6 @@
     <Compile Include="OduncAra.Designer.cs">
       <DependentUpon>OduncAra.cs</DependentUpon>
     </Compile>
-    <Compile Include="OduncIadeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OduncIadeForm.Designer.cs">
-      <DependentUpon>OduncIadeForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="SorumluKayitForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,14 +146,11 @@
     <Compile Include="RezervasyonForm.Designer.cs">
       <DependentUpon>RezervasyonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="YeniKitapKayitForm.cs" />
+    <Compile Include="YeniKitapKayitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="YeniKitapKayitForm.Designer.cs">
       <DependentUpon>YeniKitapKayitForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="YeniKitapKayitForm1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>YeniKitapKayitForm.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AnaMenuForm.resx">
       <DependentUpon>AnaMenuForm.cs</DependentUpon>
@@ -175,9 +166,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OduncAra.resx">
       <DependentUpon>OduncAra.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OduncIadeForm.resx">
-      <DependentUpon>OduncIadeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SorumluKayitForm.resx">
       <DependentUpon>SorumluKayitForm.cs</DependentUpon>
@@ -223,8 +211,7 @@
       <DependentUpon>RezervasyonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YeniKitapKayitForm.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>YeniKitapKayitForm1.Designer.cs</LastGenOutput>
+      <DependentUpon>YeniKitapKayitForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

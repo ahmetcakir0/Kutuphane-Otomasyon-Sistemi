@@ -22,9 +22,11 @@ namespace EntityLayer
         public string KategoriAdi { get; set; }
         public int SayfaSayisi { get; set; }
         public string ISBN { get; set; }
-        public string KitapRaf { get; set; }
 
-        public Kitap(int id, string kitapAdi, int yazarID, int yayineviID, int kitapTuruID, int kategoriID, string yazarAdi, string yazarSoyadi, string yayineviAdi, string kitapTuruAdi, string kategoriAdi, int sayfaSayisi, string ıSBN, string kitapRaf)
+        // Updated constructor without KitapRaf
+        public Kitap(int id, string kitapAdi, int yazarID, int yayineviID, int kitapTuruID, int kategoriID,
+                     string yazarAdi, string yazarSoyadi, string yayineviAdi, string kitapTuruAdi,
+                     string kategoriAdi, int sayfaSayisi, string isbn)
         {
             ID = id;
             KitapAdi = kitapAdi;
@@ -38,8 +40,8 @@ namespace EntityLayer
             KitapTuruAdi = kitapTuruAdi;
             KategoriAdi = kategoriAdi;
             SayfaSayisi = sayfaSayisi;
-            ISBN = ıSBN;
-            KitapRaf = kitapRaf;
+            ISBN = isbn;
         }
     }
+
 }

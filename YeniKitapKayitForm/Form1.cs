@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Kütüphane_Otomasyon_Sistemi
+namespace YeniKitapKayitForm
 {
-    public partial class OduncIadeForm : Form
+    public partial class Form1 : Form
     {
-        public OduncIadeForm()
+        public Form1()
         {
             InitializeComponent();
         }

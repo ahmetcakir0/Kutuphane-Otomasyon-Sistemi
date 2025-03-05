@@ -23,8 +23,8 @@ namespace Kütüphane_Otomasyon_Sistemi
 
         private void btn_KitapKayit_Click(object sender, EventArgs e)
         {
-           // YeniKitapKayitForm yeniKitapKayitForm = new YeniKitapKayitForm();
-          //  yeniKitapKayitForm.Show();
+            YeniKitapKayitForm yeniKitapKayitForm = new YeniKitapKayitForm();
+            yeniKitapKayitForm.Show();
         }
 
         private void btn_KisiKayit_Click(object sender, EventArgs e)
@@ -67,12 +67,6 @@ namespace Kütüphane_Otomasyon_Sistemi
         {
             RezervasyonForm rezervasyonForm = new RezervasyonForm();
             rezervasyonForm.Show();
-        }
-
-        private void btn_OduncIade_Click(object sender, EventArgs e)
-        {
-            OduncIadeForm oduncIadeForm = new OduncIadeForm();
-            oduncIadeForm.Show();
         }
 
         private void btn_KategoriRaflar_Click(object sender, EventArgs e)

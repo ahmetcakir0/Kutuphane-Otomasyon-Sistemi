@@ -15,8 +15,8 @@ namespace DataAccessLayer
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = @"INSERT INTO Kitaplar (KitapAdi, YazarID, YayineviID, KitapTuruID, KategoriID, SayfaSayisi, ISBN, KitapRaf) 
-                                     VALUES (@KitapAdi, @YazarID, @YayineviID, @KitapTuruID, @KategoriID, @SayfaSayisi, @ISBN, @KitapRaf)";
+                    string query = @"INSERT INTO Kitaplar (KitapAdi, YazarID, YayineviID, KitapTuruID, KategoriID, SayfaSayisi, ISBN) 
+                                     VALUES (@KitapAdi, @YazarID, @YayineviID, @KitapTuruID, @KategoriID, @SayfaSayisi, @ISBN)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -27,7 +27,6 @@ namespace DataAccessLayer
                         command.Parameters.AddWithValue("@KategoriID", yeniKitap.KategoriID);
                         command.Parameters.AddWithValue("@SayfaSayisi", yeniKitap.SayfaSayisi);
                         command.Parameters.AddWithValue("@ISBN", yeniKitap.ISBN);
-                        command.Parameters.AddWithValue("@KitapRaf", yeniKitap.KitapRaf);
 
                         connection.Open();
                         return command.ExecuteNonQuery() > 0;
@@ -49,7 +48,7 @@ namespace DataAccessLayer
                     string query = @"UPDATE Kitaplar 
                                      SET KitapAdi = @KitapAdi, YazarID = @YazarID, YayineviID = @YayineviID, 
                                          KitapTuruID = @KitapTuruID, KategoriID = @KategoriID, SayfaSayisi = @SayfaSayisi, 
-                                         ISBN = @ISBN, KitapRaf = @KitapRaf 
+                                         ISBN = @ISBN
                                      WHERE ID = @KitapID";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -61,7 +60,6 @@ namespace DataAccessLayer
                         command.Parameters.AddWithValue("@KategoriID", kitap.KategoriID);
                         command.Parameters.AddWithValue("@SayfaSayisi", kitap.SayfaSayisi);
                         command.Parameters.AddWithValue("@ISBN", kitap.ISBN);
-                        command.Parameters.AddWithValue("@KitapRaf", kitap.KitapRaf);
                         command.Parameters.AddWithValue("@KitapID", kitap.ID);
 
                         connection.Open();
@@ -104,13 +102,17 @@ namespace DataAccessLayer
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = @"SELECT k.ID, k.KitapAdi, k.YazarID, k.YayineviID, k.KitapTuruID, k.KategoriID, y.YazarAdi, y.YazarSoyadi, yv.YayineviAdi, 
-                                            t.KitapTuruAdi, kr.KategoriAdi, k.SayfaSayisi, k.ISBN, k.KitapRaf
-                                     FROM Kitaplar k
-                                     LEFT JOIN Yazarlar y ON k.YazarID = y.ID
-                                     LEFT JOIN Yayinevi yv ON k.YayineviID = yv.ID
-                                     LEFT JOIN Turler t ON k.KitapTuruID = t.ID
-                                     LEFT JOIN KategoriRaflar kr ON k.KategoriID = kr.ID";
+                    string query = @"SELECT 
+                                k.ID, k.KitapAdi, k.YazarID, y.YazarAdi, y.YazarSoyadi, 
+                                k.YayineviID, yv.YayineviAdi, 
+                                k.KitapTuruID, t.KitapTuruAdi, 
+                                k.KategoriID, kr.KategoriAdi, 
+                                k.SayfaSayisi, k.ISBN
+                            FROM Kitaplar k
+                            LEFT JOIN Yazarlar y ON k.YazarID = y.ID
+                            LEFT JOIN Yayinevi yv ON k.YayineviID = yv.ID
+                            LEFT JOIN Turler t ON k.KitapTuruID = t.ID
+                            LEFT JOIN KategoriRaflar kr ON k.KategoriID = kr.ID";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -132,8 +134,7 @@ namespace DataAccessLayer
                                     reader["KitapTuruAdi"].ToString(),
                                     reader["KategoriAdi"].ToString(),
                                     Convert.ToInt32(reader["SayfaSayisi"]),
-                                    reader["ISBN"].ToString(),
-                                    reader["KitapRaf"].ToString()
+                                    reader["ISBN"].ToString()
                                 ));
                             }
                         }
@@ -146,6 +147,63 @@ namespace DataAccessLayer
             }
 
             return kitapListesi;
+        }
+
+        public Kitap KitapGetirById(int kitapID)
+        {
+            Kitap kitap = null;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @"SELECT 
+                                k.ID, k.KitapAdi, k.YazarID, y.YazarAdi, y.YazarSoyadi, 
+                                k.YayineviID, yv.YayineviAdi, 
+                                k.KitapTuruID, t.KitapTuruAdi, 
+                                k.KategoriID, kr.KategoriAdi, 
+                                k.SayfaSayisi, k.ISBN
+                            FROM Kitaplar k
+                            LEFT JOIN Yazarlar y ON k.YazarID = y.ID
+                            LEFT JOIN Yayinevi yv ON k.YayineviID = yv.ID
+                            LEFT JOIN Turler t ON k.KitapTuruID = t.ID
+                            LEFT JOIN KategoriRaflar kr ON k.KategoriID = kr.ID
+                            WHERE k.ID = @KitapID";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@KitapID", kitapID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                kitap = new Kitap(
+                                    Convert.ToInt32(reader["ID"]),
+                                    reader["KitapAdi"].ToString(),
+                                    Convert.ToInt32(reader["YazarID"]),
+                                    Convert.ToInt32(reader["YayineviID"]),
+                                    Convert.ToInt32(reader["KitapTuruID"]),
+                                    Convert.ToInt32(reader["KategoriID"]),
+                                    reader["YazarAdi"].ToString(),
+                                    reader["YazarSoyadi"].ToString(),
+                                    reader["YayineviAdi"].ToString(),
+                                    reader["KitapTuruAdi"].ToString(),
+                                    reader["KategoriAdi"].ToString(),
+                                    Convert.ToInt32(reader["SayfaSayisi"]),
+                                    reader["ISBN"].ToString()
+                                );
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Kitap getirilirken hata oluştu: " + ex.Message);
+            }
+
+            return kitap;
         }
     }
 }
