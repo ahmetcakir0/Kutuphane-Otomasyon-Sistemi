@@ -83,7 +83,7 @@ namespace DataAccessLayer
                     Uye uye = new Uye
                     {
                         ID = Convert.ToInt32(reader["Id"]),
-                        Ad = reader["UyeAdi"].ToString(),
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                         Soyad = reader["UyeSoyadi"].ToString(),
                         DogumTarihi = DateTime.Parse(reader["DogumTarihi"].ToString()),
                         TCKimlik = reader["TCKimlik"].ToString(),
