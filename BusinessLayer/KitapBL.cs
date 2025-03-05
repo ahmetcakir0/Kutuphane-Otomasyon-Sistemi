@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using DataAccessLayer;
 using EntityLayer;
 
@@ -13,15 +14,30 @@ namespace BusinessLayer
         {
             kitapDAL = new KitapDAL();
         }
+        public List<string> GetAllYayineviAdlari()
+        {
+            return kitapDAL.GetYayineviAdlari();
+        }
 
+        public List<string> GetAllTurAdlari()
+        {
+            return kitapDAL.GetTurAdlari();
+        }
+
+        public List<string> GetAllKategoriAdlari()
+        {
+            return kitapDAL.GetKategoriAdlari();
+        }
+        public string GetYazarAdi(int yazarID)
+        {
+            return kitapDAL.GetYazarAdi(yazarID);
+        }
         public bool KitapEkle(Kitap yeniKitap)
         {
             try
             {
                 if (string.IsNullOrEmpty(yeniKitap.KitapAdi))
                     throw new Exception("Kitap adı boş olamaz.");
-                if (yeniKitap.SayfaSayisi <= 0)
-                    throw new Exception("Sayfa sayısı pozitif bir değer olmalıdır.");
                 if (string.IsNullOrEmpty(yeniKitap.ISBN))
                     throw new Exception("ISBN boş olamaz.");
 
@@ -29,7 +45,8 @@ namespace BusinessLayer
             }
             catch (Exception ex)
             {
-                throw new Exception("Kitap ekleme işlemi sırasında hata oluştu: " + ex.Message);
+                // Hata yönetimi
+                throw new Exception("Kitap eklenirken hata oluştu: " + ex.Message);
             }
         }
 
@@ -41,8 +58,6 @@ namespace BusinessLayer
                     throw new Exception("Geçersiz Kitap ID.");
                 if (string.IsNullOrEmpty(kitap.KitapAdi))
                     throw new Exception("Kitap adı boş olamaz.");
-                if (kitap.SayfaSayisi <= 0)
-                    throw new Exception("Sayfa sayısı pozitif bir değer olmalıdır.");
                 if (string.IsNullOrEmpty(kitap.ISBN))
                     throw new Exception("ISBN boş olamaz.");
 
