@@ -3,13 +3,13 @@
     public int ID { get; set; }
     public string KitapAdi { get; set; }
     public int YazarID { get; set; }
-    public string YazarAdi { get; set; }  // Yeni eklendi
+    public string YazarAdi { get; set; }
     public int YayineviID { get; set; }
-    public string YayineviAdi { get; set; }  // Yeni eklendi
+    public string YayineviAdi { get; set; } 
     public int KitapTuruID { get; set; }
-    public string TurAdi { get; set; }  // Yeni eklendi
+    public string TurAdi { get; set; } 
     public int KategoriID { get; set; }
-    public string KategoriAdi { get; set; }  // Yeni eklendi
+    public string KategoriAdi { get; set; }
     public string SayfaSayisi { get; set; }
     public string ISBN { get; set; }
     public string RafNumarasi { get; set; }
