@@ -20,14 +20,14 @@ namespace Kutuphane_Otomasyon_Sistemi
 
         private void btn_UyeAra_Click(object sender, EventArgs e)
         {
-            UyeAraPopupForm uyeAraPopupForm = new UyeAraPopupForm();
-            uyeAraPopupForm.Show();
+            //UyeAraPopupForm uyeAraPopupForm = new UyeAraPopupForm();
+            //uyeAraPopupForm.Show();
         }
 
         private void btn_KitapAra_Click(object sender, EventArgs e)
         {
-            KitapAraPopupForm kitapAraPopupForm = new KitapAraPopupForm();
-            kitapAraPopupForm.Show();
+            //KitapAraPopupForm kitapAraPopupForm = new KitapAraPopupForm();
+            //kitapAraPopupForm.Show();
         }
     }
 }

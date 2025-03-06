@@ -42,11 +42,13 @@
             this.dgv_KitapListesi.AllowUserToAddRows = false;
             this.dgv_KitapListesi.AllowUserToDeleteRows = false;
             this.dgv_KitapListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_KitapListesi.Location = new System.Drawing.Point(12, 41);
+            this.dgv_KitapListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgv_KitapListesi.Location = new System.Drawing.Point(0, 53);
             this.dgv_KitapListesi.Name = "dgv_KitapListesi";
             this.dgv_KitapListesi.ReadOnly = true;
-            this.dgv_KitapListesi.Size = new System.Drawing.Size(240, 397);
+            this.dgv_KitapListesi.Size = new System.Drawing.Size(267, 397);
             this.dgv_KitapListesi.TabIndex = 5;
+            this.dgv_KitapListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_KitapListesi_CellContentClick);
             // 
             // btn_KisiAra
             // 
@@ -82,6 +84,7 @@
             this.MaximizeBox = false;
             this.Name = "KitapAraPopupForm";
             this.Text = "Kitap Ara";
+            this.Load += new System.EventHandler(this.KitapAraPopupForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_KitapListesi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

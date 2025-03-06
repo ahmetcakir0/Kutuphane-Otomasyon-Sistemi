@@ -85,6 +85,7 @@
             this.MaximizeBox = false;
             this.Name = "UyeAraPopupForm";
             this.Text = "Üye Ara";
+            this.Load += new System.EventHandler(this.UyeAraPopupForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_KisilerListesi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

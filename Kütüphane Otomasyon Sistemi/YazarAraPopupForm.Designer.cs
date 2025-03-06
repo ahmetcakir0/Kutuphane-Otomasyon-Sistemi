@@ -42,10 +42,11 @@
             this.dgv_YazarListesi.AllowUserToAddRows = false;
             this.dgv_YazarListesi.AllowUserToDeleteRows = false;
             this.dgv_YazarListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_YazarListesi.Location = new System.Drawing.Point(12, 41);
+            this.dgv_YazarListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgv_YazarListesi.Location = new System.Drawing.Point(0, 50);
             this.dgv_YazarListesi.Name = "dgv_YazarListesi";
             this.dgv_YazarListesi.ReadOnly = true;
-            this.dgv_YazarListesi.Size = new System.Drawing.Size(240, 397);
+            this.dgv_YazarListesi.Size = new System.Drawing.Size(267, 397);
             this.dgv_YazarListesi.TabIndex = 8;
             // 
             // btn_YazarAra

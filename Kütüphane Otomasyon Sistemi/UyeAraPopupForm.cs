@@ -13,34 +13,45 @@ namespace Kütuphane_Otomasyon_Sistemi
 {
     public partial class UyeAraPopupForm : Form
     {
-        public string SecilenUye { get; private set; }
+        private string connectionString;
+        public int SecilenUyeID { get; private set; }
+        public string SecilenUyeAdiSoyadi { get; private set; }
 
-        public UyeAraPopupForm()
+        public UyeAraPopupForm(string connString)
         {
             InitializeComponent();
-            VerileriYukle();
+            this.connectionString = connString;
         }
-
-        private void VerileriYukle()
+        public void UyeListesiniYukle()
         {
-            string connectionString = "server=MBB-01-BIL065-N\\SQLEXPRESS; Initial Catalog=KutuphaneDB; Integrated Security=SSPI";
-            string query = "SELECT ID, Ad + ' ' + Soyad AS AdSoyad FROM Uyeler";
+            string query = "SELECT ID, Ad, Soyad FROM Uyeler"; // SQL sorgusu
+            DataTable dt = new DataTable();
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                try
+                using (SqlConnection con = new SqlConnection(connectionString)) // Veritabanı bağlantısı
                 {
-                    conn.Open();
-                    SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
+                    con.Open(); // Bağlantıyı aç
 
-                    dgv_KisilerListesi.DataSource = dt; // Verileri DataGridView'e yükle
+                    using (SqlCommand cmd = new SqlCommand(query, con)) // SQL komutu
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader()) // Veritabanından veri oku
+                        {
+                            dt.Load(reader); // Veriyi DataTable'a yükle
+                        }
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Veri yüklenirken hata oluştu: " + ex.Message);
-                }
+
+                // Adi ve Soyadi'yi birleştirerek UyeAdiSoyadi kolonu ekleyelim
+                dt.Columns.Add("UyeAdiSoyadi", typeof(string), "Ad + ' ' + Soyad");
+
+                // DataGridView'e veri yükleme
+                dgv_KisilerListesi.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                // Hata oluştuğunda kullanıcıya mesaj göster
+                MessageBox.Show("Veriler yüklenirken hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -48,16 +59,26 @@ namespace Kütuphane_Otomasyon_Sistemi
         {
             if (dgv_KisilerListesi.SelectedRows.Count > 0)
             {
-                // Seçili satırın AdSoyad kolonunu al
-                SecilenUye = dgv_KisilerListesi.SelectedRows[0].Cells["AdSoyad"].Value.ToString();
+                // Seçilen üyenin ID'sini al
+                SecilenUyeID = Convert.ToInt32(dgv_KisilerListesi.SelectedRows[0].Cells["ID"].Value);
 
+                // Seçilen üyenin adı ve soyadını al
+                SecilenUyeAdiSoyadi = dgv_KisilerListesi.SelectedRows[0].Cells["UyeAdiSoyadi"].Value.ToString();
+
+                // Seçim tamamlandı, dialog'u OK olarak ayarla
                 this.DialogResult = DialogResult.OK;
-                this.Close();
+                this.Close(); // Popup'ı kapat
             }
             else
             {
-                MessageBox.Show("Lütfen bir üye seçin.");
+                // Hiçbir üye seçilmediyse kullanıcıyı uyar
+                MessageBox.Show("Lütfen bir üye seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void UyeAraPopupForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

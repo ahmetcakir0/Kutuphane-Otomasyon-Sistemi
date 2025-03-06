@@ -13,33 +13,37 @@ namespace Kutuphane_Otomasyon_Sistemi
 {
     public partial class KitapAraPopupForm : Form
     {
-        public string SecilenKitap { get; private set; }
-        public KitapAraPopupForm()
+        private string connectionString;
+        public int SecilenKitapID { get; private set; }
+        public string SecilenKitapAdi { get; private set; }
+
+        public KitapAraPopupForm(string connString)
         {
             InitializeComponent();
-            VerileriYukle();
+            this.connectionString = connString;
         }
 
-        private void VerileriYukle()
+        private void KitapAraPopupForm_Load(object sender, EventArgs e)
         {
-            string connectionString = "server=MBB-01-BIL065-N\\SQLEXPRESS; Initial Catalog=KutuphaneDB; Integrated Security=SSPI";
-            string query = "SELECT ID, KitapAdi FROM Kitaplar";
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                try
-                {
-                    conn.Open();
-                    SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
+                string query = "SELECT ID, KitapAdi FROM Kitaplar";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
 
-                    dgv_KitapListesi.DataSource = dt; // Verileri DataGridView'e yükle
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Veri yüklenirken hata oluştu: " + ex.Message);
-                }
+                dgv_KitapListesi.DataSource = dt;
+            }
+        }
+
+        private void dgv_KitapListesi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                SecilenKitapID = Convert.ToInt32(dgv_KitapListesi.Rows[e.RowIndex].Cells["ID"].Value);
+                SecilenKitapAdi = dgv_KitapListesi.Rows[e.RowIndex].Cells["KitapAdi"].Value.ToString();
+                DialogResult = DialogResult.OK;
+                Close();
             }
         }
     }

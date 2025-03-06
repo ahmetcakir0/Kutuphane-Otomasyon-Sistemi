@@ -38,7 +38,6 @@
             this.btn_Yayinevi = new System.Windows.Forms.Button();
             this.btn_Turler = new System.Windows.Forms.Button();
             this.btn_OduncVerme = new System.Windows.Forms.Button();
-            this.btn_OduncIade = new System.Windows.Forms.Button();
             this.btn_Rezervasyon = new System.Windows.Forms.Button();
             this.btn_KategoriRaflar = new System.Windows.Forms.Button();
             this.btn_Raporlar = new System.Windows.Forms.Button();
@@ -165,28 +164,14 @@
             this.btn_OduncVerme.BackColor = System.Drawing.Color.Transparent;
             this.btn_OduncVerme.ImageKey = "boy-with-glasses-lends-a-book-to-his-friend-vector.jpg";
             this.btn_OduncVerme.ImageList = this.ımageList1;
-            this.btn_OduncVerme.Location = new System.Drawing.Point(756, 355);
+            this.btn_OduncVerme.Location = new System.Drawing.Point(1025, 355);
             this.btn_OduncVerme.Name = "btn_OduncVerme";
             this.btn_OduncVerme.Size = new System.Drawing.Size(214, 141);
             this.btn_OduncVerme.TabIndex = 6;
-            this.btn_OduncVerme.Text = "ÖDÜNÇ VERME";
+            this.btn_OduncVerme.Text = "ÖDÜNÇ";
             this.btn_OduncVerme.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_OduncVerme.UseVisualStyleBackColor = false;
             this.btn_OduncVerme.Click += new System.EventHandler(this.btn_OduncVerme_Click);
-            // 
-            // btn_OduncIade
-            // 
-            this.btn_OduncIade.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_OduncIade.BackColor = System.Drawing.Color.Transparent;
-            this.btn_OduncIade.ImageKey = "istockphoto-454054639-612x612.jpg";
-            this.btn_OduncIade.ImageList = this.ımageList1;
-            this.btn_OduncIade.Location = new System.Drawing.Point(1025, 355);
-            this.btn_OduncIade.Name = "btn_OduncIade";
-            this.btn_OduncIade.Size = new System.Drawing.Size(214, 141);
-            this.btn_OduncIade.TabIndex = 7;
-            this.btn_OduncIade.Text = "ÖDÜNÇ İADE";
-            this.btn_OduncIade.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_OduncIade.UseVisualStyleBackColor = false;
             // 
             // btn_Rezervasyon
             // 
@@ -209,7 +194,7 @@
             this.btn_KategoriRaflar.BackColor = System.Drawing.Color.Transparent;
             this.btn_KategoriRaflar.ImageKey = "duvar-resimleri-kutuphane-kitap-raf-arka-plan-vektor.jpg.jpg";
             this.btn_KategoriRaflar.ImageList = this.ımageList1;
-            this.btn_KategoriRaflar.Location = new System.Drawing.Point(484, 582);
+            this.btn_KategoriRaflar.Location = new System.Drawing.Point(756, 355);
             this.btn_KategoriRaflar.Name = "btn_KategoriRaflar";
             this.btn_KategoriRaflar.Size = new System.Drawing.Size(214, 141);
             this.btn_KategoriRaflar.TabIndex = 9;
@@ -225,7 +210,7 @@
             this.btn_Raporlar.ImageKey = "pngtree-checklist-comic-icon-for-reports-and-business-check-evaluation-analysis-v" +
     "ector-png-image_12861732.png";
             this.btn_Raporlar.ImageList = this.ımageList1;
-            this.btn_Raporlar.Location = new System.Drawing.Point(756, 582);
+            this.btn_Raporlar.Location = new System.Drawing.Point(489, 582);
             this.btn_Raporlar.Name = "btn_Raporlar";
             this.btn_Raporlar.Size = new System.Drawing.Size(214, 141);
             this.btn_Raporlar.TabIndex = 10;
@@ -240,7 +225,7 @@
             this.btn_Ayarlar.BackColor = System.Drawing.Color.Transparent;
             this.btn_Ayarlar.ImageKey = "settings-icon_2691259.jpg";
             this.btn_Ayarlar.ImageList = this.ımageList1;
-            this.btn_Ayarlar.Location = new System.Drawing.Point(1025, 582);
+            this.btn_Ayarlar.Location = new System.Drawing.Point(756, 582);
             this.btn_Ayarlar.Name = "btn_Ayarlar";
             this.btn_Ayarlar.Size = new System.Drawing.Size(214, 141);
             this.btn_Ayarlar.TabIndex = 11;
@@ -262,15 +247,14 @@
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.ImageKey = "Çıkış.png";
             this.button1.ImageList = this.ımageList1;
-            this.button1.Location = new System.Drawing.Point(634, 753);
+            this.button1.Location = new System.Drawing.Point(1025, 582);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(186, 80);
+            this.button1.Size = new System.Drawing.Size(214, 141);
             this.button1.TabIndex = 13;
             this.button1.Text = "ÇIKIŞ";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -286,7 +270,6 @@
             this.Controls.Add(this.btn_Raporlar);
             this.Controls.Add(this.btn_KategoriRaflar);
             this.Controls.Add(this.btn_Rezervasyon);
-            this.Controls.Add(this.btn_OduncIade);
             this.Controls.Add(this.btn_OduncVerme);
             this.Controls.Add(this.btn_Turler);
             this.Controls.Add(this.btn_Yayinevi);
@@ -310,7 +293,6 @@
         private System.Windows.Forms.Button btn_Yayinevi;
         private System.Windows.Forms.Button btn_Turler;
         private System.Windows.Forms.Button btn_OduncVerme;
-        private System.Windows.Forms.Button btn_OduncIade;
         private System.Windows.Forms.Button btn_Rezervasyon;
         private System.Windows.Forms.Button btn_KategoriRaflar;
         private System.Windows.Forms.Button btn_Raporlar;
