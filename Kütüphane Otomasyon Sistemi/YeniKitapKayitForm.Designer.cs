@@ -50,6 +50,10 @@
             this.btn_KitapAra = new System.Windows.Forms.Button();
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btn_Sil = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txt_RafNumarasi = new System.Windows.Forms.TextBox();
+            this.txt_Aciklama = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_KitapListesi)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +69,7 @@
             // btn_Temizle
             // 
             this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Temizle.Location = new System.Drawing.Point(701, 311);
+            this.btn_Temizle.Location = new System.Drawing.Point(811, 333);
             this.btn_Temizle.Name = "btn_Temizle";
             this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
             this.btn_Temizle.TabIndex = 40;
@@ -75,7 +79,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(638, 129);
+            this.label3.Location = new System.Drawing.Point(554, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 38;
@@ -84,7 +88,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(195, 70);
+            this.label1.Location = new System.Drawing.Point(105, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 36;
@@ -93,7 +97,7 @@
             // btn_Kaydet
             // 
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(343, 311);
+            this.btn_Kaydet.Location = new System.Drawing.Point(453, 333);
             this.btn_Kaydet.Name = "btn_Kaydet";
             this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_Kaydet.TabIndex = 35;
@@ -103,7 +107,7 @@
             // 
             // txt_KitapAdi
             // 
-            this.txt_KitapAdi.Location = new System.Drawing.Point(343, 63);
+            this.txt_KitapAdi.Location = new System.Drawing.Point(253, 61);
             this.txt_KitapAdi.Name = "txt_KitapAdi";
             this.txt_KitapAdi.Size = new System.Drawing.Size(159, 20);
             this.txt_KitapAdi.TabIndex = 31;
@@ -111,7 +115,7 @@
             // cb_Tur
             // 
             this.cb_Tur.FormattingEnabled = true;
-            this.cb_Tur.Location = new System.Drawing.Point(729, 122);
+            this.cb_Tur.Location = new System.Drawing.Point(712, 61);
             this.cb_Tur.Name = "cb_Tur";
             this.cb_Tur.Size = new System.Drawing.Size(159, 21);
             this.cb_Tur.TabIndex = 41;
@@ -119,7 +123,7 @@
             // cb_Yayinevi
             // 
             this.cb_Yayinevi.FormattingEnabled = true;
-            this.cb_Yayinevi.Location = new System.Drawing.Point(343, 184);
+            this.cb_Yayinevi.Location = new System.Drawing.Point(253, 182);
             this.cb_Yayinevi.Name = "cb_Yayinevi";
             this.cb_Yayinevi.Size = new System.Drawing.Size(159, 21);
             this.cb_Yayinevi.TabIndex = 43;
@@ -127,7 +131,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(197, 192);
+            this.label5.Location = new System.Drawing.Point(105, 190);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 42;
@@ -136,7 +140,7 @@
             // cb_Kategori
             // 
             this.cb_Kategori.FormattingEnabled = true;
-            this.cb_Kategori.Location = new System.Drawing.Point(729, 67);
+            this.cb_Kategori.Location = new System.Drawing.Point(253, 256);
             this.cb_Kategori.Name = "cb_Kategori";
             this.cb_Kategori.Size = new System.Drawing.Size(159, 21);
             this.cb_Kategori.TabIndex = 45;
@@ -144,7 +148,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(638, 70);
+            this.label2.Location = new System.Drawing.Point(105, 264);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 44;
@@ -152,7 +156,7 @@
             // 
             // txt_SayfaSayisi
             // 
-            this.txt_SayfaSayisi.Location = new System.Drawing.Point(729, 185);
+            this.txt_SayfaSayisi.Location = new System.Drawing.Point(712, 124);
             this.txt_SayfaSayisi.Name = "txt_SayfaSayisi";
             this.txt_SayfaSayisi.Size = new System.Drawing.Size(159, 20);
             this.txt_SayfaSayisi.TabIndex = 34;
@@ -160,7 +164,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(638, 188);
+            this.label4.Location = new System.Drawing.Point(554, 127);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 13);
             this.label4.TabIndex = 39;
@@ -169,7 +173,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(638, 248);
+            this.label6.Location = new System.Drawing.Point(554, 187);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 47;
@@ -177,7 +181,7 @@
             // 
             // txt_ISBN
             // 
-            this.txt_ISBN.Location = new System.Drawing.Point(729, 245);
+            this.txt_ISBN.Location = new System.Drawing.Point(712, 184);
             this.txt_ISBN.Name = "txt_ISBN";
             this.txt_ISBN.Size = new System.Drawing.Size(159, 20);
             this.txt_ISBN.TabIndex = 46;
@@ -185,7 +189,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(195, 129);
+            this.label7.Location = new System.Drawing.Point(105, 127);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 13);
             this.label7.TabIndex = 49;
@@ -193,7 +197,7 @@
             // 
             // txt_Yazar
             // 
-            this.txt_Yazar.Location = new System.Drawing.Point(341, 123);
+            this.txt_Yazar.Location = new System.Drawing.Point(251, 121);
             this.txt_Yazar.Name = "txt_Yazar";
             this.txt_Yazar.Size = new System.Drawing.Size(159, 20);
             this.txt_Yazar.TabIndex = 48;
@@ -202,7 +206,7 @@
             // 
             this.btn_KitapAra.ImageKey = "mercek.png";
             this.btn_KitapAra.ImageList = this.ımageList1;
-            this.btn_KitapAra.Location = new System.Drawing.Point(506, 120);
+            this.btn_KitapAra.Location = new System.Drawing.Point(416, 118);
             this.btn_KitapAra.Name = "btn_KitapAra";
             this.btn_KitapAra.Size = new System.Drawing.Size(43, 25);
             this.btn_KitapAra.TabIndex = 57;
@@ -218,18 +222,55 @@
             // btn_Sil
             // 
             this.btn_Sil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Sil.Location = new System.Drawing.Point(523, 311);
+            this.btn_Sil.Location = new System.Drawing.Point(633, 333);
             this.btn_Sil.Name = "btn_Sil";
             this.btn_Sil.Size = new System.Drawing.Size(118, 39);
             this.btn_Sil.TabIndex = 58;
             this.btn_Sil.Text = "SİL";
             this.btn_Sil.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(554, 259);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(77, 13);
+            this.label8.TabIndex = 60;
+            this.label8.Text = "Raf Numarası :";
+            // 
+            // txt_RafNumarasi
+            // 
+            this.txt_RafNumarasi.Location = new System.Drawing.Point(712, 252);
+            this.txt_RafNumarasi.Name = "txt_RafNumarasi";
+            this.txt_RafNumarasi.Size = new System.Drawing.Size(159, 20);
+            this.txt_RafNumarasi.TabIndex = 59;
+            // 
+            // txt_Aciklama
+            // 
+            this.txt_Aciklama.Location = new System.Drawing.Point(1017, 75);
+            this.txt_Aciklama.Multiline = true;
+            this.txt_Aciklama.Name = "txt_Aciklama";
+            this.txt_Aciklama.Size = new System.Drawing.Size(262, 197);
+            this.txt_Aciklama.TabIndex = 61;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(942, 69);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(56, 13);
+            this.label9.TabIndex = 62;
+            this.label9.Text = "Açıklama :";
+            // 
             // YeniKitapKayitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1308, 684);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txt_Aciklama);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txt_RafNumarasi);
             this.Controls.Add(this.btn_Sil);
             this.Controls.Add(this.btn_KitapAra);
             this.Controls.Add(this.label7);
@@ -280,5 +321,9 @@
         private System.Windows.Forms.Button btn_KitapAra;
         private System.Windows.Forms.ImageList ımageList1;
         private System.Windows.Forms.Button btn_Sil;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txt_RafNumarasi;
+        private System.Windows.Forms.TextBox txt_Aciklama;
+        private System.Windows.Forms.Label label9;
     }
 }

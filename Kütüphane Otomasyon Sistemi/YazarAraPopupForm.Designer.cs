@@ -57,6 +57,7 @@
             this.btn_YazarAra.Size = new System.Drawing.Size(44, 23);
             this.btn_YazarAra.TabIndex = 7;
             this.btn_YazarAra.UseVisualStyleBackColor = true;
+            this.btn_YazarAra.Click += new System.EventHandler(this.btn_YazarAra_Click);
             // 
             // ımageList1
             // 

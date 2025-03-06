@@ -22,11 +22,6 @@ namespace Kutuphane_Otomasyon_Sistemi
         {
             UyeAraPopupForm uyeAraPopupForm = new UyeAraPopupForm();
             uyeAraPopupForm.Show();
-
-            if (uyeAraPopupForm.ShowDialog() == DialogResult.OK)
-            {
-                txt_AlacakKisi.Text = uyeAraPopupForm.SecilenUye;
-            }
         }
 
         private void btn_KitapAra_Click(object sender, EventArgs e)

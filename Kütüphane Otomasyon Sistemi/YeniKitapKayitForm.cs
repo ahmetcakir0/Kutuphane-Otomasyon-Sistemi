@@ -34,16 +34,21 @@ namespace Kütüphane_Otomasyon_Sistemi
             try
             {
                 // Kullanıcıdan alınan verileri doğrudan entity katmanındaki modele atıyoruz
-                Kitap yeniKitap = new Kitap
-                {
-                    KitapAdi = txt_KitapAdi.Text?.Trim(), // Kitap adı
-                    YazarID = Convert.ToInt32(txt_Yazar.Text?.Trim()), // Yazar ID'si
-                    YayineviID = Convert.ToInt32(cb_Yayinevi.SelectedValue), // Yayinevi ID'si
-                    KitapTuruID = Convert.ToInt32(cb_Tur.SelectedValue), // Kitap Türü ID'si
-                    KategoriID = Convert.ToInt32(cb_Kategori.SelectedValue), // Kategori ID'si
-                    SayfaSayisi = txt_SayfaSayisi.Text?.Trim(),  // Sayfa sayısı (string olarak alıyoruz)
-                    ISBN = txt_ISBN.Text?.Trim() // ISBN
-                };
+                Kitap yeniKitap = new Kitap(
+                    txt_KitapAdi.Text?.Trim(), // Kitap adı
+                    Convert.ToInt32(txt_Yazar.Text?.Trim()), // Yazar ID'si
+                    txt_Yazar.Text?.Trim(),  // Yazar adı (Yeni eklenen alan)
+                    Convert.ToInt32(cb_Yayinevi.SelectedValue), // Yayinevi ID'si
+                    cb_Yayinevi.SelectedItem.ToString().Trim(),  // Yayinevi adı (Yeni eklenen alan)
+                    Convert.ToInt32(cb_Tur.SelectedValue), // Kitap Türü ID'si
+                    cb_Tur.SelectedItem.ToString().Trim(),  // Kitap türü adı (Yeni eklenen alan)
+                    Convert.ToInt32(cb_Kategori.SelectedValue), // Kategori ID'si
+                    cb_Kategori.SelectedItem.ToString().Trim(),  // Kategori adı (Yeni eklenen alan)
+                    txt_SayfaSayisi.Text?.Trim(),  // Sayfa sayısı (string olarak alıyoruz)
+                    txt_ISBN.Text?.Trim(), // ISBN
+                    txt_RafNumarasi.Text?.Trim(),
+                    txt_Aciklama.Text?.Trim()  // Açıklama
+                );
 
                 // Sayfa sayısını kontrol et
                 string sayfaSayisiStr = txt_SayfaSayisi.Text.Trim(); // Sayfa sayısı
@@ -106,8 +111,9 @@ namespace Kütüphane_Otomasyon_Sistemi
             cb_Kategori.Items.Clear();
             cb_Tur.Items.Clear();
             cb_Yayinevi.Items.Clear();
-            seciliKitapId = 0;  // Yeni kayıt moduna geç
-            btn_Kaydet.Text = "Kaydet";
+            seciliKitapId = 0;
+            txt_RafNumarasi.Clear();
+            txt_Aciklama.Clear();
             dgv_KitapListesi.ClearSelection();
             txt_KitapAdi.Focus();
         }

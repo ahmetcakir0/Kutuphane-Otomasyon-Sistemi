@@ -1,39 +1,57 @@
 ﻿public class Kitap
 {
-    public int ID { get; set; }  // Kitap ID'si (veritabanından gelen anahtar)
+    public int ID { get; set; }
     public string KitapAdi { get; set; }
     public int YazarID { get; set; }
+    public string YazarAdi { get; set; }  // Yeni eklendi
     public int YayineviID { get; set; }
+    public string YayineviAdi { get; set; }  // Yeni eklendi
     public int KitapTuruID { get; set; }
+    public string TurAdi { get; set; }  // Yeni eklendi
     public int KategoriID { get; set; }
+    public string KategoriAdi { get; set; }  // Yeni eklendi
     public string SayfaSayisi { get; set; }
     public string ISBN { get; set; }
+    public string RafNumarasi { get; set; }
+    public string Aciklama { get; set; }
 
-    // Kitap sınıfı yapıcı metodu
-    public Kitap() { }
-
-    // Parametreli yapıcı metot
-    public Kitap(string kitapAdi, int yazarID, int yayineviID, int kitapTuruID, int kategoriID, string sayfaSayisi, string isbn)
+    public Kitap(string kitapAdi, int yazarID, string yazarAdi, int yayineviID, string yayineviAdi,
+                 int kitapTuruID, string turAdi, int kategoriID, string kategoriAdi,
+                 string sayfaSayisi, string isbn, string rafNumarasi, string aciklama)
     {
         KitapAdi = kitapAdi;
         YazarID = yazarID;
+        YazarAdi = yazarAdi;
         YayineviID = yayineviID;
+        YayineviAdi = yayineviAdi;
         KitapTuruID = kitapTuruID;
+        TurAdi = turAdi;
         KategoriID = kategoriID;
+        KategoriAdi = kategoriAdi;
         SayfaSayisi = sayfaSayisi;
         ISBN = isbn;
+        RafNumarasi = rafNumarasi;
+        Aciklama = aciklama;
     }
 
-    // Parametreli yapıcı metot (ID ile)
-    public Kitap(int id, string kitapAdi, int yazarID, int yayineviID, int kitapTuruID, int kategoriID, string sayfaSayisi, string isbn)
+    public Kitap(int Id, string kitapAdi, int yazarID, string yazarAdi, int yayineviID, string yayineviAdi,
+             int kitapTuruID, string turAdi, int kategoriID, string kategoriAdi,
+             string sayfaSayisi, string isbn, string rafNumarasi, string aciklama)
     {
-        ID = id;
+        ID = Id;
         KitapAdi = kitapAdi;
         YazarID = yazarID;
+        YazarAdi = yazarAdi;
         YayineviID = yayineviID;
+        YayineviAdi = yayineviAdi;
         KitapTuruID = kitapTuruID;
+        TurAdi = turAdi;
         KategoriID = kategoriID;
+        KategoriAdi = kategoriAdi;
         SayfaSayisi = sayfaSayisi;
         ISBN = isbn;
+        RafNumarasi = rafNumarasi;
+        Aciklama = aciklama;
     }
 }
+

@@ -19,7 +19,7 @@ namespace DataAccessLayer
                 try
                 {
                     conn.Open();
-                    string query = "SELECT YayineviAdi FROM Yayinevleri"; // Yayınevi tablosundaki adları çek
+                    string query = "SELECT YayineviAdi FROM Yayinevi"; // Yayınevi tablosundaki adları çek
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -76,7 +76,7 @@ namespace DataAccessLayer
                 try
                 {
                     conn.Open();
-                    string query = "SELECT KategoriAdi FROM Kategoriler"; // Kategori tablosundan adları getir
+                    string query = "SELECT KategoriAdi FROM KategoriRaflar"; // Kategori tablosundan adları getir
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -103,11 +103,11 @@ namespace DataAccessLayer
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT YazarAdi FROM Yazarlar WHERE ID = @YazarID";
+                    string query = "SELECT YazarAdi FROM Yazarlar WHERE ID = @Id";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@YazarID", yazarID);
+                        cmd.Parameters.AddWithValue("@Id", yazarID);
                         conn.Open();
                         object result = cmd.ExecuteScalar();
                         if (result != null)
@@ -132,21 +132,31 @@ namespace DataAccessLayer
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = @"INSERT INTO Kitaplar (KitapAdi, YazarID, YayineviID, KitapTuruID, KategoriID, SayfaSayisi, ISBN) 
-                             VALUES (@KitapAdi, @YazarID, @YayineviID, @KitapTuruID, @KategoriID, @SayfaSayisi, @ISBN)";
+                    string query = @"
+                INSERT INTO Kitaplar (KitapAdi, YazarID, YazarAdi, YayineviID, YayineviAdi, KitapTuruID, TurAdi, 
+                                      KategoriID, KategoriAdi, SayfaSayisi, ISBN, RafNumarasi, Aciklama)
+                VALUES (@KitapAdi, @YazarID, @YazarAdi, @YayineviID, @YayineviAdi, @KitapTuruID, @TurAdi, 
+                        @KategoriID, @KategoriAdi, @SayfaSayisi, @ISBN, @RafNumarasi, @Aciklama)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        // Parametreleri ekliyoruz
                         command.Parameters.AddWithValue("@KitapAdi", yeniKitap.KitapAdi);
                         command.Parameters.AddWithValue("@YazarID", yeniKitap.YazarID);
+                        command.Parameters.AddWithValue("@YazarAdi", yeniKitap.YazarAdi);  // Yeni parametre
                         command.Parameters.AddWithValue("@YayineviID", yeniKitap.YayineviID);
+                        command.Parameters.AddWithValue("@YayineviAdi", yeniKitap.YayineviAdi);  // Yeni parametre
                         command.Parameters.AddWithValue("@KitapTuruID", yeniKitap.KitapTuruID);
+                        command.Parameters.AddWithValue("@TurAdi", yeniKitap.TurAdi);  // Yeni parametre
                         command.Parameters.AddWithValue("@KategoriID", yeniKitap.KategoriID);
+                        command.Parameters.AddWithValue("@KategoriAdi", yeniKitap.KategoriAdi);  // Yeni parametre
                         command.Parameters.AddWithValue("@SayfaSayisi", yeniKitap.SayfaSayisi);
                         command.Parameters.AddWithValue("@ISBN", yeniKitap.ISBN);
+                        command.Parameters.AddWithValue("@RafNumarasi", yeniKitap.RafNumarasi);
+                        command.Parameters.AddWithValue("@Aciklama", yeniKitap.Aciklama);
 
                         connection.Open();
-                        return command.ExecuteNonQuery() > 0;  // Returns true if row is inserted, otherwise false
+                        return command.ExecuteNonQuery() > 0;  // Insert işlemi başarılıysa true döner
                     }
                 }
             }
@@ -163,25 +173,43 @@ namespace DataAccessLayer
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = @"UPDATE Kitaplar 
-                                     SET KitapAdi = @KitapAdi, YazarID = @YazarID, YayineviID = @YayineviID, 
-                                         KitapTuruID = @KitapTuruID, KategoriID = @KategoriID, SayfaSayisi = @SayfaSayisi, 
-                                         ISBN = @ISBN
-                                     WHERE ID = @KitapID";
+                    string query = @"
+                UPDATE Kitaplar 
+                SET KitapAdi = @KitapAdi, 
+                    YazarID = @YazarID, 
+                    YazarAdi = @YazarAdi,  -- Yeni alan
+                    YayineviID = @YayineviID, 
+                    YayineviAdi = @YayineviAdi,  -- Yeni alan
+                    KitapTuruID = @KitapTuruID, 
+                    TurAdi = @TurAdi,  -- Yeni alan
+                    KategoriID = @KategoriID, 
+                    KategoriAdi = @KategoriAdi,  -- Yeni alan
+                    SayfaSayisi = @SayfaSayisi, 
+                    ISBN = @ISBN, 
+                    RafNumarasi = @RafNumarasi, 
+                    Aciklama = @Aciklama
+                WHERE ID = @KitapID";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        // Parametreleri ekliyoruz
                         command.Parameters.AddWithValue("@KitapAdi", kitap.KitapAdi);
                         command.Parameters.AddWithValue("@YazarID", kitap.YazarID);
+                        command.Parameters.AddWithValue("@YazarAdi", kitap.YazarAdi);  // Yeni parametre
                         command.Parameters.AddWithValue("@YayineviID", kitap.YayineviID);
+                        command.Parameters.AddWithValue("@YayineviAdi", kitap.YayineviAdi);  // Yeni parametre
                         command.Parameters.AddWithValue("@KitapTuruID", kitap.KitapTuruID);
+                        command.Parameters.AddWithValue("@TurAdi", kitap.TurAdi);  // Yeni parametre
                         command.Parameters.AddWithValue("@KategoriID", kitap.KategoriID);
+                        command.Parameters.AddWithValue("@KategoriAdi", kitap.KategoriAdi);  // Yeni parametre
                         command.Parameters.AddWithValue("@SayfaSayisi", kitap.SayfaSayisi);
                         command.Parameters.AddWithValue("@ISBN", kitap.ISBN);
-                        command.Parameters.AddWithValue("@ID", kitap.ID);
+                        command.Parameters.AddWithValue("@RafNumarasi", kitap.RafNumarasi);
+                        command.Parameters.AddWithValue("@Aciklama", kitap.Aciklama);
+                        command.Parameters.AddWithValue("@KitapID", kitap.ID);
 
                         connection.Open();
-                        return command.ExecuteNonQuery() > 0;
+                        return command.ExecuteNonQuery() > 0;  // Güncelleme başarılıysa true döner
                     }
                 }
             }
@@ -220,17 +248,25 @@ namespace DataAccessLayer
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = @"SELECT 
-                              k.ID, k.KitapAdi, k.YazarID,
-                              y.YazarAdi, k.YayineviID, yv.YayineviAdi, 
-                              k.KitapTuruID, t.KitapTuruAdi, 
-                              k.KategoriID, kr.KategoriAdi, 
-                              k.SayfaSayisi, k.ISBN
-                            FROM Kitaplar k
-                            LEFT JOIN Yazarlar y ON k.YazarID = y.ID
-                            LEFT JOIN Yayinevi yv ON k.YayineviID = yv.ID
-                            LEFT JOIN Turler t ON k.KitapTuruID = t.ID
-                            LEFT JOIN KategoriRaflar kr ON k.KategoriID = kr.ID";
+                    string query = @"SELECT
+                                   k.ID, k.KitapAdi, 
+                                   y.ID AS YazarID,  -- YazarID'yi seçiyoruz
+                                   y.AdiSoyadi AS YazarAdi, 
+                                   yv.ID AS YayineviID,  -- YayineviID'yi seçiyoruz
+                                   yv.YayineviAdi AS YayineviAdi, 
+                                   t.ID AS KitapTuruID,  -- KitapTuruID'yi seçiyoruz
+                                   t.TurAdi AS KitapTuru, 
+                                   kr.ID AS KategoriID,  -- KategoriID'yi seçiyoruz
+                                   kr.KategoriAdi AS KategoriAdi, 
+                                   k.SayfaSayisi, 
+                                   k.ISBN, 
+                                   k.RafNumarasi, 
+                                   k.Aciklama
+                                   FROM Kitaplar k
+                                   LEFT JOIN Yazarlar y ON k.YazarID = y.ID
+                                   LEFT JOIN Yayinevi yv ON k.YayineviID = yv.ID
+                                   LEFT JOIN Turler t ON k.KitapTuruID = t.ID
+                                   LEFT JOIN KategoriRaflar kr ON k.KategoriID = kr.ID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -239,15 +275,21 @@ namespace DataAccessLayer
                         {
                             while (reader.Read())
                             {
-                                // Yazar adı ve diğer detayları almak ve kullanmak
                                 kitapListesi.Add(new Kitap(
+                                    Convert.ToInt32(reader["ID"]),
                                     reader["KitapAdi"].ToString(),
                                     Convert.ToInt32(reader["YazarID"]),
+                                    reader["YazarAdi"].ToString(),  // Yeni eklendi
                                     Convert.ToInt32(reader["YayineviID"]),
+                                    reader["YayineviAdi"].ToString(),  // Yeni eklendi
                                     Convert.ToInt32(reader["KitapTuruID"]),
+                                    reader["KitapTuru"].ToString(),  // Yeni eklendi
                                     Convert.ToInt32(reader["KategoriID"]),
+                                    reader["KategoriAdi"].ToString(),  // Yeni eklendi
                                     reader["SayfaSayisi"].ToString(),
-                                    reader["ISBN"].ToString()
+                                    reader["ISBN"].ToString(),
+                                    reader["RafNumarasi"].ToString(),
+                                    reader["Aciklama"].ToString()
                                 ));
                             }
                         }
@@ -272,34 +314,40 @@ namespace DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     string query = @"SELECT 
-                                k.ID, k.KitapAdi, k.YazarID, y.YazarAdi,
-                                k.YayineviID, yv.YayineviAdi, 
-                                k.KitapTuruID, t.KitapTuruAdi, 
-                                k.KategoriID, kr.KategoriAdi, 
-                                k.SayfaSayisi, k.ISBN
-                            FROM Kitaplar k
-                            LEFT JOIN Yazarlar y ON k.YazarID = y.ID
-                            LEFT JOIN Yayinevi yv ON k.YayineviID = yv.ID
-                            LEFT JOIN Turler t ON k.KitapTuruID = t.ID
-                            LEFT JOIN KategoriRaflar kr ON k.KategoriID = kr.ID
-                            WHERE k.ID = @KitapID";
+                        k.ID, k.KitapAdi, k.YazarID, y.AdiSoyadi AS YazarAdi,
+                        k.YayineviID, yv.YayineviAdi, 
+                        k.KitapTuruID, t.TurAdi, 
+                        k.KategoriID, kr.KategoriAdi, 
+                        k.SayfaSayisi, k.ISBN, k.RafNumarasi, k.Aciklama
+                    FROM Kitaplar k
+                    LEFT JOIN Yazarlar y ON k.YazarID = y.ID
+                    LEFT JOIN Yayinevi yv ON k.YayineviID = yv.ID
+                    LEFT JOIN Turler t ON k.KitapTuruID = t.ID
+                    LEFT JOIN KategoriRaflar kr ON k.KategoriID = kr.ID
+                    WHERE k.ID = @KitapID";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@ID", kitapID);
+                        command.Parameters.AddWithValue("@KitapID", kitapID); // Hata düzeltildi
                         connection.Open();
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
                             {
                                 kitap = new Kitap(
-                                    reader["KitapAdi"].ToString(),              // Kitap Adı
-                                    Convert.ToInt32(reader["YazarID"]),         // Yazar ID
-                                    Convert.ToInt32(reader["YayineviID"]),      // Yayinevi ID
-                                    Convert.ToInt32(reader["KitapTuruID"]),     // Kitap Turu ID
-                                    Convert.ToInt32(reader["KategoriID"]),      // Kategori ID
-                                    reader["SayfaSayisi"].ToString(),          // Sayfa Sayisi (string olarak alınıyor)
-                                    reader["ISBN"].ToString()                   // ISBN
+                                    reader["KitapAdi"].ToString(),
+                                    Convert.ToInt32(reader["YazarID"]),
+                                    reader["YazarAdi"].ToString(),  // Yeni eklenen yazar adı
+                                    Convert.ToInt32(reader["YayineviID"]),
+                                    reader["YayineviAdi"].ToString(), // Yeni eklenen yayınevi adı
+                                    Convert.ToInt32(reader["KitapTuruID"]),
+                                    reader["TurAdi"].ToString(),  // Yeni eklenen tür adı
+                                    Convert.ToInt32(reader["KategoriID"]),
+                                    reader["KategoriAdi"].ToString(),  // Yeni eklenen kategori adı
+                                    reader["SayfaSayisi"].ToString(),
+                                    reader["ISBN"].ToString(),
+                                    reader["RafNumarasi"].ToString(),
+                                    reader["Aciklama"].ToString()
                                 );
                             }
                         }
