@@ -33,7 +33,6 @@
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btn_Guncelle = new System.Windows.Forms.Button();
             this.btn_Sil = new System.Windows.Forms.Button();
             this.btn_Kaydet = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,20 +47,19 @@
             this.dt_VerilmesiGerekenTarih = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.txt_RezervasyonUye = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.btn_IadeTemizle = new System.Windows.Forms.Button();
+            this.btn_IadeKaydet = new System.Windows.Forms.Button();
+            this.dgv_OduncIade = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.dt_GeriVerilenTarih = new System.Windows.Forms.DateTimePicker();
+            this.btn_Temizle = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OduncListesi)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_OduncIade)).BeginInit();
             this.SuspendLayout();
             // 
             // ımageList1
@@ -80,10 +78,11 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1096, 681);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.btn_Guncelle);
+            this.tabPage1.Controls.Add(this.btn_Temizle);
             this.tabPage1.Controls.Add(this.btn_Sil);
             this.tabPage1.Controls.Add(this.btn_Kaydet);
             this.tabPage1.Controls.Add(this.label4);
@@ -104,16 +103,8 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Ödünç Verme";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // btn_Guncelle
-            // 
-            this.btn_Guncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Guncelle.Location = new System.Drawing.Point(660, 248);
-            this.btn_Guncelle.Name = "btn_Guncelle";
-            this.btn_Guncelle.Size = new System.Drawing.Size(118, 39);
-            this.btn_Guncelle.TabIndex = 76;
-            this.btn_Guncelle.Text = "TEMİZLE";
-            this.btn_Guncelle.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            this.tabPage1.Enter += new System.EventHandler(this.tabPage1_Enter);
             // 
             // btn_Sil
             // 
@@ -124,6 +115,7 @@
             this.btn_Sil.TabIndex = 75;
             this.btn_Sil.Text = "SİL";
             this.btn_Sil.UseVisualStyleBackColor = true;
+            this.btn_Sil.Click += new System.EventHandler(this.btn_Sil_Click);
             // 
             // btn_Kaydet
             // 
@@ -233,15 +225,13 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.button4);
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.btn_IadeTemizle);
+            this.tabPage2.Controls.Add(this.btn_IadeKaydet);
+            this.tabPage2.Controls.Add(this.dgv_OduncIade);
             this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.dateTimePicker1);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.txt_RezervasyonUye);
+            this.tabPage2.Controls.Add(this.dt_GeriVerilenTarih);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -249,87 +239,82 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ödünç İade";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Enter += new System.EventHandler(this.tabPage2_Enter);
             // 
-            // txt_RezervasyonUye
+            // btn_IadeTemizle
             // 
-            this.txt_RezervasyonUye.Location = new System.Drawing.Point(450, 63);
-            this.txt_RezervasyonUye.Name = "txt_RezervasyonUye";
-            this.txt_RezervasyonUye.Size = new System.Drawing.Size(159, 20);
-            this.txt_RezervasyonUye.TabIndex = 53;
+            this.btn_IadeTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_IadeTemizle.Location = new System.Drawing.Point(641, 258);
+            this.btn_IadeTemizle.Name = "btn_IadeTemizle";
+            this.btn_IadeTemizle.Size = new System.Drawing.Size(118, 39);
+            this.btn_IadeTemizle.TabIndex = 79;
+            this.btn_IadeTemizle.Text = "TEMİZLE";
+            this.btn_IadeTemizle.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btn_IadeKaydet
             // 
-            this.button1.ImageKey = "mercek.png";
-            this.button1.ImageList = this.ımageList1;
-            this.button1.Location = new System.Drawing.Point(615, 61);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 23);
-            this.button1.TabIndex = 54;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_IadeKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_IadeKaydet.Location = new System.Drawing.Point(335, 258);
+            this.btn_IadeKaydet.Name = "btn_IadeKaydet";
+            this.btn_IadeKaydet.Size = new System.Drawing.Size(118, 39);
+            this.btn_IadeKaydet.TabIndex = 77;
+            this.btn_IadeKaydet.Text = "KAYDET";
+            this.btn_IadeKaydet.UseVisualStyleBackColor = true;
+            this.btn_IadeKaydet.Click += new System.EventHandler(this.button4_Click);
             // 
-            // label5
+            // dgv_OduncIade
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(383, 71);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 13);
-            this.label5.TabIndex = 55;
-            this.label5.Text = "Ödünç :";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(450, 118);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(226, 20);
-            this.dateTimePicker1.TabIndex = 73;
+            this.dgv_OduncIade.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_OduncIade.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgv_OduncIade.Location = new System.Drawing.Point(3, 345);
+            this.dgv_OduncIade.Name = "dgv_OduncIade";
+            this.dgv_OduncIade.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_OduncIade.Size = new System.Drawing.Size(1082, 307);
+            this.dgv_OduncIade.TabIndex = 76;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(340, 124);
+            this.label6.Location = new System.Drawing.Point(359, 35);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 13);
             this.label6.TabIndex = 75;
             this.label6.Text = "Geri Verilen Tarih :";
             // 
-            // dataGridView1
+            // dt_GeriVerilenTarih
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 345);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1082, 307);
-            this.dataGridView1.TabIndex = 76;
+            this.dt_GeriVerilenTarih.Location = new System.Drawing.Point(469, 29);
+            this.dt_GeriVerilenTarih.Name = "dt_GeriVerilenTarih";
+            this.dt_GeriVerilenTarih.Size = new System.Drawing.Size(226, 20);
+            this.dt_GeriVerilenTarih.TabIndex = 73;
             // 
-            // button2
+            // btn_Temizle
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.Location = new System.Drawing.Point(660, 222);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(118, 39);
-            this.button2.TabIndex = 79;
-            this.button2.Text = "TEMİZLE";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Temizle.Location = new System.Drawing.Point(662, 248);
+            this.btn_Temizle.Name = "btn_Temizle";
+            this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
+            this.btn_Temizle.TabIndex = 76;
+            this.btn_Temizle.Text = "TEMİZLE";
+            this.btn_Temizle.UseVisualStyleBackColor = true;
+            this.btn_Temizle.Click += new System.EventHandler(this.btn_Temizle_Click);
             // 
-            // button3
+            // textBox1
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.Location = new System.Drawing.Point(487, 222);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(118, 39);
-            this.button3.TabIndex = 78;
-            this.button3.Text = "SİL";
-            this.button3.UseVisualStyleBackColor = true;
+            this.textBox1.Location = new System.Drawing.Point(469, 96);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(226, 123);
+            this.textBox1.TabIndex = 80;
             // 
-            // button4
+            // label7
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button4.Location = new System.Drawing.Point(310, 222);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(118, 39);
-            this.button4.TabIndex = 77;
-            this.button4.Text = "KAYDET";
-            this.button4.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(359, 99);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.TabIndex = 81;
+            this.label7.Text = "Not .";
             // 
             // OduncForm
             // 
@@ -345,7 +330,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OduncListesi)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_OduncIade)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -354,7 +339,6 @@
         private System.Windows.Forms.ImageList ımageList1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button btn_Guncelle;
         private System.Windows.Forms.Button btn_Sil;
         private System.Windows.Forms.Button btn_Kaydet;
         private System.Windows.Forms.Label label4;
@@ -369,14 +353,13 @@
         private System.Windows.Forms.DateTimePicker dt_VerilmesiGerekenTarih;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox txt_RezervasyonUye;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DateTimePicker dt_GeriVerilenTarih;
+        private System.Windows.Forms.DataGridView dgv_OduncIade;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_IadeTemizle;
+        private System.Windows.Forms.Button btn_IadeKaydet;
+        private System.Windows.Forms.Button btn_Temizle;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

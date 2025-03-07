@@ -22,38 +22,37 @@ namespace Kütuphane_Otomasyon_Sistemi
             InitializeComponent();
             this.connectionString = connString;
         }
-        public void UyeListesiniYukle()
+
+        private void UyeAraPopupForm_Load(object sender, EventArgs e)
         {
-            string query = "SELECT ID, Ad, Soyad FROM Uyeler"; // SQL sorgusu
+            string query = "SELECT ID, Ad + ' ' + Soyad AS UyeAdiSoyadi FROM Uyeler"; // Ad ve Soyad'ı SQL içinde birleştirdik
             DataTable dt = new DataTable();
 
             try
             {
-                using (SqlConnection con = new SqlConnection(connectionString)) // Veritabanı bağlantısı
+                using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    con.Open(); // Bağlantıyı aç
+                    con.Open();
 
-                    using (SqlCommand cmd = new SqlCommand(query, con)) // SQL komutu
+                    using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        using (SqlDataReader reader = cmd.ExecuteReader()) // Veritabanından veri oku
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            dt.Load(reader); // Veriyi DataTable'a yükle
+                            dt.Load(reader);
                         }
                     }
                 }
 
-                // Adi ve Soyadi'yi birleştirerek UyeAdiSoyadi kolonu ekleyelim
-                dt.Columns.Add("UyeAdiSoyadi", typeof(string), "Ad + ' ' + Soyad");
-
-                // DataGridView'e veri yükleme
+                // DataGridView'e sadece UyeAdiSoyadi kolonunu göster
                 dgv_KisilerListesi.DataSource = dt;
+                dgv_KisilerListesi.Columns["ID"].Visible = false; // ID kolonunu gizle
             }
             catch (Exception ex)
             {
-                // Hata oluştuğunda kullanıcıya mesaj göster
                 MessageBox.Show("Veriler yüklenirken hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btn_KisiAra_Click(object sender, EventArgs e)
         {
@@ -65,20 +64,50 @@ namespace Kütuphane_Otomasyon_Sistemi
                 // Seçilen üyenin adı ve soyadını al
                 SecilenUyeAdiSoyadi = dgv_KisilerListesi.SelectedRows[0].Cells["UyeAdiSoyadi"].Value.ToString();
 
+                // Eğer bir textbox varsa, oraya da yazalım
+                if (this.Owner != null)
+                {
+                    TextBox txtSecilenUye = this.Owner.Controls.Find("txtSecilenUye", true).FirstOrDefault() as TextBox;
+                    if (txtSecilenUye != null)
+                    {
+                        txtSecilenUye.Text = SecilenUyeAdiSoyadi;
+                    }
+                }
+
                 // Seçim tamamlandı, dialog'u OK olarak ayarla
                 this.DialogResult = DialogResult.OK;
-                this.Close(); // Popup'ı kapat
+                this.Close();
             }
             else
             {
-                // Hiçbir üye seçilmediyse kullanıcıyı uyar
                 MessageBox.Show("Lütfen bir üye seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void UyeAraPopupForm_Load(object sender, EventArgs e)
+        private void dgv_KisilerListesi_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgv_KisilerListesi.Rows[e.RowIndex];
 
+                // Seçilen üyenin ID ve Adı Soyadı bilgilerini al
+                SecilenUyeID = Convert.ToInt32(row.Cells["ID"].Value);
+                SecilenUyeAdiSoyadi = row.Cells["UyeAdiSoyadi"].Value.ToString();
+
+                // **Textbox'a Değer Gönder**
+                if (this.Owner != null)
+                {
+                    TextBox txtSecilenUye = this.Owner.Controls.Find("txt_AlacakKisi", true).FirstOrDefault() as TextBox;
+                    if (txtSecilenUye != null)
+                    {
+                        txtSecilenUye.Text = SecilenUyeAdiSoyadi;
+                    }
+                }
+
+                // Dialog Sonlandır
+                DialogResult = DialogResult.OK;
+                Close();
+            }
         }
     }
 }
