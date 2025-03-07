@@ -33,6 +33,7 @@
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btn_Temizle = new System.Windows.Forms.Button();
             this.btn_Sil = new System.Windows.Forms.Button();
             this.btn_Kaydet = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,14 +48,13 @@
             this.dt_VerilmesiGerekenTarih = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_IadeNotu = new System.Windows.Forms.TextBox();
             this.btn_IadeTemizle = new System.Windows.Forms.Button();
             this.btn_IadeKaydet = new System.Windows.Forms.Button();
             this.dgv_OduncIade = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.dt_GeriVerilenTarih = new System.Windows.Forms.DateTimePicker();
-            this.btn_Temizle = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OduncListesi)).BeginInit();
@@ -105,6 +105,17 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             this.tabPage1.Enter += new System.EventHandler(this.tabPage1_Enter);
+            // 
+            // btn_Temizle
+            // 
+            this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Temizle.Location = new System.Drawing.Point(662, 248);
+            this.btn_Temizle.Name = "btn_Temizle";
+            this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
+            this.btn_Temizle.TabIndex = 76;
+            this.btn_Temizle.Text = "TEMİZLE";
+            this.btn_Temizle.UseVisualStyleBackColor = true;
+            this.btn_Temizle.Click += new System.EventHandler(this.btn_Temizle_Click);
             // 
             // btn_Sil
             // 
@@ -226,7 +237,7 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.txt_IadeNotu);
             this.tabPage2.Controls.Add(this.btn_IadeTemizle);
             this.tabPage2.Controls.Add(this.btn_IadeKaydet);
             this.tabPage2.Controls.Add(this.dgv_OduncIade);
@@ -241,6 +252,23 @@
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             this.tabPage2.Enter += new System.EventHandler(this.tabPage2_Enter);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(359, 99);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.TabIndex = 81;
+            this.label7.Text = "Not .";
+            // 
+            // txt_IadeNotu
+            // 
+            this.txt_IadeNotu.Location = new System.Drawing.Point(469, 96);
+            this.txt_IadeNotu.Multiline = true;
+            this.txt_IadeNotu.Name = "txt_IadeNotu";
+            this.txt_IadeNotu.Size = new System.Drawing.Size(226, 123);
+            this.txt_IadeNotu.TabIndex = 80;
             // 
             // btn_IadeTemizle
             // 
@@ -265,6 +293,7 @@
             // 
             // dgv_OduncIade
             // 
+            this.dgv_OduncIade.AllowUserToAddRows = false;
             this.dgv_OduncIade.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_OduncIade.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_OduncIade.Location = new System.Drawing.Point(3, 345);
@@ -289,34 +318,6 @@
             this.dt_GeriVerilenTarih.Name = "dt_GeriVerilenTarih";
             this.dt_GeriVerilenTarih.Size = new System.Drawing.Size(226, 20);
             this.dt_GeriVerilenTarih.TabIndex = 73;
-            // 
-            // btn_Temizle
-            // 
-            this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Temizle.Location = new System.Drawing.Point(662, 248);
-            this.btn_Temizle.Name = "btn_Temizle";
-            this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
-            this.btn_Temizle.TabIndex = 76;
-            this.btn_Temizle.Text = "TEMİZLE";
-            this.btn_Temizle.UseVisualStyleBackColor = true;
-            this.btn_Temizle.Click += new System.EventHandler(this.btn_Temizle_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(469, 96);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(226, 123);
-            this.textBox1.TabIndex = 80;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(359, 99);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 13);
-            this.label7.TabIndex = 81;
-            this.label7.Text = "Not .";
             // 
             // OduncForm
             // 
@@ -362,6 +363,6 @@
         private System.Windows.Forms.Button btn_IadeKaydet;
         private System.Windows.Forms.Button btn_Temizle;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_IadeNotu;
     }
 }

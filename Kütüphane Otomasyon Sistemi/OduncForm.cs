@@ -192,31 +192,23 @@ namespace Kutuphane_Otomasyon_Sistemi
         private void LoadOduncIadeTablo()
         {
             string query = @"
-SELECT 
-    o.ID,
-    o.UyeID, 
-    u.Ad + ' ' + u.Soyad AS UyeAdiSoyadi, 
-    o.KitapID, 
-    k.KitapAdi, 
-    o.OduncVerilenTarih, 
-    o.GeriVerilmesiGerekenTarih,
-    o.IadeEdilenTarih,      -- İade edilen tarihi ekliyoruz
-    o.IadeNotu AS IadeNotu,  -- İade ile ilgili notu ekliyoruz      -- Odunc tablosundaki ID sütununu OduncID olarak alıyoruz
-    u.ID AS UyeID,           -- Uyeler tablosundaki ID'yi alıyoruz
-    k.ID AS KitapID,         -- Kitaplar tablosundaki ID'yi alıyoruz
-    -- Ceza hesaplama: Eğer iade tarihi, geri verilmesi gereken tarihten geçiyorsa, 30 gün sonrasına kadar her gün için 10 TL ceza
-    CASE 
-        WHEN o.IadeEdilenTarih > o.GeriVerilmesiGerekenTarih 
-        THEN DATEDIFF(DAY, o.GeriVerilmesiGerekenTarih, o.IadeEdilenTarih) * 10
-        ELSE 0
-    END AS CezaTutari
-FROM Odunc o
-INNER JOIN Uyeler u ON o.UyeID = u.ID    -- Üye bilgileri
-INNER JOIN Kitaplar k ON o.KitapID = k.ID  -- Kitap bilgileri
-
-";
+    SELECT 
+        o.ID,
+        o.UyeID, 
+        u.Ad + ' ' + u.Soyad AS UyeAdiSoyadi, 
+        o.KitapID, 
+        k.KitapAdi, 
+        o.OduncVerilenTarih, 
+        o.GeriVerilmesiGerekenTarih,
+        o.IadeEdilenTarih,  
+        o.IadeNotu,
+        o.CezaTutari  -- Bu alan zaten veritabanında var, biz burada ceza hesaplamayacağız
+    FROM Odunc o
+    INNER JOIN Uyeler u ON o.UyeID = u.ID
+    INNER JOIN Kitaplar k ON o.KitapID = k.ID";
 
             DataTable dt = new DataTable();
+
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -231,7 +223,13 @@ INNER JOIN Kitaplar k ON o.KitapID = k.ID  -- Kitap bilgileri
                     }
                 }
 
+                // DataGridView'e veri yükle
                 dgv_OduncIade.DataSource = dt;
+
+                // CezaTutari'ni sadece görünümde formatlayalım (Örneğin sağa hizalamak)
+                dgv_OduncIade.Columns["CezaTutari"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                // Diğer sütunların görünürlüğünü ayarla
                 dgv_OduncIade.Columns["UyeID"].Visible = false;
                 dgv_OduncIade.Columns["KitapID"].Visible = false;
             }
@@ -244,9 +242,28 @@ INNER JOIN Kitaplar k ON o.KitapID = k.ID  -- Kitap bilgileri
         {
             LoadOduncIadeTablo();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void FormatCezaTutariColumn(DataGridView dgv)
         {
+            // CezaTutari sütununu kontrol et
+            if (dgv.Columns.Contains("CezaTutari"))
+            {
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+                    // Eğer CezaTutari null ya da boş değilse
+                    if (row.Cells["CezaTutari"].Value != DBNull.Value)
+                    {
+                        int cezaTutari = Convert.ToInt32(row.Cells["CezaTutari"].Value);
+
+                        // CezaTutari'ni formatla (örneğin: TL olarak göstermek)
+                        row.Cells["CezaTutari"].Value = cezaTutari.ToString("C2");  // "C2" formatı ile TL cinsinden iki ondalıklı gösterim
+                    }
+                }
+
+                // CezaTutari sütununu sağa hizala
+                dgv.Columns["CezaTutari"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
         }
+
         private DateTime GetOduncVerilenTarih(int oduncID)
         {
             DateTime verilenTarih = DateTime.Now;
@@ -274,49 +291,80 @@ INNER JOIN Kitaplar k ON o.KitapID = k.ID  -- Kitap bilgileri
         {
             try
             {
-                // Seçili satır var mı kontrol et
                 if (dgv_OduncIade.SelectedRows.Count == 0)
                 {
                     MessageBox.Show("Lütfen iade etmek için bir ödünç kaydını seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return; // Seçim yapılmadıysa işlemi durdur
+                    return;
                 }
 
-                // Seçilen satırdaki OduncID değerini alıyoruz
-                var secilenSatir = dgv_OduncListesi.SelectedRows[0];  // Seçilen satırı alıyoruz
-                int secilenOduncID = Convert.ToInt32(secilenSatir.Cells["ID"].Value);  // "OduncID" hücresini kullanıyoruz
+                var secilenSatir = dgv_OduncIade.SelectedRows[0];
 
-                DateTime iadeEdilenTarih = dt_GeriVerilenTarih.Value;  // İade edilen tarihi alıyoruz
-                DateTime oduncVerilenTarih = GetOduncVerilenTarih(secilenOduncID);  // Seçili ödünç kaydına ait ödünç verilen tarihi alıyoruz
-
-                // Ceza hesaplama
-                double cezaTutarı = 0;
-                if ((iadeEdilenTarih - oduncVerilenTarih).Days > 30)  // 30 günden fazla gecikme varsa ceza hesaplanacak
+                if (secilenSatir.Cells["ID"].Value == DBNull.Value ||
+                    secilenSatir.Cells["UyeID"].Value == DBNull.Value ||
+                    secilenSatir.Cells["KitapID"].Value == DBNull.Value)
                 {
-                    int gecenGun = (iadeEdilenTarih - oduncVerilenTarih).Days;
-                    cezaTutarı = gecenGun * 10; // Her geç kalan gün için 10 TL ceza
+                    MessageBox.Show("Geçersiz kayıt! Lütfen başka bir kayıt seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
 
-                // Ödünç kaydının iade tarihini ve ceza tutarını güncelleme
+                int secilenOduncID = Convert.ToInt32(secilenSatir.Cells["ID"].Value);
+                string iadeNotu = txt_IadeNotu.Text.Trim(); // **İade Notunu Al**
+                DateTime iadeEdilenTarih = dt_GeriVerilenTarih.Value;
+
+                // **Ödünç Verilen Tarihi Doğru Çek**
+                DateTime oduncVerilenTarih;
+                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand("SELECT OduncVerilenTarih FROM Odunc WHERE ID = @ID", con))
+                {
+                    cmd.Parameters.AddWithValue("@ID", secilenOduncID);
+                    con.Open();
+                    object result = cmd.ExecuteScalar();
+                    if (result == null || result == DBNull.Value)
+                    {
+                        MessageBox.Show("Ödünç verilen tarih bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    oduncVerilenTarih = Convert.ToDateTime(result);
+                }
+
+                // **Ceza Hesaplama (Günlük 10₺, 30 Günü Geçerse)**
+                double cezaTutarı = 0;
+                int gecenGun = (iadeEdilenTarih - oduncVerilenTarih).Days;
+
+                if (gecenGun > 30)
+                {
+                    int gecikmeGun = gecenGun - 30;
+                    cezaTutarı = gecikmeGun * 10;
+                }
+
+                // **Veritabanı Güncelleme Sorgusu**
                 string updateQuery = @"
-            UPDATE Odunc
-            SET IadeEdilenTarih = @IadeEdilenTarih, CezaTutar = @CezaTutar
-            WHERE ID = @ID";
+        UPDATE Odunc
+        SET IadeEdilenTarih = @IadeEdilenTarih, CezaTutari = @CezaTutari, IadeNotu = @IadeNotu
+        WHERE ID = @ID";
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 using (SqlCommand cmd = new SqlCommand(updateQuery, con))
                 {
                     cmd.Parameters.AddWithValue("@IadeEdilenTarih", iadeEdilenTarih);
-                    cmd.Parameters.AddWithValue("@CezaTutar", cezaTutarı);
+                    cmd.Parameters.AddWithValue("@CezaTutari", cezaTutarı);
+                    cmd.Parameters.AddWithValue("@IadeNotu", string.IsNullOrEmpty(iadeNotu) ? (object)DBNull.Value : iadeNotu);
                     cmd.Parameters.AddWithValue("@ID", secilenOduncID);
 
                     con.Open();
                     cmd.ExecuteNonQuery();
                 }
 
-                MessageBox.Show("İade işlemi başarılı! Ceza: " + cezaTutarı.ToString("C2"), "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // **Doğru Bilgiyle Kullanıcıya Mesaj Göster**
+                MessageBox.Show($"İade işlemi başarılı!\nGeciken Gün: {gecenGun - 30}\nCeza Tutarı: {cezaTutarı:C2}", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Veriyi güncelle
-                ListeyiYenile();  // Tabloyu yenileyin
+                // **TABLOYU YENİLE**
+                LoadOduncIadeTablo();
+
+                // **SEÇİLİ SATIRI TEMİZLE**
+                dgv_OduncIade.ClearSelection();
+                txt_IadeNotu.Clear();
+                dt_GeriVerilenTarih.Value = DateTime.Now;
             }
             catch (Exception ex)
             {
