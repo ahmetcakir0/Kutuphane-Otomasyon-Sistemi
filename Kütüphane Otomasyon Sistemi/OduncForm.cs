@@ -193,6 +193,7 @@ namespace Kutuphane_Otomasyon_Sistemi
         {
             string query = @"
 SELECT 
+    o.ID,
     o.UyeID, 
     u.Ad + ' ' + u.Soyad AS UyeAdiSoyadi, 
     o.KitapID, 
@@ -200,7 +201,9 @@ SELECT
     o.OduncVerilenTarih, 
     o.GeriVerilmesiGerekenTarih,
     o.IadeEdilenTarih,      -- İade edilen tarihi ekliyoruz
-    o.IadeNotu AS IadeNotu,  -- İade ile ilgili notu ekliyoruz
+    o.IadeNotu AS IadeNotu,  -- İade ile ilgili notu ekliyoruz      -- Odunc tablosundaki ID sütununu OduncID olarak alıyoruz
+    u.ID AS UyeID,           -- Uyeler tablosundaki ID'yi alıyoruz
+    k.ID AS KitapID,         -- Kitaplar tablosundaki ID'yi alıyoruz
     -- Ceza hesaplama: Eğer iade tarihi, geri verilmesi gereken tarihten geçiyorsa, 30 gün sonrasına kadar her gün için 10 TL ceza
     CASE 
         WHEN o.IadeEdilenTarih > o.GeriVerilmesiGerekenTarih 
@@ -210,6 +213,7 @@ SELECT
 FROM Odunc o
 INNER JOIN Uyeler u ON o.UyeID = u.ID    -- Üye bilgileri
 INNER JOIN Kitaplar k ON o.KitapID = k.ID  -- Kitap bilgileri
+
 ";
 
             DataTable dt = new DataTable();
@@ -249,12 +253,12 @@ INNER JOIN Kitaplar k ON o.KitapID = k.ID  -- Kitap bilgileri
 
             string query = @"SELECT OduncVerilenTarih 
                      FROM Odunc 
-                     WHERE OduncID = @OduncID";
+                     WHERE ID = @ID";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand(query, con))
             {
-                cmd.Parameters.AddWithValue("@OduncID", oduncID);
+                cmd.Parameters.AddWithValue("@ID", oduncID);
 
                 con.Open();
                 var result = cmd.ExecuteScalar();
@@ -268,77 +272,78 @@ INNER JOIN Kitaplar k ON o.KitapID = k.ID  -- Kitap bilgileri
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            if (dgv_OduncListesi.SelectedRows.Count > 0)
+            try
             {
-                // Seçilen satırdan ID'yi alıyoruz
-                int secilenOduncID = Convert.ToInt32(dgv_OduncListesi.SelectedRows[0].Cells["OduncID"].Value); // veya uygun sütun ismi
-
-                // İade işlemi için gerekli sorguları ve işlemleri burada yapıyoruz
-                try
+                // Seçili satır var mı kontrol et
+                if (dgv_OduncIade.SelectedRows.Count == 0)
                 {
-                    DateTime iadeEdilenTarih = dt_GeriVerilenTarih.Value;  // İade edilen tarihi alıyoruz
-                    DateTime oduncVerilenTarih = GetOduncVerilenTarih(secilenOduncID);  // Odunc verilen tarihi alıyoruz
-
-                    // İlk olarak, bu ödünç kaydının zaten iade edilip edilmediğini kontrol edelim
-                    string checkQuery = @"
-                SELECT COUNT(*) 
-                FROM OduncIade 
-                WHERE OduncID = @OduncID";
-
-                    using (SqlConnection con = new SqlConnection(connectionString))
-                    using (SqlCommand cmdCheck = new SqlCommand(checkQuery, con))
-                    {
-                        cmdCheck.Parameters.AddWithValue("@OduncID", secilenOduncID);
-                        con.Open();
-                        int existingCount = (int)cmdCheck.ExecuteScalar();
-
-                        if (existingCount > 0)
-                        {
-                            MessageBox.Show("Bu ödünç kaydı zaten iade edilmiştir.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                    }
-
-                    // Ceza hesaplama
-                    double cezaTutarı = 0;
-                    if ((iadeEdilenTarih - oduncVerilenTarih).Days > 30)
-                    {
-                        int gecenGun = (iadeEdilenTarih - oduncVerilenTarih).Days;
-                        cezaTutarı = gecenGun * 10;
-                    }
-
-                    // İade kaydını ekle
-                    string insertQuery = @"
-                INSERT INTO OduncIade (OduncID, UyeID, KitapID, IadeEdilenTarih, CezaTutar)
-                VALUES (@OduncID, @UyeID, @KitapID, @IadeEdilenTarih, @CezaTutar)";
-
-                    using (SqlConnection con = new SqlConnection(connectionString))
-                    using (SqlCommand cmdInsert = new SqlCommand(insertQuery, con))
-                    {
-                        cmdInsert.Parameters.AddWithValue("@OduncID", secilenOduncID);
-                        cmdInsert.Parameters.AddWithValue("@UyeID", SecilenUyeID); // SecilenUyeID'nin önceden doğru şekilde atanması gerektiğini unutma
-                        cmdInsert.Parameters.AddWithValue("@KitapID", SecilenKitapID); // SecilenKitapID de aynı şekilde atanmalı
-                        cmdInsert.Parameters.AddWithValue("@IadeEdilenTarih", iadeEdilenTarih);
-                        cmdInsert.Parameters.AddWithValue("@CezaTutar", cezaTutarı);
-
-                        con.Open();
-                        cmdInsert.ExecuteNonQuery();
-                    }
-
-                    MessageBox.Show("İade işlemi başarılı! Ceza: " + cezaTutarı.ToString("C2"), "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Veriyi güncelle
-                    LoadOduncIadeTablo();  // Yeni iade sonrası tabloyu güncelle
+                    MessageBox.Show("Lütfen iade etmek için bir ödünç kaydını seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Seçim yapılmadıysa işlemi durdur
                 }
-                catch (Exception ex)
+
+                // Seçilen satırdaki OduncID değerini alıyoruz
+                var secilenSatir = dgv_OduncListesi.SelectedRows[0];  // Seçilen satırı alıyoruz
+                int secilenOduncID = Convert.ToInt32(secilenSatir.Cells["ID"].Value);  // "OduncID" hücresini kullanıyoruz
+
+                DateTime iadeEdilenTarih = dt_GeriVerilenTarih.Value;  // İade edilen tarihi alıyoruz
+                DateTime oduncVerilenTarih = GetOduncVerilenTarih(secilenOduncID);  // Seçili ödünç kaydına ait ödünç verilen tarihi alıyoruz
+
+                // Ceza hesaplama
+                double cezaTutarı = 0;
+                if ((iadeEdilenTarih - oduncVerilenTarih).Days > 30)  // 30 günden fazla gecikme varsa ceza hesaplanacak
                 {
-                    MessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    int gecenGun = (iadeEdilenTarih - oduncVerilenTarih).Days;
+                    cezaTutarı = gecenGun * 10; // Her geç kalan gün için 10 TL ceza
                 }
+
+                // Ödünç kaydının iade tarihini ve ceza tutarını güncelleme
+                string updateQuery = @"
+            UPDATE Odunc
+            SET IadeEdilenTarih = @IadeEdilenTarih, CezaTutar = @CezaTutar
+            WHERE ID = @ID";
+
+                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(updateQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@IadeEdilenTarih", iadeEdilenTarih);
+                    cmd.Parameters.AddWithValue("@CezaTutar", cezaTutarı);
+                    cmd.Parameters.AddWithValue("@ID", secilenOduncID);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("İade işlemi başarılı! Ceza: " + cezaTutarı.ToString("C2"), "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Veriyi güncelle
+                ListeyiYenile();  // Tabloyu yenileyin
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgv_OduncIade_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv_OduncIade.SelectedRows.Count > 0)
+            {
+                // Seçilen satırdaki bilgileri al
+                var secilenSatir = dgv_OduncIade.SelectedRows[0];
+                int secilenOduncID = Convert.ToInt32(secilenSatir.Cells["ID"].Value);  // "OduncID" hücresini kullanıyoruz
+
+                // Burada işlemlerinizi gerçekleştirebilirsiniz.
             }
             else
             {
-                MessageBox.Show("Lütfen bir ödünç kaydı seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // Eğer hiç satır seçilmediyse, işlem yapma
+                MessageBox.Show("Lütfen bir kayıt seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

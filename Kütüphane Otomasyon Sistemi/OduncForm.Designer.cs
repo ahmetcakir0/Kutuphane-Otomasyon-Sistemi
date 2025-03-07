@@ -239,6 +239,7 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ödünç İade";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             this.tabPage2.Enter += new System.EventHandler(this.tabPage2_Enter);
             // 
             // btn_IadeTemizle
@@ -271,6 +272,7 @@
             this.dgv_OduncIade.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_OduncIade.Size = new System.Drawing.Size(1082, 307);
             this.dgv_OduncIade.TabIndex = 76;
+            this.dgv_OduncIade.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_OduncIade_CellContentClick);
             // 
             // label6
             // 
