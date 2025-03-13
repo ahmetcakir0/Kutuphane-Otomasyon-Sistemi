@@ -38,7 +38,7 @@
             this.btn_KitapAra = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Sil = new System.Windows.Forms.Button();
-            this.btn = new System.Windows.Forms.Button();
+            this.btn_Kaydet = new System.Windows.Forms.Button();
             this.dgv_Rezervasyon = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Rezervasyon)).BeginInit();
             this.SuspendLayout();
@@ -113,15 +113,16 @@
             this.btn_Sil.Text = "SİL";
             this.btn_Sil.UseVisualStyleBackColor = true;
             // 
-            // btn
+            // btn_Kaydet
             // 
-            this.btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn.Location = new System.Drawing.Point(264, 123);
-            this.btn.Name = "btn";
-            this.btn.Size = new System.Drawing.Size(118, 39);
-            this.btn.TabIndex = 56;
-            this.btn.Text = "KAYDET";
-            this.btn.UseVisualStyleBackColor = true;
+            this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Kaydet.Location = new System.Drawing.Point(264, 123);
+            this.btn_Kaydet.Name = "btn_Kaydet";
+            this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
+            this.btn_Kaydet.TabIndex = 56;
+            this.btn_Kaydet.Text = "KAYDET";
+            this.btn_Kaydet.UseVisualStyleBackColor = true;
+            this.btn_Kaydet.Click += new System.EventHandler(this.btn_Kaydet_Click_1);
             // 
             // dgv_Rezervasyon
             // 
@@ -141,7 +142,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgv_Rezervasyon);
             this.Controls.Add(this.btn_Sil);
-            this.Controls.Add(this.btn);
+            this.Controls.Add(this.btn_Kaydet);
             this.Controls.Add(this.txt_RezervasyonKitap);
             this.Controls.Add(this.btn_KitapAra);
             this.Controls.Add(this.label1);
@@ -150,6 +151,7 @@
             this.Controls.Add(this.label2);
             this.Name = "RezervasyonForm";
             this.Text = "Rezervasyon";
+            this.Load += new System.EventHandler(this.RezervasyonForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Rezervasyon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -165,7 +167,7 @@
         private System.Windows.Forms.Button btn_KitapAra;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_Sil;
-        private System.Windows.Forms.Button btn;
+        private System.Windows.Forms.Button btn_Kaydet;
         private System.Windows.Forms.DataGridView dgv_Rezervasyon;
         private System.Windows.Forms.ImageList ımageList1;
     }

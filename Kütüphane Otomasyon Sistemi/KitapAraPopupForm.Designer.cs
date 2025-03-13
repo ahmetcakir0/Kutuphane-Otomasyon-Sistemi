@@ -59,6 +59,7 @@
             this.btn_KisiAra.Size = new System.Drawing.Size(44, 23);
             this.btn_KisiAra.TabIndex = 4;
             this.btn_KisiAra.UseVisualStyleBackColor = true;
+            this.btn_KisiAra.Click += new System.EventHandler(this.btn_KisiAra_Click);
             // 
             // ımageList1
             // 

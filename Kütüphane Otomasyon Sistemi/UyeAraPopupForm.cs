@@ -25,27 +25,25 @@ namespace Kütuphane_Otomasyon_Sistemi
 
         private void UyeAraPopupForm_Load(object sender, EventArgs e)
         {
-            string query = "SELECT ID, Ad + ' ' + Soyad AS UyeAdiSoyadi FROM Uyeler"; // Ad ve Soyad'ı SQL içinde birleştirdik
-            DataTable dt = new DataTable();
+            LoadUyeler();
+        }
 
+        private void LoadUyeler()
+        {
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    con.Open();
-
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            dt.Load(reader);
-                        }
-                    }
+                    string query = "SELECT ID, Ad + ' ' + Soyad AS UyeAdiSoyadi FROM Uyeler";
+                    SqlDataAdapter da = new SqlDataAdapter(query, con);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dgv_KisilerListesi.DataSource = dt;
                 }
 
-                // DataGridView'e sadece UyeAdiSoyadi kolonunu göster
-                dgv_KisilerListesi.DataSource = dt;
-                dgv_KisilerListesi.Columns["ID"].Visible = false; // ID kolonunu gizle
+                // ID kolonunu gizle
+                if (dgv_KisilerListesi.Columns["ID"] != null)
+                    dgv_KisilerListesi.Columns["ID"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -53,60 +51,51 @@ namespace Kütuphane_Otomasyon_Sistemi
             }
         }
 
-
         private void btn_KisiAra_Click(object sender, EventArgs e)
         {
-            if (dgv_KisilerListesi.SelectedRows.Count > 0)
-            {
-                // Seçilen üyenin ID'sini al
-                SecilenUyeID = Convert.ToInt32(dgv_KisilerListesi.SelectedRows[0].Cells["ID"].Value);
-
-                // Seçilen üyenin adı ve soyadını al
-                SecilenUyeAdiSoyadi = dgv_KisilerListesi.SelectedRows[0].Cells["UyeAdiSoyadi"].Value.ToString();
-
-                // Eğer bir textbox varsa, oraya da yazalım
-                if (this.Owner != null)
-                {
-                    TextBox txtSecilenUye = this.Owner.Controls.Find("txtSecilenUye", true).FirstOrDefault() as TextBox;
-                    if (txtSecilenUye != null)
-                    {
-                        txtSecilenUye.Text = SecilenUyeAdiSoyadi;
-                    }
-                }
-
-                // Seçim tamamlandı, dialog'u OK olarak ayarla
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Lütfen bir üye seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            UyeSec();
         }
 
         private void dgv_KisilerListesi_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dgv_KisilerListesi.Rows[e.RowIndex];
+                SecilenUyeID = Convert.ToInt32(dgv_KisilerListesi.Rows[e.RowIndex].Cells["ID"].Value);
+                SecilenUyeAdiSoyadi = dgv_KisilerListesi.Rows[e.RowIndex].Cells["UyeAdiSoyadi"].Value.ToString();
+                                      
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
 
-                // Seçilen üyenin ID ve Adı Soyadı bilgilerini al
-                SecilenUyeID = Convert.ToInt32(row.Cells["ID"].Value);
-                SecilenUyeAdiSoyadi = row.Cells["UyeAdiSoyadi"].Value.ToString();
+        private void dgv_KisilerListesi_DoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                UyeSec();
+            }
+        }
+        private void UyeSec()
+        {
+            if (dgv_KisilerListesi.SelectedRows.Count > 0)
+            {
+                DataGridViewRow secilenSatir = dgv_KisilerListesi.SelectedRows[0]; // İlk seçili satırı al
 
-                // **Textbox'a Değer Gönder**
-                if (this.Owner != null)
+                SecilenUyeID = Convert.ToInt32(secilenSatir.Cells["ID"].Value);
+                SecilenUyeAdiSoyadi = secilenSatir.Cells["UyeAdiSoyadi"].Value?.ToString(); // UyeAdiSoyadi sütununu al
+
+                if (string.IsNullOrEmpty(SecilenUyeAdiSoyadi))
                 {
-                    TextBox txtSecilenUye = this.Owner.Controls.Find("txt_AlacakKisi", true).FirstOrDefault() as TextBox;
-                    if (txtSecilenUye != null)
-                    {
-                        txtSecilenUye.Text = SecilenUyeAdiSoyadi;
-                    }
+                    MessageBox.Show("Seçilen üye bilgileri eksik.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
 
-                // Dialog Sonlandır
-                DialogResult = DialogResult.OK;
-                Close();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Lütfen bir üye seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
