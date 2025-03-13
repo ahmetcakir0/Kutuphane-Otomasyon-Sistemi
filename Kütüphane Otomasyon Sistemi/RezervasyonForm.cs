@@ -46,13 +46,17 @@ namespace Kutuphane_Otomasyon_Sistemi
         private void LoadReservations()
         {
             string query = "SELECT " +
+                           "R.ID AS RezervasyonID, " + // Rezervasyon ID'si eklendi
                            "U.ID AS UyeID, " +
                            "U.Ad + ' ' + U.Soyad AS UyeAdiSoyadi, " +
                            "K.ID AS KitapID, " +
-                           "K.KitapAdi " +
+                           "K.KitapAdi, " +
+                           "R.RezervasyonTarihi, " +
+                           "R.Aciklama " +
                            "FROM Uyeler U " +
                            "JOIN Rezervasyon R ON U.ID = R.UyeID " +
-                           "JOIN Kitaplar K ON R.KitapID = K.ID;";
+                           "JOIN Kitaplar K ON R.KitapID = K.ID " +
+                           "ORDER BY R.ID DESC;"; // Rezervasyon ID'sine göre ters sıralama
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -78,8 +82,12 @@ namespace Kutuphane_Otomasyon_Sistemi
                 return;
             }
 
-            string query = "INSERT INTO Rezervasyon (UyeID, KitapID) " +
-                           "VALUES (@UyeID, @KitapID)";
+            // Rezervasyon tarihini ve açıklamayı al
+            DateTime rezervasyonTarihi = DateTime.Now; // Şu anki tarih ve saat
+            string aciklama = txt_Aciklama.Text; // Açıklama metin kutusundan alınır
+
+            string query = "INSERT INTO Rezervasyon (UyeID, KitapID, RezervasyonTarihi, Aciklama) " +
+                           "VALUES (@UyeID, @KitapID, @RezervasyonTarihi, @Aciklama)";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -87,6 +95,8 @@ namespace Kutuphane_Otomasyon_Sistemi
                 {
                     command.Parameters.AddWithValue("@UyeID", SecilenUyeID);
                     command.Parameters.AddWithValue("@KitapID", SecilenKitapID);
+                    command.Parameters.AddWithValue("@RezervasyonTarihi", rezervasyonTarihi);
+                    command.Parameters.AddWithValue("@Aciklama", aciklama);
 
                     try
                     {

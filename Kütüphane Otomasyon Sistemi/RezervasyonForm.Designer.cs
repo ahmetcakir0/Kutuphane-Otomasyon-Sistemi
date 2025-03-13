@@ -40,12 +40,17 @@
             this.btn_Sil = new System.Windows.Forms.Button();
             this.btn_Kaydet = new System.Windows.Forms.Button();
             this.dgv_Rezervasyon = new System.Windows.Forms.DataGridView();
+            this.txt_Aciklama = new System.Windows.Forms.TextBox();
+            this.btn_Temizle = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtp_RezervasyonTarihi = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Rezervasyon)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_RezervasyonUye
             // 
-            this.txt_RezervasyonUye.Location = new System.Drawing.Point(156, 51);
+            this.txt_RezervasyonUye.Location = new System.Drawing.Point(156, 21);
             this.txt_RezervasyonUye.Name = "txt_RezervasyonUye";
             this.txt_RezervasyonUye.Size = new System.Drawing.Size(159, 20);
             this.txt_RezervasyonUye.TabIndex = 52;
@@ -54,7 +59,7 @@
             // 
             this.btn_UyeAra.ImageKey = "mercek.png";
             this.btn_UyeAra.ImageList = this.ımageList1;
-            this.btn_UyeAra.Location = new System.Drawing.Point(321, 49);
+            this.btn_UyeAra.Location = new System.Drawing.Point(321, 19);
             this.btn_UyeAra.Name = "btn_UyeAra";
             this.btn_UyeAra.Size = new System.Drawing.Size(61, 23);
             this.btn_UyeAra.TabIndex = 51;
@@ -70,7 +75,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(113, 54);
+            this.label2.Location = new System.Drawing.Point(118, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 50;
@@ -78,7 +83,7 @@
             // 
             // txt_RezervasyonKitap
             // 
-            this.txt_RezervasyonKitap.Location = new System.Drawing.Point(476, 52);
+            this.txt_RezervasyonKitap.Location = new System.Drawing.Point(156, 68);
             this.txt_RezervasyonKitap.Name = "txt_RezervasyonKitap";
             this.txt_RezervasyonKitap.Size = new System.Drawing.Size(159, 20);
             this.txt_RezervasyonKitap.TabIndex = 55;
@@ -87,7 +92,7 @@
             // 
             this.btn_KitapAra.ImageKey = "mercek.png";
             this.btn_KitapAra.ImageList = this.ımageList1;
-            this.btn_KitapAra.Location = new System.Drawing.Point(641, 48);
+            this.btn_KitapAra.Location = new System.Drawing.Point(321, 64);
             this.btn_KitapAra.Name = "btn_KitapAra";
             this.btn_KitapAra.Size = new System.Drawing.Size(61, 23);
             this.btn_KitapAra.TabIndex = 54;
@@ -97,7 +102,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(433, 58);
+            this.label1.Location = new System.Drawing.Point(113, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 53;
@@ -106,7 +111,7 @@
             // btn_Sil
             // 
             this.btn_Sil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Sil.Location = new System.Drawing.Point(476, 123);
+            this.btn_Sil.Location = new System.Drawing.Point(197, 284);
             this.btn_Sil.Name = "btn_Sil";
             this.btn_Sil.Size = new System.Drawing.Size(118, 39);
             this.btn_Sil.TabIndex = 57;
@@ -116,7 +121,7 @@
             // btn_Kaydet
             // 
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(264, 123);
+            this.btn_Kaydet.Location = new System.Drawing.Point(32, 284);
             this.btn_Kaydet.Name = "btn_Kaydet";
             this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_Kaydet.TabIndex = 56;
@@ -128,18 +133,66 @@
             // 
             this.dgv_Rezervasyon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Rezervasyon.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgv_Rezervasyon.Location = new System.Drawing.Point(0, 204);
+            this.dgv_Rezervasyon.Location = new System.Drawing.Point(0, 343);
             this.dgv_Rezervasyon.Name = "dgv_Rezervasyon";
             this.dgv_Rezervasyon.ReadOnly = true;
             this.dgv_Rezervasyon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgv_Rezervasyon.Size = new System.Drawing.Size(800, 246);
+            this.dgv_Rezervasyon.Size = new System.Drawing.Size(513, 246);
             this.dgv_Rezervasyon.TabIndex = 59;
+            // 
+            // txt_Aciklama
+            // 
+            this.txt_Aciklama.Location = new System.Drawing.Point(156, 163);
+            this.txt_Aciklama.Multiline = true;
+            this.txt_Aciklama.Name = "txt_Aciklama";
+            this.txt_Aciklama.Size = new System.Drawing.Size(226, 79);
+            this.txt_Aciklama.TabIndex = 60;
+            // 
+            // btn_Temizle
+            // 
+            this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Temizle.Location = new System.Drawing.Point(365, 284);
+            this.btn_Temizle.Name = "btn_Temizle";
+            this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
+            this.btn_Temizle.TabIndex = 61;
+            this.btn_Temizle.Text = "TEMİZLE";
+            this.btn_Temizle.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(94, 166);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 13);
+            this.label3.TabIndex = 62;
+            this.label3.Text = "Aciklama :";
+            // 
+            // dtp_RezervasyonTarihi
+            // 
+            this.dtp_RezervasyonTarihi.Location = new System.Drawing.Point(156, 116);
+            this.dtp_RezervasyonTarihi.Name = "dtp_RezervasyonTarihi";
+            this.dtp_RezervasyonTarihi.Size = new System.Drawing.Size(226, 20);
+            this.dtp_RezervasyonTarihi.TabIndex = 63;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(46, 116);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 13);
+            this.label4.TabIndex = 64;
+            this.label4.Text = "Rezervasyon Tarihi :";
             // 
             // RezervasyonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(513, 589);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.dtp_RezervasyonTarihi);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btn_Temizle);
+            this.Controls.Add(this.txt_Aciklama);
             this.Controls.Add(this.dgv_Rezervasyon);
             this.Controls.Add(this.btn_Sil);
             this.Controls.Add(this.btn_Kaydet);
@@ -170,5 +223,10 @@
         private System.Windows.Forms.Button btn_Kaydet;
         private System.Windows.Forms.DataGridView dgv_Rezervasyon;
         private System.Windows.Forms.ImageList ımageList1;
+        private System.Windows.Forms.TextBox txt_Aciklama;
+        private System.Windows.Forms.Button btn_Temizle;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dtp_RezervasyonTarihi;
+        private System.Windows.Forms.Label label4;
     }
 }

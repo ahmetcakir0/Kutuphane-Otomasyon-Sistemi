@@ -38,41 +38,46 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btn_Iptal = new System.Windows.Forms.Button();
             this.btn_Kaydet = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txt_YeniSifreTekrar = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txt_KullaniciAdi
             // 
-            this.txt_KullaniciAdi.Location = new System.Drawing.Point(162, 32);
+            this.txt_KullaniciAdi.Location = new System.Drawing.Point(165, 18);
             this.txt_KullaniciAdi.Name = "txt_KullaniciAdi";
             this.txt_KullaniciAdi.Size = new System.Drawing.Size(159, 20);
             this.txt_KullaniciAdi.TabIndex = 53;
+            this.txt_KullaniciAdi.TextChanged += new System.EventHandler(this.txt_KullaniciAdi_TextChanged);
             // 
             // txt_Sifre
             // 
-            this.txt_Sifre.Location = new System.Drawing.Point(162, 80);
+            this.txt_Sifre.Location = new System.Drawing.Point(165, 56);
             this.txt_Sifre.Name = "txt_Sifre";
             this.txt_Sifre.Size = new System.Drawing.Size(159, 20);
             this.txt_Sifre.TabIndex = 54;
+            this.txt_Sifre.TextChanged += new System.EventHandler(this.txt_Sifre_TextChanged);
             // 
             // txt_YeniSifre
             // 
-            this.txt_YeniSifre.Location = new System.Drawing.Point(162, 132);
+            this.txt_YeniSifre.Location = new System.Drawing.Point(165, 95);
             this.txt_YeniSifre.Name = "txt_YeniSifre";
             this.txt_YeniSifre.Size = new System.Drawing.Size(159, 20);
             this.txt_YeniSifre.TabIndex = 55;
             // 
             // txt_OduncSuresi
             // 
-            this.txt_OduncSuresi.Location = new System.Drawing.Point(162, 187);
+            this.txt_OduncSuresi.Location = new System.Drawing.Point(165, 176);
             this.txt_OduncSuresi.Name = "txt_OduncSuresi";
             this.txt_OduncSuresi.Size = new System.Drawing.Size(159, 20);
             this.txt_OduncSuresi.TabIndex = 56;
             // 
             // txt_CezaUcreti
             // 
-            this.txt_CezaUcreti.Location = new System.Drawing.Point(162, 239);
+            this.txt_CezaUcreti.Location = new System.Drawing.Point(165, 218);
             this.txt_CezaUcreti.Name = "txt_CezaUcreti";
             this.txt_CezaUcreti.Size = new System.Drawing.Size(159, 20);
             this.txt_CezaUcreti.TabIndex = 57;
@@ -80,7 +85,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 39);
+            this.label1.Location = new System.Drawing.Point(43, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 13);
             this.label1.TabIndex = 59;
@@ -89,7 +94,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 87);
+            this.label2.Location = new System.Drawing.Point(43, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 13);
             this.label2.TabIndex = 60;
@@ -98,7 +103,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 139);
+            this.label3.Location = new System.Drawing.Point(43, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 13);
             this.label3.TabIndex = 61;
@@ -107,7 +112,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(40, 194);
+            this.label4.Location = new System.Drawing.Point(43, 183);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(103, 13);
             this.label4.TabIndex = 62;
@@ -116,38 +121,68 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(40, 246);
+            this.label5.Location = new System.Drawing.Point(43, 225);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(102, 13);
             this.label5.TabIndex = 63;
             this.label5.Text = "Günlük ceza ücreti :";
             // 
-            // btn_Iptal
-            // 
-            this.btn_Iptal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Iptal.Location = new System.Drawing.Point(212, 300);
-            this.btn_Iptal.Name = "btn_Iptal";
-            this.btn_Iptal.Size = new System.Drawing.Size(118, 39);
-            this.btn_Iptal.TabIndex = 65;
-            this.btn_Iptal.Text = "İPTAL";
-            this.btn_Iptal.UseVisualStyleBackColor = true;
-            // 
             // btn_Kaydet
             // 
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(35, 300);
+            this.btn_Kaydet.Location = new System.Drawing.Point(25, 300);
             this.btn_Kaydet.Name = "btn_Kaydet";
-            this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
+            this.btn_Kaydet.Size = new System.Drawing.Size(96, 30);
             this.btn_Kaydet.TabIndex = 64;
             this.btn_Kaydet.Text = "KAYDET";
             this.btn_Kaydet.UseVisualStyleBackColor = true;
+            this.btn_Kaydet.Click += new System.EventHandler(this.btn_Kaydet_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(43, 142);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 13);
+            this.label6.TabIndex = 67;
+            this.label6.Text = "Yeni şifrenizi giriniz :";
+            // 
+            // txt_YeniSifreTekrar
+            // 
+            this.txt_YeniSifreTekrar.Location = new System.Drawing.Point(165, 135);
+            this.txt_YeniSifreTekrar.Name = "txt_YeniSifreTekrar";
+            this.txt_YeniSifreTekrar.Size = new System.Drawing.Size(159, 20);
+            this.txt_YeniSifreTekrar.TabIndex = 66;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.Location = new System.Drawing.Point(143, 300);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 30);
+            this.button1.TabIndex = 68;
+            this.button1.Text = "SİL";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button2.Location = new System.Drawing.Point(262, 300);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(96, 30);
+            this.button2.TabIndex = 69;
+            this.button2.Text = "TEMİZLE";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Ayarlar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(385, 387);
-            this.Controls.Add(this.btn_Iptal);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txt_YeniSifreTekrar);
             this.Controls.Add(this.btn_Kaydet);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -180,7 +215,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btn_Iptal;
         private System.Windows.Forms.Button btn_Kaydet;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txt_YeniSifreTekrar;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

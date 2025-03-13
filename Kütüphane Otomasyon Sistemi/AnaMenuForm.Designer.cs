@@ -160,7 +160,7 @@
             // 
             // btn_OduncVerme
             // 
-            this.btn_OduncVerme.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_OduncVerme.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_OduncVerme.BackColor = System.Drawing.Color.Transparent;
             this.btn_OduncVerme.ImageKey = "boy-with-glasses-lends-a-book-to-his-friend-vector.jpg";
             this.btn_OduncVerme.ImageList = this.ımageList1;
@@ -237,7 +237,7 @@
             // lbl_Hosgeldiniz
             // 
             this.lbl_Hosgeldiniz.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_Hosgeldiniz.Location = new System.Drawing.Point(484, 41);
+            this.lbl_Hosgeldiniz.Location = new System.Drawing.Point(516, 42);
             this.lbl_Hosgeldiniz.Name = "lbl_Hosgeldiniz";
             this.lbl_Hosgeldiniz.Size = new System.Drawing.Size(486, 30);
             this.lbl_Hosgeldiniz.TabIndex = 12;
