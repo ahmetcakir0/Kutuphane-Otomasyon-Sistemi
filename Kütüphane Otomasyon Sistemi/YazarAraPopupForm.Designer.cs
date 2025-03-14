@@ -46,8 +46,10 @@
             this.dgv_YazarListesi.Location = new System.Drawing.Point(0, 50);
             this.dgv_YazarListesi.Name = "dgv_YazarListesi";
             this.dgv_YazarListesi.ReadOnly = true;
+            this.dgv_YazarListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_YazarListesi.Size = new System.Drawing.Size(267, 397);
             this.dgv_YazarListesi.TabIndex = 8;
+            this.dgv_YazarListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_YazarListesi_CellContentClick);
             // 
             // btn_YazarAra
             // 
@@ -58,7 +60,6 @@
             this.btn_YazarAra.Size = new System.Drawing.Size(44, 23);
             this.btn_YazarAra.TabIndex = 7;
             this.btn_YazarAra.UseVisualStyleBackColor = true;
-            this.btn_YazarAra.Click += new System.EventHandler(this.btn_YazarAra_Click);
             // 
             // ımageList1
             // 

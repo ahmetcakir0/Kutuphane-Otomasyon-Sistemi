@@ -14,6 +14,7 @@ namespace Kütüphane_Otomasyon_Sistemi
     public partial class YazarAraPopupForm : Form
     {
         public string SecilenYazar { get; private set; }
+        public int SecilenYazarId { get; private set; }
         public YazarAraPopupForm()
         {
             InitializeComponent();
@@ -43,19 +44,19 @@ namespace Kütüphane_Otomasyon_Sistemi
             }
         }
 
-        private void btn_YazarAra_Click(object sender, EventArgs e)
+        private void dgv_YazarListesi_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgv_YazarListesi.SelectedRows.Count > 0)
             {
-                // Seçili satırın AdSoyad kolonunu al
                 SecilenYazar = dgv_YazarListesi.SelectedRows[0].Cells["AdiSoyadi"].Value.ToString();
+                SecilenYazarId = Convert.ToInt32(dgv_YazarListesi.SelectedRows[0].Cells["ID"].Value);
 
+                // Ana forma bu bilgileri aktarmak için DialogResult OK yapıyoruz.
                 this.DialogResult = DialogResult.OK;
-                this.Close();
             }
             else
             {
-                MessageBox.Show("Lütfen bir üye seçin.");
+                MessageBox.Show("Lütfen bir yazar seçin.");
             }
         }
     }

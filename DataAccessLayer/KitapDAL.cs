@@ -19,7 +19,7 @@ namespace DataAccessLayer
                 try
                 {
                     conn.Open();
-                    string query = "SELECT YayineviAdi FROM Yayinevi"; // Yayınevi tablosundaki adları çek
+                    string query = "SELECT * FROM Yayinevi"; // Yayınevi tablosundaki adları çek
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -48,7 +48,7 @@ namespace DataAccessLayer
                 try
                 {
                     conn.Open();
-                    string query = "SELECT TurAdi FROM Turler"; // Tür tablosundan adları getir
+                    string query = "SELECT * FROM Turler"; // Tür tablosundan adları getir
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -76,7 +76,7 @@ namespace DataAccessLayer
                 try
                 {
                     conn.Open();
-                    string query = "SELECT KategoriAdi FROM KategoriRaflar"; // Kategori tablosundan adları getir
+                    string query = "SELECT * FROM KategoriRaflar"; // Kategori tablosundan adları getir
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     using (SqlDataReader reader = cmd.ExecuteReader())

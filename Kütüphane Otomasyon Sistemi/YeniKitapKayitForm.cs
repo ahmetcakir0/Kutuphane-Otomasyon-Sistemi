@@ -26,25 +26,49 @@ namespace Kütüphane_Otomasyon_Sistemi
         private void btn_KitapAra_Click(object sender, EventArgs e)
         {
             YazarAraPopupForm yazarAraPopupForm = new YazarAraPopupForm();
-            yazarAraPopupForm.Show();
+
+            // Popup formunu modal olarak açıyoruz
+            if (yazarAraPopupForm.ShowDialog() == DialogResult.OK)
+            {
+                // Seçilen yazarı popup formundan alıp ana formdaki txt_Yazar'a atıyoruz
+                txt_Yazar.Text = yazarAraPopupForm.SecilenYazar;
+
+                // Seçilen yazar ID'sini Tag özelliğine atıyoruz
+                txt_Yazar.Tag = yazarAraPopupForm.SecilenYazarId;
+
+                // Yazar ID'sini ve Yazar adını kontrol etmek için MessageBox gösteriyoruz
+                MessageBox.Show("Seçilen Yazar: " + txt_Yazar.Text + "\nYazar ID'si: " + txt_Yazar.Tag.ToString(),
+                                "Yazar Bilgisi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
+
 
         private void btn_Kaydet_Click(object sender, EventArgs e)
         {
             try
             {
+                // Yazar ID'sini txt_Yazar.Tag'den alıyoruz
+                if (txt_Yazar.Tag == null || txt_Yazar.Tag.ToString() == "")
+                {
+                    MessageBox.Show("Yazar ID'si seçilmedi!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int yazarId = Convert.ToInt32(txt_Yazar.Tag);
+
                 // Kullanıcıdan alınan verileri doğrudan entity katmanındaki modele atıyoruz
                 Kitap yeniKitap = new Kitap(
-                    txt_KitapAdi.Text?.Trim(), // Kitap adı
-                    Convert.ToInt32(txt_Yazar.Text?.Trim()), // Yazar ID'si
-                    txt_Yazar.Text?.Trim(),  // Yazar adı (Yeni eklenen alan)
-                    Convert.ToInt32(cb_Yayinevi.SelectedValue), // Yayinevi ID'si
-                    cb_Yayinevi.SelectedItem.ToString().Trim(),  // Yayinevi adı (Yeni eklenen alan)
-                    Convert.ToInt32(cb_Tur.SelectedValue), // Kitap Türü ID'si
-                    cb_Tur.SelectedItem.ToString().Trim(),  // Kitap türü adı (Yeni eklenen alan)
-                    Convert.ToInt32(cb_Kategori.SelectedValue), // Kategori ID'si
-                    cb_Kategori.SelectedItem.ToString().Trim(),  // Kategori adı (Yeni eklenen alan)
-                    txt_SayfaSayisi.Text?.Trim(),  // Sayfa sayısı (string olarak alıyoruz)
+                    txt_KitapAdi.Text?.Trim(),  // Kitap adı
+                    yazarId,                    // Yazar ID'si
+                    txt_Yazar.Text?.Trim(),     // Yazar adı
+                    Convert.ToInt32(cb_Yayinevi.SelectedItem),  // Yayinevi ID'si
+                    cb_Yayinevi.SelectedValue.ToString().Trim(),  // Yayinevi adı
+                    Convert.ToInt32(cb_Tur.SelectedItem),  // Kitap Türü ID'si
+                    cb_Tur.SelectedValue.ToString().Trim(),   // Kitap türü adı
+                    Convert.ToInt32(cb_Kategori.SelectedItem), // Kategori ID'si
+                    cb_Kategori.SelectedValue.ToString().Trim(), // Kategori adı
+                    txt_SayfaSayisi.Text?.Trim(),  // Sayfa sayısı
                     txt_ISBN.Text?.Trim(), // ISBN
                     txt_RafNumarasi.Text?.Trim(),
                     txt_Aciklama.Text?.Trim()  // Açıklama
@@ -84,6 +108,10 @@ namespace Kütüphane_Otomasyon_Sistemi
                 MessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
+
 
         private void YeniKitapKayitForm_Load(object sender, EventArgs e)
         {
@@ -128,14 +156,21 @@ namespace Kütüphane_Otomasyon_Sistemi
                 var kitapTurleri = kitapBL.GetAllTurAdlari(); // Retrieve list from your business layer
 
                 // Populate ComboBox with these values
-                cb_Yayinevi.DataSource = yayinevleri;
+
                 cb_Yayinevi.DisplayMember = "YayineviAdi";  // Assuming the entity has this property
+                cb_Yayinevi.ValueMember = "ID";
+                cb_Yayinevi.DataSource = yayinevleri;
 
-                cb_Kategori.DataSource = kategoriler;
+
+
                 cb_Kategori.DisplayMember = "KategoriAdi";  // Assuming the entity has this property
+                cb_Kategori.ValueMember = "ID";
+                cb_Kategori.DataSource = kategoriler;
 
-                cb_Tur.DataSource = kitapTurleri;
+
                 cb_Tur.DisplayMember = "KitapTuruAdi";  // Assuming the entity has this property
+                cb_Tur.ValueMember = "ID";
+                cb_Tur.DataSource = kitapTurleri;
             }
             catch (Exception ex)
             {

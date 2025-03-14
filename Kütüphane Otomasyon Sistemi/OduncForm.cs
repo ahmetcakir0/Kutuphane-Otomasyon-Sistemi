@@ -11,13 +11,55 @@ namespace Kutuphane_Otomasyon_Sistemi
         private string connectionString = "server=MBB-01-BIL065-N\\SQLEXPRESS; Initial Catalog=KutuphaneDB; Integrated Security=SSPI";
         private int SecilenKitapID;
         private int SecilenUyeID;
+        private int oduncSuresi;
+        private decimal cezaTutari;
 
         public OduncForm()
         {
             InitializeComponent();
+            try
+            {
+                AyarlariYukle();
+                ListeyiYenile();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Form yüklenirken hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // Üye Arama Butonu
+        private void AyarlariYukle()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    string query = "SELECT OduncSuresi, CezaUcreti FROM Ayarlar";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            oduncSuresi = reader.IsDBNull(0) ? 15 : reader.GetInt32(0);
+                            cezaTutari = reader.IsDBNull(1) ? 5 : reader.GetDecimal(1);
+                        }
+                        else
+                        {
+                            oduncSuresi = 15;
+                            cezaTutari = 5;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                oduncSuresi = 15;
+                cezaTutari = 5;
+                MessageBox.Show("Ayarlar okunurken hata oluştu: " + ex.Message);
+            }
+        }
+
         private void btn_UyeAra_Click(object sender, EventArgs e)
         {
             using (UyeAraPopupForm uyeAraPopupForm = new UyeAraPopupForm(connectionString))
@@ -30,7 +72,6 @@ namespace Kutuphane_Otomasyon_Sistemi
             }
         }
 
-        // Kitap Arama Butonu
         private void btn_KitapAra_Click(object sender, EventArgs e)
         {
             using (KitapAraPopupForm kitapAraPopupForm = new KitapAraPopupForm(connectionString))
@@ -43,7 +84,6 @@ namespace Kutuphane_Otomasyon_Sistemi
             }
         }
 
-        // Ödünç Verme ve Kaydetme Butonu
         private void btn_Kaydet_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txt_AlacakKisi.Text) || string.IsNullOrEmpty(txt_AlınacakKitap.Text))
@@ -54,30 +94,30 @@ namespace Kutuphane_Otomasyon_Sistemi
 
             try
             {
-                // Ayalar tablosundaki ödünç süresini alıyoruz
-                int loanDurationDays = GetLoanDurationFromAyalar();
-
                 DateTime verilenTarih = dt_VerilenTarih.Value;
-                DateTime verilmesiGerekenTarih = verilenTarih.AddDays(loanDurationDays);
-
-                // Odunc tablosuna yeni bir ödünç kaydı ekliyoruz
-                string query = @"INSERT INTO Odunc (KitapID, UyeID, OduncVerilenTarih, GeriVerilmesiGerekenTarih)
-                                 VALUES (@KitapID, @UyeID, @OduncVerilenTarih, @GeriVerilmesiGerekenTarih)";
+                DateTime geriVerilmesiGerekenTarih = verilenTarih.AddDays(oduncSuresi);
 
                 using (SqlConnection con = new SqlConnection(connectionString))
-                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@KitapID", SecilenKitapID);
-                    cmd.Parameters.AddWithValue("@UyeID", SecilenUyeID);
-                    cmd.Parameters.AddWithValue("@OduncVerilenTarih", verilenTarih);
-                    cmd.Parameters.AddWithValue("@GeriVerilmesiGerekenTarih", verilmesiGerekenTarih);
-
                     con.Open();
-                    cmd.ExecuteNonQuery();
+
+                    string query = @"INSERT INTO Odunc (KitapID, UyeID, OduncVerilenTarih, GeriVerilmesiGerekenTarih, CezaTutari)
+                               VALUES (@KitapID, @UyeID, @OduncVerilenTarih, @GeriVerilmesiGerekenTarih, @CezaTutari)";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@KitapID", SecilenKitapID);
+                        cmd.Parameters.AddWithValue("@UyeID", SecilenUyeID);
+                        cmd.Parameters.AddWithValue("@OduncVerilenTarih", verilenTarih);
+                        cmd.Parameters.AddWithValue("@GeriVerilmesiGerekenTarih", geriVerilmesiGerekenTarih);
+                        cmd.Parameters.AddWithValue("@CezaTutari", 0); // Başlangıçta ceza 0
+                        cmd.ExecuteNonQuery();
+                    }
                 }
 
                 ListeyiYenile();
-                MessageBox.Show("Ödünç işlemi başarılı!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Ödünç işlemi başarılı! Ödünç süresi: {oduncSuresi} gün", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btn_Temizle_Click(sender, e);
             }
             catch (Exception ex)
             {
@@ -85,42 +125,45 @@ namespace Kutuphane_Otomasyon_Sistemi
             }
         }
 
-        // Ayalar tablosundan ödünç süresini almak için metod
-        private int GetLoanDurationFromAyalar()
-        {
-            string query = "SELECT OduncSuresi FROM Ayalar WHERE ID = 1"; // Ayalar tablosundaki OduncSuresi değeri
-            using (SqlConnection con = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(query, con))
-            {
-                con.Open();
-                object result = cmd.ExecuteScalar();
-                return result != DBNull.Value ? Convert.ToInt32(result) : 30; // Varsayılan olarak 30 gün
-            }
-        }
-
-        // Listeyi Yenileme
         private void ListeyiYenile()
         {
-            string query = @"SELECT o.UyeID, u.Ad + ' ' + u.Soyad AS UyeAdiSoyadi, o.KitapID, k.KitapAdi, o.OduncVerilenTarih, o.GeriVerilmesiGerekenTarih
-                             FROM Odunc o
-                             INNER JOIN Uyeler u ON o.UyeID = u.ID
-                             INNER JOIN Kitaplar k ON o.KitapID = k.ID";
-
-            DataTable dt = new DataTable();
-            using (SqlConnection con = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(query, con))
+            try
             {
-                con.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    dt.Load(reader);
+                    con.Open();
+
+                    string query = @"
+                SELECT o.ID, o.UyeID, u.Ad + ' ' + u.Soyad AS UyeAdiSoyadi, 
+                       o.KitapID, k.KitapAdi, o.OduncVerilenTarih, 
+                       o.GeriVerilmesiGerekenTarih, o.CezaTutari
+                FROM Odunc o
+                INNER JOIN Uyeler u ON o.UyeID = u.ID
+                INNER JOIN Kitaplar k ON o.KitapID = k.ID";
+
+                    DataTable dt = new DataTable();
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dt);
+                    }
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        dgv_OduncListesi.DataSource = dt;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Liste boş. Veritabanında ödünç kitap yok.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
-
-            dgv_OduncListesi.DataSource = dt;
+            catch (Exception ex)
+            {
+                MessageBox.Show("Liste yenilenirken hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // Temizleme Butonu
         private void btn_Temizle_Click(object sender, EventArgs e)
         {
             txt_AlacakKisi.Clear();
@@ -129,26 +172,96 @@ namespace Kutuphane_Otomasyon_Sistemi
             dgv_OduncListesi.ClearSelection();
         }
 
-        // Silme Butonu
-        private void btn_Sil_Click(object sender, EventArgs e)
+        private void ListeyiYenileOdunc()
         {
-            if (dgv_OduncListesi.SelectedRows.Count > 0)
+            try
             {
-                int secilenOduncID = Convert.ToInt32(dgv_OduncListesi.SelectedRows[0].Cells["UyeID"].Value);
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
 
-                string query = "DELETE FROM Odunc WHERE UyeID = @UyeID";
+                    string query = @"
+            SELECT o.ID, o.UyeID, u.Ad + ' ' + u.Soyad AS UyeAdiSoyadi, 
+                   o.KitapID, k.KitapAdi, o.OduncVerilenTarih, 
+                   o.GeriVerilmesiGerekenTarih, o.CezaTutari, o.IadeNotu
+            FROM Odunc o
+            INNER JOIN Uyeler u ON o.UyeID = u.ID
+            INNER JOIN Kitaplar k ON o.KitapID = k.ID"; // WHERE şartı kaldırıldı
+
+                    DataTable dtOdunc = new DataTable();
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dtOdunc);
+                    }
+
+                    dgv_OduncIade.DataSource = dtOdunc;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Liste yenilenirken hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0)  // TabPage 1 (Ödünç Verme)
+            {
+                ListeyiYenile(); // Ödünç verilen kitapları listele
+            }
+            else if (tabControl1.SelectedIndex == 1)  // TabPage 2 (İade Etme)
+            {
+                ListeyiYenileOdunc(); // İade edilmemiş kitapları listele
+            }
+        }
+
+        private void btn_IadeKaydet_Click(object sender, EventArgs e)
+        {
+            if (dgv_OduncIade.SelectedRows.Count > 0)
+            {
+                int oduncID = Convert.ToInt32(dgv_OduncIade.SelectedRows[0].Cells["ID"].Value);
+                DateTime geriVerilmesiGerekenTarih = Convert.ToDateTime(dgv_OduncIade.SelectedRows[0].Cells["GeriVerilmesiGerekenTarih"].Value);
+                DateTime iadeEdilenTarih = dt_GeriVerilenTarih.Value;
+                string iadeNotu = txt_IadeNotu.Text.Trim();
+                decimal cezaTutari = GetCezaTutari(); // Günlük ceza tutarını al
+                decimal toplamCeza = 0;
+
+                // Ceza Hesaplama (Gecikme varsa ceza eklenir)
+                if (iadeEdilenTarih > geriVerilmesiGerekenTarih)
+                {
+                    TimeSpan gecikme = iadeEdilenTarih - geriVerilmesiGerekenTarih;
+                    toplamCeza = gecikme.Days * cezaTutari; // Gün başına ceza hesapla
+                }
+
                 try
                 {
                     using (SqlConnection con = new SqlConnection(connectionString))
-                    using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        cmd.Parameters.AddWithValue("@UyeID", secilenOduncID);
                         con.Open();
-                        cmd.ExecuteNonQuery();
+
+                        // Güncelleme işlemi: Kaydı silmeden bilgileri güncelle
+                        string query = @"
+                UPDATE Odunc 
+                SET IadeEdilenTarih = @IadeEdilenTarih, 
+                    IadeNotu = @IadeNotu, 
+                    CezaTutari = @CezaTutari 
+                WHERE ID = @ID";
+
+                        using (SqlCommand cmd = new SqlCommand(query, con))
+                        {
+                            cmd.Parameters.AddWithValue("@IadeEdilenTarih", iadeEdilenTarih);
+                            cmd.Parameters.AddWithValue("@IadeNotu", iadeNotu);
+                            cmd.Parameters.AddWithValue("@CezaTutari", toplamCeza);
+                            cmd.Parameters.AddWithValue("@ID", oduncID);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
 
-                    ListeyiYenile();
-                    MessageBox.Show("Kayıt başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ListeyiYenileOdunc(); // Listeyi yenile
+                    MessageBox.Show($"Kitap iade edildi. Ceza tutarı: {toplamCeza} TL", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
@@ -157,8 +270,39 @@ namespace Kutuphane_Otomasyon_Sistemi
             }
             else
             {
-                MessageBox.Show("Lütfen silinecek bir kayıt seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Lütfen iade edilecek bir kitap seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+
+        private decimal GetCezaTutari()
+        {
+            decimal cezaTutari = 5; // Varsayılan ceza tutarı
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    string query = "SELECT CezaUcreti FROM Ayarlar";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        object result = cmd.ExecuteScalar();
+                        if (result != DBNull.Value)
+                        {
+                            cezaTutari = Convert.ToDecimal(result);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ayarlar tablosunda ceza ücreti bulunamadı. Varsayılan ceza ücreti kullanılacaktır.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ayarlar tablosundan ceza ücreti alınırken hata oluştu: " + ex.Message);
+            }
+            return cezaTutari;
         }
     }
 }

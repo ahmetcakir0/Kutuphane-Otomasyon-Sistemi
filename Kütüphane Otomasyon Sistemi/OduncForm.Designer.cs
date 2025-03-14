@@ -76,6 +76,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1096, 681);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -98,7 +99,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Ödünç Verme";
             this.tabPage1.UseVisualStyleBackColor = true;
-
             // 
             // btn_Temizle
             // 
@@ -120,7 +120,6 @@
             this.btn_Sil.TabIndex = 75;
             this.btn_Sil.Text = "SİL";
             this.btn_Sil.UseVisualStyleBackColor = true;
-            this.btn_Sil.Click += new System.EventHandler(this.btn_Sil_Click);
             // 
             // btn_Kaydet
             // 
@@ -228,7 +227,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ödünç İade";
             this.tabPage2.UseVisualStyleBackColor = true;
-
             // 
             // label7
             // 
@@ -266,6 +264,7 @@
             this.btn_IadeKaydet.TabIndex = 77;
             this.btn_IadeKaydet.Text = "KAYDET";
             this.btn_IadeKaydet.UseVisualStyleBackColor = true;
+            this.btn_IadeKaydet.Click += new System.EventHandler(this.btn_IadeKaydet_Click);
             // 
             // dgv_OduncIade
             // 
@@ -277,6 +276,7 @@
             this.dgv_OduncIade.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_OduncIade.Size = new System.Drawing.Size(1082, 307);
             this.dgv_OduncIade.TabIndex = 76;
+
             // 
             // label6
             // 

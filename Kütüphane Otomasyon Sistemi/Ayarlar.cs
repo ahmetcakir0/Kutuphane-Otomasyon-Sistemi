@@ -118,7 +118,7 @@ namespace Kutuphane_Otomasyon_Sistemi
 
         // **Kaydet butonu hem şifre değiştiriyor hem de ayarları kaydediyor**
         private void btn_Kaydet_Click(object sender, EventArgs e)
-        {
+        {   
             bool isUpdated = false;
 
             // Eğer yeni şifre girilmişse şifreyi değiştir
