@@ -56,6 +56,7 @@
             this.dgv_YazarListesi.Size = new System.Drawing.Size(267, 397);
             this.dgv_YazarListesi.TabIndex = 8;
             this.dgv_YazarListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_YazarListesi_CellContentClick);
+            this.dgv_YazarListesi.DoubleClick += new System.EventHandler(this.YazarAraPopupForm_DoubleClick);
             // 
             // btn_YazarAra
             // 
@@ -66,6 +67,7 @@
             this.btn_YazarAra.Size = new System.Drawing.Size(44, 23);
             this.btn_YazarAra.TabIndex = 7;
             this.btn_YazarAra.UseVisualStyleBackColor = true;
+            this.btn_YazarAra.Click += new System.EventHandler(this.btn_YazarAra_Click);
             // 
             // ımageList1
             // 
@@ -92,6 +94,8 @@
             this.MaximizeBox = false;
             this.Name = "YazarAraPopupForm";
             this.Text = "Yazar Ara";
+            this.Load += new System.EventHandler(this.YazarAraPopupForm_Load);
+            this.DoubleClick += new System.EventHandler(this.YazarAraPopupForm_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_YazarListesi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

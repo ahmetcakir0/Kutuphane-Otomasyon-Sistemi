@@ -80,6 +80,7 @@
             this.dgv_KisilerListesi.Size = new System.Drawing.Size(261, 397);
             this.dgv_KisilerListesi.TabIndex = 2;
             this.dgv_KisilerListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_KisilerListesi_CellContentClick);
+            this.dgv_KisilerListesi.DoubleClick += new System.EventHandler(this.dgv_KisilerListesi_DoubleClick);
             // 
             // UyeAraPopupForm
             // 

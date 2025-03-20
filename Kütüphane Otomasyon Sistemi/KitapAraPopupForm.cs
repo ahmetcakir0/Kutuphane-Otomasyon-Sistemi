@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Kutuphane_Otomasyon_Sistemi
@@ -25,55 +20,82 @@ namespace Kutuphane_Otomasyon_Sistemi
 
         private void KitapAraPopupForm_Load(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "SELECT ID, KitapAdi FROM Kitaplar";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
+            dgv_KitapListesi.ClearSelection(); // DataGridView'deki seçimleri temizle
+            LoadKitaplar(); // Kitapları yükle
+        }
 
-                dgv_KitapListesi.DataSource = dt;
+        // Kitapları veritabanından alıp DataGridView'e yükleyen metod
+        private void LoadKitaplar()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT ID, KitapAdi FROM Kitaplar";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dgv_KitapListesi.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Veriler yüklenirken hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        // DataGridView'de bir hücreye tıklanınca bu metot çalışır
         private void dgv_KitapListesi_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                SecilenKitapID = Convert.ToInt32(dgv_KitapListesi.Rows[e.RowIndex].Cells["ID"].Value);
-                SecilenKitapAdi = dgv_KitapListesi.Rows[e.RowIndex].Cells["KitapAdi"].Value.ToString();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
         }
 
+        // Arama butonuna tıklanınca arama işlemini gerçekleştiren metod
         private void btn_KisiAra_Click(object sender, EventArgs e)
         {
-            if (dgv_KitapListesi.SelectedRows.Count > 0)
+            string searchText = txt_KitapAra.Text.Trim().ToLower(); // Arama metnini al
+
+            // Eğer DataGridView'in veri kaynağını al
+            DataTable dtKitaplar = dgv_KitapListesi.DataSource as DataTable;
+
+            if (dtKitaplar == null)
             {
-                // Seçilen üyenin ID'sini al
-                SecilenKitapID = Convert.ToInt32(dgv_KitapListesi.SelectedRows[0].Cells["ID"].Value);
+                MessageBox.Show("Veri kaynağı bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                // Seçilen üyenin adı ve soyadını al
-                SecilenKitapAdi = dgv_KitapListesi.SelectedRows[0].Cells["KitapAdi"].Value.ToString();
-
-                // Eğer bir textbox varsa, oraya da yazalım
-                if (this.Owner != null)
-                {
-                    TextBox txtSecilenKitap = this.Owner.Controls.Find("txtSecilenKitap", true).FirstOrDefault() as TextBox;
-                    if (txtSecilenKitap != null)
-                    {
-                        txtSecilenKitap.Text = SecilenKitapAdi;
-                    }
-                }
-
-                // Seçim tamamlandı, dialog'u OK olarak ayarla
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+            // Eğer arama metni boşsa, tüm verileri göster
+            if (string.IsNullOrEmpty(searchText))
+            {
+                dtKitaplar.DefaultView.RowFilter = ""; // Tüm satırları göster
             }
             else
             {
-                MessageBox.Show("Lütfen bir üye seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // Arama metnine göre filtreleme yap
+                dtKitaplar.DefaultView.RowFilter = $"KitapAdi LIKE '%{searchText}%'"; // Arama metnine göre filtre uygula
+            }
+
+            // Filtrelenmiş verileri DataGridView'e bağla
+            dgv_KitapListesi.DataSource = dtKitaplar.DefaultView;
+        }
+
+        private void dgv_KitapListesi_DoubleClick(object sender, EventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+
+            // Satır seçilmediği takdirde (boş satır veya geçerli satır yoksa) işlem yapma
+            if (dgv.SelectedRows.Count > 0)
+            {
+                // Seçilen satırın ilk (tek) satırını alıyoruz
+                DataGridViewRow row = dgv.SelectedRows[0];
+
+                // Seçilen kitap ID'sini ve adını alıyoruz
+                SecilenKitapID = Convert.ToInt32(row.Cells["ID"].Value);
+                SecilenKitapAdi = row.Cells["KitapAdi"].Value.ToString();
+
+                // Ana forma bu bilgileri aktarmak için DialogResult OK yapıyoruz.
+                this.DialogResult = DialogResult.OK;
+                this.Close(); // Pop-up formunu kapat
             }
         }
     }

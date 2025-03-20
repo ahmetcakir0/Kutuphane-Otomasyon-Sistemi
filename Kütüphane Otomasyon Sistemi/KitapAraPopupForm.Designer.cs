@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KitapAraPopupForm));
             this.dgv_KitapListesi = new System.Windows.Forms.DataGridView();
-            this.btn_KisiAra = new System.Windows.Forms.Button();
+            this.btn_KitapAra = new System.Windows.Forms.Button();
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.txt_KitapAra = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_KitapListesi)).BeginInit();
@@ -54,17 +54,18 @@
             this.dgv_KitapListesi.Size = new System.Drawing.Size(267, 397);
             this.dgv_KitapListesi.TabIndex = 5;
             this.dgv_KitapListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_KitapListesi_CellContentClick);
+            this.dgv_KitapListesi.DoubleClick += new System.EventHandler(this.dgv_KitapListesi_DoubleClick);
             // 
-            // btn_KisiAra
+            // btn_KitapAra
             // 
-            this.btn_KisiAra.ImageKey = "mercek.png";
-            this.btn_KisiAra.ImageList = this.ımageList1;
-            this.btn_KisiAra.Location = new System.Drawing.Point(205, 12);
-            this.btn_KisiAra.Name = "btn_KisiAra";
-            this.btn_KisiAra.Size = new System.Drawing.Size(44, 23);
-            this.btn_KisiAra.TabIndex = 4;
-            this.btn_KisiAra.UseVisualStyleBackColor = true;
-            this.btn_KisiAra.Click += new System.EventHandler(this.btn_KisiAra_Click);
+            this.btn_KitapAra.ImageKey = "mercek.png";
+            this.btn_KitapAra.ImageList = this.ımageList1;
+            this.btn_KitapAra.Location = new System.Drawing.Point(205, 12);
+            this.btn_KitapAra.Name = "btn_KitapAra";
+            this.btn_KitapAra.Size = new System.Drawing.Size(44, 23);
+            this.btn_KitapAra.TabIndex = 4;
+            this.btn_KitapAra.UseVisualStyleBackColor = true;
+            this.btn_KitapAra.Click += new System.EventHandler(this.btn_KisiAra_Click);
             // 
             // ımageList1
             // 
@@ -85,7 +86,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(267, 450);
             this.Controls.Add(this.dgv_KitapListesi);
-            this.Controls.Add(this.btn_KisiAra);
+            this.Controls.Add(this.btn_KitapAra);
             this.Controls.Add(this.txt_KitapAra);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -101,7 +102,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgv_KitapListesi;
-        private System.Windows.Forms.Button btn_KisiAra;
+        private System.Windows.Forms.Button btn_KitapAra;
         private System.Windows.Forms.TextBox txt_KitapAra;
         private System.Windows.Forms.ImageList ımageList1;
     }

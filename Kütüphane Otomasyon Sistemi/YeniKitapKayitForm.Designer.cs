@@ -75,6 +75,7 @@
             this.dgv_KitapListesi.TabIndex = 0;
             this.dgv_KitapListesi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_KitapListesi_CellClick);
             this.dgv_KitapListesi.SelectionChanged += new System.EventHandler(this.dgv_KitapListesi_SelectionChanged);
+            this.dgv_KitapListesi.DoubleClick += new System.EventHandler(this.dgv_KitapListesi_DoubleClick);
             // 
             // btn_Temizle
             // 
@@ -174,6 +175,7 @@
             this.txt_SayfaSayisi.Name = "txt_SayfaSayisi";
             this.txt_SayfaSayisi.Size = new System.Drawing.Size(159, 20);
             this.txt_SayfaSayisi.TabIndex = 34;
+            this.txt_SayfaSayisi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_SayfaSayisi_KeyPress);
             // 
             // label4
             // 
@@ -199,6 +201,7 @@
             this.txt_ISBN.Name = "txt_ISBN";
             this.txt_ISBN.Size = new System.Drawing.Size(159, 20);
             this.txt_ISBN.TabIndex = 46;
+            this.txt_ISBN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_ISBN_KeyPress);
             // 
             // label7
             // 

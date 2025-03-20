@@ -140,14 +140,23 @@ namespace Kütüphane_Otomasyon_Sistemi
 
         private void FormuTemizle()
         {
+            // TextBox'ları temizle
             txt_KitapAdi.Clear();
             txt_Yazar.Clear();
             txt_SayfaSayisi.Clear();
             txt_ISBN.Clear();
             txt_RafNumarasi.Clear();
             txt_Aciklama.Clear();
+
+            // ComboBox'ları sıfırla
+            cb_Yayinevi.SelectedIndex = -1;   // Hiçbir öğe seçili olmasın
+            cb_Tur.SelectedIndex = -1;         // Hiçbir öğe seçili olmasın
+            cb_Kategori.SelectedIndex = -1;    // Hiçbir öğe seçili olmasın
+
+            // DataGridView'deki seçimleri kaldır
             dgv_KitapListesi.ClearSelection();
 
+            // ID'leri sıfırla
             seciliKitapId = 0;
             seciliYazarId = 0;
         }
@@ -173,33 +182,7 @@ namespace Kütüphane_Otomasyon_Sistemi
         }
         private void dgv_KitapListesi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dgv_KitapListesi.Rows[e.RowIndex];
 
-                seciliKitapId = Convert.ToInt32(row.Cells["ID"].Value);
-                txt_KitapAdi.Text = row.Cells["KitapAdi"].Value.ToString();
-                txt_Yazar.Text = row.Cells["YazarAdi"].Value.ToString();
-                seciliYazarId = Convert.ToInt32(row.Cells["YazarID"].Value);
-
-                // Yayinevi combobox'ını seçmek için
-                int yayineviId = Convert.ToInt32(row.Cells["YayineviID"].Value);
-                cb_Yayinevi.SelectedValue = yayineviId;
-
-                // Tür combobox'ını seçmek için
-                int turId = Convert.ToInt32(row.Cells["TurID"].Value);
-                cb_Tur.SelectedValue = turId;
-
-                // Kategori combobox'ını seçmek için
-                int kategoriId = Convert.ToInt32(row.Cells["KategoriID"].Value);
-                cb_Kategori.SelectedValue = kategoriId;
-
-                // Diğer alanlar
-                txt_SayfaSayisi.Text = row.Cells["SayfaSayisi"].Value.ToString();
-                txt_ISBN.Text = row.Cells["ISBN"].Value.ToString();
-                txt_RafNumarasi.Text = row.Cells["RafNumarasi"].Value.ToString();
-                txt_Aciklama.Text = row.Cells["Aciklama"].Value.ToString();
-            }
         }
         private void ComboBoxlarıDoldur()
         {
@@ -326,6 +309,66 @@ namespace Kütüphane_Otomasyon_Sistemi
 
                 // Optionally, load the book details into the form controls for editing
                 LoadKitapDetails(seciliKitapId);
+            }
+        }
+
+
+        private void txt_SayfaSayisi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) // Backspace'e de izin verir
+            {
+                e.Handled = true;  // Tuş basımı engellenir
+            }
+        }
+
+        private void txt_ISBN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back) // Backspace'e de izin verir
+            {
+                e.Handled = true;  // Tuş basımı engellenir
+            }
+        }
+
+        private void dgv_KitapListesi_DoubleClick(object sender, EventArgs e)
+        {
+            // DataGridView'de seçili bir satır olup olmadığını kontrol et
+            if (dgv_KitapListesi.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_KitapListesi.CurrentRow;
+
+                // Seçili kitabın ID'sini al
+                seciliKitapId = Convert.ToInt32(row.Cells["ID"].Value);
+
+                // Kitap adı
+                txt_KitapAdi.Text = row.Cells["KitapAdi"].Value.ToString();
+
+                // Yazar adı ve Yazar ID'si
+                txt_Yazar.Text = row.Cells["YazarAdi"].Value.ToString();
+                seciliYazarId = Convert.ToInt32(row.Cells["YazarID"].Value);
+
+                // Yayinevi combobox'ını seçmek için
+                int yayineviId = Convert.ToInt32(row.Cells["YayineviID"].Value);
+                cb_Yayinevi.SelectedValue = yayineviId;
+
+                // Tür combobox'ını seçmek için
+                int turId = Convert.ToInt32(row.Cells["TurID"].Value);
+                cb_Tur.SelectedValue = turId;
+
+                // Kategori combobox'ını seçmek için
+                int kategoriId = Convert.ToInt32(row.Cells["KategoriID"].Value);
+                cb_Kategori.SelectedValue = kategoriId;
+
+                // Sayfa sayısı
+                txt_SayfaSayisi.Text = row.Cells["SayfaSayisi"].Value.ToString();
+
+                // ISBN
+                txt_ISBN.Text = row.Cells["ISBN"].Value.ToString();
+
+                // Raf numarası
+                txt_RafNumarasi.Text = row.Cells["RafNumarasi"].Value.ToString();
+
+                // Açıklama
+                txt_Aciklama.Text = row.Cells["Aciklama"].Value.ToString();
             }
         }
     }
