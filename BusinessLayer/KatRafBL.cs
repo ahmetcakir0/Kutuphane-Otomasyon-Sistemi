@@ -18,7 +18,7 @@ namespace BusinessLayer
             kategoriDal = new KatRafDAL();
         }
 
-        public string KategoriEkle(string kategoriAdi, int kategoriRafKodu)
+        public string KategoriEkle(string kategoriAdi)
         {
             if (string.IsNullOrWhiteSpace(kategoriAdi))
                 return "Kategori adı boş olamaz.";
@@ -28,7 +28,7 @@ namespace BusinessLayer
 
             try
             {
-                bool sonuc = kategoriDal.KategoriEkle(kategoriAdi, kategoriRafKodu);
+                bool sonuc = kategoriDal.KategoriEkle(kategoriAdi);
                 return sonuc ? "Kategori başarıyla eklendi." : "Kategorş eklenemedi.";
             }
             catch (Exception ex)
@@ -49,7 +49,7 @@ namespace BusinessLayer
         }
 
 
-        public string KategoriGuncelle(int id, string kategoriAdi, string kategoriRafKodu)
+        public string KategoriGuncelle(int id, string kategoriAdi)
         {
             if (id <= 0)
                 return "Geçersiz tür ID.";
@@ -62,7 +62,7 @@ namespace BusinessLayer
 
             try
             {
-                bool sonuc = kategoriDal.KategoriGuncelle(id, kategoriAdi,kategoriRafKodu);
+                bool sonuc = kategoriDal.KategoriGuncelle(id, kategoriAdi);
                 return sonuc ? "Kategori başarıyla güncellendi." : "Kategori güncellenemedi.";
             }
             catch (Exception ex)

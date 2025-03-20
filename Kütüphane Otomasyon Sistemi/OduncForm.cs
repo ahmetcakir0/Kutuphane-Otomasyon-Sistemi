@@ -136,7 +136,7 @@ namespace Kutuphane_Otomasyon_Sistemi
                     string query = @"
                 SELECT o.ID, o.UyeID, u.Ad + ' ' + u.Soyad AS UyeAdiSoyadi, 
                        o.KitapID, k.KitapAdi, o.OduncVerilenTarih, 
-                       o.GeriVerilmesiGerekenTarih, o.CezaTutari
+                       o.GeriVerilmesiGerekenTarih,o.IadeEdilenTarih, o.CezaTutari
                 FROM Odunc o
                 INNER JOIN Uyeler u ON o.UyeID = u.ID
                 INNER JOIN Kitaplar k ON o.KitapID = k.ID";
@@ -183,7 +183,7 @@ namespace Kutuphane_Otomasyon_Sistemi
                     string query = @"
             SELECT o.ID, o.UyeID, u.Ad + ' ' + u.Soyad AS UyeAdiSoyadi, 
                    o.KitapID, k.KitapAdi, o.OduncVerilenTarih, 
-                   o.GeriVerilmesiGerekenTarih, o.CezaTutari, o.IadeNotu
+                   o.GeriVerilmesiGerekenTarih,o.IadeEdilenTarih, o.CezaTutari, o.IadeNotu
             FROM Odunc o
             INNER JOIN Uyeler u ON o.UyeID = u.ID
             INNER JOIN Kitaplar k ON o.KitapID = k.ID"; // WHERE şartı kaldırıldı

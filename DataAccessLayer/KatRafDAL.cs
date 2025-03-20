@@ -10,15 +10,14 @@ namespace DataAccessLayer
     {
         private readonly string connectionString = "server=MBB-01-BIL065-N\\SQLEXPRESS; Initial Catalog=KutuphaneDB; Integrated Security=SSPI";
 
-        public bool KategoriEkle(string kategoriAdi, int kategoriRafKodu)
+        public bool KategoriEkle(string kategoriAdi)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO KategoriRaflar (KategoriAdi, KategoriRafKodu) VALUES (@KategoriAdi, @KategoriRafKodu)";
+                string query = "INSERT INTO KategoriRaflar (KategoriAdi) VALUES (@KategoriAdi)";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@KategoriAdi", kategoriAdi);
-                    cmd.Parameters.AddWithValue("@KategoriRafKodu", kategoriRafKodu);
 
                     conn.Open();
                     int result = cmd.ExecuteNonQuery();
@@ -27,15 +26,14 @@ namespace DataAccessLayer
             }
         }
 
-        public bool KategoriGuncelle(int id, string kategoriAdi, string kategoriRafKodu)
+        public bool KategoriGuncelle(int id, string kategoriAdi)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "UPDATE KategoriRaflar SET KategoriAdi = @KategoriAdi, KategoriRafKodu = @KategoriRafKodu WHERE ID = @ID";
+                string query = "UPDATE KategoriRaflar SET KategoriAdi = @KategoriAdi WHERE ID = @ID";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ID", id);
                 command.Parameters.AddWithValue("@KategoriAdi", kategoriAdi);
-                command.Parameters.AddWithValue("@KategoriRafKodu", kategoriRafKodu);
 
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
@@ -92,7 +90,7 @@ namespace DataAccessLayer
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM KategoriRaflar WHERE KategoriRafAdi LIKE @AramaMetni OR KategoriRafKodu LIKE @AramaMetni";
+                string query = "SELECT * FROM KategoriRaflar WHERE KategoriRafAdi LIKE @AramaMetni LIKE @AramaMetni";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.SelectCommand.Parameters.AddWithValue("@AramaMetni", "%" + aramaMetni + "%");
 

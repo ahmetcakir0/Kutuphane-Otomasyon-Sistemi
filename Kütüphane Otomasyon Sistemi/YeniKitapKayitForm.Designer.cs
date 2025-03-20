@@ -65,6 +65,7 @@
             this.dgv_KitapListesi.Name = "dgv_KitapListesi";
             this.dgv_KitapListesi.Size = new System.Drawing.Size(1308, 261);
             this.dgv_KitapListesi.TabIndex = 0;
+            this.dgv_KitapListesi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_KitapListesi_CellClick);
             // 
             // btn_Temizle
             // 
@@ -75,6 +76,7 @@
             this.btn_Temizle.TabIndex = 40;
             this.btn_Temizle.Text = "TEMİZLE";
             this.btn_Temizle.UseVisualStyleBackColor = true;
+            this.btn_Temizle.Click += new System.EventHandler(this.btn_Temizle_Click);
             // 
             // label3
             // 
@@ -228,6 +230,7 @@
             this.btn_Sil.TabIndex = 58;
             this.btn_Sil.Text = "SİL";
             this.btn_Sil.UseVisualStyleBackColor = true;
+            this.btn_Sil.Click += new System.EventHandler(this.btn_Sil_Click);
             // 
             // label8
             // 

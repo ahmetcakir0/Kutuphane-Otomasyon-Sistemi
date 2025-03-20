@@ -33,7 +33,6 @@ namespace Kütüphane_Otomasyon_Sistemi
         {
             // Formdaki inputları temizleyelim
             txt_KategoriAdi.Clear();
-            txt_RafKodu.Clear();
         }
 
         private void btn_Kaydet_Click(object sender, EventArgs e)
@@ -41,10 +40,9 @@ namespace Kütüphane_Otomasyon_Sistemi
             try
             {
                 string kategoriAdi = txt_KategoriAdi.Text.Trim();
-                int kategoriRafKodu = Convert.ToInt32(txt_RafKodu.Text.Trim());
 
 
-                string sonuc = katRafBL.KategoriEkle(kategoriAdi, kategoriRafKodu);
+                string sonuc = katRafBL.KategoriEkle(kategoriAdi);
 
                 if (sonuc == "Kategori başarıyla eklendi.")
                 {
@@ -76,10 +74,9 @@ namespace Kütüphane_Otomasyon_Sistemi
                 // Seçilen satırdaki ID'yi alalım
                 int id = Convert.ToInt32(dgv_KategoriRaflar.SelectedRows[0].Cells["ID"].Value);
                 string kategoriAdi = txt_KategoriAdi.Text.Trim();
-                string kategoriRafKodu = txt_RafKodu.Text.Trim();
 
                 // Tür güncelleme işlemi
-                string sonuc = katRafBL.KategoriGuncelle(id, kategoriAdi, kategoriRafKodu);
+                string sonuc = katRafBL.KategoriGuncelle(id, kategoriAdi);
 
                 if (sonuc == "Kategoriyi başarıyla güncellendi.")
                 {
@@ -144,7 +141,6 @@ namespace Kütüphane_Otomasyon_Sistemi
         private void btn_Temizleme_Click(object sender, EventArgs e)
         {
             txt_KategoriAdi.Clear();
-            txt_RafKodu.Clear();
         }
 
         private void dgv_KategoriRaflar_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -155,7 +151,6 @@ namespace Kütüphane_Otomasyon_Sistemi
 
                 // Seçili satırdaki verileri TextBox'lara aktar
                 txt_KategoriAdi.Text = row.Cells["KategoriAdi"].Value.ToString();
-                txt_RafKodu.Text = row.Cells["KategoriRafKodu"].Value.ToString();
             }
         }
     }

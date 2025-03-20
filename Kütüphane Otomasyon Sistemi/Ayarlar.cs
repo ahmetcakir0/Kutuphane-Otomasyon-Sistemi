@@ -97,7 +97,7 @@ namespace Kutuphane_Otomasyon_Sistemi
                 conn.Open();
                 string query = "UPDATE Ayarlar SET " +
                                (oduncGun.HasValue ? "OduncSuresi = @oduncGun, " : "") +
-                               (gecikmeCezasi.HasValue ? "GecikmeCezasi = @gecikmeCezasi, " : "");
+                               (gecikmeCezasi.HasValue ? "CezaUcreti = @CezaUcreti, " : "");
 
                 // Eğer hiçbir değişiklik yapılmayacaksa SQL sorgusunu çalıştırma
                 if (query.EndsWith(", "))
@@ -106,7 +106,7 @@ namespace Kutuphane_Otomasyon_Sistemi
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         if (oduncGun.HasValue) cmd.Parameters.AddWithValue("@oduncGun", oduncGun.Value);
-                        if (gecikmeCezasi.HasValue) cmd.Parameters.AddWithValue("@gecikmeCezasi", gecikmeCezasi.Value);
+                        if (gecikmeCezasi.HasValue) cmd.Parameters.AddWithValue("@CezaUcreti", gecikmeCezasi.Value);
 
                         int affectedRows = cmd.ExecuteNonQuery();
                         return affectedRows > 0;

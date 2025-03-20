@@ -1,6 +1,7 @@
 ﻿using EntityLayer;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace DataAccessLayer
@@ -10,34 +11,34 @@ namespace DataAccessLayer
         private readonly string connectionString = "server=MBB-01-BIL065-N\\SQLEXPRESS; Initial Catalog=KutuphaneDB; Integrated Security=SSPI";
 
 
-        public List<string> GetYayineviAdlari()
-        {
-            List<string> yayinevleri = new List<string>();
+        //public List<string> GetYayineviAdlari()
+        //{
+        //    List<string> yayinevleri = new List<string>();
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
-                    string query = "SELECT * FROM Yayinevi"; // Yayınevi tablosundaki adları çek
+        //    using (SqlConnection conn = new SqlConnection(connectionString))
+        //    {
+        //        try
+        //        {
+        //            conn.Open();
+        //            string query = "SELECT * FROM Yayinevi"; // Yayınevi tablosundaki adları çek
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            yayinevleri.Add(reader["YayineviAdi"].ToString()); // Listeye ekle
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Veritabanı hatası: " + ex.Message);
-                }
-            }
+        //            using (SqlCommand cmd = new SqlCommand(query, conn))
+        //            using (SqlDataReader reader = cmd.ExecuteReader())
+        //            {
+        //                while (reader.Read())
+        //                {
+        //                    yayinevleri.Add(reader["YayineviAdi"].ToString()); // Listeye ekle
+        //                }
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine("Veritabanı hatası: " + ex.Message);
+        //        }
+        //    }
 
-            return yayinevleri;
-        }
+        //    return yayinevleri;
+        //}
 
         public List<string> GetTurAdlari()
         {
@@ -133,30 +134,26 @@ namespace DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     string query = @"
-                INSERT INTO Kitaplar (KitapAdi, YazarID, YazarAdi, YayineviID, YayineviAdi, KitapTuruID, TurAdi, 
-                                      KategoriID, KategoriAdi, SayfaSayisi, ISBN, RafNumarasi, Aciklama)
-                VALUES (@KitapAdi, @YazarID, @YazarAdi, @YayineviID, @YayineviAdi, @KitapTuruID, @TurAdi, 
-                        @KategoriID, @KategoriAdi, @SayfaSayisi, @ISBN, @RafNumarasi, @Aciklama)";
+            INSERT INTO Kitaplar (KitapAdi, YazarID, YayineviID, KitapTuruID, 
+                                KategoriID, SayfaSayisi, ISBN, RafNumarasi, Aciklama)
+            VALUES (@KitapAdi, @YazarID, @YayineviID, @KitapTuruID, 
+                    @KategoriID, @SayfaSayisi, @ISBN, @RafNumarasi, @Aciklama)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         // Parametreleri ekliyoruz
                         command.Parameters.AddWithValue("@KitapAdi", yeniKitap.KitapAdi);
                         command.Parameters.AddWithValue("@YazarID", yeniKitap.YazarID);
-                        command.Parameters.AddWithValue("@YazarAdi", yeniKitap.YazarAdi);  // Yeni parametre
                         command.Parameters.AddWithValue("@YayineviID", yeniKitap.YayineviID);
-                        command.Parameters.AddWithValue("@YayineviAdi", yeniKitap.YayineviAdi);  // Yeni parametre
-                        command.Parameters.AddWithValue("@KitapTuruID", yeniKitap.KitapTuruID);
-                        command.Parameters.AddWithValue("@TurAdi", yeniKitap.TurAdi);  // Yeni parametre
+                        command.Parameters.AddWithValue("@KitapTuruID", yeniKitap.TurID);
                         command.Parameters.AddWithValue("@KategoriID", yeniKitap.KategoriID);
-                        command.Parameters.AddWithValue("@KategoriAdi", yeniKitap.KategoriAdi);  // Yeni parametre
                         command.Parameters.AddWithValue("@SayfaSayisi", yeniKitap.SayfaSayisi);
                         command.Parameters.AddWithValue("@ISBN", yeniKitap.ISBN);
                         command.Parameters.AddWithValue("@RafNumarasi", yeniKitap.RafNumarasi);
                         command.Parameters.AddWithValue("@Aciklama", yeniKitap.Aciklama);
 
                         connection.Open();
-                        return command.ExecuteNonQuery() > 0;  // Insert işlemi başarılıysa true döner
+                        return command.ExecuteNonQuery() > 0;
                     }
                 }
             }
@@ -167,57 +164,41 @@ namespace DataAccessLayer
         }
 
 
-        public bool KitapGuncelle(Kitap kitap)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    string query = @"
-                UPDATE Kitaplar 
-                SET KitapAdi = @KitapAdi, 
-                    YazarID = @YazarID, 
-                    YazarAdi = @YazarAdi,  -- Yeni alan
-                    YayineviID = @YayineviID, 
-                    YayineviAdi = @YayineviAdi,  -- Yeni alan
-                    KitapTuruID = @KitapTuruID, 
-                    TurAdi = @TurAdi,  -- Yeni alan
-                    KategoriID = @KategoriID, 
-                    KategoriAdi = @KategoriAdi,  -- Yeni alan
-                    SayfaSayisi = @SayfaSayisi, 
-                    ISBN = @ISBN, 
-                    RafNumarasi = @RafNumarasi, 
-                    Aciklama = @Aciklama
-                WHERE ID = @KitapID";
+        //public bool KitapGuncelle(Kitap kitap)
+        //{
+        //    try
+        //    {
+        //        using (SqlConnection connection = new SqlConnection(connectionString))
+        //        {
+        //            string query = @"
+        //    INSERT INTO Kitaplar (KitapAdi, YazarID, YayineviID, KitapTuruID, 
+        //                        KategoriID, SayfaSayisi, ISBN, RafNumarasi, Aciklama)
+        //    VALUES (@KitapAdi, @YazarID, @YayineviID, @KitapTuruID, 
+        //            @KategoriID, @SayfaSayisi, @ISBN, @RafNumarasi, @Aciklama)";
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        // Parametreleri ekliyoruz
-                        command.Parameters.AddWithValue("@KitapAdi", kitap.KitapAdi);
-                        command.Parameters.AddWithValue("@YazarID", kitap.YazarID);
-                        command.Parameters.AddWithValue("@YazarAdi", kitap.YazarAdi);  // Yeni parametre
-                        command.Parameters.AddWithValue("@YayineviID", kitap.YayineviID);
-                        command.Parameters.AddWithValue("@YayineviAdi", kitap.YayineviAdi);  // Yeni parametre
-                        command.Parameters.AddWithValue("@KitapTuruID", kitap.KitapTuruID);
-                        command.Parameters.AddWithValue("@TurAdi", kitap.TurAdi);  // Yeni parametre
-                        command.Parameters.AddWithValue("@KategoriID", kitap.KategoriID);
-                        command.Parameters.AddWithValue("@KategoriAdi", kitap.KategoriAdi);  // Yeni parametre
-                        command.Parameters.AddWithValue("@SayfaSayisi", kitap.SayfaSayisi);
-                        command.Parameters.AddWithValue("@ISBN", kitap.ISBN);
-                        command.Parameters.AddWithValue("@RafNumarasi", kitap.RafNumarasi);
-                        command.Parameters.AddWithValue("@Aciklama", kitap.Aciklama);
-                        command.Parameters.AddWithValue("@KitapID", kitap.ID);
+        //            using (SqlCommand command = new SqlCommand(query, connection))
+        //            {
+        //                // Parametreleri ekliyoruz
+        //                command.Parameters.AddWithValue("@KitapAdi", kitap.KitapAdi);
+        //                command.Parameters.AddWithValue("@YazarID", kitap.YazarID);
+        //                command.Parameters.AddWithValue("@YayineviID", kitap.YayineviID);
+        //                command.Parameters.AddWithValue("@KitapTuruID", kitap.TurID);
+        //                command.Parameters.AddWithValue("@KategoriID",  kitap.KategoriID);
+        //                command.Parameters.AddWithValue("@SayfaSayisi", kitap.SayfaSayisi);
+        //                command.Parameters.AddWithValue("@ISBN", kitap.ISBN);
+        //                command.Parameters.AddWithValue("@RafNumarasi", kitap.RafNumarasi);
+        //                command.Parameters.AddWithValue("@Aciklama", kitap.Aciklama);
 
-                        connection.Open();
-                        return command.ExecuteNonQuery() > 0;  // Güncelleme başarılıysa true döner
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Kitap güncellenirken hata oluştu: " + ex.Message);
-            }
-        }
+        //                connection.Open();
+        //                return command.ExecuteNonQuery() > 0;  // Güncelleme başarılıysa true döner
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("Kitap güncellenirken hata oluştu: " + ex.Message);
+        //    }
+        //}
 
         public bool KitapSil(int kitapID)
         {
@@ -304,7 +285,6 @@ namespace DataAccessLayer
             return kitapListesi;
         }
 
-
         public Kitap KitapGetirById(int kitapID)
         {
             Kitap kitap = null;
@@ -335,6 +315,7 @@ namespace DataAccessLayer
                             if (reader.Read())
                             {
                                 kitap = new Kitap(
+                                    Convert.ToInt32(reader["ID"]),
                                     reader["KitapAdi"].ToString(),
                                     Convert.ToInt32(reader["YazarID"]),
                                     reader["YazarAdi"].ToString(),  // Yeni eklenen yazar adı

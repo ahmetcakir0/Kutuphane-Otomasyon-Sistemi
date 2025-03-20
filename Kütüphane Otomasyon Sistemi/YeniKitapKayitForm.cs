@@ -1,123 +1,158 @@
-﻿using BusinessLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusinessLayer;
 using EntityLayer;
-using DataAccessLayer;
 
 namespace Kütüphane_Otomasyon_Sistemi
 {
     public partial class YeniKitapKayitForm : Form
     {
         private KitapBL kitapBL;
+        private YayineviBL yayineviBL;
+        private KatRafBL katRafBL;
+        private TurBL turBL;
         private int seciliKitapId = 0;
+        private int seciliYazarId;
+
         public YeniKitapKayitForm()
         {
             InitializeComponent();
             kitapBL = new KitapBL();
-
+            yayineviBL = new YayineviBL();
+            katRafBL = new KatRafBL();
+            turBL = new TurBL();
         }
+
         private void btn_KitapAra_Click(object sender, EventArgs e)
         {
             YazarAraPopupForm yazarAraPopupForm = new YazarAraPopupForm();
 
-            // Popup formunu modal olarak açıyoruz
             if (yazarAraPopupForm.ShowDialog() == DialogResult.OK)
             {
-                // Seçilen yazarı popup formundan alıp ana formdaki txt_Yazar'a atıyoruz
                 txt_Yazar.Text = yazarAraPopupForm.SecilenYazar;
-
-                // Seçilen yazar ID'sini Tag özelliğine atıyoruz
-                txt_Yazar.Tag = yazarAraPopupForm.SecilenYazarId;
-
-                // Yazar ID'sini ve Yazar adını kontrol etmek için MessageBox gösteriyoruz
-                MessageBox.Show("Seçilen Yazar: " + txt_Yazar.Text + "\nYazar ID'si: " + txt_Yazar.Tag.ToString(),
-                                "Yazar Bilgisi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                seciliYazarId = yazarAraPopupForm.SecilenYazarId;
             }
         }
-
-
-
         private void btn_Kaydet_Click(object sender, EventArgs e)
         {
             try
             {
-                // Yazar ID'sini txt_Yazar.Tag'den alıyoruz
-                if (txt_Yazar.Tag == null || txt_Yazar.Tag.ToString() == "")
+                // Boş alan kontrolü
+                if (string.IsNullOrWhiteSpace(txt_KitapAdi.Text) ||
+                    string.IsNullOrWhiteSpace(txt_Yazar.Text) ||
+                    string.IsNullOrWhiteSpace(txt_SayfaSayisi.Text) ||
+                    string.IsNullOrWhiteSpace(txt_ISBN.Text) ||
+                    cb_Yayinevi.SelectedValue == null ||
+                    cb_Tur.SelectedValue == null ||
+                    cb_Kategori.SelectedValue == null)
                 {
-                    MessageBox.Show("Yazar ID'si seçilmedi!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lütfen tüm alanları eksiksiz doldurun!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                int yazarId = Convert.ToInt32(txt_Yazar.Tag);
-
-                // Kullanıcıdan alınan verileri doğrudan entity katmanındaki modele atıyoruz
-                Kitap yeniKitap = new Kitap(
-                    txt_KitapAdi.Text?.Trim(),  // Kitap adı
-                    yazarId,                    // Yazar ID'si
-                    txt_Yazar.Text?.Trim(),     // Yazar adı
-                    Convert.ToInt32(cb_Yayinevi.SelectedItem),  // Yayinevi ID'si
-                    cb_Yayinevi.SelectedValue.ToString().Trim(),  // Yayinevi adı
-                    Convert.ToInt32(cb_Tur.SelectedItem),  // Kitap Türü ID'si
-                    cb_Tur.SelectedValue.ToString().Trim(),   // Kitap türü adı
-                    Convert.ToInt32(cb_Kategori.SelectedItem), // Kategori ID'si
-                    cb_Kategori.SelectedValue.ToString().Trim(), // Kategori adı
-                    txt_SayfaSayisi.Text?.Trim(),  // Sayfa sayısı
-                    txt_ISBN.Text?.Trim(), // ISBN
-                    txt_RafNumarasi.Text?.Trim(),
-                    txt_Aciklama.Text?.Trim()  // Açıklama
-                );
-
-                // Sayfa sayısını kontrol et
-                string sayfaSayisiStr = txt_SayfaSayisi.Text.Trim(); // Sayfa sayısı
-                bool isSayfaSayisiValid = int.TryParse(sayfaSayisiStr, out _);
-
-                // Eğer sayfa sayısı geçerli değilse, kullanıcıyı uyar
-                if (!isSayfaSayisiValid)
+                int yayineviId;
+                if (cb_Yayinevi.SelectedValue == null || !int.TryParse(cb_Yayinevi.SelectedValue.ToString(), out yayineviId))
                 {
-                    MessageBox.Show("Sayfa sayısı geçerli bir sayı olmalıdır.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; // Geçerli bir sayfa sayısı girilmediği için fonksiyon sonlandırılır
+                    MessageBox.Show("Geçerli bir yayınevi seçmelisiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
-                // Kitap ekleme işlemi (KitapEkle methodu bool döner)
-                bool isAdded = kitapBL.KitapEkle(yeniKitap);
 
-                // Kitap ekleme sonucunu kullanıcıya göster
-                string sonuc;
-                if (isAdded)
+                int turId;
+                if (cb_Tur.SelectedValue == null || !int.TryParse(cb_Tur.SelectedValue.ToString(), out turId))
                 {
-                    sonuc = "Kitap başarıyla eklendi.";
-                    MessageBox.Show(sonuc, "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ListeyiYenile();  // Listeyi yenile
+                    MessageBox.Show("Geçerli bir tür seçmelisiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int kategoriId;
+                if (cb_Kategori.SelectedValue == null || !int.TryParse(cb_Kategori.SelectedValue.ToString(), out kategoriId))
+                {
+                    MessageBox.Show("Geçerli bir kategori seçmelisiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+
+                // Yazar ID'sini kontrol et
+                if (seciliYazarId == 0)
+                {
+                    MessageBox.Show("Geçerli bir yazar seçmelisiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Kitap nesnesini oluştur
+                Kitap kitap = new Kitap
+                {
+                    ID = seciliKitapId,  // Eğer sıfırdan büyükse güncelleme yapılacak
+                    KitapAdi = txt_KitapAdi.Text.Trim(),
+                    YazarID = seciliYazarId,
+                    YazarAdi = txt_Yazar.Text.Trim(),
+                    YayineviID = yayineviId,
+                    YayineviAdi = cb_Yayinevi.Text.Trim(),
+                    TurID = turId,
+                    TurAdi = cb_Tur.Text.Trim(),
+                    KategoriID = kategoriId,
+                    KategoriAdi = cb_Kategori.Text.Trim(),
+                    SayfaSayisi = txt_SayfaSayisi.Text.Trim(),
+                    ISBN = txt_ISBN.Text.Trim(),
+                    RafNumarasi = txt_RafNumarasi.Text.Trim(),
+                    Aciklama = txt_Aciklama.Text.Trim()
+                };
+
+                // Güncelleme veya Ekleme işlemi
+                bool isSuccess = kitapBL.KitapEkle(kitap);
+
+                // İşlem sonucuna göre mesaj göster
+                if (isSuccess)
+                {
+                    MessageBox.Show(seciliKitapId > 0 ? "Kitap başarıyla güncellendi." : "Kitap başarıyla eklendi.",
+                                    "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    sonuc = "Kitap eklenirken bir hata oluştu.";
-                    MessageBox.Show(sonuc, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("İşlem sırasında bir hata oluştu.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+
+                // Listeyi güncelle ve formu temizle
+                ListeyiYenile();
+                FormuTemizle();
             }
             catch (Exception ex)
             {
-                // Hata durumunda kullanıcıya bilgi ver
-                MessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Hata oluştu: {ex.Message}\n\nHata Detayları:\n{ex.StackTrace}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
 
 
+        private void FormuTemizle()
+        {
+            txt_KitapAdi.Clear();
+            txt_Yazar.Clear();
+            txt_SayfaSayisi.Clear();
+            txt_ISBN.Clear();
+            txt_RafNumarasi.Clear();
+            txt_Aciklama.Clear();
 
+            cb_Yayinevi.SelectedIndex = -1;
+            cb_Tur.SelectedIndex = -1;
+            cb_Kategori.SelectedIndex = -1;
+
+            seciliKitapId = 0;
+            seciliYazarId = 0;
+        }
 
         private void YeniKitapKayitForm_Load(object sender, EventArgs e)
         {
             ListeyiYenile();
             ComboBoxlarıDoldur();
         }
+
         private void ListeyiYenile()
         {
             try
@@ -130,51 +165,110 @@ namespace Kütüphane_Otomasyon_Sistemi
                 MessageBox.Show($"Liste yenileme hatası: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void FormTemizle()
+        private void dgv_KitapListesi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txt_KitapAdi.Clear();
-            txt_SayfaSayisi.Clear();
-            txt_ISBN.Clear();
-            txt_Yazar.Clear();
-            cb_Kategori.Items.Clear();
-            cb_Tur.Items.Clear();
-            cb_Yayinevi.Items.Clear();
-            seciliKitapId = 0;
-            txt_RafNumarasi.Clear();
-            txt_Aciklama.Clear();
-            dgv_KitapListesi.ClearSelection();
-            txt_KitapAdi.Focus();
-        }
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgv_KitapListesi.Rows[e.RowIndex];
 
+                seciliKitapId = Convert.ToInt32(row.Cells["ID"].Value);
+                txt_KitapAdi.Text = row.Cells["KitapAdi"].Value.ToString();
+                txt_Yazar.Text = row.Cells["YazarAdi"].Value.ToString();
+                seciliYazarId = Convert.ToInt32(row.Cells["YazarID"].Value);
+
+                // Yayinevi combobox'ını seçmek için
+                int yayineviId = Convert.ToInt32(row.Cells["YayineviID"].Value);
+                cb_Yayinevi.SelectedValue = yayineviId;
+
+                // Tür combobox'ını seçmek için
+                int turId = Convert.ToInt32(row.Cells["TurID"].Value);
+                cb_Tur.SelectedValue = turId;
+
+                // Kategori combobox'ını seçmek için
+                int kategoriId = Convert.ToInt32(row.Cells["KategoriID"].Value);
+                cb_Kategori.SelectedValue = kategoriId;
+
+                // Diğer alanlar
+                txt_SayfaSayisi.Text = row.Cells["SayfaSayisi"].Value.ToString();
+                txt_ISBN.Text = row.Cells["ISBN"].Value.ToString();
+                txt_RafNumarasi.Text = row.Cells["RafNumarasi"].Value.ToString();
+                txt_Aciklama.Text = row.Cells["Aciklama"].Value.ToString();
+            }
+        }
         private void ComboBoxlarıDoldur()
         {
             try
             {
-                // Assuming you have methods to get these lists from the database or predefined lists
-                var yayinevleri = kitapBL.GetAllYayineviAdlari(); // Retrieve list from your business layer
-                var kategoriler = kitapBL.GetAllKategoriAdlari(); // Retrieve list from your business layer
-                var kitapTurleri = kitapBL.GetAllTurAdlari(); // Retrieve list from your business layer
-
-                // Populate ComboBox with these values
-
-                cb_Yayinevi.DisplayMember = "YayineviAdi";  // Assuming the entity has this property
-                cb_Yayinevi.ValueMember = "ID";
+                // Yayın evlerini yükle
+                var yayinevleri = yayineviBL.TumYayinevleriniGetir();
+                cb_Yayinevi.DisplayMember = "YayineviAdi"; // Görünen değer
+                cb_Yayinevi.ValueMember = "id"; // Seçildiğinde alınacak değer
                 cb_Yayinevi.DataSource = yayinevleri;
+                cb_Yayinevi.SelectedIndex = -1; // Başlangıçta hiçbiri seçili olmasın
 
-
-
-                cb_Kategori.DisplayMember = "KategoriAdi";  // Assuming the entity has this property
-                cb_Kategori.ValueMember = "ID";
+                // Kategorileri yükle
+                var kategoriler = katRafBL.TumKategoriRaflariGetir();
+                cb_Kategori.DisplayMember = "KategoriAdi";
+                cb_Kategori.ValueMember = "id";
                 cb_Kategori.DataSource = kategoriler;
+                cb_Kategori.SelectedIndex = -1; // Başlangıçta hiçbiri seçili olmasın
 
-
-                cb_Tur.DisplayMember = "KitapTuruAdi";  // Assuming the entity has this property
-                cb_Tur.ValueMember = "ID";
+                // Kitap türlerini yükle
+                var kitapTurleri = turBL.TumTurleriGetir();
+                cb_Tur.DisplayMember = "TurAdi";
+                cb_Tur.ValueMember = "id";
                 cb_Tur.DataSource = kitapTurleri;
+                cb_Tur.SelectedIndex = -1; // Başlangıçta hiçbiri seçili olmasın
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Veri yükleme hatası: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void btn_Temizle_Click(object sender, EventArgs e)
+        {
+            FormuTemizle();
+        }
+
+        private void btn_Sil_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Seçili kitap ID'sinin olup olmadığını kontrol et
+                if (seciliKitapId <= 0)
+                {
+                    MessageBox.Show("Lütfen silmek istediğiniz bir kitabı seçin!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Kullanıcıdan onay al
+                DialogResult dialogResult = MessageBox.Show("Seçilen kitabı silmek istediğinizden emin misiniz?",
+                                                            "Silme Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                // Eğer kullanıcı 'Evet' diyorsa, kitap silinir
+                if (dialogResult == DialogResult.Yes)
+                {
+                    // Kitap silme işlemi
+                    bool isSuccess = kitapBL.KitapSil(seciliKitapId);
+
+                    // İşlem sonucuna göre mesaj göster
+                    if (isSuccess)
+                    {
+                        MessageBox.Show("Kitap başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ListeyiYenile();  // Listeyi güncelle
+                        FormuTemizle();   // Formu temizle
+                    }
+                    else
+                    {
+                        MessageBox.Show("Kitap silinirken bir hata oluştu.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

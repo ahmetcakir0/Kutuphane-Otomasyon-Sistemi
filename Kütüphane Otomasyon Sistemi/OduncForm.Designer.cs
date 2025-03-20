@@ -34,7 +34,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btn_Temizle = new System.Windows.Forms.Button();
-            this.btn_Sil = new System.Windows.Forms.Button();
             this.btn_Kaydet = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dt_VerilenTarih = new System.Windows.Forms.DateTimePicker();
@@ -81,7 +80,6 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.btn_Temizle);
-            this.tabPage1.Controls.Add(this.btn_Sil);
             this.tabPage1.Controls.Add(this.btn_Kaydet);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.dt_VerilenTarih);
@@ -103,7 +101,7 @@
             // btn_Temizle
             // 
             this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Temizle.Location = new System.Drawing.Point(662, 248);
+            this.btn_Temizle.Location = new System.Drawing.Point(607, 248);
             this.btn_Temizle.Name = "btn_Temizle";
             this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
             this.btn_Temizle.TabIndex = 76;
@@ -111,20 +109,10 @@
             this.btn_Temizle.UseVisualStyleBackColor = true;
             this.btn_Temizle.Click += new System.EventHandler(this.btn_Temizle_Click);
             // 
-            // btn_Sil
-            // 
-            this.btn_Sil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Sil.Location = new System.Drawing.Point(487, 248);
-            this.btn_Sil.Name = "btn_Sil";
-            this.btn_Sil.Size = new System.Drawing.Size(118, 39);
-            this.btn_Sil.TabIndex = 75;
-            this.btn_Sil.Text = "SİL";
-            this.btn_Sil.UseVisualStyleBackColor = true;
-            // 
             // btn_Kaydet
             // 
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(310, 248);
+            this.btn_Kaydet.Location = new System.Drawing.Point(363, 248);
             this.btn_Kaydet.Name = "btn_Kaydet";
             this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_Kaydet.TabIndex = 74;
@@ -276,7 +264,6 @@
             this.dgv_OduncIade.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_OduncIade.Size = new System.Drawing.Size(1082, 307);
             this.dgv_OduncIade.TabIndex = 76;
-
             // 
             // label6
             // 
@@ -317,7 +304,6 @@
         private System.Windows.Forms.ImageList ımageList1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button btn_Sil;
         private System.Windows.Forms.Button btn_Kaydet;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dt_VerilenTarih;
