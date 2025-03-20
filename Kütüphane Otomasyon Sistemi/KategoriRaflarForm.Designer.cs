@@ -78,10 +78,18 @@
             // 
             // dgv_KategoriRaflar
             // 
+            this.dgv_KategoriRaflar.AllowUserToAddRows = false;
+            this.dgv_KategoriRaflar.AllowUserToDeleteRows = false;
+            this.dgv_KategoriRaflar.AllowUserToResizeColumns = false;
+            this.dgv_KategoriRaflar.AllowUserToResizeRows = false;
+            this.dgv_KategoriRaflar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_KategoriRaflar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_KategoriRaflar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_KategoriRaflar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_KategoriRaflar.Location = new System.Drawing.Point(0, 260);
+            this.dgv_KategoriRaflar.MultiSelect = false;
             this.dgv_KategoriRaflar.Name = "dgv_KategoriRaflar";
+            this.dgv_KategoriRaflar.ReadOnly = true;
             this.dgv_KategoriRaflar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_KategoriRaflar.Size = new System.Drawing.Size(382, 211);
             this.dgv_KategoriRaflar.TabIndex = 55;
@@ -109,6 +117,8 @@
             this.Controls.Add(this.btn_Kaydet);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_KategoriAdi);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "KategoriRaflarForm";
             this.Text = "Kategori - Raflar";
             this.Load += new System.EventHandler(this.KategoriRaflarForm_Load);

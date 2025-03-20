@@ -165,10 +165,19 @@
             // 
             // dgv_OduncListesi
             // 
+            this.dgv_OduncListesi.AllowUserToAddRows = false;
+            this.dgv_OduncListesi.AllowUserToDeleteRows = false;
+            this.dgv_OduncListesi.AllowUserToResizeColumns = false;
+            this.dgv_OduncListesi.AllowUserToResizeRows = false;
+            this.dgv_OduncListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_OduncListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_OduncListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_OduncListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_OduncListesi.Location = new System.Drawing.Point(3, 322);
+            this.dgv_OduncListesi.MultiSelect = false;
             this.dgv_OduncListesi.Name = "dgv_OduncListesi";
+            this.dgv_OduncListesi.RowHeadersVisible = false;
+            this.dgv_OduncListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_OduncListesi.Size = new System.Drawing.Size(1082, 330);
             this.dgv_OduncListesi.TabIndex = 68;
             // 
@@ -257,10 +266,16 @@
             // dgv_OduncIade
             // 
             this.dgv_OduncIade.AllowUserToAddRows = false;
+            this.dgv_OduncIade.AllowUserToDeleteRows = false;
+            this.dgv_OduncIade.AllowUserToResizeColumns = false;
+            this.dgv_OduncIade.AllowUserToResizeRows = false;
+            this.dgv_OduncIade.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_OduncIade.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_OduncIade.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_OduncIade.Location = new System.Drawing.Point(3, 345);
+            this.dgv_OduncIade.MultiSelect = false;
             this.dgv_OduncIade.Name = "dgv_OduncIade";
+            this.dgv_OduncIade.ReadOnly = true;
             this.dgv_OduncIade.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_OduncIade.Size = new System.Drawing.Size(1082, 307);
             this.dgv_OduncIade.TabIndex = 76;
@@ -287,6 +302,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1096, 681);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "OduncForm";
             this.Text = "Ödünç Verme";
             this.tabControl1.ResumeLayout(false);

@@ -186,11 +186,17 @@
             // 
             // dgv_UyeListesi
             // 
+            this.dgv_UyeListesi.AllowUserToAddRows = false;
+            this.dgv_UyeListesi.AllowUserToDeleteRows = false;
+            this.dgv_UyeListesi.AllowUserToResizeColumns = false;
+            this.dgv_UyeListesi.AllowUserToResizeRows = false;
             this.dgv_UyeListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_UyeListesi.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dgv_UyeListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_UyeListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_UyeListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_UyeListesi.Location = new System.Drawing.Point(0, 417);
+            this.dgv_UyeListesi.MultiSelect = false;
             this.dgv_UyeListesi.Name = "dgv_UyeListesi";
             this.dgv_UyeListesi.ReadOnly = true;
             this.dgv_UyeListesi.RowHeadersVisible = false;
@@ -233,6 +239,8 @@
             this.Controls.Add(this.txt_Soyad);
             this.Controls.Add(this.txt_Ad);
             this.Controls.Add(this.txt_TCKimlik);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "UyeKayitForm";
             this.Text = "Üyeler";
             this.Load += new System.EventHandler(this.YeniUyeKayitForm_Load);

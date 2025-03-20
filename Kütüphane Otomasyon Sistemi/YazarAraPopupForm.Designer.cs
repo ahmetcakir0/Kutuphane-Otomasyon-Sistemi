@@ -41,11 +41,17 @@
             // 
             this.dgv_YazarListesi.AllowUserToAddRows = false;
             this.dgv_YazarListesi.AllowUserToDeleteRows = false;
+            this.dgv_YazarListesi.AllowUserToResizeColumns = false;
+            this.dgv_YazarListesi.AllowUserToResizeRows = false;
+            this.dgv_YazarListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_YazarListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_YazarListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_YazarListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_YazarListesi.Location = new System.Drawing.Point(0, 50);
+            this.dgv_YazarListesi.MultiSelect = false;
             this.dgv_YazarListesi.Name = "dgv_YazarListesi";
             this.dgv_YazarListesi.ReadOnly = true;
+            this.dgv_YazarListesi.RowHeadersVisible = false;
             this.dgv_YazarListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_YazarListesi.Size = new System.Drawing.Size(267, 397);
             this.dgv_YazarListesi.TabIndex = 8;
@@ -82,6 +88,8 @@
             this.Controls.Add(this.dgv_YazarListesi);
             this.Controls.Add(this.btn_YazarAra);
             this.Controls.Add(this.txt_YazarAra);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "YazarAraPopupForm";
             this.Text = "Yazar Ara";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_YazarListesi)).EndInit();

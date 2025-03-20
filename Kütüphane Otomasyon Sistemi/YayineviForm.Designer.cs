@@ -83,11 +83,17 @@
             // 
             // dgv_YayıneviListesi
             // 
+            this.dgv_YayıneviListesi.AllowUserToAddRows = false;
+            this.dgv_YayıneviListesi.AllowUserToDeleteRows = false;
+            this.dgv_YayıneviListesi.AllowUserToResizeColumns = false;
+            this.dgv_YayıneviListesi.AllowUserToResizeRows = false;
             this.dgv_YayıneviListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_YayıneviListesi.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            this.dgv_YayıneviListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_YayıneviListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_YayıneviListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_YayıneviListesi.Location = new System.Drawing.Point(0, 462);
+            this.dgv_YayıneviListesi.MultiSelect = false;
             this.dgv_YayıneviListesi.Name = "dgv_YayıneviListesi";
             this.dgv_YayıneviListesi.ReadOnly = true;
             this.dgv_YayıneviListesi.RowHeadersVisible = false;
@@ -160,6 +166,8 @@
             this.Controls.Add(this.txt_TelNo);
             this.Controls.Add(this.txt_Yayinevi);
             this.Controls.Add(this.dgv_YayıneviListesi);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "YayineviForm";
             this.Text = "Yayınevi";
             this.Load += new System.EventHandler(this.YayineviForm_Load);

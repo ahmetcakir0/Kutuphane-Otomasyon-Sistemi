@@ -95,11 +95,19 @@
             // 
             // dgv_TurListesi
             // 
+            this.dgv_TurListesi.AllowUserToAddRows = false;
+            this.dgv_TurListesi.AllowUserToDeleteRows = false;
+            this.dgv_TurListesi.AllowUserToResizeColumns = false;
+            this.dgv_TurListesi.AllowUserToResizeRows = false;
+            this.dgv_TurListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_TurListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_TurListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_TurListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_TurListesi.Location = new System.Drawing.Point(0, 343);
+            this.dgv_TurListesi.MultiSelect = false;
             this.dgv_TurListesi.Name = "dgv_TurListesi";
-            this.dgv_TurListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgv_TurListesi.RowHeadersVisible = false;
+            this.dgv_TurListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_TurListesi.Size = new System.Drawing.Size(1074, 348);
             this.dgv_TurListesi.TabIndex = 39;
             this.dgv_TurListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_TurListesi_CellContentClick_1);
@@ -116,6 +124,8 @@
             this.Controls.Add(this.txt_TurEkle);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimizeBox = false;
             this.Name = "TurlerForm";
             this.Text = "Türler";
             this.Load += new System.EventHandler(this.TurlerForm_Load);

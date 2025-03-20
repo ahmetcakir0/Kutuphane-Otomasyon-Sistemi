@@ -192,11 +192,17 @@
             // 
             // dgv_SorumluListesi
             // 
+            this.dgv_SorumluListesi.AllowUserToAddRows = false;
+            this.dgv_SorumluListesi.AllowUserToDeleteRows = false;
+            this.dgv_SorumluListesi.AllowUserToResizeColumns = false;
+            this.dgv_SorumluListesi.AllowUserToResizeRows = false;
             this.dgv_SorumluListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_SorumluListesi.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dgv_SorumluListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_SorumluListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_SorumluListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_SorumluListesi.Location = new System.Drawing.Point(0, 379);
+            this.dgv_SorumluListesi.MultiSelect = false;
             this.dgv_SorumluListesi.Name = "dgv_SorumluListesi";
             this.dgv_SorumluListesi.ReadOnly = true;
             this.dgv_SorumluListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -292,6 +298,8 @@
             this.Controls.Add(this.txt_SorumluSoyad);
             this.Controls.Add(this.txt_SorumluAd);
             this.Controls.Add(this.txt_TCKimlik);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "SorumluKayitForm";
             this.Text = "Sorumlular";
             this.Load += new System.EventHandler(this.SorumluKayitForm_Load);

@@ -65,11 +65,18 @@
             // 
             this.dgv_KisilerListesi.AllowUserToAddRows = false;
             this.dgv_KisilerListesi.AllowUserToDeleteRows = false;
+            this.dgv_KisilerListesi.AllowUserToResizeColumns = false;
+            this.dgv_KisilerListesi.AllowUserToResizeRows = false;
+            this.dgv_KisilerListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_KisilerListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_KisilerListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_KisilerListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_KisilerListesi.Location = new System.Drawing.Point(0, 53);
+            this.dgv_KisilerListesi.MultiSelect = false;
             this.dgv_KisilerListesi.Name = "dgv_KisilerListesi";
             this.dgv_KisilerListesi.ReadOnly = true;
+            this.dgv_KisilerListesi.RowHeadersVisible = false;
+            this.dgv_KisilerListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_KisilerListesi.Size = new System.Drawing.Size(261, 397);
             this.dgv_KisilerListesi.TabIndex = 2;
             this.dgv_KisilerListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_KisilerListesi_CellContentClick);

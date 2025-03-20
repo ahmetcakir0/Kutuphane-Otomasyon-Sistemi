@@ -131,12 +131,20 @@
             // 
             // dgv_Rezervasyon
             // 
+            this.dgv_Rezervasyon.AllowUserToAddRows = false;
+            this.dgv_Rezervasyon.AllowUserToDeleteRows = false;
+            this.dgv_Rezervasyon.AllowUserToResizeColumns = false;
+            this.dgv_Rezervasyon.AllowUserToResizeRows = false;
+            this.dgv_Rezervasyon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_Rezervasyon.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_Rezervasyon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Rezervasyon.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_Rezervasyon.Location = new System.Drawing.Point(0, 343);
+            this.dgv_Rezervasyon.MultiSelect = false;
             this.dgv_Rezervasyon.Name = "dgv_Rezervasyon";
             this.dgv_Rezervasyon.ReadOnly = true;
-            this.dgv_Rezervasyon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgv_Rezervasyon.RowHeadersVisible = false;
+            this.dgv_Rezervasyon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_Rezervasyon.Size = new System.Drawing.Size(513, 246);
             this.dgv_Rezervasyon.TabIndex = 59;
             // 
@@ -202,6 +210,8 @@
             this.Controls.Add(this.txt_RezervasyonUye);
             this.Controls.Add(this.btn_UyeAra);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "RezervasyonForm";
             this.Text = "Rezervasyon";
             this.Load += new System.EventHandler(this.RezervasyonForm_Load);

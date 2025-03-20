@@ -306,6 +306,8 @@
             this.Controls.Add(this.txt_SayfaSayisi);
             this.Controls.Add(this.txt_KitapAdi);
             this.Controls.Add(this.dgv_KitapListesi);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "YeniKitapKayitForm";
             this.Text = "YeniKitapKayitForm";
             this.Load += new System.EventHandler(this.YeniKitapKayitForm_Load);

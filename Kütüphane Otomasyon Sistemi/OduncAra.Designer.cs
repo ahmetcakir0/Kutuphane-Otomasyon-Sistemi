@@ -41,11 +41,18 @@
             // 
             this.dgv_OduncListesi.AllowUserToAddRows = false;
             this.dgv_OduncListesi.AllowUserToDeleteRows = false;
+            this.dgv_OduncListesi.AllowUserToResizeColumns = false;
+            this.dgv_OduncListesi.AllowUserToResizeRows = false;
+            this.dgv_OduncListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_OduncListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_OduncListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_OduncListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_OduncListesi.Location = new System.Drawing.Point(0, 53);
+            this.dgv_OduncListesi.MultiSelect = false;
             this.dgv_OduncListesi.Name = "dgv_OduncListesi";
             this.dgv_OduncListesi.ReadOnly = true;
+            this.dgv_OduncListesi.RowHeadersVisible = false;
+            this.dgv_OduncListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_OduncListesi.Size = new System.Drawing.Size(293, 397);
             this.dgv_OduncListesi.TabIndex = 8;
             // 
@@ -81,6 +88,7 @@
             this.Controls.Add(this.btn_OduncAra);
             this.Controls.Add(this.txt_OduncAra);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "OduncAra";
             this.Text = "Ödünç Ara";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OduncListesi)).EndInit();
