@@ -140,6 +140,7 @@
             // 
             this.txt_AlınacakKitap.Location = new System.Drawing.Point(493, 91);
             this.txt_AlınacakKitap.Name = "txt_AlınacakKitap";
+            this.txt_AlınacakKitap.ReadOnly = true;
             this.txt_AlınacakKitap.Size = new System.Drawing.Size(159, 20);
             this.txt_AlınacakKitap.TabIndex = 71;
             // 
@@ -176,6 +177,7 @@
             this.dgv_OduncListesi.Location = new System.Drawing.Point(3, 322);
             this.dgv_OduncListesi.MultiSelect = false;
             this.dgv_OduncListesi.Name = "dgv_OduncListesi";
+            this.dgv_OduncListesi.ReadOnly = true;
             this.dgv_OduncListesi.RowHeadersVisible = false;
             this.dgv_OduncListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_OduncListesi.Size = new System.Drawing.Size(1082, 330);
@@ -185,6 +187,7 @@
             // 
             this.txt_AlacakKisi.Location = new System.Drawing.Point(493, 40);
             this.txt_AlacakKisi.Name = "txt_AlacakKisi";
+            this.txt_AlacakKisi.ReadOnly = true;
             this.txt_AlacakKisi.Size = new System.Drawing.Size(159, 20);
             this.txt_AlacakKisi.TabIndex = 67;
             // 

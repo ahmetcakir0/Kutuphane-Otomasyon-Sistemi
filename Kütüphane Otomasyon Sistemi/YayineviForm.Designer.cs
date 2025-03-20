@@ -55,6 +55,7 @@
             this.txt_TelNo.Name = "txt_TelNo";
             this.txt_TelNo.Size = new System.Drawing.Size(159, 20);
             this.txt_TelNo.TabIndex = 20;
+            this.txt_TelNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TelNo_KeyPress);
             // 
             // txt_Eposta
             // 
@@ -92,7 +93,7 @@
             this.dgv_YayıneviListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_YayıneviListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_YayıneviListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgv_YayıneviListesi.Location = new System.Drawing.Point(0, 462);
+            this.dgv_YayıneviListesi.Location = new System.Drawing.Point(0, 447);
             this.dgv_YayıneviListesi.MultiSelect = false;
             this.dgv_YayıneviListesi.Name = "dgv_YayıneviListesi";
             this.dgv_YayıneviListesi.ReadOnly = true;
@@ -154,7 +155,7 @@
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1273, 716);
+            this.ClientSize = new System.Drawing.Size(1273, 701);
             this.Controls.Add(this.btn_Temizle);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);

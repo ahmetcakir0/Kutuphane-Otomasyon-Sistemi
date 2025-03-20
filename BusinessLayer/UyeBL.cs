@@ -149,5 +149,12 @@ namespace BusinessLayer
                 throw new Exception($"Hata: {ex.Message}");
             }
         }
+
+        public bool UyeBilgisiVarMi(string tcKimlik, string telNo, string eposta, int mevcutUyeId = 0)
+        {
+            UyeDAL uyeDal = new UyeDAL();
+            return uyeDal.UyeBilgisiVarMi(tcKimlik, telNo, eposta, mevcutUyeId);
+        }
+
     }
 }

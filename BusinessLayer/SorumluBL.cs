@@ -170,5 +170,25 @@ namespace BusinessLayer
                 throw new Exception($"Hata: {ex.Message}");
             }
         }
+
+        public bool TCKimlikVarMi(string tcKimlik)
+        {
+            return sorumluDAL.TCKimlikVarMi(tcKimlik);
+        }
+
+        public bool KullaniciAdiVarMi(string kullaniciAdi)
+        {
+            return sorumluDAL.KullaniciAdiVarMi(kullaniciAdi);
+        }
+
+        public bool TelefonNoVarMi(string telNo)
+        {
+            return sorumluDAL.TelefonNoVarMi(telNo);
+        }
+
+        public bool EpostaVarMi(string ePosta)
+        {
+            return sorumluDAL.EpostaVarMi(ePosta);
+        }
     }
 }

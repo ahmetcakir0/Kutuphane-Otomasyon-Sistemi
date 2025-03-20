@@ -48,6 +48,7 @@
             this.txt_YazarAdSoyad.Name = "txt_YazarAdSoyad";
             this.txt_YazarAdSoyad.Size = new System.Drawing.Size(159, 20);
             this.txt_YazarAdSoyad.TabIndex = 21;
+            this.txt_YazarAdSoyad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_YazarAdSoyad_KeyPress);
             // 
             // txt_Iletisim
             // 
@@ -108,7 +109,8 @@
             this.dgv_YazarListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_YazarListesi.Size = new System.Drawing.Size(1069, 348);
             this.dgv_YazarListesi.TabIndex = 42;
-            this.dgv_YazarListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_YazarListesi_CellContentClick);
+
+            this.dgv_YazarListesi.Click += new System.EventHandler(this.dgv_YazarListesi_Click);
             // 
             // btn_Kaydet
             // 

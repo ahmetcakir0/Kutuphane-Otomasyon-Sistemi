@@ -100,5 +100,13 @@ namespace Kutuphane_Otomasyon_Sistemi
                 txt_Aciklama.Text = row.Cells["Aciklama"].Value.ToString();
             }
         }
+
+        private void txt_TurEkle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != 8) // 8 = Backspace
+            {
+                e.Handled = true;  // Eğer karakter harf değilse, girmeyi engelle
+            }
+        }
     }
 }

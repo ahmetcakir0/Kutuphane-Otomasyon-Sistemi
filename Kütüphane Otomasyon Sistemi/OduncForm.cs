@@ -80,10 +80,43 @@ namespace Kutuphane_Otomasyon_Sistemi
                 {
                     SecilenKitapID = kitapAraPopupForm.SecilenKitapID;
                     txt_AlınacakKitap.Text = kitapAraPopupForm.SecilenKitapAdi;
+
+                    // Kitap daha önce ödünç alındı mı ve iade edilmedi mi kontrolü
+                    if (IsKitapOduncAlinmis(SecilenKitapID))
+                    {
+                        MessageBox.Show("Bu kitap daha önce ödünç alınmış ve iade edilmemiş. Lütfen iade edilmesini bekleyin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txt_AlınacakKitap.Clear(); // Kitap adı temizlenebilir
+                        SecilenKitapID = 0; // SecilenKitapID sıfırlanır
+                    }
                 }
             }
         }
+        private bool IsKitapOduncAlinmis(int kitapID)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    string query = @"
+                SELECT COUNT(*) 
+                FROM Odunc 
+                WHERE KitapID = @KitapID AND IadeEdilenTarih IS NULL"; // Kitap iade edilmemişse
 
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@KitapID", kitapID);
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0; // Eğer 1 veya daha fazla ödünç alınmış kitap varsa, true döner
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Kitap ödünç durumu kontrol edilirken hata oluştu: " + ex.Message);
+                return false;
+            }
+        }
         private void btn_Kaydet_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txt_AlacakKisi.Text) || string.IsNullOrEmpty(txt_AlınacakKitap.Text))

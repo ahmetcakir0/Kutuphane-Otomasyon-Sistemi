@@ -62,6 +62,7 @@
             this.txt_TurEkle.Name = "txt_TurEkle";
             this.txt_TurEkle.Size = new System.Drawing.Size(159, 20);
             this.txt_TurEkle.TabIndex = 20;
+            this.txt_TurEkle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TurEkle_KeyPress);
             // 
             // txt_Aciklama
             // 
@@ -106,6 +107,7 @@
             this.dgv_TurListesi.Location = new System.Drawing.Point(0, 343);
             this.dgv_TurListesi.MultiSelect = false;
             this.dgv_TurListesi.Name = "dgv_TurListesi";
+            this.dgv_TurListesi.ReadOnly = true;
             this.dgv_TurListesi.RowHeadersVisible = false;
             this.dgv_TurListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_TurListesi.Size = new System.Drawing.Size(1074, 348);

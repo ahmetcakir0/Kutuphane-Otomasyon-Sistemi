@@ -43,6 +43,7 @@ namespace Kutuphane_Otomasyon_Sistemi
         {
             try
             {
+                // Kayıt bilgilerinin alındığı kısımlar
                 string sorumluAdi = txt_SorumluAd.Text.Trim();
                 string sorumluSoyadi = txt_SorumluSoyad.Text.Trim();
                 string tcKimlik = txt_TCKimlik.Text.Trim();
@@ -56,14 +57,45 @@ namespace Kutuphane_Otomasyon_Sistemi
 
                 string sonuc = string.Empty;
 
+                // Eğer güncelleme yapılıyorsa (seciliSorumluId > 0), TC Kimlik No, Kullanıcı Adı, Telefon Numarası ve E-Posta adresi kontrolü yapılmaz
+                if (seciliSorumluId == 0)
+                {
+                    // Yeni kayıt eklerken bu kontrolleri yap
+                    if (sorumluBL.TCKimlikVarMi(tcKimlik))
+                    {
+                        MessageBox.Show("Bu TC Kimlik numarası zaten kullanılıyor. Lütfen farklı bir numara girin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (sorumluBL.KullaniciAdiVarMi(kullaniciAdi))
+                    {
+                        MessageBox.Show("Bu kullanıcı adı zaten kullanılıyor. Lütfen farklı bir kullanıcı adı girin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (sorumluBL.TelefonNoVarMi(telNo))
+                    {
+                        MessageBox.Show("Bu telefon numarası zaten kullanılıyor. Lütfen farklı bir numara girin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (sorumluBL.EpostaVarMi(ePosta))
+                    {
+                        MessageBox.Show("Bu e-posta adresi zaten kullanılıyor. Lütfen farklı bir adres girin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
                 // Eğer seciliSorumluId 0'dan büyükse güncelleme yapıyoruz, aksi halde yeni kayıt ekliyoruz.
                 if (seciliSorumluId > 0)
                 {
+                    // Güncelleme işlemi
                     Sorumlu guncellenenSorumlu = new Sorumlu(seciliSorumluId, sorumluAdi, sorumluSoyadi, tcKimlik, rol, telNo, ePosta, dogumTarihi, adres, kullaniciAdi, sifre);
                     sonuc = sorumluBL.SorumluGuncelle(guncellenenSorumlu);
                 }
                 else
                 {
+                    // Yeni kayıt ekleme işlemi
                     Sorumlu yeniSorumlu = new Sorumlu(0, sorumluAdi, sorumluSoyadi, tcKimlik, rol, telNo, ePosta, dogumTarihi, adres, kullaniciAdi, sifre);
                     sonuc = sorumluBL.SorumluEkle(yeniSorumlu);
                 }
@@ -144,10 +176,33 @@ namespace Kutuphane_Otomasyon_Sistemi
                 // Burada, seçili satırın ID'si doğru şekilde alınıyor
             }
         }
+        private void txt_TCKimlik_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kullanıcının sadece rakam girmesini sağlayalım (sayısal değer)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8) // 8, Backspace tuşu
+            {
+                e.Handled = true; // Geçersiz karakteri engelle
+            }
+
+            // TC Kimlik numarasının 11 karakteri geçmemesini sağlayalım
+            if (txt_TCKimlik.Text.Length >= 11 && e.KeyChar != 8) // 11. karakterden sonrası engellenir
+            {
+                e.Handled = true; // Karakter girişini engelle
+            }
+        }
 
         private void btn_Temizle_Click(object sender, EventArgs e)
         {
             FormTemizle();
+        }
+
+        private void txt_TelNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Eğer girilen karakter bir rakam değilse, karakteri engelle
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8) // (char)8 = Backspace
+            {
+                e.Handled = true; // Karakteri engelle
+            }
         }
     }
 }

@@ -53,7 +53,7 @@
             this.btn_Kitaplar.ImageKey = "depositphotos_270747206-stock-illustration-stack-books-cartoon-illustration-stack" +
     ".jpg";
             this.btn_Kitaplar.ImageList = this.ımageList1;
-            this.btn_Kitaplar.Location = new System.Drawing.Point(215, 118);
+            this.btn_Kitaplar.Location = new System.Drawing.Point(37, 89);
             this.btn_Kitaplar.Name = "btn_Kitaplar";
             this.btn_Kitaplar.Size = new System.Drawing.Size(214, 141);
             this.btn_Kitaplar.TabIndex = 0;
@@ -89,7 +89,7 @@
             this.btn_Uyeler.BackColor = System.Drawing.Color.Transparent;
             this.btn_Uyeler.ImageKey = "uye.png";
             this.btn_Uyeler.ImageList = this.ımageList1;
-            this.btn_Uyeler.Location = new System.Drawing.Point(484, 118);
+            this.btn_Uyeler.Location = new System.Drawing.Point(306, 89);
             this.btn_Uyeler.Name = "btn_Uyeler";
             this.btn_Uyeler.Size = new System.Drawing.Size(214, 141);
             this.btn_Uyeler.TabIndex = 1;
@@ -104,7 +104,7 @@
             this.btn_Sorumlular.BackColor = System.Drawing.Color.Transparent;
             this.btn_Sorumlular.ImageKey = "images.png";
             this.btn_Sorumlular.ImageList = this.ımageList1;
-            this.btn_Sorumlular.Location = new System.Drawing.Point(756, 118);
+            this.btn_Sorumlular.Location = new System.Drawing.Point(578, 89);
             this.btn_Sorumlular.Name = "btn_Sorumlular";
             this.btn_Sorumlular.Size = new System.Drawing.Size(214, 141);
             this.btn_Sorumlular.TabIndex = 2;
@@ -119,7 +119,7 @@
             this.btn_Yazarlar.BackColor = System.Drawing.Color.Transparent;
             this.btn_Yazarlar.ImageKey = "download.png";
             this.btn_Yazarlar.ImageList = this.ımageList1;
-            this.btn_Yazarlar.Location = new System.Drawing.Point(1025, 118);
+            this.btn_Yazarlar.Location = new System.Drawing.Point(847, 89);
             this.btn_Yazarlar.Name = "btn_Yazarlar";
             this.btn_Yazarlar.Size = new System.Drawing.Size(214, 141);
             this.btn_Yazarlar.TabIndex = 3;
@@ -134,7 +134,7 @@
             this.btn_Yayinevi.BackColor = System.Drawing.Color.Transparent;
             this.btn_Yayinevi.ImageKey = "ulusal-ve-uluslarası-yayınevi-nedir.jpg";
             this.btn_Yayinevi.ImageList = this.ımageList1;
-            this.btn_Yayinevi.Location = new System.Drawing.Point(215, 355);
+            this.btn_Yayinevi.Location = new System.Drawing.Point(37, 317);
             this.btn_Yayinevi.Name = "btn_Yayinevi";
             this.btn_Yayinevi.Size = new System.Drawing.Size(214, 141);
             this.btn_Yayinevi.TabIndex = 4;
@@ -149,7 +149,7 @@
             this.btn_Turler.BackColor = System.Drawing.Color.Transparent;
             this.btn_Turler.ImageKey = "yayinevi.png";
             this.btn_Turler.ImageList = this.ımageList1;
-            this.btn_Turler.Location = new System.Drawing.Point(484, 355);
+            this.btn_Turler.Location = new System.Drawing.Point(306, 317);
             this.btn_Turler.Name = "btn_Turler";
             this.btn_Turler.Size = new System.Drawing.Size(214, 141);
             this.btn_Turler.TabIndex = 5;
@@ -164,7 +164,7 @@
             this.btn_OduncVerme.BackColor = System.Drawing.Color.Transparent;
             this.btn_OduncVerme.ImageKey = "boy-with-glasses-lends-a-book-to-his-friend-vector.jpg";
             this.btn_OduncVerme.ImageList = this.ımageList1;
-            this.btn_OduncVerme.Location = new System.Drawing.Point(1025, 355);
+            this.btn_OduncVerme.Location = new System.Drawing.Point(847, 317);
             this.btn_OduncVerme.Name = "btn_OduncVerme";
             this.btn_OduncVerme.Size = new System.Drawing.Size(214, 141);
             this.btn_OduncVerme.TabIndex = 6;
@@ -179,7 +179,7 @@
             this.btn_Rezervasyon.BackColor = System.Drawing.Color.Transparent;
             this.btn_Rezervasyon.ImageKey = "istockphoto-1296390218-612x612.jpg";
             this.btn_Rezervasyon.ImageList = this.ımageList1;
-            this.btn_Rezervasyon.Location = new System.Drawing.Point(215, 582);
+            this.btn_Rezervasyon.Location = new System.Drawing.Point(37, 542);
             this.btn_Rezervasyon.Name = "btn_Rezervasyon";
             this.btn_Rezervasyon.Size = new System.Drawing.Size(214, 141);
             this.btn_Rezervasyon.TabIndex = 8;
@@ -194,7 +194,7 @@
             this.btn_KategoriRaflar.BackColor = System.Drawing.Color.Transparent;
             this.btn_KategoriRaflar.ImageKey = "duvar-resimleri-kutuphane-kitap-raf-arka-plan-vektor.jpg.jpg";
             this.btn_KategoriRaflar.ImageList = this.ımageList1;
-            this.btn_KategoriRaflar.Location = new System.Drawing.Point(756, 355);
+            this.btn_KategoriRaflar.Location = new System.Drawing.Point(578, 317);
             this.btn_KategoriRaflar.Name = "btn_KategoriRaflar";
             this.btn_KategoriRaflar.Size = new System.Drawing.Size(214, 141);
             this.btn_KategoriRaflar.TabIndex = 9;
@@ -210,7 +210,7 @@
             this.btn_Raporlar.ImageKey = "pngtree-checklist-comic-icon-for-reports-and-business-check-evaluation-analysis-v" +
     "ector-png-image_12861732.png";
             this.btn_Raporlar.ImageList = this.ımageList1;
-            this.btn_Raporlar.Location = new System.Drawing.Point(489, 582);
+            this.btn_Raporlar.Location = new System.Drawing.Point(311, 542);
             this.btn_Raporlar.Name = "btn_Raporlar";
             this.btn_Raporlar.Size = new System.Drawing.Size(214, 141);
             this.btn_Raporlar.TabIndex = 10;
@@ -225,7 +225,7 @@
             this.btn_Ayarlar.BackColor = System.Drawing.Color.Transparent;
             this.btn_Ayarlar.ImageKey = "settings-icon_2691259.jpg";
             this.btn_Ayarlar.ImageList = this.ımageList1;
-            this.btn_Ayarlar.Location = new System.Drawing.Point(756, 582);
+            this.btn_Ayarlar.Location = new System.Drawing.Point(578, 542);
             this.btn_Ayarlar.Name = "btn_Ayarlar";
             this.btn_Ayarlar.Size = new System.Drawing.Size(214, 141);
             this.btn_Ayarlar.TabIndex = 11;
@@ -236,12 +236,14 @@
             // 
             // lbl_Hosgeldiniz
             // 
+            this.lbl_Hosgeldiniz.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_Hosgeldiniz.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_Hosgeldiniz.Location = new System.Drawing.Point(516, 42);
+            this.lbl_Hosgeldiniz.Location = new System.Drawing.Point(306, 36);
             this.lbl_Hosgeldiniz.Name = "lbl_Hosgeldiniz";
             this.lbl_Hosgeldiniz.Size = new System.Drawing.Size(486, 30);
             this.lbl_Hosgeldiniz.TabIndex = 12;
             this.lbl_Hosgeldiniz.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_Hosgeldiniz.Click += new System.EventHandler(this.lbl_Hosgeldiniz_Click);
             // 
             // button1
             // 
@@ -249,7 +251,7 @@
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.ImageKey = "Çıkış.png";
             this.button1.ImageList = this.ımageList1;
-            this.button1.Location = new System.Drawing.Point(1025, 582);
+            this.button1.Location = new System.Drawing.Point(847, 542);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(214, 141);
             this.button1.TabIndex = 13;
@@ -263,7 +265,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1497, 881);
+            this.ClientSize = new System.Drawing.Size(1105, 701);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lbl_Hosgeldiniz);
             this.Controls.Add(this.btn_Ayarlar);

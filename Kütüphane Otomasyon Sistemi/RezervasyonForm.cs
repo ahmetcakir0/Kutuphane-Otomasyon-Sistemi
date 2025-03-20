@@ -82,6 +82,13 @@ namespace Kutuphane_Otomasyon_Sistemi
                 return;
             }
 
+            // Aynı üye aynı kitaba rezervasyon yapmış mı kontrol et
+            if (IsUyeKitapIcinRezervasyonVarmi(SecilenUyeID, SecilenKitapID))
+            {
+                MessageBox.Show("Bu üye zaten bu kitaba rezervasyon yapmış.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Aynı kitaba rezervasyon yapılmasını engeller
+            }
+
             // Rezervasyon tarihini ve açıklamayı al
             DateTime rezervasyonTarihi = DateTime.Now; // Şu anki tarih ve saat
             string aciklama = txt_Aciklama.Text; // Açıklama metin kutusundan alınır
@@ -120,5 +127,35 @@ namespace Kutuphane_Otomasyon_Sistemi
                 }
             }
         }
+        private bool IsUyeKitapIcinRezervasyonVarmi(int uyeID, int kitapID)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+
+                    string query = @"
+                SELECT COUNT(*) 
+                FROM Rezervasyon 
+                WHERE UyeID = @UyeID AND KitapID = @KitapID";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@UyeID", uyeID);
+                        cmd.Parameters.AddWithValue("@KitapID", kitapID);
+
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0; // Eğer rezervasyon bulunursa, true döner
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Rezervasyon kontrol edilirken hata oluştu: " + ex.Message);
+                return false;
+            }
+        }
+
     }
 }

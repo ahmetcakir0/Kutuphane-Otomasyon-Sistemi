@@ -21,6 +21,15 @@ namespace BusinessLayer
         //    //return kitapDAL.GetYayineviAdlari();
         //    return yayinEviBL.TumYayinevleriniGetir();
         //}
+        public bool ISBNKontrol(string isbn)
+        {
+            return kitapDAL.ISBNVarMi(isbn);
+        }
+
+        public int YeniRafNumarasiGetir()
+        {
+            return kitapDAL.YeniRafNumarasi();
+        }
 
         public List<string> GetAllTurAdlari()
         {

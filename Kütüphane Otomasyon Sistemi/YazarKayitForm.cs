@@ -28,6 +28,9 @@ namespace Kutuphane_Otomasyon_Sistemi
         private void YazarKayitForm_Load(object sender, EventArgs e)
         {
             ListeyiYenile();
+
+            dgv_YazarListesi.ClearSelection();
+            dgv_YazarListesi.CurrentCell = null;
         }
 
         private void FormTemizle()
@@ -60,11 +63,18 @@ namespace Kutuphane_Otomasyon_Sistemi
                     return;
                 }
 
-                string sonuc;
+                string sonuc = string.Empty;
 
                 // Yeni yazar ekleme mi yoksa güncelleme mi yapılacak?
                 if (seciliYazarId == 0) // Yeni kayıt
                 {
+                    // İletişim kontrolü yapılıyor
+                    if (yazarBL.IletisimVarMi(yeniYazar.Iletisim))  // Eğer iletişim varsa
+                    {
+                        MessageBox.Show("Bu iletişim bilgisi zaten kullanılmakta!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return; // Eğer iletişim mevcutsa, işlem durduruluyor
+                    }
+
                     sonuc = yazarBL.YazarEkle(yeniYazar); // Yeni yazar ekleme işlemi
                 }
                 else // Güncelleme
@@ -111,17 +121,7 @@ namespace Kutuphane_Otomasyon_Sistemi
             }
         }
 
-        private void dgv_YazarListesi_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgv_YazarListesi.SelectedRows.Count > 0)
-            {
-                seciliYazarId = Convert.ToInt32(dgv_YazarListesi.SelectedRows[0].Cells["Id"].Value);
-                txt_YazarAdSoyad.Text = dgv_YazarListesi.SelectedRows[0].Cells["AdiSoyadi"].Value.ToString();
-                txt_Iletisim.Text = dgv_YazarListesi.SelectedRows[0].Cells["Iletisim"].Value.ToString();
-                dtp_DogumTarihi.Value = Convert.ToDateTime(dgv_YazarListesi.SelectedRows[0].Cells["DogumTarihi"].Value);
-                txt_Biyografi.Text = dgv_YazarListesi.SelectedRows[0].Cells["Biyografi"].Value.ToString();
-            }
-        }
+
         private int seciliYazarId = 0; // Seçilen yazarın ID’sini tutacak değişken
 
         private void dgv_YazarlarListesi_SelectionChanged(object sender, EventArgs e)
@@ -149,6 +149,26 @@ namespace Kutuphane_Otomasyon_Sistemi
 
             seciliYazarId = 0; // Seçili yazar sıfırlanır
             dgv_YazarListesi.ClearSelection(); // Seçimi kaldır
+        }
+
+        private void txt_YazarAdSoyad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && e.KeyChar != (char)8) // (char)8 = Backspace
+            {
+                e.Handled = true; // Karakteri engelle
+            }
+        }
+
+        private void dgv_YazarListesi_Click(object sender, EventArgs e)
+        {
+            if (dgv_YazarListesi.SelectedRows.Count > 0)
+            {
+                seciliYazarId = Convert.ToInt32(dgv_YazarListesi.SelectedRows[0].Cells["Id"].Value);
+                txt_YazarAdSoyad.Text = dgv_YazarListesi.SelectedRows[0].Cells["AdiSoyadi"].Value.ToString();
+                txt_Iletisim.Text = dgv_YazarListesi.SelectedRows[0].Cells["Iletisim"].Value.ToString();
+                dtp_DogumTarihi.Value = Convert.ToDateTime(dgv_YazarListesi.SelectedRows[0].Cells["DogumTarihi"].Value);
+                txt_Biyografi.Text = dgv_YazarListesi.SelectedRows[0].Cells["Biyografi"].Value.ToString();
+            }
         }
     }
 }

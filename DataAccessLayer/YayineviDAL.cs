@@ -152,5 +152,34 @@ namespace DataAccessLayer
 
             return yayinevleri;
         }
+
+        public bool TelNoVarMi(string telNo)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM Yayinevi WHERE TelNo = @TelNo";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@TelNo", telNo);
+
+                connection.Open();
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                return count > 0; // Eğer telefon numarası varsa
+            }
+        }
+
+        // E-posta var mı kontrolü
+        public bool EpostaVarMi(string eposta)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM Yayinevi WHERE Eposta = @Eposta";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Eposta", eposta);
+
+                connection.Open();
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                return count > 0; // Eğer e-posta varsa
+            }
+        }
     }
 }

@@ -52,6 +52,7 @@
             // 
             this.txt_RezervasyonUye.Location = new System.Drawing.Point(156, 21);
             this.txt_RezervasyonUye.Name = "txt_RezervasyonUye";
+            this.txt_RezervasyonUye.ReadOnly = true;
             this.txt_RezervasyonUye.Size = new System.Drawing.Size(159, 20);
             this.txt_RezervasyonUye.TabIndex = 52;
             // 
@@ -85,6 +86,7 @@
             // 
             this.txt_RezervasyonKitap.Location = new System.Drawing.Point(156, 68);
             this.txt_RezervasyonKitap.Name = "txt_RezervasyonKitap";
+            this.txt_RezervasyonKitap.ReadOnly = true;
             this.txt_RezervasyonKitap.Size = new System.Drawing.Size(159, 20);
             this.txt_RezervasyonKitap.TabIndex = 55;
             // 

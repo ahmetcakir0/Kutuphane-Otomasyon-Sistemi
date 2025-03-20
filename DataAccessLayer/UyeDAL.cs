@@ -140,5 +140,28 @@ namespace DataAccessLayer
                 return dataTable;
             }
         }
+        public bool UyeBilgisiVarMi(string tcKimlik, string telNo, string eposta, int mevcutUyeId = 0)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = @"
+            SELECT COUNT(*) FROM Uyeler 
+            WHERE (TCKimlik = @TCKimlik OR TelNo = @TelNo OR Eposta = @Eposta)
+            AND ID <> @MevcutUyeId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@TCKimlik", tcKimlik);
+                    cmd.Parameters.AddWithValue("@TelNo", telNo);
+                    cmd.Parameters.AddWithValue("@Eposta", eposta);
+                    cmd.Parameters.AddWithValue("@MevcutUyeId", mevcutUyeId);
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0; // Eğer kayıt varsa true döner
+                }
+            }
+        }
+
     }
 }

@@ -134,5 +134,16 @@ namespace BusinessLayer
                 throw new Exception($"Hata: {ex.Message}");
             }
         }
+
+        public bool TelNoVarMi(string telNo)
+        {
+            return yayineviDAL.TelNoVarMi(telNo);
+        }
+
+        // E-posta adresinin var olup olmadığını kontrol et
+        public bool EpostaVarMi(string eposta)
+        {
+            return yayineviDAL.EpostaVarMi(eposta);
+        }
     }
 }

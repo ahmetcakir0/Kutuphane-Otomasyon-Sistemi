@@ -39,6 +39,47 @@ namespace DataAccessLayer
 
         //    return yayinevleri;
         //}
+        public int YeniRafNumarasi()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT MAX(RafNumarasi) FROM Kitaplar";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    object result = cmd.ExecuteScalar();
+
+                    // Rastgele 3 basamaklı sayı üret
+                    Random rnd = new Random();
+                    int rastgeleBaslangic = rnd.Next(100, 1000); // 100 ile 999 arasında rastgele sayı
+
+                    if (result == null || result == DBNull.Value)
+                    {
+                        return rastgeleBaslangic; // Eğer hiç kayıt yoksa rastgele değer ata
+                    }
+
+                    // Kayıt varsa, en büyük raf numarasına +2 ekle ve rastgele sayıyı dikkate al
+                    int sonRafNumarasi = Convert.ToInt32(result);
+                    return Math.Max(sonRafNumarasi + 2, rastgeleBaslangic);
+                }
+            }
+        }
+
+
+        public bool ISBNVarMi(string isbn)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM Kitaplar WHERE ISBN = @ISBN";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ISBN", isbn);
+                    int count = (int)cmd.ExecuteScalar();
+                    return count > 0;  // Eğer kayıt varsa true döndür
+                }
+            }
+        }
 
         public List<string> GetTurAdlari()
         {

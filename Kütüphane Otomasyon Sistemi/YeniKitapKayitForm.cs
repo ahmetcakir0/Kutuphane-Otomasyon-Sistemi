@@ -55,26 +55,16 @@ namespace Kütüphane_Otomasyon_Sistemi
                     return;
                 }
 
-                int yayineviId;
-                if (cb_Yayinevi.SelectedValue == null || !int.TryParse(cb_Yayinevi.SelectedValue.ToString(), out yayineviId))
+                // ISBN kontrolü (Aynı ISBN varsa kaydı engelle) sadece yeni kayıt eklerken
+                if (seciliKitapId == 0 && kitapBL.ISBNKontrol(txt_ISBN.Text.Trim()))
                 {
-                    MessageBox.Show("Geçerli bir yayınevi seçmelisiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Bu ISBN numarası zaten kayıtlı! Lütfen farklı bir ISBN giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                int turId;
-                if (cb_Tur.SelectedValue == null || !int.TryParse(cb_Tur.SelectedValue.ToString(), out turId))
-                {
-                    MessageBox.Show("Geçerli bir tür seçmelisiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                int kategoriId;
-                if (cb_Kategori.SelectedValue == null || !int.TryParse(cb_Kategori.SelectedValue.ToString(), out kategoriId))
-                {
-                    MessageBox.Show("Geçerli bir kategori seçmelisiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                int yayineviId = Convert.ToInt32(cb_Yayinevi.SelectedValue);
+                int turId = Convert.ToInt32(cb_Tur.SelectedValue);
+                int kategoriId = Convert.ToInt32(cb_Kategori.SelectedValue);
 
                 // Yazar ID'sini kontrol et
                 if (seciliYazarId == 0)
@@ -83,10 +73,16 @@ namespace Kütüphane_Otomasyon_Sistemi
                     return;
                 }
 
+                // Otomatik raf numarası belirleme
+                int yeniRafNumarasi = kitapBL.YeniRafNumarasiGetir(); // 400'den başlar
+
+                // Raf numarasını TextBox'a yaz
+                txt_RafNumarasi.Text = yeniRafNumarasi.ToString();
+
                 // Kitap nesnesini oluştur
                 Kitap kitap = new Kitap
                 {
-                    ID = seciliKitapId,  // Eğer sıfırdan büyükse güncelleme yapılacak
+                    ID = seciliKitapId,
                     KitapAdi = txt_KitapAdi.Text.Trim(),
                     YazarID = seciliYazarId,
                     YazarAdi = txt_Yazar.Text.Trim(),
@@ -98,22 +94,12 @@ namespace Kütüphane_Otomasyon_Sistemi
                     KategoriAdi = cb_Kategori.Text.Trim(),
                     SayfaSayisi = txt_SayfaSayisi.Text.Trim(),
                     ISBN = txt_ISBN.Text.Trim(),
-                    RafNumarasi = txt_RafNumarasi.Text.Trim(),
+                    RafNumarasi = yeniRafNumarasi.ToString(),
                     Aciklama = txt_Aciklama.Text.Trim()
                 };
 
-                // Eğer Kitap ID'si sıfırdan büyükse, güncelleme işlemi yapılacak
-                bool isSuccess;
-                if (seciliKitapId > 0)
-                {
-                    // Güncelleme işlemi
-                    isSuccess = kitapBL.KitapGuncelle(kitap);
-                }
-                else
-                {
-                    // Yeni kitap ekleme işlemi
-                    isSuccess = kitapBL.KitapEkle(kitap);
-                }
+                // Ekleme veya güncelleme işlemi
+                bool isSuccess = seciliKitapId > 0 ? kitapBL.KitapGuncelle(kitap) : kitapBL.KitapEkle(kitap);
 
                 // İşlem sonucuna göre mesaj göster
                 if (isSuccess)
@@ -126,7 +112,6 @@ namespace Kütüphane_Otomasyon_Sistemi
                     MessageBox.Show("İşlem sırasında bir hata oluştu.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
-                // Listeyi güncelle ve formu temizle
                 ListeyiYenile();
                 FormuTemizle();
             }
@@ -149,23 +134,28 @@ namespace Kütüphane_Otomasyon_Sistemi
             txt_Aciklama.Clear();
 
             // ComboBox'ları sıfırla
-            cb_Yayinevi.SelectedIndex = -1;   // Hiçbir öğe seçili olmasın
-            cb_Tur.SelectedIndex = -1;         // Hiçbir öğe seçili olmasın
-            cb_Kategori.SelectedIndex = -1;    // Hiçbir öğe seçili olmasın
+            cb_Yayinevi.SelectedIndex = -1;
+            cb_Tur.SelectedIndex = -1;
+            cb_Kategori.SelectedIndex = -1;
 
-            // DataGridView'deki seçimleri kaldır
+            // DataGridView'deki seçimi kaldır
             dgv_KitapListesi.ClearSelection();
+            dgv_KitapListesi.CurrentCell = null; // Hiçbir hücre seçili olmasın
 
             // ID'leri sıfırla
             seciliKitapId = 0;
             seciliYazarId = 0;
         }
 
+
         private void YeniKitapKayitForm_Load(object sender, EventArgs e)
         {
             FormuTemizle();
             ListeyiYenile();
             ComboBoxlarıDoldur();
+
+            dgv_KitapListesi.ClearSelection();
+            dgv_KitapListesi.CurrentCell = null;
         }
 
         private void ListeyiYenile()
@@ -300,17 +290,6 @@ namespace Kütüphane_Otomasyon_Sistemi
             }
         }
 
-        private void dgv_KitapListesi_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgv_KitapListesi.SelectedRows.Count > 0)
-            {
-                // Get the selected book's ID from the DataGridView
-                seciliKitapId = Convert.ToInt32(dgv_KitapListesi.SelectedRows[0].Cells["ID"].Value);
-
-                // Optionally, load the book details into the form controls for editing
-                LoadKitapDetails(seciliKitapId);
-            }
-        }
 
 
         private void txt_SayfaSayisi_KeyPress(object sender, KeyPressEventArgs e)

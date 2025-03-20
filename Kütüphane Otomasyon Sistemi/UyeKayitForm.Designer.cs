@@ -55,6 +55,7 @@
             this.txt_TCKimlik.Name = "txt_TCKimlik";
             this.txt_TCKimlik.Size = new System.Drawing.Size(159, 20);
             this.txt_TCKimlik.TabIndex = 19;
+            this.txt_TCKimlik.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TCKimlik_KeyPress);
             // 
             // txt_Ad
             // 
@@ -62,6 +63,7 @@
             this.txt_Ad.Name = "txt_Ad";
             this.txt_Ad.Size = new System.Drawing.Size(159, 20);
             this.txt_Ad.TabIndex = 20;
+            this.txt_Ad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Ad_KeyPress);
             // 
             // txt_Soyad
             // 
@@ -69,6 +71,7 @@
             this.txt_Soyad.Name = "txt_Soyad";
             this.txt_Soyad.Size = new System.Drawing.Size(159, 20);
             this.txt_Soyad.TabIndex = 21;
+            this.txt_Soyad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Soyad_KeyPress);
             // 
             // txt_TelNo
             // 
@@ -76,6 +79,7 @@
             this.txt_TelNo.Name = "txt_TelNo";
             this.txt_TelNo.Size = new System.Drawing.Size(159, 20);
             this.txt_TelNo.TabIndex = 22;
+            this.txt_TelNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TelNo_KeyPress);
             // 
             // txt_Eposta
             // 

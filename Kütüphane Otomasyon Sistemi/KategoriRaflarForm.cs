@@ -143,14 +143,22 @@ namespace Kütüphane_Otomasyon_Sistemi
             txt_KategoriAdi.Clear();
         }
 
-        private void dgv_KategoriRaflar_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0) // Başlık satırına tıklanmadığından emin ol
-            {
-                DataGridViewRow row = dgv_KategoriRaflar.Rows[e.RowIndex];
 
-                // Seçili satırdaki verileri TextBox'lara aktar
-                txt_KategoriAdi.Text = row.Cells["KategoriAdi"].Value.ToString();
+
+        private void txt_KategoriAdi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != 8) // 8 = Backspace
+            {
+                e.Handled = true;  // Eğer karakter harf değilse, girmeyi engelle
+            }
+        }
+
+        private void dgv_KategoriRaflar_Click(object sender, EventArgs e)
+        {
+            if (dgv_KategoriRaflar.SelectedRows.Count > 0)
+            {
+                // Seçilen satırdaki "KategoriAdi" hücresinin değerini alıp TextBox'a aktar
+                txt_KategoriAdi.Text = dgv_KategoriRaflar.SelectedRows[0].Cells["KategoriAdi"].Value.ToString();
             }
         }
     }

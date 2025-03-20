@@ -72,12 +72,6 @@
     <Compile Include="KategoriRaflarForm.Designer.cs">
       <DependentUpon>KategoriRaflarForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OduncAra.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OduncAra.Designer.cs">
-      <DependentUpon>OduncAra.cs</DependentUpon>
-    </Compile>
     <Compile Include="SorumluKayitForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,9 +157,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KategoriRaflarForm.resx">
       <DependentUpon>KategoriRaflarForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OduncAra.resx">
-      <DependentUpon>OduncAra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SorumluKayitForm.resx">
       <DependentUpon>SorumluKayitForm.cs</DependentUpon>

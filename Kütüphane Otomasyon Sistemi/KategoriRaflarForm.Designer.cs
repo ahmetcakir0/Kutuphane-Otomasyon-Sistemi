@@ -44,6 +44,7 @@
             this.txt_KategoriAdi.Name = "txt_KategoriAdi";
             this.txt_KategoriAdi.Size = new System.Drawing.Size(139, 32);
             this.txt_KategoriAdi.TabIndex = 0;
+            this.txt_KategoriAdi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KategoriAdi_KeyPress);
             // 
             // label1
             // 
@@ -90,10 +91,11 @@
             this.dgv_KategoriRaflar.MultiSelect = false;
             this.dgv_KategoriRaflar.Name = "dgv_KategoriRaflar";
             this.dgv_KategoriRaflar.ReadOnly = true;
+            this.dgv_KategoriRaflar.RowHeadersVisible = false;
             this.dgv_KategoriRaflar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_KategoriRaflar.Size = new System.Drawing.Size(382, 211);
             this.dgv_KategoriRaflar.TabIndex = 55;
-            this.dgv_KategoriRaflar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_KategoriRaflar_CellContentClick);
+            this.dgv_KategoriRaflar.Click += new System.EventHandler(this.dgv_KategoriRaflar_Click);
             // 
             // btn_Temizleme
             // 

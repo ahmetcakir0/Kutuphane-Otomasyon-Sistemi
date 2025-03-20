@@ -53,6 +53,24 @@ namespace Kutuphane_Otomasyon_Sistemi
 
                 string sonuc;
 
+                // Eğer yeni kayıt ekleniyorsa (seciliYayineviId 0'dan küçükse), telefon numarası ve e-posta kontrolü yapılacak
+                if (seciliYayineviId == 0) // Yeni kayıt ekleniyorsa
+                {
+                    // Telefon numarası ve e-posta var mı kontrol et
+                    if (yayineviBL.TelNoVarMi(telNo))  // Eğer telefon numarası zaten varsa
+                    {
+                        MessageBox.Show("Bu telefon numarası zaten kullanımda!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (yayineviBL.EpostaVarMi(ePosta))  // Eğer e-posta zaten varsa
+                    {
+                        MessageBox.Show("Bu e-posta adresi zaten kullanımda!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                // Yeni ekleme mi yoksa güncelleme mi yapılacak?
                 if (seciliYayineviId > 0) // **Eğer ID varsa güncelleme işlemi**
                 {
                     Yayinevi yayinevi = new Yayinevi
@@ -179,6 +197,14 @@ namespace Kutuphane_Otomasyon_Sistemi
                 txt_TelNo.Text = row.Cells["TelNo"].Value?.ToString();
                 txt_Eposta.Text = row.Cells["Eposta"].Value?.ToString();
                 txt_Adres.Text = row.Cells["Adres"].Value?.ToString();
+            }
+        }
+
+        private void txt_TelNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '+' && e.KeyChar != '-' && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Bu tuşun girmesini engelle
             }
         }
     }

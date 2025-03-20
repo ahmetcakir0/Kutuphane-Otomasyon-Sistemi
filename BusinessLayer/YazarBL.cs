@@ -115,5 +115,10 @@ namespace BusinessLayer
                 throw new Exception($"Hata: {ex.Message}");
             }
         }
+
+        public bool IletisimVarMi(string iletisim)
+        {
+            return yazarDal.IletisimVarMi(iletisim);
+        }
     }
 }

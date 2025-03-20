@@ -215,5 +215,62 @@ namespace DataAccessLayer
                 return dataTable;
             }
         }
+
+        public bool TCKimlikVarMi(string tcKimlik)
+        {
+            string query = "SELECT COUNT(*) FROM Sorumlular WHERE TCKimlik = @TCKimlik";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@TCKimlik", tcKimlik);
+
+                connection.Open();
+                int count = (int)command.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        public bool KullaniciAdiVarMi(string kullaniciAdi)
+        {
+            string query = "SELECT COUNT(*) FROM Sorumlular WHERE KullaniciAdi = @KullaniciAdi";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@KullaniciAdi", kullaniciAdi);
+
+                connection.Open();
+                int count = (int)command.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        public bool TelefonNoVarMi(string telNo)
+        {
+            string query = "SELECT COUNT(*) FROM Sorumlular WHERE TelNo = @TelNo";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@TelNo", telNo);
+
+                connection.Open();
+                int count = (int)command.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        public bool EpostaVarMi(string ePosta)
+        {
+            string query = "SELECT COUNT(*) FROM Sorumlular WHERE Eposta = @Eposta";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Eposta", ePosta);
+
+                connection.Open();
+                int count = (int)command.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
     }
 }

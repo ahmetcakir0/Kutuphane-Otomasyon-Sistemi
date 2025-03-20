@@ -137,94 +137,28 @@ namespace DataAccessLayer
                 return dataTable;
             }
         }
-        // Yazarları listeleme işlemi
-        //public List<(int Id, string AdiSoyadi, string Iletisim, DateTime DogumTarihi, string Biyografi)> YazarListele()
-        //{
-        //    List<(int Id, string AdiSoyadi, string Iletisim, DateTime DogumTarihi, string Biyografi)> yazarlar = new List<(int, string, string, DateTime, string)>();
 
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        string query = "SELECT Id, AdiSoyadi, Iletisim, DogumTarihi, Biyografi FROM Yazarlar";
-        //        SqlCommand command = new SqlCommand(query, connection);
-        //        connection.Open();
-        //        SqlDataReader reader = command.ExecuteReader();
+        public bool IletisimVarMi(string iletisim)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    string query = "SELECT COUNT(*) FROM Yazarlar WHERE Iletisim = @Iletisim";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Iletisim", iletisim);
 
-        //        while (reader.Read())
-        //        {
-        //            int id = reader.GetInt32(0);
-        //            string adiSoyadi = reader.GetString(1);
-        //            string iletisim = reader.GetString(2);
+                    connection.Open();
+                    int count = Convert.ToInt32(command.ExecuteScalar());
 
-        //            // DateTime için NULL kontrolü yapalım
-        //            DateTime dogumTarihi = reader.IsDBNull(3) ? DateTime.MinValue : reader.GetDateTime(3);
-
-        //            string biyografi = reader.GetString(4);
-
-        //            yazarlar.Add((id, adiSoyadi, iletisim, dogumTarihi, biyografi));
-        //        }
-        //    }
-
-        //    return yazarlar;
-        //}
-
-        // Yazar bilgilerini ID ile getirme işlemi
-        //public (int Id, string YazarAdiSoyadi, string Iletisim, DateTime DogumTarihi, string Biyografi)? YazarGetirById(int id)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        string query = "SELECT * FROM Yazarlar WHERE Id = @Id";
-        //        SqlCommand command = new SqlCommand(query, connection);
-        //        command.Parameters.AddWithValue("@Id", id);
-
-        //        connection.Open();
-        //        SqlDataReader reader = command.ExecuteReader();
-
-        //        if (reader.Read())
-        //        {
-        //            var yazar = (
-        //                Id: reader.GetInt32(reader.GetOrdinal("Id")),
-        //                YazarAdiSoyadi: reader.GetString(reader.GetOrdinal("AdiSoyadi")),
-        //                Iletisim: reader.GetString(reader.GetOrdinal("Iletisim")),
-        //                DogumTarihi: reader.GetDateTime(reader.GetOrdinal("DogumTarihi")),
-        //                Biyografi: reader.GetString(reader.GetOrdinal("Biyografi"))
-        //            );
-        //            return yazar;
-        //        }
-        //        else
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //}
-
-        // Yazar arama işlemi (ad veya biyografi arama)
-        //public List<(int Id, string YazarAdiSoyadi, string Iletisim, DateTime DogumTarihi, string Biyografi)> YazarAra(string aramaMetni)
-        //{
-        //    List<(int, string, string, DateTime, string)> yazarlar = new List<(int, string, string, DateTime, string)>();
-
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        string query = "SELECT * FROM Yazarlar WHERE AdiSoyadi LIKE @AramaMetni OR Biyografi LIKE @AramaMetni";
-        //        SqlCommand command = new SqlCommand(query, connection);
-        //        command.Parameters.AddWithValue("@AramaMetni", "%" + aramaMetni + "%");
-
-        //        connection.Open();
-        //        SqlDataReader reader = command.ExecuteReader();
-
-        //        while (reader.Read())
-        //        {
-        //            var yazar = (
-        //                Id: reader.GetInt32(reader.GetOrdinal("Id")),
-        //                YazarAdiSoyadi: reader.GetString(reader.GetOrdinal("AdiSoyadi")),
-        //                Iletisim: reader.GetString(reader.GetOrdinal("Iletisim")),
-        //                DogumTarihi: reader.GetDateTime(reader.GetOrdinal("DogumTarihi")),
-        //                Biyografi: reader.GetString(reader.GetOrdinal("Biyografi"))
-        //            );
-        //            yazarlar.Add(yazar);
-        //        }
-        //    }
-
-        //    return yazarlar;
-        //}
+                    // Eğer iletişim bilgisi varsa
+                    return count > 0;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Veritabanı hatası: " + ex.Message); // Veritabanı hatası durumu
+                }
+            }
+        }
     }
 }

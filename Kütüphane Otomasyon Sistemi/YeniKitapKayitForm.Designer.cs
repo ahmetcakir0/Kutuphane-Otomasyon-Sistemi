@@ -60,6 +60,7 @@
             // dgv_KitapListesi
             // 
             this.dgv_KitapListesi.AllowUserToAddRows = false;
+            this.dgv_KitapListesi.AllowUserToDeleteRows = false;
             this.dgv_KitapListesi.AllowUserToResizeColumns = false;
             this.dgv_KitapListesi.AllowUserToResizeRows = false;
             this.dgv_KitapListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -71,10 +72,9 @@
             this.dgv_KitapListesi.ReadOnly = true;
             this.dgv_KitapListesi.RowHeadersVisible = false;
             this.dgv_KitapListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_KitapListesi.Size = new System.Drawing.Size(1308, 261);
+            this.dgv_KitapListesi.Size = new System.Drawing.Size(1284, 261);
             this.dgv_KitapListesi.TabIndex = 0;
             this.dgv_KitapListesi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_KitapListesi_CellClick);
-            this.dgv_KitapListesi.SelectionChanged += new System.EventHandler(this.dgv_KitapListesi_SelectionChanged);
             this.dgv_KitapListesi.DoubleClick += new System.EventHandler(this.dgv_KitapListesi_DoubleClick);
             // 
             // btn_Temizle
@@ -261,6 +261,7 @@
             // 
             this.txt_RafNumarasi.Location = new System.Drawing.Point(712, 252);
             this.txt_RafNumarasi.Name = "txt_RafNumarasi";
+            this.txt_RafNumarasi.ReadOnly = true;
             this.txt_RafNumarasi.Size = new System.Drawing.Size(159, 20);
             this.txt_RafNumarasi.TabIndex = 59;
             // 
@@ -285,7 +286,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1308, 684);
+            this.ClientSize = new System.Drawing.Size(1284, 684);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txt_Aciklama);
             this.Controls.Add(this.label8);

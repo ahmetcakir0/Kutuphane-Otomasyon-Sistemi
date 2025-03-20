@@ -61,6 +61,7 @@
             this.txt_TCKimlik.Name = "txt_TCKimlik";
             this.txt_TCKimlik.Size = new System.Drawing.Size(159, 20);
             this.txt_TCKimlik.TabIndex = 0;
+            this.txt_TCKimlik.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TCKimlik_KeyPress);
             // 
             // txt_SorumluAd
             // 
@@ -82,6 +83,7 @@
             this.txt_TelNo.Name = "txt_TelNo";
             this.txt_TelNo.Size = new System.Drawing.Size(159, 20);
             this.txt_TelNo.TabIndex = 4;
+            this.txt_TelNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TelNo_KeyPress);
             // 
             // txt_Eposta
             // 
@@ -205,7 +207,8 @@
             this.dgv_SorumluListesi.MultiSelect = false;
             this.dgv_SorumluListesi.Name = "dgv_SorumluListesi";
             this.dgv_SorumluListesi.ReadOnly = true;
-            this.dgv_SorumluListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgv_SorumluListesi.RowHeadersVisible = false;
+            this.dgv_SorumluListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_SorumluListesi.Size = new System.Drawing.Size(1161, 207);
             this.dgv_SorumluListesi.TabIndex = 18;
             this.dgv_SorumluListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_SorumluListesi_CellContentClick);

@@ -96,5 +96,10 @@ namespace Kütüphane_Otomasyon_Sistemi
         {
             Environment.Exit(0);
         }
+
+        private void lbl_Hosgeldiniz_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
