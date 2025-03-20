@@ -26,6 +26,7 @@ namespace Kutuphane_Otomasyon_Sistemi
 
         private void YeniUyeKayitForm_Load(object sender, EventArgs e)
         {
+            FormTemizle();
             ListeyiYenile();
         }
 
@@ -38,6 +39,7 @@ namespace Kutuphane_Otomasyon_Sistemi
             txt_Eposta.Clear();
             txt_Adres.Clear();
             txt_Ad.Focus();
+            dgv_UyeListesi.ClearSelection();
         }
 
         private void Kaydet_Button_Click(object sender, EventArgs e)

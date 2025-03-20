@@ -35,7 +35,6 @@ namespace Kutuphane_Otomasyon_Sistemi
             txt_SorumluSifre.Clear();
             dt_DogumTarihi.Value = DateTime.Now;
             seciliSorumluId = 0;  // Yeni kayıt moduna geç
-            btn_Kaydet.Text = "Kaydet";
             dgv_SorumluListesi.ClearSelection();
             txt_SorumluAd.Focus();
         }
@@ -88,7 +87,7 @@ namespace Kutuphane_Otomasyon_Sistemi
 
         private void btn_Sil_Click(object sender, EventArgs e)
         {
-            if (dgv_SorumluListesi.SelectedRows.Count == 0)
+            if (seciliSorumluId == 0) // Eğer seçili sorumlu ID'si 0 ise hata mesajı göster
             {
                 MessageBox.Show("Lütfen bir sorumlu seçin!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -98,19 +97,15 @@ namespace Kutuphane_Otomasyon_Sistemi
 
             if (result == DialogResult.Yes)
             {
-                foreach (DataGridViewRow row in dgv_SorumluListesi.SelectedRows)
+                if (sorumluBL.SorumluSil(seciliSorumluId))  // Seçilen sorumluyu sil
                 {
-                    int sorumluID = Convert.ToInt32(row.Cells["ID"].Value);
-                    if (sorumluBL.SorumluSil(sorumluID))
-                    {
-                        MessageBox.Show("Sorumlu başarıyla silindi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sorumlu silinirken hata oluştu!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show("Sorumlu başarıyla silindi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ListeyiYenile();
                 }
-                ListeyiYenile();
+                else
+                {
+                    MessageBox.Show("Sorumlu silinirken hata oluştu!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -131,9 +126,9 @@ namespace Kutuphane_Otomasyon_Sistemi
         {
             if (e.RowIndex >= 0) // Başlık satırına tıklanmadığından emin olun
             {
+                // Seçilen satırın bilgilerini al
                 DataGridViewRow row = dgv_SorumluListesi.Rows[e.RowIndex];
 
-                // Seçili satırdaki verileri TextBox'lara aktar
                 seciliSorumluId = Convert.ToInt32(row.Cells["ID"].Value);
                 txt_SorumluAd.Text = row.Cells["SorumluAdi"].Value.ToString();
                 txt_SorumluSoyad.Text = row.Cells["SorumluSoyadi"].Value.ToString();
@@ -146,8 +141,7 @@ namespace Kutuphane_Otomasyon_Sistemi
                 txt_SorumluSifre.Text = row.Cells["Sifre"].Value.ToString();
                 dt_DogumTarihi.Value = Convert.ToDateTime(row.Cells["DogumTarihi"].Value);
 
-                // Seçim yapıldığında buton metnini güncelleme olarak değiştir
-                btn_Kaydet.Text = "Güncelle";
+                // Burada, seçili satırın ID'si doğru şekilde alınıyor
             }
         }
 

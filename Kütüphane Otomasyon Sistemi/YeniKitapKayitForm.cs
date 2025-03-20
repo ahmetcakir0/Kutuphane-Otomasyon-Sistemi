@@ -146,10 +146,7 @@ namespace Kütüphane_Otomasyon_Sistemi
             txt_ISBN.Clear();
             txt_RafNumarasi.Clear();
             txt_Aciklama.Clear();
-
-            cb_Yayinevi.SelectedIndex = -1;
-            cb_Tur.SelectedIndex = -1;
-            cb_Kategori.SelectedIndex = -1;
+            dgv_KitapListesi.ClearSelection();
 
             seciliKitapId = 0;
             seciliYazarId = 0;
