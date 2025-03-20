@@ -62,7 +62,6 @@ namespace Kütüphane_Otomasyon_Sistemi
                     return;
                 }
 
-
                 int turId;
                 if (cb_Tur.SelectedValue == null || !int.TryParse(cb_Tur.SelectedValue.ToString(), out turId))
                 {
@@ -76,7 +75,6 @@ namespace Kütüphane_Otomasyon_Sistemi
                     MessageBox.Show("Geçerli bir kategori seçmelisiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
 
                 // Yazar ID'sini kontrol et
                 if (seciliYazarId == 0)
@@ -104,14 +102,24 @@ namespace Kütüphane_Otomasyon_Sistemi
                     Aciklama = txt_Aciklama.Text.Trim()
                 };
 
-                // Güncelleme veya Ekleme işlemi
-                bool isSuccess = kitapBL.KitapEkle(kitap);
+                // Eğer Kitap ID'si sıfırdan büyükse, güncelleme işlemi yapılacak
+                bool isSuccess;
+                if (seciliKitapId > 0)
+                {
+                    // Güncelleme işlemi
+                    isSuccess = kitapBL.KitapGuncelle(kitap);
+                }
+                else
+                {
+                    // Yeni kitap ekleme işlemi
+                    isSuccess = kitapBL.KitapEkle(kitap);
+                }
 
                 // İşlem sonucuna göre mesaj göster
                 if (isSuccess)
                 {
                     MessageBox.Show(seciliKitapId > 0 ? "Kitap başarıyla güncellendi." : "Kitap başarıyla eklendi.",
-                                    "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                     "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -149,6 +157,7 @@ namespace Kütüphane_Otomasyon_Sistemi
 
         private void YeniKitapKayitForm_Load(object sender, EventArgs e)
         {
+            FormuTemizle();
             ListeyiYenile();
             ComboBoxlarıDoldur();
         }
@@ -269,6 +278,57 @@ namespace Kütüphane_Otomasyon_Sistemi
             catch (Exception ex)
             {
                 MessageBox.Show($"Hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LoadKitapDetails(int kitapId)
+        {
+            try
+            {
+                // Eğer kitap ID'si 0 ise, işlem yapma
+                if (kitapId == 0)
+                    return;
+
+                // Veritabanından kitap detaylarını al (kitapBL'den)
+                Kitap kitap = kitapBL.KitapGetirById(kitapId);
+
+                if (kitap != null)
+                {
+                    // Form alanlarını kitap detaylarıyla doldur
+                    txt_KitapAdi.Text = kitap.KitapAdi;
+                    txt_Yazar.Text = kitap.YazarAdi;
+                    txt_SayfaSayisi.Text = kitap.SayfaSayisi;
+                    txt_ISBN.Text = kitap.ISBN;
+                    txt_RafNumarasi.Text = kitap.RafNumarasi;
+                    txt_Aciklama.Text = kitap.Aciklama;
+
+                    // ComboBox'ları seçili kitap ID'lerine göre güncelle
+                    cb_Yayinevi.SelectedValue = kitap.YayineviID;
+                    cb_Tur.SelectedValue = kitap.TurID;
+                    cb_Kategori.SelectedValue = kitap.KategoriID;
+
+                    // Yazar ID'sini de form alanlarına aktar (eğer varsa)
+                    seciliYazarId = kitap.YazarID;
+                }
+                else
+                {
+                    MessageBox.Show("Seçilen kitap bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgv_KitapListesi_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgv_KitapListesi.SelectedRows.Count > 0)
+            {
+                // Get the selected book's ID from the DataGridView
+                seciliKitapId = Convert.ToInt32(dgv_KitapListesi.SelectedRows[0].Cells["ID"].Value);
+
+                // Optionally, load the book details into the form controls for editing
+                LoadKitapDetails(seciliKitapId);
             }
         }
     }

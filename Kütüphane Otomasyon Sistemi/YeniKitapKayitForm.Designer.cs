@@ -59,13 +59,22 @@
             // 
             // dgv_KitapListesi
             // 
+            this.dgv_KitapListesi.AllowUserToAddRows = false;
+            this.dgv_KitapListesi.AllowUserToResizeColumns = false;
+            this.dgv_KitapListesi.AllowUserToResizeRows = false;
+            this.dgv_KitapListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_KitapListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_KitapListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_KitapListesi.Location = new System.Drawing.Point(0, 423);
+            this.dgv_KitapListesi.MultiSelect = false;
             this.dgv_KitapListesi.Name = "dgv_KitapListesi";
+            this.dgv_KitapListesi.ReadOnly = true;
+            this.dgv_KitapListesi.RowHeadersVisible = false;
+            this.dgv_KitapListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_KitapListesi.Size = new System.Drawing.Size(1308, 261);
             this.dgv_KitapListesi.TabIndex = 0;
             this.dgv_KitapListesi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_KitapListesi_CellClick);
+            this.dgv_KitapListesi.SelectionChanged += new System.EventHandler(this.dgv_KitapListesi_SelectionChanged);
             // 
             // btn_Temizle
             // 
@@ -116,6 +125,7 @@
             // 
             // cb_Tur
             // 
+            this.cb_Tur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Tur.FormattingEnabled = true;
             this.cb_Tur.Location = new System.Drawing.Point(712, 61);
             this.cb_Tur.Name = "cb_Tur";
@@ -124,6 +134,7 @@
             // 
             // cb_Yayinevi
             // 
+            this.cb_Yayinevi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Yayinevi.FormattingEnabled = true;
             this.cb_Yayinevi.Location = new System.Drawing.Point(253, 182);
             this.cb_Yayinevi.Name = "cb_Yayinevi";
@@ -141,6 +152,7 @@
             // 
             // cb_Kategori
             // 
+            this.cb_Kategori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Kategori.FormattingEnabled = true;
             this.cb_Kategori.Location = new System.Drawing.Point(253, 256);
             this.cb_Kategori.Name = "cb_Kategori";
@@ -201,6 +213,7 @@
             // 
             this.txt_Yazar.Location = new System.Drawing.Point(251, 121);
             this.txt_Yazar.Name = "txt_Yazar";
+            this.txt_Yazar.ReadOnly = true;
             this.txt_Yazar.Size = new System.Drawing.Size(159, 20);
             this.txt_Yazar.TabIndex = 48;
             // 

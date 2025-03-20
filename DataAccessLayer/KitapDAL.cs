@@ -164,41 +164,50 @@ namespace DataAccessLayer
         }
 
 
-        //public bool KitapGuncelle(Kitap kitap)
-        //{
-        //    try
-        //    {
-        //        using (SqlConnection connection = new SqlConnection(connectionString))
-        //        {
-        //            string query = @"
-        //    INSERT INTO Kitaplar (KitapAdi, YazarID, YayineviID, KitapTuruID, 
-        //                        KategoriID, SayfaSayisi, ISBN, RafNumarasi, Aciklama)
-        //    VALUES (@KitapAdi, @YazarID, @YayineviID, @KitapTuruID, 
-        //            @KategoriID, @SayfaSayisi, @ISBN, @RafNumarasi, @Aciklama)";
+        public bool KitapGuncelle(Kitap kitap)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @"
+            UPDATE Kitaplar
+            SET KitapAdi = @KitapAdi,
+                YazarID = @YazarID,
+                YayineviID = @YayineviID,
+                KitapTuruID = @KitapTuruID,
+                KategoriID = @KategoriID,
+                SayfaSayisi = @SayfaSayisi,
+                ISBN = @ISBN,
+                RafNumarasi = @RafNumarasi,
+                Aciklama = @Aciklama
+            WHERE ID = @ID";  // Kitap ID'sini belirterek sadece mevcut kaydı güncelleyeceğiz.
 
-        //            using (SqlCommand command = new SqlCommand(query, connection))
-        //            {
-        //                // Parametreleri ekliyoruz
-        //                command.Parameters.AddWithValue("@KitapAdi", kitap.KitapAdi);
-        //                command.Parameters.AddWithValue("@YazarID", kitap.YazarID);
-        //                command.Parameters.AddWithValue("@YayineviID", kitap.YayineviID);
-        //                command.Parameters.AddWithValue("@KitapTuruID", kitap.TurID);
-        //                command.Parameters.AddWithValue("@KategoriID",  kitap.KategoriID);
-        //                command.Parameters.AddWithValue("@SayfaSayisi", kitap.SayfaSayisi);
-        //                command.Parameters.AddWithValue("@ISBN", kitap.ISBN);
-        //                command.Parameters.AddWithValue("@RafNumarasi", kitap.RafNumarasi);
-        //                command.Parameters.AddWithValue("@Aciklama", kitap.Aciklama);
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Parametreleri ekliyoruz
+                        command.Parameters.AddWithValue("@KitapAdi", kitap.KitapAdi);
+                        command.Parameters.AddWithValue("@YazarID", kitap.YazarID);
+                        command.Parameters.AddWithValue("@YayineviID", kitap.YayineviID);
+                        command.Parameters.AddWithValue("@KitapTuruID", kitap.TurID);
+                        command.Parameters.AddWithValue("@KategoriID", kitap.KategoriID);
+                        command.Parameters.AddWithValue("@SayfaSayisi", kitap.SayfaSayisi);
+                        command.Parameters.AddWithValue("@ISBN", kitap.ISBN);
+                        command.Parameters.AddWithValue("@RafNumarasi", kitap.RafNumarasi);
+                        command.Parameters.AddWithValue("@Aciklama", kitap.Aciklama);
+                        command.Parameters.AddWithValue("@ID", kitap.ID);  // Güncelleme yapılacak kitabın ID'sini ekliyoruz
 
-        //                connection.Open();
-        //                return command.ExecuteNonQuery() > 0;  // Güncelleme başarılıysa true döner
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("Kitap güncellenirken hata oluştu: " + ex.Message);
-        //    }
-        //}
+                        connection.Open();
+                        return command.ExecuteNonQuery() > 0;  // Güncelleme başarılıysa true döner
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Kitap güncellenirken hata oluştu: " + ex.Message);
+            }
+        }
+
 
         public bool KitapSil(int kitapID)
         {

@@ -53,24 +53,24 @@ namespace BusinessLayer
             }
         }
 
-        //public bool KitapGuncelle(Kitap kitap)
-        //{
-        //    try
-        //    {
-        //        if (kitap.ID <= 0)
-        //            throw new Exception("Geçersiz Kitap ID.");
-        //        if (string.IsNullOrEmpty(kitap.KitapAdi))
-        //            throw new Exception("Kitap adı boş olamaz.");
-        //        if (string.IsNullOrEmpty(kitap.ISBN))
-        //            throw new Exception("ISBN boş olamaz.");
+        public bool KitapGuncelle(Kitap kitap)
+        {
+            try
+            {
+                if (kitap.ID <= 0)
+                    throw new Exception("Geçersiz Kitap ID.");
+                if (string.IsNullOrEmpty(kitap.KitapAdi))
+                    throw new Exception("Kitap adı boş olamaz.");
+                if (string.IsNullOrEmpty(kitap.ISBN))
+                    throw new Exception("ISBN boş olamaz.");
 
-        //        return kitapDAL.KitapGuncelle(kitap);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("Kitap güncelleme işlemi sırasında hata oluştu: " + ex.Message);
-        //    }
-        //}
+                return kitapDAL.KitapGuncelle(kitap);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Kitap güncelleme işlemi sırasında hata oluştu: " + ex.Message);
+            }
+        }
 
         public bool KitapSil(int kitapID)
         {
