@@ -63,11 +63,6 @@ namespace Kütüphane_Otomasyon_Sistemi
             oduncForm.Show();
         }
 
-        private void btn_Rezervasyon_Click(object sender, EventArgs e)
-        {
-            RezervasyonForm rezervasyonForm = new RezervasyonForm();
-            rezervasyonForm.Show();
-        }
 
         private void btn_KategoriRaflar_Click(object sender, EventArgs e)
         {
@@ -75,31 +70,38 @@ namespace Kütüphane_Otomasyon_Sistemi
             kategoriRaflarForm.Show();
         }
 
-        private void btn_Raporlar_Click(object sender, EventArgs e)
-        {
-            RaporlarForm raporlarForm = new RaporlarForm();
-            raporlarForm.Show();
-        }
-
-        private void btn_Cikis_Click(object sender, EventArgs e)
-        {
-            Ayarlar ayalar = new Ayarlar();
-            ayalar.Show();
-        }
 
         private void AnaMenuForm_Load(object sender, EventArgs e)
         {
             lbl_Hosgeldiniz.Text = $"Hoşgeldiniz {kullaniciAdi}";
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
         private void lbl_Hosgeldiniz_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnRezervasyon_Click(object sender, EventArgs e)
+        {
+            RezervasyonForm rezervasyonForm = new RezervasyonForm();
+            rezervasyonForm.Show();
+        }
+
+        private void btnRaporlar_Click(object sender, EventArgs e)
+        {
+            RaporlarForm raporlarForm = new RaporlarForm();
+            raporlarForm.Show();
+        }
+
+        private void btnAyarlar_Click(object sender, EventArgs e)
+        {
+            Ayarlar ayalar = new Ayarlar();
+            ayalar.Show();
+        }
+
+        private void btnCikis_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

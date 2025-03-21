@@ -98,5 +98,11 @@ namespace Kütuphane_Otomasyon_Sistemi
                 this.Close(); // Pop-up formunu kapat
             }
         }
+
+        private void dgv_KisilerListesi_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgv_KisilerListesi.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+        }
     }
 }

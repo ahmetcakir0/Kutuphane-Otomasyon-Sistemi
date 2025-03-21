@@ -31,7 +31,7 @@ namespace Kutuphane_Otomasyon_Sistemi
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT ID, KitapAdi FROM Kitaplar";
+                    string query = "SELECT ID, KitapAdi, RafNumarasi FROM Kitaplar";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
@@ -97,6 +97,11 @@ namespace Kutuphane_Otomasyon_Sistemi
                 this.DialogResult = DialogResult.OK;
                 this.Close(); // Pop-up formunu kapat
             }
+        }
+
+        private void dgv_KitapListesi_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgv_KitapListesi.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
         }
     }
 }

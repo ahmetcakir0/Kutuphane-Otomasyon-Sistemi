@@ -170,5 +170,10 @@ namespace Kutuphane_Otomasyon_Sistemi
                 txt_Biyografi.Text = dgv_YazarListesi.SelectedRows[0].Cells["Biyografi"].Value.ToString();
             }
         }
+
+        private void dgv_YazarListesi_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgv_YazarListesi.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
+        }
     }
 }

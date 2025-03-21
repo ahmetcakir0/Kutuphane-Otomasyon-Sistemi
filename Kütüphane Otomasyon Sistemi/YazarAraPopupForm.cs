@@ -96,5 +96,10 @@ namespace Kütüphane_Otomasyon_Sistemi
                 MessageBox.Show("Lütfen bir yazar seçin.");
             }
         }
+
+        private void dgv_YazarListesi_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgv_YazarListesi.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
+        }
     }
 }

@@ -47,24 +47,28 @@
             this.dgv_YazarListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_YazarListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_YazarListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgv_YazarListesi.Location = new System.Drawing.Point(0, 50);
+            this.dgv_YazarListesi.Location = new System.Drawing.Point(0, 77);
+            this.dgv_YazarListesi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgv_YazarListesi.MultiSelect = false;
             this.dgv_YazarListesi.Name = "dgv_YazarListesi";
             this.dgv_YazarListesi.ReadOnly = true;
             this.dgv_YazarListesi.RowHeadersVisible = false;
+            this.dgv_YazarListesi.RowHeadersWidth = 62;
             this.dgv_YazarListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_YazarListesi.Size = new System.Drawing.Size(267, 397);
+            this.dgv_YazarListesi.Size = new System.Drawing.Size(400, 611);
             this.dgv_YazarListesi.TabIndex = 8;
             this.dgv_YazarListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_YazarListesi_CellContentClick);
+            this.dgv_YazarListesi.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_YazarListesi_ColumnHeaderMouseClick);
             this.dgv_YazarListesi.DoubleClick += new System.EventHandler(this.YazarAraPopupForm_DoubleClick);
             // 
             // btn_YazarAra
             // 
             this.btn_YazarAra.ImageKey = "mercek.png";
             this.btn_YazarAra.ImageList = this.ımageList1;
-            this.btn_YazarAra.Location = new System.Drawing.Point(205, 12);
+            this.btn_YazarAra.Location = new System.Drawing.Point(308, 18);
+            this.btn_YazarAra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_YazarAra.Name = "btn_YazarAra";
-            this.btn_YazarAra.Size = new System.Drawing.Size(44, 23);
+            this.btn_YazarAra.Size = new System.Drawing.Size(66, 35);
             this.btn_YazarAra.TabIndex = 7;
             this.btn_YazarAra.UseVisualStyleBackColor = true;
             this.btn_YazarAra.Click += new System.EventHandler(this.btn_YazarAra_Click);
@@ -77,20 +81,22 @@
             // 
             // txt_YazarAra
             // 
-            this.txt_YazarAra.Location = new System.Drawing.Point(12, 12);
+            this.txt_YazarAra.Location = new System.Drawing.Point(18, 18);
+            this.txt_YazarAra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_YazarAra.Name = "txt_YazarAra";
-            this.txt_YazarAra.Size = new System.Drawing.Size(187, 20);
+            this.txt_YazarAra.Size = new System.Drawing.Size(278, 26);
             this.txt_YazarAra.TabIndex = 6;
             // 
             // YazarAraPopupForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(267, 447);
+            this.ClientSize = new System.Drawing.Size(400, 688);
             this.Controls.Add(this.dgv_YazarListesi);
             this.Controls.Add(this.btn_YazarAra);
             this.Controls.Add(this.txt_YazarAra);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "YazarAraPopupForm";
             this.Text = "Yazar Ara";

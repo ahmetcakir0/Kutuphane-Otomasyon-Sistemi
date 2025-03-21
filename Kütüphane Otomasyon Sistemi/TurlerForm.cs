@@ -108,5 +108,11 @@ namespace Kutuphane_Otomasyon_Sistemi
                 e.Handled = true;  // Eğer karakter harf değilse, girmeyi engelle
             }
         }
+
+        private void dgv_TurListesi_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgv_TurListesi.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+        }
     }
 }

@@ -229,5 +229,11 @@ namespace Kutuphane_Otomasyon_Sistemi
                 e.Handled = true; // Karakteri engelle
             }
         }
+
+        private void dgv_UyeListesi_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgv_UyeListesi.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+        }
     }
 }

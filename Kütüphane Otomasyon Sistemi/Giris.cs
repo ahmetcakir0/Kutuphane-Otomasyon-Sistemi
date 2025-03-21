@@ -18,6 +18,8 @@ namespace Kutuphane_Otomasyon_Sistemi
         public Giris()
         {
             InitializeComponent();
+            this.AcceptButton = btn_Giris; // GİRİŞ butonu Enter tuşuyla çalışır
+
         }
 
         private void btn_Giris_Click(object sender, EventArgs e)

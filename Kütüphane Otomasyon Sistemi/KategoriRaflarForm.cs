@@ -161,5 +161,11 @@ namespace Kütüphane_Otomasyon_Sistemi
                 txt_KategoriAdi.Text = dgv_KategoriRaflar.SelectedRows[0].Cells["KategoriAdi"].Value.ToString();
             }
         }
+
+        private void dgv_KategoriRaflar_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgv_KategoriRaflar.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+        }
     }
 }

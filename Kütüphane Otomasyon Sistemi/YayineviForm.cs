@@ -207,5 +207,11 @@ namespace Kutuphane_Otomasyon_Sistemi
                 e.Handled = true; // Bu tuşun girmesini engelle
             }
         }
+
+        private void dgv_YayıneviListesi_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgv_YayıneviListesi.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+        }
     }
 }

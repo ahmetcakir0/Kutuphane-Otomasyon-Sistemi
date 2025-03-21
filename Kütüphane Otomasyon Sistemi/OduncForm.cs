@@ -337,5 +337,17 @@ namespace Kutuphane_Otomasyon_Sistemi
             }
             return cezaTutari;
         }
+
+        private void dgv_OduncListesi_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgv_OduncIade.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+        }
+
+        private void dgv_OduncIade_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgv_OduncIade.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+        }
     }
 }

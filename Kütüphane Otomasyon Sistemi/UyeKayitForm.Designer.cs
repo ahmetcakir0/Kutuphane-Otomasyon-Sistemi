@@ -51,127 +51,142 @@
             // 
             // txt_TCKimlik
             // 
-            this.txt_TCKimlik.Location = new System.Drawing.Point(145, 69);
+            this.txt_TCKimlik.Location = new System.Drawing.Point(218, 106);
+            this.txt_TCKimlik.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_TCKimlik.Name = "txt_TCKimlik";
-            this.txt_TCKimlik.Size = new System.Drawing.Size(159, 20);
+            this.txt_TCKimlik.Size = new System.Drawing.Size(236, 26);
             this.txt_TCKimlik.TabIndex = 19;
             this.txt_TCKimlik.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TCKimlik_KeyPress);
             // 
             // txt_Ad
             // 
-            this.txt_Ad.Location = new System.Drawing.Point(145, 138);
+            this.txt_Ad.Location = new System.Drawing.Point(218, 212);
+            this.txt_Ad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Ad.Name = "txt_Ad";
-            this.txt_Ad.Size = new System.Drawing.Size(159, 20);
+            this.txt_Ad.Size = new System.Drawing.Size(236, 26);
             this.txt_Ad.TabIndex = 20;
             this.txt_Ad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Ad_KeyPress);
             // 
             // txt_Soyad
             // 
-            this.txt_Soyad.Location = new System.Drawing.Point(145, 217);
+            this.txt_Soyad.Location = new System.Drawing.Point(218, 334);
+            this.txt_Soyad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Soyad.Name = "txt_Soyad";
-            this.txt_Soyad.Size = new System.Drawing.Size(159, 20);
+            this.txt_Soyad.Size = new System.Drawing.Size(236, 26);
             this.txt_Soyad.TabIndex = 21;
             this.txt_Soyad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Soyad_KeyPress);
             // 
             // txt_TelNo
             // 
-            this.txt_TelNo.Location = new System.Drawing.Point(505, 73);
+            this.txt_TelNo.Location = new System.Drawing.Point(758, 112);
+            this.txt_TelNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_TelNo.Name = "txt_TelNo";
-            this.txt_TelNo.Size = new System.Drawing.Size(159, 20);
+            this.txt_TelNo.Size = new System.Drawing.Size(236, 26);
             this.txt_TelNo.TabIndex = 22;
             this.txt_TelNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TelNo_KeyPress);
             // 
             // txt_Eposta
             // 
-            this.txt_Eposta.Location = new System.Drawing.Point(505, 138);
+            this.txt_Eposta.Location = new System.Drawing.Point(758, 212);
+            this.txt_Eposta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Eposta.Name = "txt_Eposta";
-            this.txt_Eposta.Size = new System.Drawing.Size(159, 20);
+            this.txt_Eposta.Size = new System.Drawing.Size(236, 26);
             this.txt_Eposta.TabIndex = 23;
             // 
             // dtp_DogumTarihi
             // 
-            this.dtp_DogumTarihi.Location = new System.Drawing.Point(505, 214);
+            this.dtp_DogumTarihi.Location = new System.Drawing.Point(758, 329);
+            this.dtp_DogumTarihi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtp_DogumTarihi.Name = "dtp_DogumTarihi";
-            this.dtp_DogumTarihi.Size = new System.Drawing.Size(159, 20);
+            this.dtp_DogumTarihi.Size = new System.Drawing.Size(236, 26);
             this.dtp_DogumTarihi.TabIndex = 24;
             // 
             // txt_Adres
             // 
-            this.txt_Adres.Location = new System.Drawing.Point(785, 73);
+            this.txt_Adres.Location = new System.Drawing.Point(1178, 112);
+            this.txt_Adres.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Adres.Multiline = true;
             this.txt_Adres.Name = "txt_Adres";
-            this.txt_Adres.Size = new System.Drawing.Size(247, 116);
+            this.txt_Adres.Size = new System.Drawing.Size(368, 176);
             this.txt_Adres.TabIndex = 25;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(49, 72);
+            this.label1.Location = new System.Drawing.Point(74, 111);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.Size = new System.Drawing.Size(105, 20);
             this.label1.TabIndex = 26;
             this.label1.Text = "TC Kimlik No :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(49, 145);
+            this.label2.Location = new System.Drawing.Point(74, 223);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 13);
+            this.label2.Size = new System.Drawing.Size(37, 20);
             this.label2.TabIndex = 27;
             this.label2.Text = "Ad :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(49, 224);
+            this.label3.Location = new System.Drawing.Point(74, 345);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.Size = new System.Drawing.Size(62, 20);
             this.label3.TabIndex = 28;
             this.label3.Text = "Soyad :";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(405, 76);
+            this.label4.Location = new System.Drawing.Point(608, 117);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
+            this.label4.Size = new System.Drawing.Size(62, 20);
             this.label4.TabIndex = 29;
             this.label4.Text = "Tel No :";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(405, 145);
+            this.label5.Location = new System.Drawing.Point(608, 223);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 13);
+            this.label5.Size = new System.Drawing.Size(81, 20);
             this.label5.TabIndex = 30;
             this.label5.Text = "E - posta :";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(405, 221);
+            this.label6.Location = new System.Drawing.Point(608, 340);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.Size = new System.Drawing.Size(111, 20);
             this.label6.TabIndex = 31;
             this.label6.Text = "Doğum Tarihi :";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(739, 80);
+            this.label7.Location = new System.Drawing.Point(1108, 123);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 13);
+            this.label7.Size = new System.Drawing.Size(59, 20);
             this.label7.TabIndex = 32;
             this.label7.Text = "Adres :";
             // 
             // btn_Sil
             // 
             this.btn_Sil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Sil.Location = new System.Drawing.Point(505, 293);
+            this.btn_Sil.Location = new System.Drawing.Point(758, 451);
+            this.btn_Sil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Sil.Name = "btn_Sil";
-            this.btn_Sil.Size = new System.Drawing.Size(118, 39);
+            this.btn_Sil.Size = new System.Drawing.Size(177, 60);
             this.btn_Sil.TabIndex = 36;
             this.btn_Sil.Text = "SİL";
             this.btn_Sil.UseVisualStyleBackColor = true;
@@ -180,9 +195,10 @@
             // btn_Kaydet
             // 
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(186, 293);
+            this.btn_Kaydet.Location = new System.Drawing.Point(279, 451);
+            this.btn_Kaydet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Kaydet.Name = "btn_Kaydet";
-            this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
+            this.btn_Kaydet.Size = new System.Drawing.Size(177, 60);
             this.btn_Kaydet.TabIndex = 35;
             this.btn_Kaydet.Text = "KAYDET";
             this.btn_Kaydet.UseVisualStyleBackColor = true;
@@ -199,22 +215,26 @@
             this.dgv_UyeListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_UyeListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_UyeListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgv_UyeListesi.Location = new System.Drawing.Point(0, 417);
+            this.dgv_UyeListesi.Location = new System.Drawing.Point(0, 642);
+            this.dgv_UyeListesi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgv_UyeListesi.MultiSelect = false;
             this.dgv_UyeListesi.Name = "dgv_UyeListesi";
             this.dgv_UyeListesi.ReadOnly = true;
             this.dgv_UyeListesi.RowHeadersVisible = false;
+            this.dgv_UyeListesi.RowHeadersWidth = 62;
             this.dgv_UyeListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_UyeListesi.Size = new System.Drawing.Size(1123, 208);
+            this.dgv_UyeListesi.Size = new System.Drawing.Size(1684, 320);
             this.dgv_UyeListesi.TabIndex = 38;
             this.dgv_UyeListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_UyeListesi_CellContentClick);
+            this.dgv_UyeListesi.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_UyeListesi_ColumnHeaderMouseClick);
             // 
             // btn_Temizle
             // 
             this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Temizle.Location = new System.Drawing.Point(890, 293);
+            this.btn_Temizle.Location = new System.Drawing.Point(1335, 451);
+            this.btn_Temizle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Temizle.Name = "btn_Temizle";
-            this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
+            this.btn_Temizle.Size = new System.Drawing.Size(177, 60);
             this.btn_Temizle.TabIndex = 39;
             this.btn_Temizle.Text = "TEMİZLE";
             this.btn_Temizle.UseVisualStyleBackColor = true;
@@ -222,9 +242,9 @@
             // 
             // UyeKayitForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1123, 625);
+            this.ClientSize = new System.Drawing.Size(1684, 962);
             this.Controls.Add(this.btn_Temizle);
             this.Controls.Add(this.dgv_UyeListesi);
             this.Controls.Add(this.btn_Sil);
@@ -244,6 +264,7 @@
             this.Controls.Add(this.txt_Ad);
             this.Controls.Add(this.txt_TCKimlik);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "UyeKayitForm";
             this.Text = "Üyeler";

@@ -39,18 +39,20 @@
             // 
             // txt_KisiAra
             // 
-            this.txt_KisiAra.Location = new System.Drawing.Point(12, 12);
+            this.txt_KisiAra.Location = new System.Drawing.Point(18, 18);
+            this.txt_KisiAra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_KisiAra.Name = "txt_KisiAra";
-            this.txt_KisiAra.Size = new System.Drawing.Size(187, 20);
+            this.txt_KisiAra.Size = new System.Drawing.Size(278, 26);
             this.txt_KisiAra.TabIndex = 0;
             // 
             // btn_KisiAra
             // 
             this.btn_KisiAra.ImageKey = "mercek.png";
             this.btn_KisiAra.ImageList = this.ımageList1;
-            this.btn_KisiAra.Location = new System.Drawing.Point(205, 12);
+            this.btn_KisiAra.Location = new System.Drawing.Point(308, 18);
+            this.btn_KisiAra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_KisiAra.Name = "btn_KisiAra";
-            this.btn_KisiAra.Size = new System.Drawing.Size(44, 23);
+            this.btn_KisiAra.Size = new System.Drawing.Size(66, 35);
             this.btn_KisiAra.TabIndex = 1;
             this.btn_KisiAra.UseVisualStyleBackColor = true;
             this.btn_KisiAra.Click += new System.EventHandler(this.btn_KisiAra_Click);
@@ -71,26 +73,30 @@
             this.dgv_KisilerListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_KisilerListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_KisilerListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgv_KisilerListesi.Location = new System.Drawing.Point(0, 53);
+            this.dgv_KisilerListesi.Location = new System.Drawing.Point(0, 81);
+            this.dgv_KisilerListesi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgv_KisilerListesi.MultiSelect = false;
             this.dgv_KisilerListesi.Name = "dgv_KisilerListesi";
             this.dgv_KisilerListesi.ReadOnly = true;
             this.dgv_KisilerListesi.RowHeadersVisible = false;
+            this.dgv_KisilerListesi.RowHeadersWidth = 62;
             this.dgv_KisilerListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_KisilerListesi.Size = new System.Drawing.Size(261, 397);
+            this.dgv_KisilerListesi.Size = new System.Drawing.Size(392, 611);
             this.dgv_KisilerListesi.TabIndex = 2;
             this.dgv_KisilerListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_KisilerListesi_CellContentClick);
+            this.dgv_KisilerListesi.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_KisilerListesi_ColumnHeaderMouseClick);
             this.dgv_KisilerListesi.DoubleClick += new System.EventHandler(this.dgv_KisilerListesi_DoubleClick);
             // 
             // UyeAraPopupForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(261, 450);
+            this.ClientSize = new System.Drawing.Size(392, 692);
             this.Controls.Add(this.dgv_KisilerListesi);
             this.Controls.Add(this.btn_KisiAra);
             this.Controls.Add(this.txt_KisiAra);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "UyeAraPopupForm";
             this.Text = "Üye Ara";

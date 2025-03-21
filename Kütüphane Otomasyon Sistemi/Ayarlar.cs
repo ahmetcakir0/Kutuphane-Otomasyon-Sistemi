@@ -167,5 +167,15 @@ namespace Kutuphane_Otomasyon_Sistemi
                 txt_YeniSifreTekrar.Text = "";
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txt_KullaniciAdi.Clear();
+            txt_Sifre.Clear();
+            txt_YeniSifre.Clear();
+            txt_YeniSifreTekrar.Clear();
+            txt_OduncSuresi.Clear();
+            txt_CezaUcreti.Clear();
+        }
     }
 }
