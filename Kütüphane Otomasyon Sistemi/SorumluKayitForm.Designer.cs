@@ -57,140 +57,127 @@
             // 
             // txt_TCKimlik
             // 
-            this.txt_TCKimlik.Location = new System.Drawing.Point(238, 94);
-            this.txt_TCKimlik.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_TCKimlik.Location = new System.Drawing.Point(159, 61);
             this.txt_TCKimlik.Name = "txt_TCKimlik";
-            this.txt_TCKimlik.Size = new System.Drawing.Size(236, 26);
+            this.txt_TCKimlik.Size = new System.Drawing.Size(159, 20);
             this.txt_TCKimlik.TabIndex = 0;
             this.txt_TCKimlik.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TCKimlik_KeyPress);
             // 
             // txt_SorumluAd
             // 
-            this.txt_SorumluAd.Location = new System.Drawing.Point(238, 197);
-            this.txt_SorumluAd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_SorumluAd.Location = new System.Drawing.Point(159, 128);
             this.txt_SorumluAd.Name = "txt_SorumluAd";
-            this.txt_SorumluAd.Size = new System.Drawing.Size(236, 26);
+            this.txt_SorumluAd.Size = new System.Drawing.Size(159, 20);
             this.txt_SorumluAd.TabIndex = 2;
+            this.txt_SorumluAd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_SorumluAd_KeyPress);
             // 
             // txt_SorumluSoyad
             // 
-            this.txt_SorumluSoyad.Location = new System.Drawing.Point(238, 300);
-            this.txt_SorumluSoyad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_SorumluSoyad.Location = new System.Drawing.Point(159, 195);
             this.txt_SorumluSoyad.Name = "txt_SorumluSoyad";
-            this.txt_SorumluSoyad.Size = new System.Drawing.Size(236, 26);
+            this.txt_SorumluSoyad.Size = new System.Drawing.Size(159, 20);
             this.txt_SorumluSoyad.TabIndex = 3;
+            this.txt_SorumluSoyad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_SorumluSoyad_KeyPress);
             // 
             // txt_TelNo
             // 
-            this.txt_TelNo.Location = new System.Drawing.Point(798, 192);
-            this.txt_TelNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_TelNo.Location = new System.Drawing.Point(532, 125);
             this.txt_TelNo.Name = "txt_TelNo";
-            this.txt_TelNo.Size = new System.Drawing.Size(236, 26);
+            this.txt_TelNo.Size = new System.Drawing.Size(159, 20);
             this.txt_TelNo.TabIndex = 4;
             this.txt_TelNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TelNo_KeyPress);
             // 
             // txt_Eposta
             // 
-            this.txt_Eposta.Location = new System.Drawing.Point(798, 295);
-            this.txt_Eposta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_Eposta.Location = new System.Drawing.Point(532, 192);
             this.txt_Eposta.Name = "txt_Eposta";
-            this.txt_Eposta.Size = new System.Drawing.Size(236, 26);
+            this.txt_Eposta.Size = new System.Drawing.Size(159, 20);
             this.txt_Eposta.TabIndex = 5;
             // 
             // txt_Adres
             // 
-            this.txt_Adres.Location = new System.Drawing.Point(1270, 197);
-            this.txt_Adres.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_Adres.Location = new System.Drawing.Point(847, 128);
             this.txt_Adres.Multiline = true;
             this.txt_Adres.Name = "txt_Adres";
-            this.txt_Adres.Size = new System.Drawing.Size(360, 236);
+            this.txt_Adres.Size = new System.Drawing.Size(241, 155);
             this.txt_Adres.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(69, 94);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(46, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 20);
+            this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "TC Kimlik No :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(76, 208);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(51, 135);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 20);
+            this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "Sorumlu Adı :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(51, 311);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(34, 202);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 20);
+            this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Sorumlu Soyadı :";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(615, 202);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(410, 131);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 20);
+            this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 10;
             this.label4.Text = "Tel No :";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(600, 305);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(400, 198);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 20);
+            this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "E - posta :";
             // 
             // dt_DogumTarihi
             // 
-            this.dt_DogumTarihi.Location = new System.Drawing.Point(1270, 94);
-            this.dt_DogumTarihi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dt_DogumTarihi.Location = new System.Drawing.Point(847, 61);
             this.dt_DogumTarihi.Name = "dt_DogumTarihi";
-            this.dt_DogumTarihi.Size = new System.Drawing.Size(360, 26);
+            this.dt_DogumTarihi.Size = new System.Drawing.Size(241, 20);
             this.dt_DogumTarihi.TabIndex = 12;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1098, 103);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(732, 67);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 20);
+            this.label6.Size = new System.Drawing.Size(76, 13);
             this.label6.TabIndex = 13;
             this.label6.Text = "Doğum Tarihi :";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1102, 206);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(735, 134);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 20);
+            this.label7.Size = new System.Drawing.Size(40, 13);
             this.label7.TabIndex = 14;
             this.label7.Text = "Adres :";
             // 
             // btn_Kaydet
             // 
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(522, 489);
-            this.btn_Kaydet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Kaydet.Location = new System.Drawing.Point(348, 318);
             this.btn_Kaydet.Name = "btn_Kaydet";
-            this.btn_Kaydet.Size = new System.Drawing.Size(177, 60);
+            this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_Kaydet.TabIndex = 15;
             this.btn_Kaydet.Text = "KAYDET";
             this.btn_Kaydet.UseVisualStyleBackColor = true;
@@ -199,10 +186,9 @@
             // btn_Sil
             // 
             this.btn_Sil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Sil.Location = new System.Drawing.Point(806, 489);
-            this.btn_Sil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Sil.Location = new System.Drawing.Point(537, 318);
             this.btn_Sil.Name = "btn_Sil";
-            this.btn_Sil.Size = new System.Drawing.Size(177, 60);
+            this.btn_Sil.Size = new System.Drawing.Size(118, 39);
             this.btn_Sil.TabIndex = 16;
             this.btn_Sil.Text = "SİL";
             this.btn_Sil.UseVisualStyleBackColor = true;
@@ -219,15 +205,14 @@
             this.dgv_SorumluListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_SorumluListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_SorumluListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgv_SorumluListesi.Location = new System.Drawing.Point(0, 584);
-            this.dgv_SorumluListesi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgv_SorumluListesi.Location = new System.Drawing.Point(0, 379);
             this.dgv_SorumluListesi.MultiSelect = false;
             this.dgv_SorumluListesi.Name = "dgv_SorumluListesi";
             this.dgv_SorumluListesi.ReadOnly = true;
             this.dgv_SorumluListesi.RowHeadersVisible = false;
             this.dgv_SorumluListesi.RowHeadersWidth = 62;
             this.dgv_SorumluListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_SorumluListesi.Size = new System.Drawing.Size(1742, 318);
+            this.dgv_SorumluListesi.Size = new System.Drawing.Size(1161, 207);
             this.dgv_SorumluListesi.TabIndex = 18;
             this.dgv_SorumluListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_SorumluListesi_CellContentClick);
             this.dgv_SorumluListesi.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_SorumluListesi_ColumnHeaderMouseClick);
@@ -235,64 +220,57 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(75, 420);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(50, 273);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(101, 20);
+            this.label8.Size = new System.Drawing.Size(70, 13);
             this.label8.TabIndex = 21;
             this.label8.Text = "Kullanıcı Adı :";
             // 
             // txt_SorumluKullaniciAdi
             // 
-            this.txt_SorumluKullaniciAdi.Location = new System.Drawing.Point(238, 415);
-            this.txt_SorumluKullaniciAdi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_SorumluKullaniciAdi.Location = new System.Drawing.Point(159, 270);
             this.txt_SorumluKullaniciAdi.Name = "txt_SorumluKullaniciAdi";
-            this.txt_SorumluKullaniciAdi.Size = new System.Drawing.Size(236, 26);
+            this.txt_SorumluKullaniciAdi.Size = new System.Drawing.Size(159, 20);
             this.txt_SorumluKullaniciAdi.TabIndex = 20;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(615, 415);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(410, 270);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(50, 20);
+            this.label9.Size = new System.Drawing.Size(34, 13);
             this.label9.TabIndex = 23;
             this.label9.Text = "Şifre :";
             // 
             // txt_SorumluSifre
             // 
-            this.txt_SorumluSifre.Location = new System.Drawing.Point(798, 415);
-            this.txt_SorumluSifre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_SorumluSifre.Location = new System.Drawing.Point(532, 270);
             this.txt_SorumluSifre.Name = "txt_SorumluSifre";
-            this.txt_SorumluSifre.Size = new System.Drawing.Size(236, 26);
+            this.txt_SorumluSifre.Size = new System.Drawing.Size(159, 20);
             this.txt_SorumluSifre.TabIndex = 22;
             // 
             // txt_Rol
             // 
-            this.txt_Rol.Location = new System.Drawing.Point(798, 89);
-            this.txt_Rol.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_Rol.Location = new System.Drawing.Point(532, 58);
             this.txt_Rol.Name = "txt_Rol";
-            this.txt_Rol.Size = new System.Drawing.Size(236, 26);
+            this.txt_Rol.Size = new System.Drawing.Size(159, 20);
             this.txt_Rol.TabIndex = 24;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(615, 94);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(410, 61);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(50, 20);
+            this.label10.Size = new System.Drawing.Size(35, 13);
             this.label10.TabIndex = 25;
             this.label10.Text = "Rolü :";
             // 
             // btn_Temizle
             // 
             this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Temizle.Location = new System.Drawing.Point(1100, 489);
-            this.btn_Temizle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Temizle.Location = new System.Drawing.Point(733, 318);
             this.btn_Temizle.Name = "btn_Temizle";
-            this.btn_Temizle.Size = new System.Drawing.Size(177, 60);
+            this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
             this.btn_Temizle.TabIndex = 26;
             this.btn_Temizle.Text = "TEMİZLE";
             this.btn_Temizle.UseVisualStyleBackColor = true;
@@ -300,9 +278,9 @@
             // 
             // SorumluKayitForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1742, 902);
+            this.ClientSize = new System.Drawing.Size(1161, 586);
             this.Controls.Add(this.btn_Temizle);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txt_Rol);
@@ -328,7 +306,6 @@
             this.Controls.Add(this.txt_SorumluAd);
             this.Controls.Add(this.txt_TCKimlik);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "SorumluKayitForm";
             this.Text = "Sorumlular";

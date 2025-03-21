@@ -3,7 +3,8 @@ using DataAccessLayer;
 using System;
 using System.Data;
 using System.Windows.Forms;
-using EntityLayer;  // Sorumlu sınıfı burada bulunuyor
+using EntityLayer;
+using System.Text.RegularExpressions;// Sorumlu sınıfı burada bulunuyor
 
 namespace Kutuphane_Otomasyon_Sistemi
 {
@@ -38,7 +39,13 @@ namespace Kutuphane_Otomasyon_Sistemi
             dgv_SorumluListesi.ClearSelection();
             txt_SorumluAd.Focus();
         }
-
+        private bool EpostaGecerliMi(string eposta)
+        {
+            if (string.IsNullOrWhiteSpace(eposta))
+                return false;
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(eposta, pattern);
+        }
         private void btn_Kaydet_Click(object sender, EventArgs e)
         {
             try
@@ -56,7 +63,11 @@ namespace Kutuphane_Otomasyon_Sistemi
                 string sifre = txt_SorumluSifre.Text.Trim();
 
                 string sonuc = string.Empty;
-
+                if (!EpostaGecerliMi(ePosta))
+                {
+                    MessageBox.Show("Lütfen geçerli bir e-posta adresi girin!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 // Eğer güncelleme yapılıyorsa (seciliSorumluId > 0), TC Kimlik No, Kullanıcı Adı, Telefon Numarası ve E-Posta adresi kontrolü yapılmaz
                 if (seciliSorumluId == 0)
                 {
@@ -209,6 +220,22 @@ namespace Kutuphane_Otomasyon_Sistemi
         {
             dgv_SorumluListesi.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
 
+        }
+
+        private void txt_SorumluAd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != ' ') // 8 = Backspace, ' ' = Boşluk
+            {
+                e.Handled = true; // Geçersiz karakteri engelle
+            }
+        }
+
+        private void txt_SorumluSoyad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != ' ') // 8 = Backspace, ' ' = Boşluk
+            {
+                e.Handled = true; // Geçersiz karakteri engelle
+            }
         }
     }
 }

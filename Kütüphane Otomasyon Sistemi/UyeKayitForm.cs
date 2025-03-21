@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+
 
 namespace Kutuphane_Otomasyon_Sistemi
 {
@@ -62,14 +64,21 @@ namespace Kutuphane_Otomasyon_Sistemi
                 };
 
                 // Eğer formda hiçbir bilgi yoksa, işlem yapılmıyor
-                if (string.IsNullOrWhiteSpace(uye.Ad) &&
-                    string.IsNullOrWhiteSpace(uye.Soyad) &&
-                    string.IsNullOrWhiteSpace(uye.TCKimlik) &&
-                    string.IsNullOrWhiteSpace(uye.TelNo) &&
-                    string.IsNullOrWhiteSpace(uye.Eposta) &&
+                if (string.IsNullOrWhiteSpace(uye.Ad) ||
+                    string.IsNullOrWhiteSpace(uye.Soyad) ||
+                    string.IsNullOrWhiteSpace(uye.TCKimlik) ||
+                    string.IsNullOrWhiteSpace(uye.TelNo) ||
+                    string.IsNullOrWhiteSpace(uye.Eposta) ||
                     string.IsNullOrWhiteSpace(uye.Adres))
                 {
-                    MessageBox.Show("Lütfen geçerli bir üye bilgisi girin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Lütfen tüm alanları doldurun.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // E-posta formatını kontrol et
+                if (!EpostaGecerliMi(uye.Eposta))
+                {
+                    MessageBox.Show("Lütfen geçerli bir e-posta adresi girin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -205,7 +214,14 @@ namespace Kutuphane_Otomasyon_Sistemi
                 e.Handled = true; // Karakter girişini engelle
             }
         }
+        private bool EpostaGecerliMi(string eposta)
+        {
+            if (string.IsNullOrWhiteSpace(eposta))
+                return false;
 
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(eposta, pattern);
+        }
         private void txt_Ad_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && e.KeyChar != 8) // 8 = Backspace
