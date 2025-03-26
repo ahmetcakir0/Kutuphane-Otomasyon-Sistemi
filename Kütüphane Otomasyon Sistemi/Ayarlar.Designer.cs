@@ -46,106 +46,97 @@
             // 
             // txt_KullaniciAdi
             // 
-            this.txt_KullaniciAdi.Location = new System.Drawing.Point(248, 28);
-            this.txt_KullaniciAdi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_KullaniciAdi.Location = new System.Drawing.Point(165, 18);
             this.txt_KullaniciAdi.Name = "txt_KullaniciAdi";
-            this.txt_KullaniciAdi.Size = new System.Drawing.Size(236, 26);
+            this.txt_KullaniciAdi.Size = new System.Drawing.Size(159, 20);
             this.txt_KullaniciAdi.TabIndex = 53;
             this.txt_KullaniciAdi.TextChanged += new System.EventHandler(this.txt_KullaniciAdi_TextChanged);
             // 
             // txt_Sifre
             // 
-            this.txt_Sifre.Location = new System.Drawing.Point(248, 86);
-            this.txt_Sifre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_Sifre.Location = new System.Drawing.Point(165, 56);
             this.txt_Sifre.Name = "txt_Sifre";
-            this.txt_Sifre.Size = new System.Drawing.Size(236, 26);
+            this.txt_Sifre.PasswordChar = '*';
+            this.txt_Sifre.Size = new System.Drawing.Size(159, 20);
             this.txt_Sifre.TabIndex = 54;
             this.txt_Sifre.TextChanged += new System.EventHandler(this.txt_Sifre_TextChanged);
             // 
             // txt_YeniSifre
             // 
             this.txt_YeniSifre.Enabled = false;
-            this.txt_YeniSifre.Location = new System.Drawing.Point(248, 146);
-            this.txt_YeniSifre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_YeniSifre.Location = new System.Drawing.Point(165, 95);
             this.txt_YeniSifre.Name = "txt_YeniSifre";
-            this.txt_YeniSifre.Size = new System.Drawing.Size(236, 26);
+            this.txt_YeniSifre.PasswordChar = '*';
+            this.txt_YeniSifre.Size = new System.Drawing.Size(159, 20);
             this.txt_YeniSifre.TabIndex = 55;
             // 
             // txt_OduncSuresi
             // 
             this.txt_OduncSuresi.Enabled = false;
-            this.txt_OduncSuresi.Location = new System.Drawing.Point(248, 271);
-            this.txt_OduncSuresi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_OduncSuresi.Location = new System.Drawing.Point(165, 176);
             this.txt_OduncSuresi.Name = "txt_OduncSuresi";
-            this.txt_OduncSuresi.Size = new System.Drawing.Size(236, 26);
+            this.txt_OduncSuresi.Size = new System.Drawing.Size(159, 20);
             this.txt_OduncSuresi.TabIndex = 56;
             // 
             // txt_CezaUcreti
             // 
             this.txt_CezaUcreti.Enabled = false;
-            this.txt_CezaUcreti.Location = new System.Drawing.Point(248, 335);
-            this.txt_CezaUcreti.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_CezaUcreti.Location = new System.Drawing.Point(165, 218);
             this.txt_CezaUcreti.Name = "txt_CezaUcreti";
-            this.txt_CezaUcreti.Size = new System.Drawing.Size(236, 26);
+            this.txt_CezaUcreti.Size = new System.Drawing.Size(159, 20);
             this.txt_CezaUcreti.TabIndex = 57;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(64, 38);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(43, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 20);
+            this.label1.Size = new System.Drawing.Size(113, 13);
             this.label1.TabIndex = 59;
             this.label1.Text = "Kullanıcı adınızı giriniz :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(64, 97);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(43, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 20);
+            this.label2.Size = new System.Drawing.Size(78, 13);
             this.label2.TabIndex = 60;
             this.label2.Text = "Şifrenizi giriniz :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(64, 157);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(43, 102);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(150, 20);
+            this.label3.Size = new System.Drawing.Size(100, 13);
             this.label3.TabIndex = 61;
             this.label3.Text = "Yeni şifrenizi giriniz :";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(64, 282);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(43, 183);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(153, 20);
+            this.label4.Size = new System.Drawing.Size(103, 13);
             this.label4.TabIndex = 62;
             this.label4.Text = "Ödünç Alma Süresi :";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(64, 346);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(43, 225);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(149, 20);
+            this.label5.Size = new System.Drawing.Size(102, 13);
             this.label5.TabIndex = 63;
             this.label5.Text = "Günlük ceza ücreti :";
             // 
             // btn_Kaydet
             // 
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(38, 462);
-            this.btn_Kaydet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Kaydet.Location = new System.Drawing.Point(25, 300);
             this.btn_Kaydet.Name = "btn_Kaydet";
-            this.btn_Kaydet.Size = new System.Drawing.Size(144, 46);
+            this.btn_Kaydet.Size = new System.Drawing.Size(96, 30);
             this.btn_Kaydet.TabIndex = 64;
             this.btn_Kaydet.Text = "KAYDET";
             this.btn_Kaydet.UseVisualStyleBackColor = true;
@@ -154,29 +145,27 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(64, 218);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(43, 142);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 20);
+            this.label6.Size = new System.Drawing.Size(100, 13);
             this.label6.TabIndex = 67;
             this.label6.Text = "Yeni şifrenizi giriniz :";
             // 
             // txt_YeniSifreTekrar
             // 
             this.txt_YeniSifreTekrar.Enabled = false;
-            this.txt_YeniSifreTekrar.Location = new System.Drawing.Point(248, 208);
-            this.txt_YeniSifreTekrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_YeniSifreTekrar.Location = new System.Drawing.Point(165, 135);
             this.txt_YeniSifreTekrar.Name = "txt_YeniSifreTekrar";
-            this.txt_YeniSifreTekrar.Size = new System.Drawing.Size(236, 26);
+            this.txt_YeniSifreTekrar.PasswordChar = '*';
+            this.txt_YeniSifreTekrar.Size = new System.Drawing.Size(159, 20);
             this.txt_YeniSifreTekrar.TabIndex = 66;
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.Location = new System.Drawing.Point(393, 462);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Location = new System.Drawing.Point(262, 300);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(144, 46);
+            this.button2.Size = new System.Drawing.Size(96, 30);
             this.button2.TabIndex = 69;
             this.button2.Text = "TEMİZLE";
             this.button2.UseVisualStyleBackColor = true;
@@ -184,9 +173,9 @@
             // 
             // Ayarlar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 595);
+            this.ClientSize = new System.Drawing.Size(385, 387);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txt_YeniSifreTekrar);
@@ -202,7 +191,6 @@
             this.Controls.Add(this.txt_Sifre);
             this.Controls.Add(this.txt_KullaniciAdi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "Ayarlar";
             this.Text = "Ayarlar";

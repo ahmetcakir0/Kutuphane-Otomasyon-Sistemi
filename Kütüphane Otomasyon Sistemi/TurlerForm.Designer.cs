@@ -41,48 +41,43 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(584, 132);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(389, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 20);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tür Ekle :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(584, 223);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(389, 145);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(188, 20);
+            this.label2.Size = new System.Drawing.Size(128, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Varsa açıklama ekleyiniz :";
             // 
             // txt_TurEkle
             // 
-            this.txt_TurEkle.Location = new System.Drawing.Point(848, 128);
-            this.txt_TurEkle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_TurEkle.Location = new System.Drawing.Point(565, 83);
             this.txt_TurEkle.Name = "txt_TurEkle";
-            this.txt_TurEkle.Size = new System.Drawing.Size(236, 26);
+            this.txt_TurEkle.Size = new System.Drawing.Size(159, 20);
             this.txt_TurEkle.TabIndex = 20;
             this.txt_TurEkle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TurEkle_KeyPress);
             // 
             // txt_Aciklama
             // 
-            this.txt_Aciklama.Location = new System.Drawing.Point(848, 218);
-            this.txt_Aciklama.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_Aciklama.Location = new System.Drawing.Point(565, 142);
             this.txt_Aciklama.Multiline = true;
             this.txt_Aciklama.Name = "txt_Aciklama";
-            this.txt_Aciklama.Size = new System.Drawing.Size(236, 121);
+            this.txt_Aciklama.Size = new System.Drawing.Size(159, 80);
             this.txt_Aciklama.TabIndex = 21;
             // 
             // btn_Kaydet
             // 
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(588, 389);
-            this.btn_Kaydet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Kaydet.Location = new System.Drawing.Point(392, 253);
             this.btn_Kaydet.Name = "btn_Kaydet";
-            this.btn_Kaydet.Size = new System.Drawing.Size(177, 60);
+            this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_Kaydet.TabIndex = 36;
             this.btn_Kaydet.Text = "KAYDET";
             this.btn_Kaydet.UseVisualStyleBackColor = true;
@@ -91,10 +86,9 @@
             // btn_Temizle
             // 
             this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Temizle.Location = new System.Drawing.Point(902, 389);
-            this.btn_Temizle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Temizle.Location = new System.Drawing.Point(601, 253);
             this.btn_Temizle.Name = "btn_Temizle";
-            this.btn_Temizle.Size = new System.Drawing.Size(177, 60);
+            this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
             this.btn_Temizle.TabIndex = 38;
             this.btn_Temizle.Text = "TEMİZLE";
             this.btn_Temizle.UseVisualStyleBackColor = true;
@@ -110,24 +104,23 @@
             this.dgv_TurListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_TurListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_TurListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgv_TurListesi.Location = new System.Drawing.Point(0, 515);
-            this.dgv_TurListesi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgv_TurListesi.Location = new System.Drawing.Point(0, 313);
             this.dgv_TurListesi.MultiSelect = false;
             this.dgv_TurListesi.Name = "dgv_TurListesi";
             this.dgv_TurListesi.ReadOnly = true;
             this.dgv_TurListesi.RowHeadersVisible = false;
             this.dgv_TurListesi.RowHeadersWidth = 62;
             this.dgv_TurListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_TurListesi.Size = new System.Drawing.Size(1611, 535);
+            this.dgv_TurListesi.Size = new System.Drawing.Size(1069, 260);
             this.dgv_TurListesi.TabIndex = 39;
             this.dgv_TurListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_TurListesi_CellContentClick_1);
             this.dgv_TurListesi.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_TurListesi_ColumnHeaderMouseClick);
             // 
             // TurlerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1611, 1050);
+            this.ClientSize = new System.Drawing.Size(1069, 573);
             this.Controls.Add(this.dgv_TurListesi);
             this.Controls.Add(this.btn_Temizle);
             this.Controls.Add(this.btn_Kaydet);
@@ -136,7 +129,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MinimizeBox = false;
             this.Name = "TurlerForm";
             this.Text = "Türler";

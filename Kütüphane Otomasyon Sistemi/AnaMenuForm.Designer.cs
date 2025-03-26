@@ -49,7 +49,7 @@
             // btn_Kitaplar
             // 
             this.btn_Kitaplar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_Kitaplar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Kitaplar.BackColor = System.Drawing.Color.Brown;
             this.btn_Kitaplar.ImageKey = "depositphotos_270747206-stock-illustration-stack-books-cartoon-illustration-stack" +
     ".jpg";
             this.btn_Kitaplar.ImageList = this.ımageList1;
@@ -86,7 +86,7 @@
             // btn_Uyeler
             // 
             this.btn_Uyeler.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_Uyeler.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Uyeler.BackColor = System.Drawing.Color.Brown;
             this.btn_Uyeler.ImageKey = "uye.png";
             this.btn_Uyeler.ImageList = this.ımageList1;
             this.btn_Uyeler.Location = new System.Drawing.Point(476, 112);
@@ -101,7 +101,7 @@
             // btn_Sorumlular
             // 
             this.btn_Sorumlular.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_Sorumlular.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Sorumlular.BackColor = System.Drawing.Color.Brown;
             this.btn_Sorumlular.ImageKey = "images.png";
             this.btn_Sorumlular.ImageList = this.ımageList1;
             this.btn_Sorumlular.Location = new System.Drawing.Point(748, 112);
@@ -116,7 +116,7 @@
             // btn_Yazarlar
             // 
             this.btn_Yazarlar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_Yazarlar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Yazarlar.BackColor = System.Drawing.Color.Brown;
             this.btn_Yazarlar.ImageKey = "download.png";
             this.btn_Yazarlar.ImageList = this.ımageList1;
             this.btn_Yazarlar.Location = new System.Drawing.Point(1017, 112);
@@ -131,7 +131,7 @@
             // btn_Yayinevi
             // 
             this.btn_Yayinevi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_Yayinevi.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Yayinevi.BackColor = System.Drawing.Color.Brown;
             this.btn_Yayinevi.ImageKey = "ulusal-ve-uluslarası-yayınevi-nedir.jpg";
             this.btn_Yayinevi.ImageList = this.ımageList1;
             this.btn_Yayinevi.Location = new System.Drawing.Point(207, 335);
@@ -146,7 +146,7 @@
             // btn_Turler
             // 
             this.btn_Turler.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_Turler.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Turler.BackColor = System.Drawing.Color.Brown;
             this.btn_Turler.ImageKey = "yayinevi.png";
             this.btn_Turler.ImageList = this.ımageList1;
             this.btn_Turler.Location = new System.Drawing.Point(481, 335);
@@ -161,7 +161,7 @@
             // btn_OduncVerme
             // 
             this.btn_OduncVerme.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_OduncVerme.BackColor = System.Drawing.Color.Transparent;
+            this.btn_OduncVerme.BackColor = System.Drawing.Color.Brown;
             this.btn_OduncVerme.ImageKey = "boy-with-glasses-lends-a-book-to-his-friend-vector.jpg";
             this.btn_OduncVerme.ImageList = this.ımageList1;
             this.btn_OduncVerme.Location = new System.Drawing.Point(1017, 335);
@@ -176,7 +176,7 @@
             // btn_KategoriRaflar
             // 
             this.btn_KategoriRaflar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_KategoriRaflar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_KategoriRaflar.BackColor = System.Drawing.Color.Brown;
             this.btn_KategoriRaflar.ImageKey = "duvar-resimleri-kutuphane-kitap-raf-arka-plan-vektor.jpg.jpg";
             this.btn_KategoriRaflar.ImageList = this.ımageList1;
             this.btn_KategoriRaflar.Location = new System.Drawing.Point(748, 335);
@@ -191,7 +191,9 @@
             // lbl_Hosgeldiniz
             // 
             this.lbl_Hosgeldiniz.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbl_Hosgeldiniz.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_Hosgeldiniz.BackColor = System.Drawing.Color.Brown;
+            this.lbl_Hosgeldiniz.Font = new System.Drawing.Font("Mongolian Baiti", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Hosgeldiniz.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lbl_Hosgeldiniz.Location = new System.Drawing.Point(476, 59);
             this.lbl_Hosgeldiniz.Name = "lbl_Hosgeldiniz";
             this.lbl_Hosgeldiniz.Size = new System.Drawing.Size(486, 30);
@@ -202,7 +204,7 @@
             // btnRezervasyon
             // 
             this.btnRezervasyon.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnRezervasyon.BackColor = System.Drawing.Color.Transparent;
+            this.btnRezervasyon.BackColor = System.Drawing.Color.Brown;
             this.btnRezervasyon.ImageKey = "istockphoto-1296390218-612x612.jpg";
             this.btnRezervasyon.ImageList = this.ımageList1;
             this.btnRezervasyon.Location = new System.Drawing.Point(207, 561);
@@ -217,7 +219,7 @@
             // btnRaporlar
             // 
             this.btnRaporlar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnRaporlar.BackColor = System.Drawing.Color.Transparent;
+            this.btnRaporlar.BackColor = System.Drawing.Color.Brown;
             this.btnRaporlar.ImageKey = "pngtree-checklist-comic-icon-for-reports-and-business-check-evaluation-analysis-v" +
     "ector-png-image_12861732.png";
             this.btnRaporlar.ImageList = this.ımageList1;
@@ -233,7 +235,7 @@
             // btnAyarlar
             // 
             this.btnAyarlar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAyarlar.BackColor = System.Drawing.Color.Transparent;
+            this.btnAyarlar.BackColor = System.Drawing.Color.Brown;
             this.btnAyarlar.ImageKey = "settings-icon_2691259.jpg";
             this.btnAyarlar.ImageList = this.ımageList1;
             this.btnAyarlar.Location = new System.Drawing.Point(748, 561);
@@ -248,7 +250,7 @@
             // btnCikis
             // 
             this.btnCikis.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCikis.BackColor = System.Drawing.Color.Transparent;
+            this.btnCikis.BackColor = System.Drawing.Color.Brown;
             this.btnCikis.ImageKey = "Çıkış.png";
             this.btnCikis.ImageList = this.ımageList1;
             this.btnCikis.Location = new System.Drawing.Point(1017, 561);

@@ -44,44 +44,39 @@
             // 
             // txt_Yayinevi
             // 
-            this.txt_Yayinevi.Location = new System.Drawing.Point(678, 145);
-            this.txt_Yayinevi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_Yayinevi.Location = new System.Drawing.Point(337, 73);
             this.txt_Yayinevi.Name = "txt_Yayinevi";
-            this.txt_Yayinevi.Size = new System.Drawing.Size(236, 26);
+            this.txt_Yayinevi.Size = new System.Drawing.Size(159, 20);
             this.txt_Yayinevi.TabIndex = 19;
             // 
             // txt_TelNo
             // 
-            this.txt_TelNo.Location = new System.Drawing.Point(678, 242);
-            this.txt_TelNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_TelNo.Location = new System.Drawing.Point(337, 136);
             this.txt_TelNo.Name = "txt_TelNo";
-            this.txt_TelNo.Size = new System.Drawing.Size(236, 26);
+            this.txt_TelNo.Size = new System.Drawing.Size(159, 20);
             this.txt_TelNo.TabIndex = 20;
             this.txt_TelNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TelNo_KeyPress);
             // 
             // txt_Eposta
             // 
-            this.txt_Eposta.Location = new System.Drawing.Point(1251, 145);
-            this.txt_Eposta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_Eposta.Location = new System.Drawing.Point(719, 73);
             this.txt_Eposta.Name = "txt_Eposta";
-            this.txt_Eposta.Size = new System.Drawing.Size(236, 26);
+            this.txt_Eposta.Size = new System.Drawing.Size(159, 20);
             this.txt_Eposta.TabIndex = 21;
             // 
             // txt_Adres
             // 
-            this.txt_Adres.Location = new System.Drawing.Point(1251, 242);
-            this.txt_Adres.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_Adres.Location = new System.Drawing.Point(719, 136);
             this.txt_Adres.Name = "txt_Adres";
-            this.txt_Adres.Size = new System.Drawing.Size(236, 26);
+            this.txt_Adres.Size = new System.Drawing.Size(159, 20);
             this.txt_Adres.TabIndex = 22;
             // 
             // btn_Kaydet
             // 
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(678, 394);
-            this.btn_Kaydet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Kaydet.Location = new System.Drawing.Point(378, 239);
             this.btn_Kaydet.Name = "btn_Kaydet";
-            this.btn_Kaydet.Size = new System.Drawing.Size(177, 60);
+            this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_Kaydet.TabIndex = 23;
             this.btn_Kaydet.Text = "KAYDET";
             this.btn_Kaydet.UseVisualStyleBackColor = true;
@@ -98,15 +93,14 @@
             this.dgv_YayıneviListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_YayıneviListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_YayıneviListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgv_YayıneviListesi.Location = new System.Drawing.Point(0, 659);
-            this.dgv_YayıneviListesi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgv_YayıneviListesi.Location = new System.Drawing.Point(0, 319);
             this.dgv_YayıneviListesi.MultiSelect = false;
             this.dgv_YayıneviListesi.Name = "dgv_YayıneviListesi";
             this.dgv_YayıneviListesi.ReadOnly = true;
             this.dgv_YayıneviListesi.RowHeadersVisible = false;
             this.dgv_YayıneviListesi.RowHeadersWidth = 62;
             this.dgv_YayıneviListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_YayıneviListesi.Size = new System.Drawing.Size(1910, 391);
+            this.dgv_YayıneviListesi.Size = new System.Drawing.Size(1069, 254);
             this.dgv_YayıneviListesi.TabIndex = 25;
             this.dgv_YayıneviListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_YayıneviListesi_CellContentClick);
             this.dgv_YayıneviListesi.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_YayıneviListesi_ColumnHeaderMouseClick);
@@ -114,50 +108,45 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(459, 154);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(191, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 20);
+            this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 26;
             this.label1.Text = "Yayınevi Adı :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(459, 252);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(191, 143);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 20);
+            this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 27;
             this.label2.Text = "Tel No :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1114, 154);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(628, 79);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 20);
+            this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 28;
             this.label3.Text = "E - posta :";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1114, 246);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(628, 139);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 20);
+            this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 29;
             this.label4.Text = "Adres :";
             // 
             // btn_Temizle
             // 
             this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Temizle.Location = new System.Drawing.Point(1251, 394);
-            this.btn_Temizle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Temizle.Location = new System.Drawing.Point(631, 239);
             this.btn_Temizle.Name = "btn_Temizle";
-            this.btn_Temizle.Size = new System.Drawing.Size(177, 60);
+            this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
             this.btn_Temizle.TabIndex = 30;
             this.btn_Temizle.Text = "TEMİZLE";
             this.btn_Temizle.UseVisualStyleBackColor = true;
@@ -166,9 +155,9 @@
             // YayineviForm
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1910, 1050);
+            this.ClientSize = new System.Drawing.Size(1069, 573);
             this.Controls.Add(this.btn_Temizle);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -181,7 +170,6 @@
             this.Controls.Add(this.txt_Yayinevi);
             this.Controls.Add(this.dgv_YayıneviListesi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "YayineviForm";
             this.Text = "Yayınevi";

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YeniKitapKayitForm));
             this.dgv_KitapListesi = new System.Windows.Forms.DataGridView();
             this.btn_Temizle = new System.Windows.Forms.Button();
@@ -64,8 +65,18 @@
             this.dgv_KitapListesi.AllowUserToResizeColumns = false;
             this.dgv_KitapListesi.AllowUserToResizeRows = false;
             this.dgv_KitapListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_KitapListesi.BackgroundColor = System.Drawing.Color.Brown;
             this.dgv_KitapListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGoldenrod;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Brown;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_KitapListesi.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_KitapListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgv_KitapListesi.GridColor = System.Drawing.Color.SaddleBrown;
             this.dgv_KitapListesi.Location = new System.Drawing.Point(0, 423);
             this.dgv_KitapListesi.MultiSelect = false;
             this.dgv_KitapListesi.Name = "dgv_KitapListesi";
@@ -79,18 +90,22 @@
             // 
             // btn_Temizle
             // 
+            this.btn_Temizle.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Temizle.ForeColor = System.Drawing.Color.Black;
             this.btn_Temizle.Location = new System.Drawing.Point(811, 333);
             this.btn_Temizle.Name = "btn_Temizle";
             this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
             this.btn_Temizle.TabIndex = 40;
             this.btn_Temizle.Text = "TEMİZLE";
-            this.btn_Temizle.UseVisualStyleBackColor = true;
+            this.btn_Temizle.UseVisualStyleBackColor = false;
             this.btn_Temizle.Click += new System.EventHandler(this.btn_Temizle_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(554, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
@@ -100,6 +115,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(105, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
@@ -108,17 +125,21 @@
             // 
             // btn_Kaydet
             // 
+            this.btn_Kaydet.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Kaydet.ForeColor = System.Drawing.Color.Black;
             this.btn_Kaydet.Location = new System.Drawing.Point(453, 333);
             this.btn_Kaydet.Name = "btn_Kaydet";
             this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_Kaydet.TabIndex = 35;
             this.btn_Kaydet.Text = "KAYDET";
-            this.btn_Kaydet.UseVisualStyleBackColor = true;
+            this.btn_Kaydet.UseVisualStyleBackColor = false;
             this.btn_Kaydet.Click += new System.EventHandler(this.btn_Kaydet_Click);
             // 
             // txt_KitapAdi
             // 
+            this.txt_KitapAdi.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.txt_KitapAdi.ForeColor = System.Drawing.Color.Black;
             this.txt_KitapAdi.Location = new System.Drawing.Point(253, 61);
             this.txt_KitapAdi.Name = "txt_KitapAdi";
             this.txt_KitapAdi.Size = new System.Drawing.Size(159, 20);
@@ -126,7 +147,9 @@
             // 
             // cb_Tur
             // 
+            this.cb_Tur.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.cb_Tur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Tur.ForeColor = System.Drawing.Color.Black;
             this.cb_Tur.FormattingEnabled = true;
             this.cb_Tur.Location = new System.Drawing.Point(712, 61);
             this.cb_Tur.Name = "cb_Tur";
@@ -135,7 +158,9 @@
             // 
             // cb_Yayinevi
             // 
+            this.cb_Yayinevi.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.cb_Yayinevi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Yayinevi.ForeColor = System.Drawing.Color.Black;
             this.cb_Yayinevi.FormattingEnabled = true;
             this.cb_Yayinevi.Location = new System.Drawing.Point(253, 182);
             this.cb_Yayinevi.Name = "cb_Yayinevi";
@@ -145,6 +170,8 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(105, 190);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 13);
@@ -153,7 +180,9 @@
             // 
             // cb_Kategori
             // 
+            this.cb_Kategori.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.cb_Kategori.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Kategori.ForeColor = System.Drawing.Color.Black;
             this.cb_Kategori.FormattingEnabled = true;
             this.cb_Kategori.Location = new System.Drawing.Point(253, 256);
             this.cb_Kategori.Name = "cb_Kategori";
@@ -163,6 +192,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(105, 264);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
@@ -171,6 +202,8 @@
             // 
             // txt_SayfaSayisi
             // 
+            this.txt_SayfaSayisi.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.txt_SayfaSayisi.ForeColor = System.Drawing.Color.Black;
             this.txt_SayfaSayisi.Location = new System.Drawing.Point(712, 124);
             this.txt_SayfaSayisi.Name = "txt_SayfaSayisi";
             this.txt_SayfaSayisi.Size = new System.Drawing.Size(159, 20);
@@ -180,6 +213,8 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(554, 127);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 13);
@@ -189,6 +224,8 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(554, 187);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 13);
@@ -197,6 +234,8 @@
             // 
             // txt_ISBN
             // 
+            this.txt_ISBN.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.txt_ISBN.ForeColor = System.Drawing.Color.Black;
             this.txt_ISBN.Location = new System.Drawing.Point(712, 184);
             this.txt_ISBN.Name = "txt_ISBN";
             this.txt_ISBN.Size = new System.Drawing.Size(159, 20);
@@ -206,6 +245,8 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(105, 127);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 13);
@@ -214,6 +255,8 @@
             // 
             // txt_Yazar
             // 
+            this.txt_Yazar.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.txt_Yazar.ForeColor = System.Drawing.Color.Black;
             this.txt_Yazar.Location = new System.Drawing.Point(251, 121);
             this.txt_Yazar.Name = "txt_Yazar";
             this.txt_Yazar.ReadOnly = true;
@@ -222,13 +265,15 @@
             // 
             // btn_KitapAra
             // 
+            this.btn_KitapAra.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.btn_KitapAra.ForeColor = System.Drawing.Color.Black;
             this.btn_KitapAra.ImageKey = "mercek.png";
             this.btn_KitapAra.ImageList = this.ımageList1;
             this.btn_KitapAra.Location = new System.Drawing.Point(416, 118);
             this.btn_KitapAra.Name = "btn_KitapAra";
             this.btn_KitapAra.Size = new System.Drawing.Size(43, 25);
             this.btn_KitapAra.TabIndex = 57;
-            this.btn_KitapAra.UseVisualStyleBackColor = true;
+            this.btn_KitapAra.UseVisualStyleBackColor = false;
             this.btn_KitapAra.Click += new System.EventHandler(this.btn_KitapAra_Click);
             // 
             // ımageList1
@@ -239,18 +284,22 @@
             // 
             // btn_Sil
             // 
+            this.btn_Sil.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.btn_Sil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Sil.ForeColor = System.Drawing.Color.Black;
             this.btn_Sil.Location = new System.Drawing.Point(633, 333);
             this.btn_Sil.Name = "btn_Sil";
             this.btn_Sil.Size = new System.Drawing.Size(118, 39);
             this.btn_Sil.TabIndex = 58;
             this.btn_Sil.Text = "SİL";
-            this.btn_Sil.UseVisualStyleBackColor = true;
+            this.btn_Sil.UseVisualStyleBackColor = false;
             this.btn_Sil.Click += new System.EventHandler(this.btn_Sil_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(554, 259);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 13);
@@ -259,6 +308,8 @@
             // 
             // txt_RafNumarasi
             // 
+            this.txt_RafNumarasi.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.txt_RafNumarasi.ForeColor = System.Drawing.Color.Black;
             this.txt_RafNumarasi.Location = new System.Drawing.Point(712, 252);
             this.txt_RafNumarasi.Name = "txt_RafNumarasi";
             this.txt_RafNumarasi.ReadOnly = true;
@@ -267,6 +318,8 @@
             // 
             // txt_Aciklama
             // 
+            this.txt_Aciklama.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.txt_Aciklama.ForeColor = System.Drawing.Color.Black;
             this.txt_Aciklama.Location = new System.Drawing.Point(1017, 75);
             this.txt_Aciklama.Multiline = true;
             this.txt_Aciklama.Name = "txt_Aciklama";
@@ -276,6 +329,8 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(942, 69);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 13);
@@ -286,6 +341,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Brown;
             this.ClientSize = new System.Drawing.Size(1284, 684);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txt_Aciklama);
@@ -310,6 +366,7 @@
             this.Controls.Add(this.txt_SayfaSayisi);
             this.Controls.Add(this.txt_KitapAdi);
             this.Controls.Add(this.dgv_KitapListesi);
+            this.ForeColor = System.Drawing.Color.Cornsilk;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "YeniKitapKayitForm";
