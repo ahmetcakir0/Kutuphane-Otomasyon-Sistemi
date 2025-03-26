@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OduncForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -79,6 +81,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.Brown;
             this.tabPage1.Controls.Add(this.btn_Temizle);
             this.tabPage1.Controls.Add(this.btn_Kaydet);
             this.tabPage1.Controls.Add(this.label4);
@@ -92,37 +95,39 @@
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1061, 547);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Ödünç Verme";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btn_Temizle
             // 
+            this.btn_Temizle.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_Temizle.Location = new System.Drawing.Point(607, 248);
             this.btn_Temizle.Name = "btn_Temizle";
             this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
             this.btn_Temizle.TabIndex = 76;
             this.btn_Temizle.Text = "TEMİZLE";
-            this.btn_Temizle.UseVisualStyleBackColor = true;
+            this.btn_Temizle.UseVisualStyleBackColor = false;
             this.btn_Temizle.Click += new System.EventHandler(this.btn_Temizle_Click);
             // 
             // btn_Kaydet
             // 
+            this.btn_Kaydet.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_Kaydet.Location = new System.Drawing.Point(363, 248);
             this.btn_Kaydet.Name = "btn_Kaydet";
             this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_Kaydet.TabIndex = 74;
             this.btn_Kaydet.Text = "KAYDET";
-            this.btn_Kaydet.UseVisualStyleBackColor = true;
+            this.btn_Kaydet.UseVisualStyleBackColor = false;
             this.btn_Kaydet.Click += new System.EventHandler(this.btn_Kaydet_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.NavajoWhite;
             this.label4.Location = new System.Drawing.Point(356, 146);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 13);
@@ -138,6 +143,7 @@
             // 
             // txt_AlınacakKitap
             // 
+            this.txt_AlınacakKitap.BackColor = System.Drawing.Color.NavajoWhite;
             this.txt_AlınacakKitap.Location = new System.Drawing.Point(493, 91);
             this.txt_AlınacakKitap.Name = "txt_AlınacakKitap";
             this.txt_AlınacakKitap.ReadOnly = true;
@@ -146,18 +152,20 @@
             // 
             // btn_KitapAra
             // 
+            this.btn_KitapAra.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn_KitapAra.ImageKey = "mercek.png";
             this.btn_KitapAra.ImageList = this.ımageList1;
             this.btn_KitapAra.Location = new System.Drawing.Point(658, 89);
             this.btn_KitapAra.Name = "btn_KitapAra";
             this.btn_KitapAra.Size = new System.Drawing.Size(43, 25);
             this.btn_KitapAra.TabIndex = 70;
-            this.btn_KitapAra.UseVisualStyleBackColor = true;
+            this.btn_KitapAra.UseVisualStyleBackColor = false;
             this.btn_KitapAra.Click += new System.EventHandler(this.btn_KitapAra_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.NavajoWhite;
             this.label3.Location = new System.Drawing.Point(347, 94);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 13);
@@ -171,8 +179,17 @@
             this.dgv_OduncListesi.AllowUserToResizeColumns = false;
             this.dgv_OduncListesi.AllowUserToResizeRows = false;
             this.dgv_OduncListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_OduncListesi.BackgroundColor = System.Drawing.Color.Brown;
             this.dgv_OduncListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_OduncListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Brown;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.NavajoWhite;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_OduncListesi.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_OduncListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_OduncListesi.Location = new System.Drawing.Point(3, 305);
             this.dgv_OduncListesi.MultiSelect = false;
@@ -187,6 +204,7 @@
             // 
             // txt_AlacakKisi
             // 
+            this.txt_AlacakKisi.BackColor = System.Drawing.Color.NavajoWhite;
             this.txt_AlacakKisi.Location = new System.Drawing.Point(493, 40);
             this.txt_AlacakKisi.Name = "txt_AlacakKisi";
             this.txt_AlacakKisi.ReadOnly = true;
@@ -195,18 +213,20 @@
             // 
             // btn_UyeAra
             // 
+            this.btn_UyeAra.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn_UyeAra.ImageKey = "mercek.png";
             this.btn_UyeAra.ImageList = this.ımageList1;
             this.btn_UyeAra.Location = new System.Drawing.Point(658, 38);
             this.btn_UyeAra.Name = "btn_UyeAra";
             this.btn_UyeAra.Size = new System.Drawing.Size(43, 25);
             this.btn_UyeAra.TabIndex = 66;
-            this.btn_UyeAra.UseVisualStyleBackColor = true;
+            this.btn_UyeAra.UseVisualStyleBackColor = false;
             this.btn_UyeAra.Click += new System.EventHandler(this.btn_UyeAra_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.NavajoWhite;
             this.label1.Location = new System.Drawing.Point(360, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 13);
@@ -215,6 +235,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.Brown;
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.txt_IadeNotu);
             this.tabPage2.Controls.Add(this.btn_IadeTemizle);
@@ -224,15 +245,15 @@
             this.tabPage2.Controls.Add(this.dt_GeriVerilenTarih);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1088, 655);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1061, 547);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ödünç İade";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.NavajoWhite;
             this.label7.Location = new System.Drawing.Point(359, 99);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 13);
@@ -241,6 +262,7 @@
             // 
             // txt_IadeNotu
             // 
+            this.txt_IadeNotu.BackColor = System.Drawing.Color.NavajoWhite;
             this.txt_IadeNotu.Location = new System.Drawing.Point(469, 96);
             this.txt_IadeNotu.Multiline = true;
             this.txt_IadeNotu.Name = "txt_IadeNotu";
@@ -249,23 +271,25 @@
             // 
             // btn_IadeTemizle
             // 
+            this.btn_IadeTemizle.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn_IadeTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_IadeTemizle.Location = new System.Drawing.Point(641, 258);
             this.btn_IadeTemizle.Name = "btn_IadeTemizle";
             this.btn_IadeTemizle.Size = new System.Drawing.Size(118, 39);
             this.btn_IadeTemizle.TabIndex = 79;
             this.btn_IadeTemizle.Text = "TEMİZLE";
-            this.btn_IadeTemizle.UseVisualStyleBackColor = true;
+            this.btn_IadeTemizle.UseVisualStyleBackColor = false;
             // 
             // btn_IadeKaydet
             // 
+            this.btn_IadeKaydet.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn_IadeKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_IadeKaydet.Location = new System.Drawing.Point(335, 258);
             this.btn_IadeKaydet.Name = "btn_IadeKaydet";
             this.btn_IadeKaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_IadeKaydet.TabIndex = 77;
             this.btn_IadeKaydet.Text = "KAYDET";
-            this.btn_IadeKaydet.UseVisualStyleBackColor = true;
+            this.btn_IadeKaydet.UseVisualStyleBackColor = false;
             this.btn_IadeKaydet.Click += new System.EventHandler(this.btn_IadeKaydet_Click);
             // 
             // dgv_OduncIade
@@ -275,21 +299,31 @@
             this.dgv_OduncIade.AllowUserToResizeColumns = false;
             this.dgv_OduncIade.AllowUserToResizeRows = false;
             this.dgv_OduncIade.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_OduncIade.BackgroundColor = System.Drawing.Color.Brown;
             this.dgv_OduncIade.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Brown;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.NavajoWhite;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_OduncIade.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_OduncIade.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgv_OduncIade.Location = new System.Drawing.Point(3, 345);
+            this.dgv_OduncIade.Location = new System.Drawing.Point(3, 318);
             this.dgv_OduncIade.MultiSelect = false;
             this.dgv_OduncIade.Name = "dgv_OduncIade";
             this.dgv_OduncIade.ReadOnly = true;
             this.dgv_OduncIade.RowHeadersWidth = 62;
             this.dgv_OduncIade.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_OduncIade.Size = new System.Drawing.Size(1082, 307);
+            this.dgv_OduncIade.Size = new System.Drawing.Size(1055, 226);
             this.dgv_OduncIade.TabIndex = 76;
             this.dgv_OduncIade.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_OduncIade_ColumnHeaderMouseClick);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.NavajoWhite;
             this.label6.Location = new System.Drawing.Point(359, 35);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 13);
@@ -307,6 +341,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Brown;
             this.ClientSize = new System.Drawing.Size(1069, 573);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

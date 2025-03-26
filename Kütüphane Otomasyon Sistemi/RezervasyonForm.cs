@@ -162,5 +162,10 @@ namespace Kutuphane_Otomasyon_Sistemi
             dgv_Rezervasyon.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
 
         }
+
+        private void btn_Sil_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

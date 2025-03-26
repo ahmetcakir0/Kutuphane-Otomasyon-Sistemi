@@ -123,23 +123,6 @@ namespace Kutuphane_Otomasyon_Sistemi
 
 
         private int seciliYazarId = 0; // Seçilen yazarın ID’sini tutacak değişken
-
-        private void dgv_YazarlarListesi_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgv_YazarListesi.SelectedRows.Count > 0)
-            {
-                // Seçili satırdan ID'yi al
-                seciliYazarId = Convert.ToInt32(dgv_YazarListesi.SelectedRows[0].Cells["YazarId"].Value);
-
-                // Diğer bilgileri ilgili alanlara doldur
-                txt_YazarAdSoyad.Text = dgv_YazarListesi.SelectedRows[0].Cells["YazarAdSoyad"].Value.ToString();
-                txt_Iletisim.Text = dgv_YazarListesi.SelectedRows[0].Cells["Iletisim"].Value.ToString();
-                dtp_DogumTarihi.Value = Convert.ToDateTime(dgv_YazarListesi.SelectedRows[0].Cells["DogumTarihi"].Value);
-                txt_Biyografi.Text = dgv_YazarListesi.SelectedRows[0].Cells["Biyografi"].Value.ToString();
-
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             txt_YazarAdSoyad.Clear();
@@ -159,7 +142,13 @@ namespace Kutuphane_Otomasyon_Sistemi
             }
         }
 
-        private void dgv_YazarListesi_Click(object sender, EventArgs e)
+
+        private void dgv_YazarListesi_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgv_YazarListesi.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
+        }
+
+        private void dgv_YazarListesi_DoubleClick(object sender, EventArgs e)
         {
             if (dgv_YazarListesi.SelectedRows.Count > 0)
             {
@@ -169,11 +158,6 @@ namespace Kutuphane_Otomasyon_Sistemi
                 dtp_DogumTarihi.Value = Convert.ToDateTime(dgv_YazarListesi.SelectedRows[0].Cells["DogumTarihi"].Value);
                 txt_Biyografi.Text = dgv_YazarListesi.SelectedRows[0].Cells["Biyografi"].Value.ToString();
             }
-        }
-
-        private void dgv_YazarListesi_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            dgv_YazarListesi.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
         }
     }
 }

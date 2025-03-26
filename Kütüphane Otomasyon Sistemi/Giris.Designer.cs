@@ -40,7 +40,7 @@
             // 
             // txt_KullaniciAdi
             // 
-            this.txt_KullaniciAdi.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.txt_KullaniciAdi.BackColor = System.Drawing.Color.NavajoWhite;
             this.txt_KullaniciAdi.ForeColor = System.Drawing.Color.Black;
             this.txt_KullaniciAdi.Location = new System.Drawing.Point(116, 123);
             this.txt_KullaniciAdi.Name = "txt_KullaniciAdi";
@@ -49,7 +49,7 @@
             // 
             // txt_Sifre
             // 
-            this.txt_Sifre.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.txt_Sifre.BackColor = System.Drawing.Color.NavajoWhite;
             this.txt_Sifre.ForeColor = System.Drawing.Color.Black;
             this.txt_Sifre.Location = new System.Drawing.Point(116, 174);
             this.txt_Sifre.Name = "txt_Sifre";
@@ -60,7 +60,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.label1.BackColor = System.Drawing.Color.NavajoWhite;
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(40, 126);
             this.label1.Name = "label1";
@@ -71,7 +71,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.label2.BackColor = System.Drawing.Color.NavajoWhite;
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(40, 177);
             this.label2.Name = "label2";
@@ -81,7 +81,7 @@
             // 
             // btn_Giris
             // 
-            this.btn_Giris.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.btn_Giris.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn_Giris.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_Giris.ForeColor = System.Drawing.Color.Black;
             this.btn_Giris.Location = new System.Drawing.Point(120, 232);

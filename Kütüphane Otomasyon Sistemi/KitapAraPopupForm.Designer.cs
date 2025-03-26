@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KitapAraPopupForm));
             this.dgv_KitapListesi = new System.Windows.Forms.DataGridView();
             this.btn_KitapAra = new System.Windows.Forms.Button();
@@ -44,10 +45,18 @@
             this.dgv_KitapListesi.AllowUserToResizeColumns = false;
             this.dgv_KitapListesi.AllowUserToResizeRows = false;
             this.dgv_KitapListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_KitapListesi.BackgroundColor = System.Drawing.Color.Brown;
             this.dgv_KitapListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Brown;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.NavajoWhite;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_KitapListesi.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_KitapListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgv_KitapListesi.Location = new System.Drawing.Point(0, 81);
-            this.dgv_KitapListesi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgv_KitapListesi.Location = new System.Drawing.Point(0, 53);
             this.dgv_KitapListesi.MultiSelect = false;
             this.dgv_KitapListesi.Name = "dgv_KitapListesi";
             this.dgv_KitapListesi.ReadOnly = true;
@@ -55,9 +64,8 @@
             this.dgv_KitapListesi.RowHeadersWidth = 62;
             this.dgv_KitapListesi.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_KitapListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_KitapListesi.Size = new System.Drawing.Size(400, 611);
+            this.dgv_KitapListesi.Size = new System.Drawing.Size(267, 397);
             this.dgv_KitapListesi.TabIndex = 5;
-            this.dgv_KitapListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_KitapListesi_CellContentClick);
             this.dgv_KitapListesi.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_KitapListesi_ColumnHeaderMouseClick);
             this.dgv_KitapListesi.DoubleClick += new System.EventHandler(this.dgv_KitapListesi_DoubleClick);
             // 
@@ -65,10 +73,9 @@
             // 
             this.btn_KitapAra.ImageKey = "mercek.png";
             this.btn_KitapAra.ImageList = this.ımageList1;
-            this.btn_KitapAra.Location = new System.Drawing.Point(308, 18);
-            this.btn_KitapAra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_KitapAra.Location = new System.Drawing.Point(205, 12);
             this.btn_KitapAra.Name = "btn_KitapAra";
-            this.btn_KitapAra.Size = new System.Drawing.Size(66, 35);
+            this.btn_KitapAra.Size = new System.Drawing.Size(44, 23);
             this.btn_KitapAra.TabIndex = 4;
             this.btn_KitapAra.UseVisualStyleBackColor = true;
             this.btn_KitapAra.Click += new System.EventHandler(this.btn_KisiAra_Click);
@@ -81,22 +88,21 @@
             // 
             // txt_KitapAra
             // 
-            this.txt_KitapAra.Location = new System.Drawing.Point(18, 18);
-            this.txt_KitapAra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_KitapAra.Location = new System.Drawing.Point(12, 12);
             this.txt_KitapAra.Name = "txt_KitapAra";
-            this.txt_KitapAra.Size = new System.Drawing.Size(278, 26);
+            this.txt_KitapAra.Size = new System.Drawing.Size(187, 20);
             this.txt_KitapAra.TabIndex = 3;
             // 
             // KitapAraPopupForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 692);
+            this.BackColor = System.Drawing.Color.Brown;
+            this.ClientSize = new System.Drawing.Size(267, 450);
             this.Controls.Add(this.dgv_KitapListesi);
             this.Controls.Add(this.btn_KitapAra);
             this.Controls.Add(this.txt_KitapAra);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "KitapAraPopupForm";
             this.Text = "Kitap Ara";

@@ -45,10 +45,6 @@ namespace Kutuphane_Otomasyon_Sistemi
             }
         }
 
-        // DataGridView'de bir hücreye tıklanınca bu metot çalışır
-        private void dgv_KitapListesi_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
 
         // Arama butonuna tıklanınca arama işlemini gerçekleştiren metod
         private void btn_KisiAra_Click(object sender, EventArgs e)

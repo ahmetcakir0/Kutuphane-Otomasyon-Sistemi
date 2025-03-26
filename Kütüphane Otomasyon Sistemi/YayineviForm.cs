@@ -138,20 +138,6 @@ namespace Kutuphane_Otomasyon_Sistemi
             }
         }
 
-        private void dgv_YayıneviListesi_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && dgv_YayıneviListesi.Rows[e.RowIndex].Cells["id"].Value != null)
-            {
-                DataGridViewRow row = dgv_YayıneviListesi.Rows[e.RowIndex];
-
-                seciliYayineviId = Convert.ToInt32(row.Cells["id"].Value);
-                txt_Yayinevi.Text = row.Cells["YayineviAdi"].Value.ToString();
-                txt_TelNo.Text = row.Cells["TelNo"].Value.ToString();
-                txt_Eposta.Text = row.Cells["Eposta"].Value.ToString();
-                txt_Adres.Text = row.Cells["Adres"].Value.ToString();
-            }
-        }
-
         private void btn_Temizle_Click(object sender, EventArgs e)
         {
             FormTemizle();
@@ -212,6 +198,24 @@ namespace Kutuphane_Otomasyon_Sistemi
         {
             dgv_YayıneviListesi.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
 
+        }
+
+        private void YayineviForm_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgv_YayıneviListesi.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgv_YayıneviListesi.SelectedRows[0];
+
+                // Null kontrolü
+                if (row.Cells["id"].Value != null)
+                {
+                    seciliYayineviId = Convert.ToInt32(row.Cells["id"].Value);
+                    txt_Yayinevi.Text = row.Cells["YayineviAdi"].Value?.ToString() ?? "";
+                    txt_TelNo.Text = row.Cells["TelNo"].Value?.ToString() ?? "";
+                    txt_Eposta.Text = row.Cells["Eposta"].Value?.ToString() ?? "";
+                    txt_Adres.Text = row.Cells["Adres"].Value?.ToString() ?? "";
+                }
+            }
         }
     }
 }

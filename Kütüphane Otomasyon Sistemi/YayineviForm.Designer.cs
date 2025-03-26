@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt_Yayinevi = new System.Windows.Forms.TextBox();
             this.txt_TelNo = new System.Windows.Forms.TextBox();
             this.txt_Eposta = new System.Windows.Forms.TextBox();
@@ -44,6 +45,7 @@
             // 
             // txt_Yayinevi
             // 
+            this.txt_Yayinevi.BackColor = System.Drawing.Color.NavajoWhite;
             this.txt_Yayinevi.Location = new System.Drawing.Point(337, 73);
             this.txt_Yayinevi.Name = "txt_Yayinevi";
             this.txt_Yayinevi.Size = new System.Drawing.Size(159, 20);
@@ -51,6 +53,7 @@
             // 
             // txt_TelNo
             // 
+            this.txt_TelNo.BackColor = System.Drawing.Color.NavajoWhite;
             this.txt_TelNo.Location = new System.Drawing.Point(337, 136);
             this.txt_TelNo.Name = "txt_TelNo";
             this.txt_TelNo.Size = new System.Drawing.Size(159, 20);
@@ -59,6 +62,7 @@
             // 
             // txt_Eposta
             // 
+            this.txt_Eposta.BackColor = System.Drawing.Color.NavajoWhite;
             this.txt_Eposta.Location = new System.Drawing.Point(719, 73);
             this.txt_Eposta.Name = "txt_Eposta";
             this.txt_Eposta.Size = new System.Drawing.Size(159, 20);
@@ -66,6 +70,7 @@
             // 
             // txt_Adres
             // 
+            this.txt_Adres.BackColor = System.Drawing.Color.NavajoWhite;
             this.txt_Adres.Location = new System.Drawing.Point(719, 136);
             this.txt_Adres.Name = "txt_Adres";
             this.txt_Adres.Size = new System.Drawing.Size(159, 20);
@@ -73,13 +78,14 @@
             // 
             // btn_Kaydet
             // 
+            this.btn_Kaydet.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_Kaydet.Location = new System.Drawing.Point(378, 239);
             this.btn_Kaydet.Name = "btn_Kaydet";
             this.btn_Kaydet.Size = new System.Drawing.Size(118, 39);
             this.btn_Kaydet.TabIndex = 23;
             this.btn_Kaydet.Text = "KAYDET";
-            this.btn_Kaydet.UseVisualStyleBackColor = true;
+            this.btn_Kaydet.UseVisualStyleBackColor = false;
             this.btn_Kaydet.Click += new System.EventHandler(this.btn_Kaydet_Click);
             // 
             // dgv_YayıneviListesi
@@ -90,8 +96,17 @@
             this.dgv_YayıneviListesi.AllowUserToResizeRows = false;
             this.dgv_YayıneviListesi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_YayıneviListesi.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            this.dgv_YayıneviListesi.BackgroundColor = System.Drawing.Color.Brown;
             this.dgv_YayıneviListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_YayıneviListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Brown;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.NavajoWhite;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_YayıneviListesi.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_YayıneviListesi.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_YayıneviListesi.Location = new System.Drawing.Point(0, 319);
             this.dgv_YayıneviListesi.MultiSelect = false;
@@ -108,6 +123,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.NavajoWhite;
             this.label1.Location = new System.Drawing.Point(191, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
@@ -117,6 +133,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.NavajoWhite;
             this.label2.Location = new System.Drawing.Point(191, 143);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
@@ -126,6 +143,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.NavajoWhite;
             this.label3.Location = new System.Drawing.Point(628, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
@@ -135,6 +153,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.NavajoWhite;
             this.label4.Location = new System.Drawing.Point(628, 139);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
@@ -143,13 +162,14 @@
             // 
             // btn_Temizle
             // 
+            this.btn_Temizle.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn_Temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_Temizle.Location = new System.Drawing.Point(631, 239);
             this.btn_Temizle.Name = "btn_Temizle";
             this.btn_Temizle.Size = new System.Drawing.Size(118, 39);
             this.btn_Temizle.TabIndex = 30;
             this.btn_Temizle.Text = "TEMİZLE";
-            this.btn_Temizle.UseVisualStyleBackColor = true;
+            this.btn_Temizle.UseVisualStyleBackColor = false;
             this.btn_Temizle.Click += new System.EventHandler(this.btn_Temizle_Click);
             // 
             // YayineviForm
@@ -157,6 +177,7 @@
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Brown;
             this.ClientSize = new System.Drawing.Size(1069, 573);
             this.Controls.Add(this.btn_Temizle);
             this.Controls.Add(this.label4);
@@ -174,6 +195,7 @@
             this.Name = "YayineviForm";
             this.Text = "Yayınevi";
             this.Load += new System.EventHandler(this.YayineviForm_Load);
+            this.DoubleClick += new System.EventHandler(this.YayineviForm_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_YayıneviListesi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

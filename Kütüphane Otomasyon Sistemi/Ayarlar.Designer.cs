@@ -46,7 +46,8 @@
             // 
             // txt_KullaniciAdi
             // 
-            this.txt_KullaniciAdi.Location = new System.Drawing.Point(165, 18);
+            this.txt_KullaniciAdi.BackColor = System.Drawing.Color.NavajoWhite;
+            this.txt_KullaniciAdi.Location = new System.Drawing.Point(175, 27);
             this.txt_KullaniciAdi.Name = "txt_KullaniciAdi";
             this.txt_KullaniciAdi.Size = new System.Drawing.Size(159, 20);
             this.txt_KullaniciAdi.TabIndex = 53;
@@ -54,7 +55,8 @@
             // 
             // txt_Sifre
             // 
-            this.txt_Sifre.Location = new System.Drawing.Point(165, 56);
+            this.txt_Sifre.BackColor = System.Drawing.Color.NavajoWhite;
+            this.txt_Sifre.Location = new System.Drawing.Point(175, 65);
             this.txt_Sifre.Name = "txt_Sifre";
             this.txt_Sifre.PasswordChar = '*';
             this.txt_Sifre.Size = new System.Drawing.Size(159, 20);
@@ -63,8 +65,9 @@
             // 
             // txt_YeniSifre
             // 
+            this.txt_YeniSifre.BackColor = System.Drawing.Color.NavajoWhite;
             this.txt_YeniSifre.Enabled = false;
-            this.txt_YeniSifre.Location = new System.Drawing.Point(165, 95);
+            this.txt_YeniSifre.Location = new System.Drawing.Point(175, 104);
             this.txt_YeniSifre.Name = "txt_YeniSifre";
             this.txt_YeniSifre.PasswordChar = '*';
             this.txt_YeniSifre.Size = new System.Drawing.Size(159, 20);
@@ -72,16 +75,18 @@
             // 
             // txt_OduncSuresi
             // 
+            this.txt_OduncSuresi.BackColor = System.Drawing.Color.NavajoWhite;
             this.txt_OduncSuresi.Enabled = false;
-            this.txt_OduncSuresi.Location = new System.Drawing.Point(165, 176);
+            this.txt_OduncSuresi.Location = new System.Drawing.Point(175, 185);
             this.txt_OduncSuresi.Name = "txt_OduncSuresi";
             this.txt_OduncSuresi.Size = new System.Drawing.Size(159, 20);
             this.txt_OduncSuresi.TabIndex = 56;
             // 
             // txt_CezaUcreti
             // 
+            this.txt_CezaUcreti.BackColor = System.Drawing.Color.NavajoWhite;
             this.txt_CezaUcreti.Enabled = false;
-            this.txt_CezaUcreti.Location = new System.Drawing.Point(165, 218);
+            this.txt_CezaUcreti.Location = new System.Drawing.Point(175, 227);
             this.txt_CezaUcreti.Name = "txt_CezaUcreti";
             this.txt_CezaUcreti.Size = new System.Drawing.Size(159, 20);
             this.txt_CezaUcreti.TabIndex = 57;
@@ -89,7 +94,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 25);
+            this.label1.BackColor = System.Drawing.Color.NavajoWhite;
+            this.label1.Location = new System.Drawing.Point(56, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 13);
             this.label1.TabIndex = 59;
@@ -98,7 +104,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(43, 63);
+            this.label2.BackColor = System.Drawing.Color.NavajoWhite;
+            this.label2.Location = new System.Drawing.Point(56, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 13);
             this.label2.TabIndex = 60;
@@ -107,7 +114,8 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(43, 102);
+            this.label3.BackColor = System.Drawing.Color.NavajoWhite;
+            this.label3.Location = new System.Drawing.Point(56, 107);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 13);
             this.label3.TabIndex = 61;
@@ -116,7 +124,8 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 183);
+            this.label4.BackColor = System.Drawing.Color.NavajoWhite;
+            this.label4.Location = new System.Drawing.Point(56, 188);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(103, 13);
             this.label4.TabIndex = 62;
@@ -125,7 +134,8 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(43, 225);
+            this.label5.BackColor = System.Drawing.Color.NavajoWhite;
+            this.label5.Location = new System.Drawing.Point(56, 230);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(102, 13);
             this.label5.TabIndex = 63;
@@ -133,19 +143,21 @@
             // 
             // btn_Kaydet
             // 
+            this.btn_Kaydet.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(25, 300);
+            this.btn_Kaydet.Location = new System.Drawing.Point(73, 287);
             this.btn_Kaydet.Name = "btn_Kaydet";
             this.btn_Kaydet.Size = new System.Drawing.Size(96, 30);
             this.btn_Kaydet.TabIndex = 64;
             this.btn_Kaydet.Text = "KAYDET";
-            this.btn_Kaydet.UseVisualStyleBackColor = true;
+            this.btn_Kaydet.UseVisualStyleBackColor = false;
             this.btn_Kaydet.Click += new System.EventHandler(this.btn_Kaydet_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(43, 142);
+            this.label6.BackColor = System.Drawing.Color.NavajoWhite;
+            this.label6.Location = new System.Drawing.Point(56, 147);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 13);
             this.label6.TabIndex = 67;
@@ -153,8 +165,9 @@
             // 
             // txt_YeniSifreTekrar
             // 
+            this.txt_YeniSifreTekrar.BackColor = System.Drawing.Color.NavajoWhite;
             this.txt_YeniSifreTekrar.Enabled = false;
-            this.txt_YeniSifreTekrar.Location = new System.Drawing.Point(165, 135);
+            this.txt_YeniSifreTekrar.Location = new System.Drawing.Point(175, 144);
             this.txt_YeniSifreTekrar.Name = "txt_YeniSifreTekrar";
             this.txt_YeniSifreTekrar.PasswordChar = '*';
             this.txt_YeniSifreTekrar.Size = new System.Drawing.Size(159, 20);
@@ -162,20 +175,22 @@
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.NavajoWhite;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.Location = new System.Drawing.Point(262, 300);
+            this.button2.Location = new System.Drawing.Point(215, 287);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(96, 30);
             this.button2.TabIndex = 69;
             this.button2.Text = "TEMİZLE";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Ayarlar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 387);
+            this.BackColor = System.Drawing.Color.Brown;
+            this.ClientSize = new System.Drawing.Size(385, 354);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txt_YeniSifreTekrar);

@@ -165,28 +165,6 @@ namespace Kutuphane_Otomasyon_Sistemi
             }
         }
 
-        private void dgv_SorumluListesi_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0) // Başlık satırına tıklanmadığından emin olun
-            {
-                // Seçilen satırın bilgilerini al
-                DataGridViewRow row = dgv_SorumluListesi.Rows[e.RowIndex];
-
-                seciliSorumluId = Convert.ToInt32(row.Cells["ID"].Value);
-                txt_SorumluAd.Text = row.Cells["SorumluAdi"].Value.ToString();
-                txt_SorumluSoyad.Text = row.Cells["SorumluSoyadi"].Value.ToString();
-                txt_TCKimlik.Text = row.Cells["TCKimlik"].Value.ToString();
-                txt_Rol.Text = row.Cells["Rol"].Value.ToString();
-                txt_TelNo.Text = row.Cells["TelNo"].Value.ToString();
-                txt_Eposta.Text = row.Cells["Eposta"].Value.ToString();
-                txt_Adres.Text = row.Cells["Adres"].Value.ToString();
-                txt_SorumluKullaniciAdi.Text = row.Cells["KullaniciAdi"].Value.ToString();
-                txt_SorumluSifre.Text = row.Cells["Sifre"].Value.ToString();
-                dt_DogumTarihi.Value = Convert.ToDateTime(row.Cells["DogumTarihi"].Value);
-
-                // Burada, seçili satırın ID'si doğru şekilde alınıyor
-            }
-        }
         private void txt_TCKimlik_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Kullanıcının sadece rakam girmesini sağlayalım (sayısal değer)
@@ -235,6 +213,19 @@ namespace Kutuphane_Otomasyon_Sistemi
             if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != ' ') // 8 = Backspace, ' ' = Boşluk
             {
                 e.Handled = true; // Geçersiz karakteri engelle
+            }
+        }
+
+        private void dgv_SorumluListesi_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgv_SorumluListesi.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgv_SorumluListesi.SelectedRows[0];
+
+                // Null kontrolü ile veri aktarımı
+                seciliSorumluId = Convert.ToInt32(row.Cells["ID"].Value);
+                txt_SorumluAd.Text = row.Cells["SorumluAdi"].Value?.ToString() ?? "";
+                // Diğer alanlar aynı şekilde...
             }
         }
     }

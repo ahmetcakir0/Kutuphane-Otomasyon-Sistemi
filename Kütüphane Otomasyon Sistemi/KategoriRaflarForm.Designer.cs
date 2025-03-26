@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt_KategoriAdi = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Kaydet = new System.Windows.Forms.Button();
@@ -39,46 +40,46 @@
             // 
             // txt_KategoriAdi
             // 
-            this.txt_KategoriAdi.Location = new System.Drawing.Point(231, 95);
-            this.txt_KategoriAdi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_KategoriAdi.BackColor = System.Drawing.Color.NavajoWhite;
+            this.txt_KategoriAdi.Location = new System.Drawing.Point(155, 69);
             this.txt_KategoriAdi.Multiline = true;
             this.txt_KategoriAdi.Name = "txt_KategoriAdi";
-            this.txt_KategoriAdi.Size = new System.Drawing.Size(206, 47);
+            this.txt_KategoriAdi.Size = new System.Drawing.Size(182, 25);
             this.txt_KategoriAdi.TabIndex = 0;
             this.txt_KategoriAdi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KategoriAdi_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(96, 111);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.BackColor = System.Drawing.Color.NavajoWhite;
+            this.label1.Location = new System.Drawing.Point(64, 72);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 20);
+            this.label1.Size = new System.Drawing.Size(64, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Kategori Adı";
             // 
             // btn_Kaydet
             // 
+            this.btn_Kaydet.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn_Kaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Kaydet.Location = new System.Drawing.Point(18, 254);
-            this.btn_Kaydet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Kaydet.Location = new System.Drawing.Point(0, 174);
             this.btn_Kaydet.Name = "btn_Kaydet";
-            this.btn_Kaydet.Size = new System.Drawing.Size(148, 69);
+            this.btn_Kaydet.Size = new System.Drawing.Size(111, 36);
             this.btn_Kaydet.TabIndex = 4;
             this.btn_Kaydet.Text = "KAYDET";
-            this.btn_Kaydet.UseVisualStyleBackColor = true;
+            this.btn_Kaydet.UseVisualStyleBackColor = false;
             this.btn_Kaydet.Click += new System.EventHandler(this.btn_Kaydet_Click);
             // 
             // btn_Sil
             // 
+            this.btn_Sil.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn_Sil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Sil.Location = new System.Drawing.Point(213, 255);
-            this.btn_Sil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Sil.Location = new System.Drawing.Point(136, 174);
             this.btn_Sil.Name = "btn_Sil";
-            this.btn_Sil.Size = new System.Drawing.Size(148, 68);
+            this.btn_Sil.Size = new System.Drawing.Size(111, 36);
             this.btn_Sil.TabIndex = 6;
             this.btn_Sil.Text = "SİL";
-            this.btn_Sil.UseVisualStyleBackColor = true;
+            this.btn_Sil.UseVisualStyleBackColor = false;
             this.btn_Sil.Click += new System.EventHandler(this.btn_Sil_Click);
             // 
             // dgv_KategoriRaflar
@@ -88,39 +89,48 @@
             this.dgv_KategoriRaflar.AllowUserToResizeColumns = false;
             this.dgv_KategoriRaflar.AllowUserToResizeRows = false;
             this.dgv_KategoriRaflar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_KategoriRaflar.BackgroundColor = System.Drawing.Color.Brown;
             this.dgv_KategoriRaflar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_KategoriRaflar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Brown;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.NavajoWhite;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_KategoriRaflar.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_KategoriRaflar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgv_KategoriRaflar.Location = new System.Drawing.Point(0, 400);
-            this.dgv_KategoriRaflar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgv_KategoriRaflar.Location = new System.Drawing.Point(0, 260);
             this.dgv_KategoriRaflar.MultiSelect = false;
             this.dgv_KategoriRaflar.Name = "dgv_KategoriRaflar";
             this.dgv_KategoriRaflar.ReadOnly = true;
             this.dgv_KategoriRaflar.RowHeadersVisible = false;
             this.dgv_KategoriRaflar.RowHeadersWidth = 62;
             this.dgv_KategoriRaflar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_KategoriRaflar.Size = new System.Drawing.Size(573, 325);
+            this.dgv_KategoriRaflar.Size = new System.Drawing.Size(382, 211);
             this.dgv_KategoriRaflar.TabIndex = 55;
             this.dgv_KategoriRaflar.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_KategoriRaflar_ColumnHeaderMouseClick);
-            this.dgv_KategoriRaflar.Click += new System.EventHandler(this.dgv_KategoriRaflar_Click);
+            this.dgv_KategoriRaflar.DoubleClick += new System.EventHandler(this.dgv_KategoriRaflar_DoubleClick);
             // 
             // btn_Temizleme
             // 
+            this.btn_Temizleme.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn_Temizleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Temizleme.Location = new System.Drawing.Point(406, 255);
-            this.btn_Temizleme.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_Temizleme.Location = new System.Drawing.Point(271, 174);
             this.btn_Temizleme.Name = "btn_Temizleme";
-            this.btn_Temizleme.Size = new System.Drawing.Size(148, 68);
+            this.btn_Temizleme.Size = new System.Drawing.Size(111, 36);
             this.btn_Temizleme.TabIndex = 56;
             this.btn_Temizleme.Text = "TEMİZLE";
-            this.btn_Temizleme.UseVisualStyleBackColor = true;
+            this.btn_Temizleme.UseVisualStyleBackColor = false;
             this.btn_Temizleme.Click += new System.EventHandler(this.btn_Temizleme_Click);
             // 
             // KategoriRaflarForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 725);
+            this.BackColor = System.Drawing.Color.Brown;
+            this.ClientSize = new System.Drawing.Size(382, 471);
             this.Controls.Add(this.btn_Temizleme);
             this.Controls.Add(this.dgv_KategoriRaflar);
             this.Controls.Add(this.btn_Sil);
@@ -128,7 +138,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_KategoriAdi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "KategoriRaflarForm";
             this.Text = "Kategori - Raflar";

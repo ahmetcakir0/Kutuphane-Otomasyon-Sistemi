@@ -170,21 +170,6 @@ namespace Kutuphane_Otomasyon_Sistemi
             }
         }
 
-        private void dgv_UyeListesi_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dgv_UyeListesi.Rows[e.RowIndex];
-
-                txt_TCKimlik.Text = row.Cells["TCKimlik"].Value.ToString();
-                txt_Ad.Text = row.Cells["Ad"].Value.ToString();
-                txt_Soyad.Text = row.Cells["Soyad"].Value.ToString();
-                txt_TelNo.Text = row.Cells["TelNo"].Value.ToString();
-                txt_Eposta.Text = row.Cells["Eposta"].Value.ToString();
-                txt_Adres.Text = row.Cells["Adres"].Value.ToString();
-                dtp_DogumTarihi.Value = Convert.ToDateTime(row.Cells["DogumTarihi"].Value);
-            }
-        }
         private int seciliUyeId = 0;
         private void btn_Temizle_Click(object sender, EventArgs e)
         {
@@ -250,6 +235,28 @@ namespace Kutuphane_Otomasyon_Sistemi
         {
             dgv_UyeListesi.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
 
+        }
+
+        private void dgv_UyeListesi_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgv_UyeListesi.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgv_UyeListesi.SelectedRows[0];
+
+                // Null kontrolü ile verileri aktarma
+                txt_TCKimlik.Text = row.Cells["TCKimlik"].Value?.ToString() ?? "";
+                txt_Ad.Text = row.Cells["Ad"].Value?.ToString() ?? "";
+                txt_Soyad.Text = row.Cells["Soyad"].Value?.ToString() ?? "";
+                txt_TelNo.Text = row.Cells["TelNo"].Value?.ToString() ?? "";
+                txt_Eposta.Text = row.Cells["Eposta"].Value?.ToString() ?? "";
+                txt_Adres.Text = row.Cells["Adres"].Value?.ToString() ?? "";
+
+                // DateTime için ekstra null kontrolü
+                if (row.Cells["DogumTarihi"].Value != null)
+                {
+                    dtp_DogumTarihi.Value = Convert.ToDateTime(row.Cells["DogumTarihi"].Value);
+                }
+            }
         }
     }
 }

@@ -90,16 +90,7 @@ namespace Kutuphane_Otomasyon_Sistemi
             FormTemizle();
         }
 
-        private void dgv_TurListesi_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dgv_TurListesi.Rows[e.RowIndex];
 
-                txt_TurEkle.Text = row.Cells["TurAdi"].Value.ToString();
-                txt_Aciklama.Text = row.Cells["Aciklama"].Value.ToString();
-            }
-        }
 
         private void txt_TurEkle_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -113,6 +104,25 @@ namespace Kutuphane_Otomasyon_Sistemi
         {
             dgv_TurListesi.Columns[e.ColumnIndex].SortMode = DataGridViewColumnSortMode.NotSortable;
 
+        }
+
+        private void dgv_TurListesi_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgv_TurListesi.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgv_TurListesi.SelectedRows[0];
+
+                // Null kontrolü
+                if (row.Cells["TurID"].Value != null)
+                {
+                    seciliTurId = Convert.ToInt32(row.Cells["TurID"].Value);
+                    txt_TurEkle.Text = row.Cells["TurAdi"].Value?.ToString() ?? "";
+                    txt_Aciklama.Text = row.Cells["Aciklama"].Value?.ToString() ?? "";
+
+                    // Eğer başka alanlar varsa:
+                    // txt_DigerAlan.Text = row.Cells["DigerAlan"].Value?.ToString() ?? "";
+                }
+            }
         }
     }
 }

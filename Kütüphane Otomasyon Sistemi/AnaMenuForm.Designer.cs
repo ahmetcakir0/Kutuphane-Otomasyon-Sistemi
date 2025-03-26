@@ -193,7 +193,7 @@
             this.lbl_Hosgeldiniz.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_Hosgeldiniz.BackColor = System.Drawing.Color.Brown;
             this.lbl_Hosgeldiniz.Font = new System.Drawing.Font("Mongolian Baiti", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Hosgeldiniz.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbl_Hosgeldiniz.ForeColor = System.Drawing.Color.NavajoWhite;
             this.lbl_Hosgeldiniz.Location = new System.Drawing.Point(476, 59);
             this.lbl_Hosgeldiniz.Name = "lbl_Hosgeldiniz";
             this.lbl_Hosgeldiniz.Size = new System.Drawing.Size(486, 30);
