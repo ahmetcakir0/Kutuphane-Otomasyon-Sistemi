@@ -81,7 +81,7 @@
             // 
             // btn_Giris
             // 
-            this.btn_Giris.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.btn_Giris.BackColor = System.Drawing.Color.NavajoWhite;
             this.btn_Giris.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_Giris.ForeColor = System.Drawing.Color.Black;
             this.btn_Giris.Location = new System.Drawing.Point(120, 232);
