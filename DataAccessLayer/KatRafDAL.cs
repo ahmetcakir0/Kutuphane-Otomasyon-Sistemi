@@ -8,7 +8,7 @@ namespace DataAccessLayer
 {
     public class KatRafDAL
     {
-        private readonly string connectionString = "server=MBB-01-BIL065-N\\SQLEXPRESS; Initial Catalog=KutuphaneDB; Integrated Security=SSPI";
+        private readonly string connectionString = "Kendi veri tabanınızı girin.(Ben MSSQL kullandım.)";
 
         public bool KategoriEkle(string kategoriAdi)
         {
