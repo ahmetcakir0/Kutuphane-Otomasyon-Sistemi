@@ -11,7 +11,7 @@
     {
         public class TurDAL
         {
-            private string connectionString = "server=MBB-01-BIL065-N\\SQLEXPRESS; Initial Catalog=KutuphaneDB; Integrated Security=SSPI";
+            private string connectionString = "Kendi veri tabanınızı girin.(Ben MSSQL kullandım.)";
 
             public TurDAL()
             {
