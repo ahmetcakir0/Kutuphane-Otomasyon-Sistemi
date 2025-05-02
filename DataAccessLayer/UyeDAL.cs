@@ -11,7 +11,7 @@ namespace DataAccessLayer
 {
     public class UyeDAL
     {
-        private readonly string connectionString = "server=MBB-01-BIL065-N\\SQLEXPRESS; Initial Catalog=KutuphaneDB; Integrated Security=SSPI";
+        private readonly string connectionString = "Kendi veri tabanınızı girin.(Ben MSSQL kullandım.)";
 
         public UyeDAL()
         {
